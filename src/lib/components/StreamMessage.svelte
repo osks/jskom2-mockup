@@ -28,6 +28,29 @@
 
 	const commentCount = $derived(text.commentedIn?.length ?? 0);
 
+	// Stable author color based on user id
+	const authorColors = [
+		'border-blue-400',
+		'border-emerald-400',
+		'border-amber-400',
+		'border-rose-400',
+		'border-purple-400',
+		'border-cyan-400',
+		'border-orange-400',
+		'border-indigo-400'
+	];
+	const authorNameColors = [
+		'text-blue-700',
+		'text-emerald-700',
+		'text-amber-700',
+		'text-rose-700',
+		'text-purple-700',
+		'text-cyan-700',
+		'text-orange-700',
+		'text-indigo-700'
+	];
+	const colorIdx = $derived(text.author % authorColors.length);
+
 	function handleComment() {
 		setCommentTo(text.id);
 	}
@@ -35,68 +58,67 @@
 
 <article
 	id="text-{text.id}"
-	class="group relative px-3 py-3 hover:bg-gray-50/50 transition-colors sm:px-4"
+	class="group flex gap-3 px-4 py-2.5 hover:bg-gray-50/80 transition-colors"
 >
-	<!-- Reply reference -->
-	{#if commentParent}
-		<a
-			href="#text-{commentParent.id}"
-			class="mb-1.5 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors"
-		>
-			<svg class="h-3 w-3 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-				<path d="M8 2L4 6l4 4" />
-			</svg>
-			<span>
-				Kommentar till text {commentParent.id}
+	<!-- Author color bar -->
+	<div class="shrink-0 w-0.5 rounded-full {authorColors[colorIdx]} self-stretch"></div>
+
+	<div class="min-w-0 flex-1">
+		<!-- Reply reference -->
+		{#if commentParent}
+			<a
+				href="#text-{commentParent.id}"
+				class="mb-1 inline-flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600"
+			>
+				<span class="text-gray-300">&larrhk;</span>
 				{#if parentAuthor}
-					av {parentAuthor.name}
+					{parentAuthor.name}
+				{:else}
+					text {commentParent.id}
 				{/if}
-			</span>
-		</a>
-	{/if}
-
-	<!-- Author line -->
-	<div class="flex items-baseline gap-2">
-		<a
-			href="{base}/users/{text.author}"
-			class="text-sm font-semibold text-gray-900 hover:underline"
-		>
-			{author?.name ?? 'Okänd'}
-		</a>
-		<span class="text-xs text-gray-400">{timeStr}</span>
-		<a
-			href="{base}/texts/{text.id}"
-			class="font-mono text-xs text-gray-300 hover:text-lyskom-600 transition-colors"
-		>
-			#{text.id}
-		</a>
-	</div>
-
-	<!-- Subject -->
-	{#if !commentParent || text.subject !== `Re: ${commentParent.subject.replace(/^Re: /, '')}`}
-		<div class="mt-0.5 text-sm font-semibold text-gray-800">{text.subject}</div>
-	{/if}
-
-	<!-- Body -->
-	<div class="mt-1">
-		<pre class="font-mono text-sm leading-relaxed text-gray-700 whitespace-pre-wrap">{text.body}</pre>
-	</div>
-
-	<!-- Actions -->
-	<div class="mt-1.5 flex items-center gap-3">
-		<button
-			onclick={handleComment}
-			class="flex items-center gap-1 rounded px-1.5 py-1 text-xs text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-		>
-			<MessageSquare size={12} />
-			Kommentera
-		</button>
-
-		{#if commentCount > 0}
-			<span class="flex items-center gap-1 text-xs text-lyskom-600">
-				<MessageSquare size={12} />
-				{commentCount} {commentCount === 1 ? 'kommentar' : 'kommentarer'}
-			</span>
+			</a>
 		{/if}
+
+		<!-- Author line -->
+		<div class="flex items-baseline gap-2">
+			<a
+				href="{base}/users/{text.author}"
+				class="text-sm font-semibold {authorNameColors[colorIdx]} hover:underline"
+			>
+				{author?.name ?? 'Okänd'}
+			</a>
+			<span class="text-xs text-gray-400">{timeStr}</span>
+			<a
+				href="{base}/texts/{text.id}"
+				class="font-mono text-xs text-gray-300 hover:text-lyskom-600"
+			>
+				#{text.id}
+			</a>
+		</div>
+
+		<!-- Subject (only when it's new or changed) -->
+		{#if !commentParent || text.subject !== `Re: ${commentParent.subject.replace(/^Re: /, '')}`}
+			<div class="mt-0.5 text-sm font-medium text-gray-900">{text.subject}</div>
+		{/if}
+
+		<!-- Body -->
+		<div class="mt-1 text-sm leading-relaxed text-gray-700 whitespace-pre-wrap">{text.body}</div>
+
+		<!-- Actions -->
+		<div class="mt-1 flex items-center gap-3">
+			<button
+				onclick={handleComment}
+				class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 hover:text-gray-600 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+			>
+				<MessageSquare size={12} />
+				Kommentera
+			</button>
+
+			{#if commentCount > 0}
+				<span class="text-xs text-gray-400">
+					{commentCount} {commentCount === 1 ? 'kommentar' : 'kommentarer'}
+				</span>
+			{/if}
+		</div>
 	</div>
 </article>
