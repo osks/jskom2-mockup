@@ -1,8 +1,8 @@
 # jskom2-mockup
 
-A mockup for a modern web-based [LysKOM](https://www.lysator.liu.se/lyskom/) client, built to explore interaction patterns and page structure before building the real thing.
+A Slack/Discord-inspired web UI for a new [LysKOM](https://www.lysator.liu.se/lyskom/) client. This is a static mockup to explore interaction patterns and page structure before building the real thing.
 
-LysKOM is a Swedish computer conferencing system from the late 1980s, developed at Linköping University. It features threaded discussions organized into conferences, sequential reading flow, and real-time presence — think of it as a protocol-based discussion system predating modern forums.
+LysKOM is a Swedish computer conferencing system from the late 1980s, developed at Linköping University. It features threaded discussions organized into conferences, sequential reading flow, and real-time presence. The goal is to bring LysKOM into the modern era with a familiar, real-time-feeling web interface — conferences as channels, threaded conversations, presence indicators — while preserving the unique aspects of LysKOM like sequential reading and comment chains.
 
 ## Tech stack
 
@@ -87,6 +87,6 @@ src/
 
 ## Background
 
-This is a UI exploration for a potential successor to [jskom](https://github.com/osks/jskom), the existing web-based LysKOM client. The mockup uses static data to allow rapid iteration on layout, navigation, and interaction patterns without needing a running LysKOM server or the jskom Python backend.
+This is a UI exploration for a new LysKOM web client, inspired by the UI patterns of Slack and Discord — sidebar with channels/conferences, threaded messages, presence, and real-time feel. It aims to succeed [jskom](https://github.com/osks/jskom), the existing web-based LysKOM client.
 
-The UI takes inspiration from the [LysKOM Emacs client](https://github.com/johan/lyskom-elisp-client) (lyskom.el) — the most feature-complete LysKOM client — while adapting the experience for the web: card-based layout, threaded views, responsive design, and visual navigation.
+The mockup uses static data to allow rapid iteration on layout, navigation, and interaction patterns without needing a running LysKOM server or the jskom Python backend. Domain knowledge about LysKOM concepts and display conventions comes from the [LysKOM Emacs client](https://github.com/johan/lyskom-elisp-client) (lyskom.el).
