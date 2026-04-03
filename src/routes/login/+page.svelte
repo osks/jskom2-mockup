@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { login } from '$lib/stores/auth';
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { initReading } from '$lib/stores/reading';
 
 	let server = $state('kom.lysator.liu.se');
@@ -10,7 +11,7 @@
 	function handleLogin() {
 		login(8); // Johan Strand
 		initReading(8);
-		goto('/read');
+		goto(`${base}/read`);
 	}
 </script>
 

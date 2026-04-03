@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { BookOpen, MessageSquare, PenSquare, Users, Search } from 'lucide-svelte';
 	import { page } from '$app/state';
+	import { base } from '$app/paths';
 
 	const tabs = [
 		{ href: '/read', label: 'Läsa', icon: BookOpen },
@@ -11,7 +12,8 @@
 	];
 
 	function isActive(href: string): boolean {
-		return page.url.pathname === href || page.url.pathname.startsWith(href + '/');
+		const full = `${base}${href}`;
+		return page.url.pathname === full || page.url.pathname.startsWith(full + '/');
 	}
 </script>
 
@@ -19,7 +21,7 @@
 	<div class="flex">
 		{#each tabs as tab}
 			<a
-				href={tab.href}
+				href="{base}{tab.href}"
 				class="flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium transition-colors"
 				class:text-lyskom-600={isActive(tab.href)}
 				class:text-gray-400={!isActive(tab.href)}

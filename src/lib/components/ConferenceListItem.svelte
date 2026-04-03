@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Conference, Membership } from '$lib/types';
 	import { Lock, Globe, Eye } from 'lucide-svelte';
+	import { base } from '$app/paths';
 
 	interface Props {
 		conference: Conference;
@@ -21,7 +22,7 @@
 </script>
 
 <a
-	href="/conferences/{conference.id}"
+	href="{base}/conferences/{conference.id}"
 	class="flex items-center gap-3 rounded-lg border border-gray-200 border-l-4 {priorityColor} bg-white px-4 py-3 shadow-sm hover:bg-gray-50 transition-colors"
 >
 	<div class="shrink-0 text-gray-400">

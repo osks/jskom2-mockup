@@ -2,6 +2,7 @@
 	import { readingState, nextText, nextConference, skipText } from '$lib/stores/reading';
 	import { getConferenceById, getMemberships } from '$lib/data';
 	import { ChevronRight, SkipForward, ArrowRight } from 'lucide-svelte';
+	import { base } from '$app/paths';
 
 	const conf = $derived(
 		$readingState.currentConference
@@ -16,7 +17,7 @@
 	<div class="flex items-center justify-between gap-4">
 		<div class="flex items-center gap-2 text-sm">
 			{#if conf}
-				<a href="/conferences/{conf.id}" class="font-semibold text-lyskom-700 hover:underline">
+				<a href="{base}/conferences/{conf.id}" class="font-semibold text-lyskom-700 hover:underline">
 					{conf.name}
 				</a>
 				{#if remaining > 0}

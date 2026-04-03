@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { texts, conferences, users } from '$lib/data';
+	import { base } from '$app/paths';
 	import SearchBar from '$lib/components/SearchBar.svelte';
 	import TextCard from '$lib/components/TextCard.svelte';
 	import ConferenceListItem from '$lib/components/ConferenceListItem.svelte';
@@ -108,7 +109,7 @@
 			<div class="space-y-2">
 				{#each matchedUsers as user}
 					<a
-						href="/users/{user.id}"
+						href="{base}/users/{user.id}"
 						class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm hover:bg-gray-50 transition-colors"
 					>
 						<UserBadge userId={user.id} linked={false} />

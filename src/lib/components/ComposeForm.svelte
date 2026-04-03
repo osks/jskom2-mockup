@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { conferences, getTextById } from '$lib/data';
 	import { Send, X } from 'lucide-svelte';
+	import { base } from '$app/paths';
 
 	interface Props {
 		commentTo?: number;
@@ -56,7 +57,7 @@
 		{#if commentTo}
 			<div class="flex items-center gap-2">
 				<span class="w-24 text-sm font-medium text-gray-500 shrink-0">Kommentar till:</span>
-				<a href="/texts/{commentTo}" class="font-mono text-sm text-lyskom-600 hover:underline">
+				<a href="{base}/texts/{commentTo}" class="font-mono text-sm text-lyskom-600 hover:underline">
 					text {commentTo}
 				</a>
 			</div>
@@ -101,7 +102,7 @@
 			{sent ? 'Skickat!' : 'Skicka'}
 		</button>
 		<a
-			href="/"
+			href="{base}/"
 			class="inline-flex items-center gap-1.5 rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition-colors"
 		>
 			<X size={14} />

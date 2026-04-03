@@ -3,6 +3,7 @@
 	import { getUserById, getConferenceById, getTextById } from '$lib/data';
 	import UserBadge from './UserBadge.svelte';
 	import { MessageSquare, Bookmark } from 'lucide-svelte';
+	import { base } from '$app/paths';
 
 	interface Props {
 		text: TextInfo;
@@ -29,7 +30,7 @@
 
 {#if compact}
 	<a
-		href="/texts/{text.id}"
+		href="{base}/texts/{text.id}"
 		class="flex items-baseline gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition-colors"
 	>
 		<span class="font-mono text-xs text-gray-400 shrink-0">#{text.id}</span>
@@ -65,7 +66,7 @@
 						{@const parent = getTextById(parentId)}
 						<div class="text-sm text-gray-500">
 							Kommentar till
-							<a href="/texts/{parentId}" class="font-mono text-lyskom-600 hover:underline"
+							<a href="{base}/texts/{parentId}" class="font-mono text-lyskom-600 hover:underline"
 								>text {parentId}</a
 							>
 							{#if parent}
@@ -82,7 +83,7 @@
 					{@const conf = getConferenceById(confId)}
 					<div class="text-sm text-gray-500">
 						Mottagare:
-						<a href="/conferences/{confId}" class="text-lyskom-600 hover:underline">
+						<a href="{base}/conferences/{confId}" class="text-lyskom-600 hover:underline">
 							{conf?.name ?? `Möte ${confId}`}
 						</a>
 					</div>
@@ -107,7 +108,7 @@
 						{@const child = getTextById(childId)}
 						<div class="text-sm text-gray-500">
 							Kommentar i
-							<a href="/texts/{childId}" class="font-mono text-lyskom-600 hover:underline"
+							<a href="{base}/texts/{childId}" class="font-mono text-lyskom-600 hover:underline"
 								>text {childId}</a
 							>
 							{#if child}
@@ -121,7 +122,7 @@
 			<!-- Actions -->
 			<div class="flex gap-2">
 				<a
-					href="/compose?commentTo={text.id}"
+					href="{base}/compose?commentTo={text.id}"
 					class="inline-flex items-center gap-1.5 rounded-md bg-lyskom-50 px-3 py-1.5 text-sm font-medium text-lyskom-700 hover:bg-lyskom-100 transition-colors"
 				>
 					<MessageSquare size={14} />

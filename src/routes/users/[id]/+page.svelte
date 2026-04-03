@@ -3,6 +3,7 @@
 	import { getUserById, getMemberships, getConferenceById } from '$lib/data';
 	import UserBadge from '$lib/components/UserBadge.svelte';
 	import { Calendar, FileText, Mail } from 'lucide-svelte';
+	import { base } from '$app/paths';
 
 	const userId = $derived(Number(page.params.id));
 	const user = $derived(getUserById(userId));
@@ -69,7 +70,7 @@
 					{@const conf = getConferenceById(m.conferenceId)}
 					{#if conf}
 						<a
-							href="/conferences/{conf.id}"
+							href="{base}/conferences/{conf.id}"
 							class="flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
 						>
 							<span class="text-sm font-medium text-gray-700">{conf.name}</span>

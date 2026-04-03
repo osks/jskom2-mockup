@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getUserById } from '$lib/data';
+	import { base } from '$app/paths';
 
 	interface Props {
 		userId: number;
@@ -34,7 +35,7 @@
 
 {#if user}
 	{#if linked}
-		<a href="/users/{userId}" class="inline-flex items-center gap-1.5 hover:underline">
+		<a href="{base}/users/{userId}" class="inline-flex items-center gap-1.5 hover:underline">
 			{#if showAvatar}
 				<span
 					class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-medium text-white {color}"

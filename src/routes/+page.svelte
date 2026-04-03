@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { currentUser } from '$lib/stores/auth';
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 
 	$effect(() => {
 		if ($currentUser) {
-			goto('/read');
+			goto(`${base}/read`);
 		} else {
-			goto('/login');
+			goto(`${base}/login`);
 		}
 	});
 </script>

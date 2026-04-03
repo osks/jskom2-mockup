@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { getTextById, getCommentTree } from '$lib/data';
 	import TextThread from '$lib/components/TextThread.svelte';
+	import { base } from '$app/paths';
 
 	const textId = $derived(Number(page.params.id));
 	const text = $derived(getTextById(textId));
@@ -25,7 +26,7 @@
 		<div class="mb-4">
 			<h1 class="text-sm text-gray-500">
 				Tråd startad med
-				<a href="/texts/{rootId}" class="font-mono text-lyskom-600 hover:underline">text {rootId}</a>
+				<a href="{base}/texts/{rootId}" class="font-mono text-lyskom-600 hover:underline">text {rootId}</a>
 			</h1>
 		</div>
 
