@@ -19,7 +19,7 @@
 	</div>
 
 	<!-- Main content -->
-	<main class="flex-1 overflow-y-auto pb-16 md:pb-0">
+	<main class="flex min-h-0 flex-1 flex-col overflow-y-auto pb-16 md:pb-0">
 		{@render children()}
 	</main>
 
