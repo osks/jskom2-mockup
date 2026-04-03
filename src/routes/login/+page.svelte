@@ -18,7 +18,7 @@
 	<div class="w-full max-w-sm">
 		<div class="mb-8 text-center">
 			<h1 class="text-3xl font-bold text-lyskom-700">jskom2</h1>
-			<p class="mt-1 text-sm text-gray-500">Webbklient för LysKOM</p>
+			<p class="mt-1 text-sm text-gray-500">En modern webbklient för LysKOM</p>
 		</div>
 
 		<form
