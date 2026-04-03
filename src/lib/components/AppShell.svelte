@@ -3,8 +3,6 @@
 	import MobileNav from './MobileNav.svelte';
 	import PersonalMessage from './PersonalMessage.svelte';
 	import { personalMessages } from '$lib/stores/messages';
-	import { page } from '$app/state';
-	import { base } from '$app/paths';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -12,11 +10,6 @@
 	}
 
 	let { children }: Props = $props();
-
-	// On the reading page, ComposeBar replaces the mobile nav — no bottom padding needed
-	const isReadingPage = $derived(
-		page.url.pathname === `${base}/read` || page.url.pathname.startsWith(`${base}/read/`)
-	);
 </script>
 
 <div class="flex h-screen">
@@ -25,11 +18,8 @@
 		<NavSidebar />
 	</div>
 
-	<!-- Main content -->
-	<main
-		class="flex min-h-0 flex-1 flex-col overflow-y-auto md:pb-0"
-		class:pb-16={!isReadingPage}
-	>
+	<!-- Main content — pb-14 leaves room for mobile nav -->
+	<main class="flex min-h-0 flex-1 flex-col pb-14 md:pb-0">
 		{@render children()}
 	</main>
 

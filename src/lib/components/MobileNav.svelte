@@ -15,25 +15,20 @@
 		const full = `${base}${href}`;
 		return page.url.pathname === full || page.url.pathname.startsWith(full + '/');
 	}
-
-	// Hide mobile nav on the reading page — ComposeBar takes the bottom slot there
-	const isReadingPage = $derived(isActive('/read'));
 </script>
 
-{#if !isReadingPage}
-	<nav class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white md:hidden">
-		<div class="flex">
-			{#each tabs as tab}
-				<a
-					href="{base}{tab.href}"
-					class="flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium transition-colors"
-					class:text-lyskom-600={isActive(tab.href)}
-					class:text-gray-400={!isActive(tab.href)}
-				>
-					<tab.icon size={20} />
-					{tab.label}
-				</a>
-			{/each}
-		</div>
-	</nav>
-{/if}
+<nav class="fixed bottom-0 left-0 right-0 z-20 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
+	<div class="flex">
+		{#each tabs as tab}
+			<a
+				href="{base}{tab.href}"
+				class="flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium transition-colors"
+				class:text-lyskom-600={isActive(tab.href)}
+				class:text-gray-400={!isActive(tab.href)}
+			>
+				<tab.icon size={20} />
+				{tab.label}
+			</a>
+		{/each}
+	</div>
+</nav>

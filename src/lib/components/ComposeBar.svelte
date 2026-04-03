@@ -61,7 +61,7 @@
 	}
 </script>
 
-<div class="shrink-0 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]">
+<div class="shrink-0 border-t border-gray-200 bg-white">
 	<!-- Comment reference -->
 	{#if commentToText}
 		<div class="flex items-center gap-2 border-b border-gray-100 bg-gray-50 px-3 py-1.5 sm:px-4">
