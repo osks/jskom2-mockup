@@ -73,7 +73,7 @@
 			<div class="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
 				<select
 					bind:value={selectedConference}
-					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-xs text-gray-700 sm:w-auto"
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base text-gray-700 sm:w-auto sm:text-xs"
 				>
 					{#each conferences as conf}
 						<option value={conf.id}>{conf.name}</option>
@@ -83,7 +83,7 @@
 					type="text"
 					bind:value={subject}
 					placeholder="Ärende..."
-					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-xs sm:flex-1"
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base sm:flex-1 sm:text-xs"
 				/>
 			</div>
 
@@ -94,7 +94,7 @@
 					onkeydown={handleKeydown}
 					rows={3}
 					placeholder="Skriv din kommentar..."
-					class="flex-1 resize-none rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800 font-mono placeholder:text-gray-400 placeholder:font-sans focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 transition-colors"
+					class="flex-1 resize-none rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 font-mono placeholder:text-gray-400 placeholder:font-sans focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 transition-colors sm:text-sm"
 				></textarea>
 
 				<div class="flex flex-col gap-1">
