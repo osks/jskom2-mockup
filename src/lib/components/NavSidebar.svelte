@@ -3,6 +3,7 @@
 	import { getMemberships, getConferenceById } from '$lib/data';
 	import { BookOpen, Users, PenSquare, Search, LogOut } from 'lucide-svelte';
 	import { logout } from '$lib/stores/auth';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { base } from '$app/paths';
 
@@ -13,6 +14,19 @@
 	function isActive(path: string): boolean {
 		const full = `${base}${path}`;
 		return page.url.pathname === full || page.url.pathname.startsWith(full + '/');
+	}
+
+	function scrollToConference(conferenceId: number) {
+		// If we're on the reading page, scroll to the conference divider
+		if (isActive('/read')) {
+			const el = document.getElementById(`conference-${conferenceId}`);
+			if (el) {
+				el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				return;
+			}
+		}
+		// Otherwise navigate to the reading page (conference will be visible)
+		goto(`${base}/read`);
 	}
 </script>
 
@@ -43,13 +57,9 @@
 				{#each memberships as m}
 					{@const conf = getConferenceById(m.conferenceId)}
 					{#if conf}
-						<a
-							href="{base}/conferences/{conf.id}"
-							class="flex items-center justify-between rounded-md px-3 py-1.5 text-sm transition-colors"
-							class:bg-lyskom-50={isActive(`/conferences/${conf.id}`)}
-							class:text-lyskom-700={isActive(`/conferences/${conf.id}`)}
-							class:text-gray-700={!isActive(`/conferences/${conf.id}`)}
-							class:hover:bg-gray-50={!isActive(`/conferences/${conf.id}`)}
+						<button
+							onclick={() => scrollToConference(conf.id)}
+							class="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-sm transition-colors text-gray-700 hover:bg-gray-50"
 						>
 							<span class="truncate">{conf.name}</span>
 							{#if m.unread > 0}
@@ -59,7 +69,7 @@
 									{m.unread}
 								</span>
 							{/if}
-						</a>
+						</button>
 					{/if}
 				{/each}
 			</div>
