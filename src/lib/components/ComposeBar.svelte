@@ -7,14 +7,9 @@
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
 	);
 
-	const defaultConferenceId = $derived(() => {
-		// Find the last conference in the stream the user is reading
-		const items = $readingState.streamItems;
-		for (let i = items.length - 1; i >= 0; i--) {
-			if (items[i].conferenceId) return items[i].conferenceId;
-		}
-		return 1;
-	});
+	const defaultConferenceId = $derived(
+		$readingState.currentConference ?? 1
+	);
 
 	let selectedConference = $state(1);
 	let subject = $state('');
