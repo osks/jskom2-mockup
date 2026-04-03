@@ -8,6 +8,10 @@
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);
 
+	// Touch tracking for swipe-up
+	let touchStartY = $state(0);
+	let touchStartTime = $state(0);
+
 	// Auto-scroll to bottom when new items are added
 	$effect(() => {
 		const len = $readingState.buffer.length;
@@ -24,25 +28,42 @@
 		}
 	});
 
+	function isAtBottom(): boolean {
+		if (!scrollContainer) return true;
+		const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+		return scrollHeight - scrollTop - clientHeight < 50;
+	}
+
 	function handleNext() {
 		advanceReading();
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
 		if (e.key === ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-			// Space: scroll if more content, otherwise advance
 			const target = e.target as HTMLElement;
 			if (target.tagName === 'TEXTAREA' || target.tagName === 'INPUT') return;
 
 			e.preventDefault();
-			if (scrollContainer) {
-				const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-				const atBottom = scrollHeight - scrollTop - clientHeight < 50;
-				if (!atBottom) {
-					scrollContainer.scrollBy({ top: clientHeight - 60, behavior: 'smooth' });
-					return;
-				}
+			if (!isAtBottom() && scrollContainer) {
+				scrollContainer.scrollBy({ top: scrollContainer.clientHeight - 60, behavior: 'smooth' });
+				return;
 			}
+			advanceReading();
+		}
+	}
+
+	function handleTouchStart(e: TouchEvent) {
+		touchStartY = e.touches[0].clientY;
+		touchStartTime = Date.now();
+	}
+
+	function handleTouchEnd(e: TouchEvent) {
+		const touchEndY = e.changedTouches[0].clientY;
+		const deltaY = touchStartY - touchEndY;
+		const elapsed = Date.now() - touchStartTime;
+
+		// Swipe up: at least 60px, within 400ms, and at bottom of scroll
+		if (deltaY > 60 && elapsed < 400 && isAtBottom()) {
 			advanceReading();
 		}
 	}
@@ -52,7 +73,12 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div bind:this={scrollContainer} class="flex-1 overflow-y-auto">
+<div
+	bind:this={scrollContainer}
+	ontouchstart={handleTouchStart}
+	ontouchend={handleTouchEnd}
+	class="flex-1 overflow-y-auto"
+>
 	<div class="mx-auto max-w-3xl">
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'conference-enter'}
@@ -87,7 +113,6 @@
 		<!-- Next action prompt -->
 		<div class="px-4 py-6">
 			{#if nextAction.type === 'all-done' && $readingState.buffer.length === 0}
-				<!-- Nothing read yet, show initial state -->
 				<div class="flex flex-col items-center gap-3 py-12 text-center">
 					<div class="rounded-full bg-gray-100 p-3">
 						<MessageSquare size={24} class="text-gray-400" />
@@ -103,7 +128,7 @@
 			{:else}
 				<button
 					onclick={handleNext}
-					class="group flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-3 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-lyskom-300 hover:bg-lyskom-50 hover:text-lyskom-700 hover:shadow-md active:scale-[0.99]"
+					class="group flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-3.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-lyskom-300 hover:bg-lyskom-50 hover:text-lyskom-700 hover:shadow-md active:scale-[0.98] active:bg-lyskom-50"
 				>
 					{#if nextAction.type === 'next-comment'}
 						<MessageSquare size={16} class="text-lyskom-500" />
@@ -111,16 +136,20 @@
 					{:else if nextAction.type === 'next-conf'}
 						<ArrowRight size={16} class="text-lyskom-500" />
 						<span>{nextAction.label}</span>
-						<span class="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-500 group-hover:bg-lyskom-100 group-hover:text-lyskom-600">
+						<span class="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-500 group-hover:bg-lyskom-100 group-hover:text-lyskom-600 group-active:bg-lyskom-100 group-active:text-lyskom-600">
 							{nextAction.conferenceName}
 						</span>
 					{:else}
 						<ChevronDown size={16} class="text-lyskom-500" />
 						<span>{nextAction.label}</span>
 					{/if}
-					<kbd class="ml-2 rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-[10px] text-gray-400 group-hover:border-lyskom-200 group-hover:bg-lyskom-50">
+					<!-- Desktop: show keyboard shortcut. Mobile: show swipe hint -->
+					<kbd class="ml-2 hidden rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 text-[10px] text-gray-400 group-hover:border-lyskom-200 group-hover:bg-lyskom-50 md:inline-block">
 						SPC
 					</kbd>
+					<span class="ml-1 text-[10px] text-gray-400 md:hidden">
+						svep upp
+					</span>
 				</button>
 			{/if}
 		</div>

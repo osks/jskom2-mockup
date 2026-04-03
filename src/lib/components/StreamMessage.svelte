@@ -119,7 +119,7 @@
 			<div class="mt-1.5 flex items-center gap-3">
 				<button
 					onclick={handleComment}
-					class="flex items-center gap-1 rounded px-1.5 py-0.5 text-xs text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+					class="flex items-center gap-1 rounded px-1.5 py-1 text-xs text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
 				>
 					<MessageSquare size={12} />
 					Kommentera

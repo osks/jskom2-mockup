@@ -61,33 +61,33 @@
 	}
 </script>
 
-<div class="shrink-0 border-t border-gray-200 bg-white">
+<div class="shrink-0 border-t border-gray-200 bg-white pb-[env(safe-area-inset-bottom)]">
 	<!-- Comment reference -->
 	{#if commentToText}
-		<div class="flex items-center gap-2 border-b border-gray-100 bg-gray-50 px-4 py-1.5">
+		<div class="flex items-center gap-2 border-b border-gray-100 bg-gray-50 px-3 py-1.5 sm:px-4">
 			<svg class="h-3 w-3 shrink-0 text-lyskom-600" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
 				<path d="M8 2L4 6l4 4" />
 			</svg>
-			<span class="text-xs text-gray-600">
-				Kommentar till text <span class="font-mono font-medium text-lyskom-600">#{commentToText.id}</span>
-				— {commentToText.subject}
+			<span class="min-w-0 truncate text-xs text-gray-600">
+				Kommentar till <span class="font-mono font-medium text-lyskom-600">#{commentToText.id}</span>
+				<span class="hidden sm:inline">— {commentToText.subject}</span>
 			</span>
 			<button
 				onclick={clearCommentTo}
-				class="ml-auto text-gray-400 hover:text-gray-600"
+				class="ml-auto shrink-0 p-1 text-gray-400 hover:text-gray-600"
 			>
 				<X size={14} />
 			</button>
 		</div>
 	{/if}
 
-	<div class="px-4 py-3">
+	<div class="px-3 py-2 sm:px-4 sm:py-3">
 		{#if expanded}
-			<!-- Expanded: conference + subject + body -->
-			<div class="mb-2 flex items-center gap-2">
+			<!-- Expanded: conference + subject -->
+			<div class="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
 				<select
 					bind:value={selectedConference}
-					class="rounded border border-gray-200 bg-gray-50 px-2 py-1 text-xs text-gray-700"
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-xs text-gray-700 sm:w-auto"
 				>
 					{#each conferences as conf}
 						<option value={conf.id}>{conf.name}</option>
@@ -97,7 +97,7 @@
 					type="text"
 					bind:value={subject}
 					placeholder="Ärende..."
-					class="flex-1 rounded border border-gray-200 bg-gray-50 px-2 py-1 text-xs"
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-xs sm:flex-1"
 				/>
 			</div>
 		{/if}
@@ -118,7 +118,7 @@
 					<button
 						onclick={handleSend}
 						disabled={sent || !body.trim()}
-						class="flex h-8 w-8 items-center justify-center rounded-lg bg-lyskom-600 text-white hover:bg-lyskom-700 disabled:opacity-40 transition-colors"
+						class="flex h-9 w-9 items-center justify-center rounded-lg bg-lyskom-600 text-white hover:bg-lyskom-700 disabled:opacity-40 transition-colors sm:h-8 sm:w-8"
 						title="Skicka (Ctrl+Enter)"
 					>
 						{#if sent}
@@ -129,7 +129,7 @@
 					</button>
 					<button
 						onclick={handleCancel}
-						class="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+						class="flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors sm:h-8 sm:w-8"
 						title="Avbryt (Esc)"
 					>
 						<X size={14} />
