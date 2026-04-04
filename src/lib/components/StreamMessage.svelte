@@ -77,7 +77,7 @@
 				<div class="mt-0.5 text-sm font-medium text-gray-900">{text.subject}</div>
 			{/if}
 
-			<div class="mt-1 text-base leading-relaxed text-gray-700 whitespace-pre-wrap md:text-sm">{text.body}</div>
+			<div class="mt-1 text-base leading-relaxed text-gray-700 whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
 
 			{#if commentCount > 0}
 				<div class="mt-1.5 text-xs text-gray-400">

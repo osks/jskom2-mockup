@@ -126,7 +126,7 @@
 	bind:this={scrollContainer}
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
-	class="relative flex-1 overflow-y-auto bg-white"
+	class="relative flex-1 overflow-y-auto overflow-x-hidden bg-white"
 >
 	<!-- Top fade -->
 	<div class="pointer-events-none sticky top-0 z-10 h-12 bg-gradient-to-b from-white via-white/80 to-transparent md:h-6"></div>
