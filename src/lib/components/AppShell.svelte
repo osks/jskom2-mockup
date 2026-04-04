@@ -22,9 +22,6 @@
 
 	<!-- Main column -->
 	<div class="flex min-h-0 flex-1 flex-col">
-		<!-- Mobile header -->
-		<MobileHeader />
-
 		<!-- Page content -->
 		<main class="flex min-h-0 flex-1 flex-col bg-white">
 			{@render children()}
@@ -33,6 +30,9 @@
 		<!-- Global compose bar -->
 		<ComposeBar />
 	</div>
+
+	<!-- Mobile floating hamburger -->
+	<MobileHeader />
 
 	<!-- Mobile sidebar drawer -->
 	<SidebarDrawer />
