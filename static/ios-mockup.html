@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>jskom – iOS Style Mockup</title>
+<style>
+  /* ── Reset & Base ─────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f2f2f7;
+    --card: #ffffff;
+    --sep: rgba(60,60,67,.12);
+    --label: #000000;
+    --label2: rgba(60,60,67,.6);
+    --label3: rgba(60,60,67,.3);
+    --tint: #007aff;
+    --tint-bg: rgba(0,122,255,.08);
+    --red: #ff3b30;
+    --green: #34c759;
+    --orange: #ff9500;
+    --purple: #af52de;
+    --radius: 12px;
+    --nav-blur: saturate(180%) blur(20px);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg);
+    color: var(--label);
+  }
+
+  body {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ── Navigation Bar ────────────────────────────────── */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(242,242,247,.72);
+    backdrop-filter: var(--nav-blur);
+    -webkit-backdrop-filter: var(--nav-blur);
+    border-bottom: .33px solid var(--sep);
+    padding: calc(var(--safe-top) + 8px) 16px 8px;
+  }
+  .nav-bar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 17px; color: var(--tint); background: none; border: none;
+    cursor: pointer; font-family: inherit;
+  }
+  .nav-back svg { flex-shrink: 0; }
+  .nav-title-small {
+    font-size: 17px; font-weight: 600; text-align: center;
+    position: absolute; left: 50%; transform: translateX(-50%);
+  }
+  .nav-action {
+    font-size: 17px; color: var(--tint); background: none; border: none;
+    cursor: pointer; font-family: inherit; font-weight: 500;
+  }
+  .large-title {
+    font-size: 34px; font-weight: 700; letter-spacing: .37px;
+    padding: 0 16px 8px;
+  }
+
+  /* ── Search Bar ────────────────────────────────────── */
+  .search-bar {
+    margin: 0 16px 12px;
+    position: relative;
+  }
+  .search-bar input {
+    width: 100%;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(118,118,128,.12);
+    padding: 0 8px 0 32px;
+    font-size: 17px;
+    font-family: inherit;
+    color: var(--label);
+    outline: none;
+  }
+  .search-bar input::placeholder { color: var(--label3); }
+  .search-bar svg {
+    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+    color: var(--label3);
+  }
+
+  /* ── Grouped List (insetGrouped) ──────────────────── */
+  .section-header {
+    font-size: 13px; font-weight: 400; color: var(--label2);
+    text-transform: uppercase; letter-spacing: -.08px;
+    padding: 24px 20px 6px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    margin: 0 16px 8px;
+    overflow: hidden;
+  }
+  .row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    min-height: 44px;
+    text-decoration: none; color: inherit;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .row:active { background: rgba(0,0,0,.04); }
+  .row + .row { border-top: .33px solid var(--sep); margin-left: 0; }
+  /* indent separator to match iOS */
+  .row + .row { position: relative; }
+  .row + .row::before {
+    content: ''; position: absolute; top: 0; left: 56px; right: 0;
+    border-top: .33px solid var(--sep);
+  }
+  .row + .row { border-top: none; }
+
+  .row-icon {
+    width: 32px; height: 32px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 16px; color: #fff;
+  }
+  .row-body { flex: 1; min-width: 0; }
+  .row-title { font-size: 17px; line-height: 1.3; }
+  .row-subtitle { font-size: 15px; color: var(--label2); line-height: 1.3; }
+  .row-detail { font-size: 15px; color: var(--label2); white-space: nowrap; }
+  .row-badge {
+    min-width: 20px; height: 20px; border-radius: 10px;
+    background: var(--red); color: #fff; font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; padding: 0 6px;
+  }
+  .chevron {
+    color: var(--label3); flex-shrink: 0;
+  }
+
+  /* ── Tab Bar ───────────────────────────────────────── */
+  .tab-bar {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px;
+    background: rgba(249,249,249,.94);
+    backdrop-filter: var(--nav-blur);
+    -webkit-backdrop-filter: var(--nav-blur);
+    border-top: .33px solid var(--sep);
+    display: flex;
+    padding: 4px 0 calc(var(--safe-bottom) + 4px);
+    z-index: 100;
+  }
+  .tab {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    gap: 2px; padding: 4px 0;
+    font-size: 10px; color: var(--label2);
+    text-decoration: none; border: none; background: none; cursor: pointer;
+    font-family: inherit; -webkit-tap-highlight-color: transparent;
+  }
+  .tab.active { color: var(--tint); }
+  .tab svg { width: 24px; height: 24px; }
+  .tab-label { font-weight: 500; }
+  .tab-badge-wrap { position: relative; }
+  .tab-badge {
+    position: absolute; top: -4px; right: -8px;
+    min-width: 16px; height: 16px; border-radius: 8px;
+    background: var(--red); color: #fff; font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; padding: 0 4px;
+  }
+
+  /* ── Text / Thread View ────────────────────────────── */
+  .thread-header {
+    padding: 16px; background: var(--card);
+    border-bottom: .33px solid var(--sep);
+  }
+  .thread-subject {
+    font-size: 22px; font-weight: 700; line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .thread-meta {
+    font-size: 13px; color: var(--label2);
+  }
+
+  .message {
+    padding: 16px; background: var(--card);
+    border-bottom: .33px solid var(--sep);
+  }
+  .message-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 600; color: #fff; flex-shrink: 0;
+  }
+  .message-author { font-size: 15px; font-weight: 600; }
+  .message-time { font-size: 13px; color: var(--label2); margin-left: auto; }
+  .message-body {
+    font-size: 17px; line-height: 1.47; white-space: pre-wrap;
+    color: var(--label);
+  }
+  .reply-indicator {
+    font-size: 13px; color: var(--tint); margin-bottom: 6px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ── Compose Bar ───────────────────────────────────── */
+  .compose-bar {
+    position: fixed; bottom: 56px; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px;
+    background: rgba(249,249,249,.94);
+    backdrop-filter: var(--nav-blur);
+    -webkit-backdrop-filter: var(--nav-blur);
+    border-top: .33px solid var(--sep);
+    padding: 8px 12px calc(var(--safe-bottom) + 8px);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .compose-input {
+    flex: 1; min-height: 36px; border-radius: 18px;
+    border: .5px solid var(--sep); background: var(--card);
+    padding: 8px 14px; font-size: 17px; font-family: inherit;
+    outline: none; resize: none; color: var(--label);
+  }
+  .compose-input::placeholder { color: var(--label3); }
+  .compose-send {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--tint); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .compose-send svg { color: #fff; }
+
+  /* ── Page containers ───────────────────────────────── */
+  .page { display: none; padding-bottom: 120px; }
+  .page.active { display: block; }
+
+  /* ── Misc ──────────────────────────────────────────── */
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 13px; font-weight: 500; padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .pill-open { background: rgba(52,199,89,.12); color: #248a3d; }
+  .pill-closed { background: rgba(255,149,0,.12); color: #c93400; }
+  .pill-secret { background: rgba(175,82,222,.12); color: #8944ab; }
+  .unread-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--tint);
+    flex-shrink: 0;
+  }
+
+  /* spring-like transition for page changes */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .page.active { animation: slideIn .3s cubic-bezier(.2,.9,.3,1); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PAGE 1 — CONFERENCES (Home / Läsa)
+     ============================================================ -->
+<div id="page-conferences" class="page active">
+  <nav class="nav-bar">
+    <div class="nav-bar-row">
+      <span></span>
+      <span class="nav-title-small" style="display:none"></span>
+      <button class="nav-action" onclick="showPage('page-who')">Vem</button>
+    </div>
+  </nav>
+  <h1 class="large-title">Läsa</h1>
+  <div class="search-bar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" placeholder="Sök möten">
+  </div>
+
+  <div class="section-header">Möten med olästa</div>
+  <div class="card">
+    <a class="row" onclick="showThread()">
+      <div class="row-icon" style="background:var(--tint)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div class="row-body">
+        <div class="row-title">Programmering</div>
+        <div class="row-subtitle">Rust eller Go? – 6 inlägg</div>
+      </div>
+      <div class="row-badge">3</div>
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="row" onclick="showThread()">
+      <div class="row-icon" style="background:var(--green)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="row-body">
+        <div class="row-title">Allmänt</div>
+        <div class="row-subtitle">Helgplaner? – Anna Lindgren</div>
+      </div>
+      <div class="row-badge">1</div>
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="row" onclick="showThread()">
+      <div class="row-icon" style="background:var(--orange)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="row-body">
+        <div class="row-title">LysKOM-utveckling</div>
+        <div class="row-subtitle">Webbklient för LysKOM – 4 inlägg</div>
+      </div>
+      <div class="row-badge">2</div>
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="section-header">Alla möten</div>
+  <div class="card">
+    <a class="row" onclick="showThread()">
+      <div class="row-icon" style="background:var(--purple)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+      </div>
+      <div class="row-body">
+        <div class="row-title">Musik och Film</div>
+        <div class="row-subtitle">Bästa albumet 2025? – 3 inlägg</div>
+      </div>
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="row">
+      <div class="row-icon" style="background:#8e8e93">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="row-body">
+        <div class="row-title">Systemadministration</div>
+        <div class="row-subtitle">Planerat underhåll fredag kväll</div>
+      </div>
+      <span class="pill pill-closed">Sluten</span>
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 2 — THREAD VIEW (Rust eller Go?)
+     ============================================================ -->
+<div id="page-thread" class="page">
+  <nav class="nav-bar">
+    <div class="nav-bar-row">
+      <button class="nav-back" onclick="showPage('page-conferences')">
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L2 10l8 8"/></svg>
+        Programmering
+      </button>
+      <button class="nav-action">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="thread-header">
+    <div class="thread-subject">Rust eller Go?</div>
+    <div class="thread-meta">Programmering · 6 inlägg · 2 apr 2026</div>
+  </div>
+
+  <!-- Message 1 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:#5856d6">LN</div>
+      <div>
+        <div class="message-author">Lars Nilsson</div>
+      </div>
+      <div class="message-time">14:20</div>
+    </div>
+    <div class="message-body">Jag har funderat ett tag på att lära mig ett nytt systemspråk.
+Rust verkar ha bra säkerhetsgarantier men är svårare att lära sig.
+Go är enklare men saknar en del features.
+
+Vad tycker ni? Har någon erfarenhet av båda?</div>
+  </div>
+
+  <!-- Message 2 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:var(--tint)">AL</div>
+      <div>
+        <div class="message-author">Anna Lindgren</div>
+      </div>
+      <div class="message-time">15:05</div>
+    </div>
+    <div class="reply-indicator">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+      Svar till Lars Nilsson
+    </div>
+    <div class="message-body">Rust, definitivt. Borrow checker är jobbig i början men man
+lär sig snabbt. Och sedan slipper man minnesläckor och
+race conditions helt.
+
+Jag har kört Rust i produktion i två år nu och det har
+vart fantastiskt stabilt.</div>
+  </div>
+
+  <!-- Message 3 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:var(--green)">MS</div>
+      <div>
+        <div class="message-author">Maria Svensson</div>
+      </div>
+      <div class="message-time">15:30</div>
+    </div>
+    <div class="reply-indicator">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+      Svar till Lars Nilsson
+    </div>
+    <div class="message-body">Jag kör mest Python själv, men om jag skulle välja mellan
+de två så skulle jag nog ta Go. Enklare att komma igång
+och perfekt för webbservrar och microservices.</div>
+  </div>
+
+  <!-- Message 4 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:var(--orange)">EJ</div>
+      <div>
+        <div class="message-author">Erik Johansson</div>
+      </div>
+      <div class="message-time">16:12</div>
+    </div>
+    <div class="reply-indicator">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+      Svar till Anna Lindgren
+    </div>
+    <div class="message-body">Jag håller inte med. Go är överlägset för backend-tjänster.
+Enkelheten är en feature, inte en brist. Goroutines gör
+concurrency trivialt jämfört med Rusts async/await-modell.
+
+I praktiken behöver man sällan Rusts minnesgarantier
+om man inte skriver OS-kärnor eller liknande.</div>
+  </div>
+
+  <!-- Message 5 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:var(--purple)">SE</div>
+      <div>
+        <div class="message-author">Sofia Ekberg</div>
+      </div>
+      <div class="message-time">17:45</div>
+    </div>
+    <div class="reply-indicator">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+      Svar till Anna Lindgren
+    </div>
+    <div class="message-body">Intressant diskussion! Jag har skrivit en del i båda och
+tänkte dela med mig av mina erfarenheter.
+
+Rust:
++ Typsystemet fångar extremt många buggar vid kompilering
++ Utmärkt prestanda, jämförbart med C/C++
++ Cargo är det bästa byggsystemet jag använt
+- Lång inlärningskurva, speciellt lifetimes
+- Kompileringstider kan vara frustrerande
+
+Go:
++ Extremt snabb kompilering
++ Goroutines gör concurrent programmering enkelt
++ Standardbiblioteket är fantastiskt
+- Saknar generics (uppdatering: finns nu sedan 1.18)
+- Felhantering med if err != nil överallt
+
+Kort sagt: Rust för systemnivå, Go för tjänster och verktyg.</div>
+  </div>
+
+  <!-- Message 6 -->
+  <div class="message">
+    <div class="message-head">
+      <div class="avatar" style="background:var(--tint)">AL</div>
+      <div>
+        <div class="message-author">Anna Lindgren</div>
+      </div>
+      <div class="message-time">19:20</div>
+    </div>
+    <div class="reply-indicator">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+      Svar till Erik Johansson
+    </div>
+    <div class="message-body">Visst, goroutines är smidiga. Men Rusts typsystem ger dig
+garantier vid kompilering som Go inte kan matcha. Det
+betyder färre buggar i produktion.
+
+Och async/await i Rust funkar bra med tokio numera.</div>
+  </div>
+
+  <!-- Compose -->
+  <div class="compose-bar">
+    <input class="compose-input" placeholder="Skriv kommentar…">
+    <button class="compose-send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 3 — WHO IS ONLINE
+     ============================================================ -->
+<div id="page-who" class="page">
+  <nav class="nav-bar">
+    <div class="nav-bar-row">
+      <button class="nav-back" onclick="showPage('page-conferences')">
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L2 10l8 8"/></svg>
+        Tillbaka
+      </button>
+      <span></span>
+    </div>
+  </nav>
+  <h1 class="large-title">Vem är inne?</h1>
+
+  <div class="section-header">Aktiva just nu · 5 personer</div>
+  <div class="card">
+    <div class="row">
+      <div class="avatar" style="background:var(--tint); width:40px; height:40px; font-size:16px">AL</div>
+      <div class="row-body">
+        <div class="row-title">Anna Lindgren</div>
+        <div class="row-subtitle">Skriver i Programmering</div>
+      </div>
+      <div style="width:8px; height:8px; border-radius:50%; background:var(--green)"></div>
+    </div>
+    <div class="row">
+      <div class="avatar" style="background:var(--orange); width:40px; height:40px; font-size:16px">EJ</div>
+      <div class="row-body">
+        <div class="row-title">Erik Johansson</div>
+        <div class="row-subtitle">Läser i Allmänt</div>
+      </div>
+      <div style="width:8px; height:8px; border-radius:50%; background:var(--green)"></div>
+    </div>
+    <div class="row">
+      <div class="avatar" style="background:#5856d6; width:40px; height:40px; font-size:16px">LN</div>
+      <div class="row-body">
+        <div class="row-title">Lars Nilsson</div>
+        <div class="row-subtitle">Inaktiv 5 min – jskom2</div>
+      </div>
+      <div style="width:8px; height:8px; border-radius:50%; background:var(--orange)"></div>
+    </div>
+    <div class="row">
+      <div class="avatar" style="background:var(--purple); width:40px; height:40px; font-size:16px">SE</div>
+      <div class="row-body">
+        <div class="row-title">Sofia Ekberg</div>
+        <div class="row-subtitle">Inaktiv 12 min – Emacs</div>
+      </div>
+      <div style="width:8px; height:8px; border-radius:50%; background:var(--orange)"></div>
+    </div>
+    <div class="row">
+      <div class="avatar" style="background:#ff2d55; width:40px; height:40px; font-size:16px">JS</div>
+      <div class="row-body">
+        <div class="row-title">Johan Strand</div>
+        <div class="row-subtitle">Skriver i LysKOM-utveckling</div>
+      </div>
+      <div style="width:8px; height:8px; border-radius:50%; background:var(--green)"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     TAB BAR
+     ============================================================ -->
+<nav class="tab-bar">
+  <button class="tab active" id="tab-read" onclick="showPage('page-conferences')">
+    <div class="tab-badge-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      <span class="tab-badge">6</span>
+    </div>
+    <span class="tab-label">Läsa</span>
+  </button>
+  <button class="tab" id="tab-who" onclick="showPage('page-who')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    <span class="tab-label">Vem</span>
+  </button>
+  <button class="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span class="tab-label">Sök</span>
+  </button>
+  <button class="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4-4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span class="tab-label">Jag</span>
+  </button>
+</nav>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  // update tab highlighting
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (id === 'page-conferences') document.getElementById('tab-read').classList.add('active');
+  if (id === 'page-who') document.getElementById('tab-who').classList.add('active');
+  window.scrollTo(0, 0);
+}
+function showThread() {
+  showPage('page-thread');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-read').classList.add('active');
+}
+</script>
+</body>
+</html>
