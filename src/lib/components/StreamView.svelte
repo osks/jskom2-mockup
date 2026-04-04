@@ -75,7 +75,7 @@
 	ontouchend={handleTouchEnd}
 	class="relative flex-1 overflow-y-auto bg-white"
 >
-	<div class="mx-auto max-w-2xl">
+	<div class="mx-auto flex max-w-2xl min-h-full flex-col justify-end pt-14 md:pt-4">
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'conference-enter'}
 				{@const conf = item.conferenceId ? getConferenceById(item.conferenceId) : null}
