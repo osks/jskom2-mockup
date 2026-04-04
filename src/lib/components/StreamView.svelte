@@ -75,7 +75,10 @@
 	ontouchend={handleTouchEnd}
 	class="relative flex-1 overflow-y-auto bg-white"
 >
-	<div class="mx-auto flex max-w-2xl min-h-full flex-col justify-end pt-14 md:pt-4">
+	<!-- Top fade/blur overlay -->
+	<div class="pointer-events-none sticky top-0 z-10 h-12 bg-gradient-to-b from-white via-white/80 to-transparent md:h-6"></div>
+
+	<div class="mx-auto flex max-w-2xl min-h-full flex-col justify-end pt-2 md:pt-0">
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'conference-enter'}
 				{@const conf = item.conferenceId ? getConferenceById(item.conferenceId) : null}
@@ -117,18 +120,15 @@
 {#if nextAction.type !== 'all-done'}
 	<button
 		onclick={() => advanceReading()}
-		class="fixed bottom-6 right-6 z-20 flex items-center gap-2 rounded-full bg-gray-900/80 px-4 py-2.5 text-sm font-medium text-white shadow-lg backdrop-blur-sm transition-all hover:bg-gray-900 active:scale-95"
+		class="fixed bottom-6 right-6 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900/80 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-gray-900 active:scale-95"
+		title={nextAction.type === 'next-comment' ? 'Nästa kommentar' : nextAction.type === 'next-conf' ? nextAction.conferenceName : 'Nästa text'}
 	>
 		{#if nextAction.type === 'next-comment'}
-			<MessageSquare size={16} />
-			<span class="hidden sm:inline">Nästa kommentar</span>
+			<MessageSquare size={20} />
 		{:else if nextAction.type === 'next-conf'}
-			<ArrowRight size={16} />
-			<span class="hidden sm:inline">{nextAction.conferenceName}</span>
+			<ArrowRight size={20} />
 		{:else}
-			<ChevronDown size={16} />
-			<span class="hidden sm:inline">Nästa text</span>
+			<ChevronDown size={20} />
 		{/if}
-		<kbd class="hidden rounded bg-white/20 px-1 py-px text-[10px] md:inline">space</kbd>
 	</button>
 {/if}
