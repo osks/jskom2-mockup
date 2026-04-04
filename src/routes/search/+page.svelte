@@ -52,7 +52,7 @@
 
 <div class="mx-auto max-w-2xl bg-white">
 	<!-- Sticky search header -->
-	<div class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+	<div class="sticky top-14 md:top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100">
 		<div class="px-4 pt-3 pb-2">
 			<div class="relative">
 				<Search size={16} class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
