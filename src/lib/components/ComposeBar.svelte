@@ -16,13 +16,19 @@
 	let subject = $state('');
 	let body = $state('');
 	let sent = $state(false);
+	let showMeta = $state(false);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
+
+	const selectedConferenceName = $derived(
+		conferences.find((c) => c.id === selectedConference)?.name ?? ''
+	);
 
 	// Update defaults when commentTo changes
 	$effect(() => {
 		if (commentToText) {
 			selectedConference = commentToText.recipients[0] ?? 1;
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
+			showMeta = false;
 			textareaEl?.focus();
 		}
 	});
@@ -86,53 +92,54 @@
 		</div>
 
 		<div class="px-4 pb-3">
-			<!-- Conference + subject row -->
-			<div class="mb-2 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-2">
-				<select
-					bind:value={selectedConference}
-					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base text-gray-700 sm:w-auto sm:text-sm"
+			<!-- Conference + subject: collapsed summary when commenting, full when new -->
+			{#if commentToText && !showMeta}
+				<button
+					onclick={() => showMeta = true}
+					class="mb-2 w-full truncate text-left text-xs text-gray-400 hover:text-gray-600"
 				>
-					{#each conferences as conf}
-						<option value={conf.id}>{conf.name}</option>
-					{/each}
-				</select>
-				<input
-					type="text"
-					bind:value={subject}
-					placeholder="Ärende..."
-					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base sm:flex-1 sm:text-sm"
-				/>
-			</div>
+					{selectedConferenceName} &middot; {subject}
+				</button>
+			{:else}
+				<div class="mb-2 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-2">
+					<select
+						bind:value={selectedConference}
+						class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base text-gray-700 sm:w-auto sm:text-sm"
+					>
+						{#each conferences as conf}
+							<option value={conf.id}>{conf.name}</option>
+						{/each}
+					</select>
+					<input
+						type="text"
+						bind:value={subject}
+						placeholder="Ärende..."
+						class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base sm:flex-1 sm:text-sm"
+					/>
+				</div>
+			{/if}
 
 			<div class="flex gap-2">
 				<textarea
 					bind:this={textareaEl}
 					bind:value={body}
 					onkeydown={handleKeydown}
-					rows={3}
+					rows={4}
 					placeholder={commentToText ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 					class="flex-1 resize-none rounded border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 placeholder:text-gray-400 focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 sm:text-sm"
 				></textarea>
 
-				<div class="flex flex-col gap-1">
-					<button
-						onclick={handleSend}
-						disabled={sent || !body.trim()}
-						class="flex h-9 w-9 items-center justify-center rounded bg-lyskom-600 text-white hover:bg-lyskom-700 disabled:opacity-30 sm:h-8 sm:w-8"
-					>
-						{#if sent}
-							<span class="text-xs">&#10003;</span>
-						{:else}
-							<Send size={14} />
-						{/if}
-					</button>
-					<button
-						onclick={handleCancel}
-						class="flex h-9 w-9 items-center justify-center rounded text-gray-400 hover:bg-gray-100 hover:text-gray-600 sm:h-8 sm:w-8"
-					>
-						<X size={14} />
-					</button>
-				</div>
+				<button
+					onclick={handleSend}
+					disabled={sent || !body.trim()}
+					class="flex h-9 w-9 shrink-0 items-center justify-center self-end rounded bg-lyskom-600 text-white hover:bg-lyskom-700 disabled:opacity-30 sm:h-8 sm:w-8"
+				>
+					{#if sent}
+						<span class="text-xs">&#10003;</span>
+					{:else}
+						<Send size={14} />
+					{/if}
+				</button>
 			</div>
 		</div>
 	</div>

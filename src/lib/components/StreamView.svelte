@@ -3,7 +3,6 @@
 	import { getTextById, getConferenceById } from '$lib/data';
 	import StreamMessage from './StreamMessage.svelte';
 	import { tick } from 'svelte';
-	import { ChevronDown, ArrowRight, MessageSquare } from 'lucide-svelte';
 
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);
@@ -105,30 +104,17 @@
 			{/if}
 		{/each}
 
-		<!-- Bottom padding so content doesn't hide behind FAB -->
 		{#if nextAction.type === 'all-done' && $readingState.buffer.length === 0}
 			<p class="px-4 py-16 text-center text-sm text-gray-400">Inga olästa texter.</p>
 		{:else if nextAction.type === 'all-done'}
 			<p class="px-4 py-12 text-center text-sm text-gray-400">Klart — du har läst allt.</p>
 		{:else}
-			<div class="h-20"></div>
+			<button
+				onclick={() => advanceReading()}
+				class="w-full border-t border-gray-100 px-4 py-3 text-center text-sm text-gray-400 active:bg-gray-50 transition-colors"
+			>
+				Nästa
+			</button>
 		{/if}
 	</div>
 </div>
-
-<!-- M3 Regular FAB for next action -->
-{#if nextAction.type !== 'all-done'}
-	<button
-		onclick={() => advanceReading()}
-		class="fixed bottom-4 right-4 z-20 flex h-14 w-14 items-center justify-center rounded-2xl bg-lyskom-100 text-lyskom-700 shadow-md transition-shadow hover:shadow-lg active:scale-[0.97]"
-		title={nextAction.type === 'next-comment' ? 'Nästa kommentar' : nextAction.type === 'next-conf' ? nextAction.conferenceName : 'Nästa text'}
-	>
-		{#if nextAction.type === 'next-comment'}
-			<MessageSquare size={24} />
-		{:else if nextAction.type === 'next-conf'}
-			<ArrowRight size={24} />
-		{:else}
-			<ChevronDown size={24} />
-		{/if}
-	</button>
-{/if}
