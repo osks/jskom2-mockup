@@ -23,7 +23,7 @@
 <div class="mx-auto max-w-2xl bg-white">
 	{#if conference}
 		<!-- Conference header -->
-		<div class="sticky top-14 md:top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">
+		<div class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">
 			<div class="text-base font-medium text-gray-900">{conference.name}</div>
 			<p class="mt-0.5 text-xs text-gray-500">{conference.description}</p>
 			<div class="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-gray-400">

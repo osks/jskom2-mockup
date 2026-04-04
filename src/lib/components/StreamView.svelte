@@ -127,7 +127,7 @@
 	class="relative flex-1 overflow-y-auto overflow-x-hidden bg-white"
 >
 	<!-- Top fade -->
-	<div class="pointer-events-none sticky top-14 md:top-0 z-10 h-6 bg-gradient-to-b from-white to-transparent"></div>
+	<div class="pointer-events-none sticky top-0 z-10 h-6 bg-gradient-to-b from-white to-transparent"></div>
 
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col justify-end pt-2 md:pt-0">
 		{#each $readingState.buffer as item, i}
@@ -136,7 +136,7 @@
 				{#if conf}
 					<div
 						id="conference-{item.conferenceId}"
-						class="sticky top-14 md:top-0 z-10 bg-white/95 backdrop-blur-sm px-4 py-2 border-b border-gray-100"
+						class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm px-4 py-2 border-b border-gray-100"
 					>
 						<span class="text-xs font-medium text-gray-500">
 							{conf.name}
