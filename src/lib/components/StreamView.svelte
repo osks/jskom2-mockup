@@ -116,19 +116,19 @@
 	</div>
 </div>
 
-<!-- Fixed FAB for next action -->
+<!-- M3 Regular FAB for next action -->
 {#if nextAction.type !== 'all-done'}
 	<button
 		onclick={() => advanceReading()}
-		class="fixed bottom-6 right-6 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900/80 text-white shadow-lg backdrop-blur-sm transition-all hover:bg-gray-900 active:scale-95"
+		class="fixed bottom-4 right-4 z-20 flex h-14 w-14 items-center justify-center rounded-2xl bg-lyskom-100 text-lyskom-700 shadow-md transition-shadow hover:shadow-lg active:scale-[0.97]"
 		title={nextAction.type === 'next-comment' ? 'Nästa kommentar' : nextAction.type === 'next-conf' ? nextAction.conferenceName : 'Nästa text'}
 	>
 		{#if nextAction.type === 'next-comment'}
-			<MessageSquare size={20} />
+			<MessageSquare size={24} />
 		{:else if nextAction.type === 'next-conf'}
-			<ArrowRight size={20} />
+			<ArrowRight size={24} />
 		{:else}
-			<ChevronDown size={20} />
+			<ChevronDown size={24} />
 		{/if}
 	</button>
 {/if}

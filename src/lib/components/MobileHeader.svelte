@@ -3,10 +3,10 @@
 	import { Menu } from 'lucide-svelte';
 </script>
 
-<!-- Floating hamburger button — mobile only -->
+<!-- M3 Small FAB — mobile only -->
 <button
 	onclick={toggleSidebar}
-	class="fixed left-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-gray-600 shadow-sm backdrop-blur-sm active:scale-95 md:hidden"
+	class="fixed left-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-xl bg-lyskom-100 text-lyskom-700 shadow-md transition-shadow hover:shadow-lg active:scale-[0.97] md:hidden"
 >
-	<Menu size={20} />
+	<Menu size={24} />
 </button>
