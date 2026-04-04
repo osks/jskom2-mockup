@@ -1,15 +1,15 @@
 <script lang="ts">
 	import type { TextInfo } from '$lib/types';
 	import { getUserById, getTextById } from '$lib/data';
-	import { setCommentTo } from '$lib/stores/reading';
 	import { base } from '$app/paths';
 
 	interface Props {
 		text: TextInfo;
 		compact?: boolean;
+		active?: boolean;
 	}
 
-	let { text, compact = false }: Props = $props();
+	let { text, compact = false, active = false }: Props = $props();
 
 	const author = $derived(getUserById(text.author));
 	const timeStr = $derived(
@@ -26,10 +26,6 @@
 	);
 	const parentAuthor = $derived(commentParent ? getUserById(commentParent.author) : null);
 	const commentCount = $derived(text.commentedIn?.length ?? 0);
-
-	function handleComment() {
-		setCommentTo(text.id);
-	}
 </script>
 
 {#if compact}
@@ -47,20 +43,17 @@
 {:else}
 	<article
 		id="text-{text.id}"
-		class="group px-4 py-3 hover:bg-gray-50/80 transition-colors"
+		data-text-id={text.id}
+		class="px-4 py-3 transition-colors"
+		class:bg-lyskom-50={active}
 	>
 		<div class="min-w-0">
 			{#if commentParent}
 				<a
 					href="#text-{commentParent.id}"
-					class="mb-1 inline-flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600"
+					class="mb-1 inline-block text-xs text-gray-400 hover:text-gray-600"
 				>
-					<span class="text-gray-300">&larrhk;</span>
-					{#if parentAuthor}
-						{parentAuthor.name}
-					{:else}
-						text {commentParent.id}
-					{/if}
+					re {parentAuthor?.name ?? `text ${commentParent.id}`}
 				</a>
 			{/if}
 
@@ -86,20 +79,11 @@
 
 			<div class="mt-1 text-base leading-relaxed text-gray-700 whitespace-pre-wrap md:text-sm">{text.body}</div>
 
-			<div class="mt-2 flex items-center gap-3">
-				<button
-					onclick={handleComment}
-					class="rounded px-1.5 py-0.5 text-xs text-gray-400 hover:text-gray-600 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-				>
-					kommentera
-				</button>
-
-				{#if commentCount > 0}
-					<span class="text-xs text-gray-400">
-						{commentCount} {commentCount === 1 ? 'kommentar' : 'kommentarer'}
-					</span>
-				{/if}
-			</div>
+			{#if commentCount > 0}
+				<div class="mt-1.5 text-xs text-gray-400">
+					{commentCount} {commentCount === 1 ? 'kommentar' : 'kommentarer'}
+				</div>
+			{/if}
 		</div>
 	</article>
 {/if}

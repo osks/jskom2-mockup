@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById } from '$lib/data';
-	import { Send, X } from 'lucide-svelte';
+	import { Send, X, ChevronDown, ChevronUp } from 'lucide-svelte';
 
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
@@ -16,20 +16,16 @@
 	let subject = $state('');
 	let body = $state('');
 	let sent = $state(false);
-	let showMeta = $state(false);
+	let showOriginal = $state(false);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
-
-	const selectedConferenceName = $derived(
-		conferences.find((c) => c.id === selectedConference)?.name ?? ''
-	);
 
 	// Update defaults when commentTo changes
 	$effect(() => {
 		if (commentToText) {
 			selectedConference = commentToText.recipients[0] ?? 1;
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
-			showMeta = false;
-			textareaEl?.focus();
+			showOriginal = false;
+			tick().then(() => textareaEl?.focus());
 		}
 	});
 
@@ -38,7 +34,8 @@
 		if ($readingState.composingNew && !commentToText) {
 			selectedConference = $readingState.currentConference ?? 1;
 			subject = '';
-			textareaEl?.focus();
+			showOriginal = false;
+			tick().then(() => textareaEl?.focus());
 		}
 	});
 
@@ -69,75 +66,99 @@
 			handleCancel();
 		}
 	}
+
+	import { tick } from 'svelte';
 </script>
 
 {#if isVisible}
-	<div class="shrink-0 border-t border-gray-200 bg-white">
-		<!-- Header: comment reference or new text indicator -->
-		<div class="flex items-center gap-2 px-4 py-1.5 text-xs text-gray-500">
-			{#if commentToText}
-				<span class="text-gray-300">&larrhk;</span>
-				<span class="min-w-0 truncate">
-					{commentToAuthor?.name ?? 'Okänd'}: {commentToText.subject}
-				</span>
-			{:else}
-				<span class="text-gray-400">Nytt inlägg</span>
-			{/if}
-			<button
-				onclick={handleCancel}
-				class="ml-auto shrink-0 rounded p-1 text-gray-300 hover:bg-gray-100 hover:text-gray-500"
-			>
-				<X size={14} />
-			</button>
-		</div>
-
-		<div class="px-4 pb-3">
-			<!-- Conference + subject: collapsed summary when commenting, full when new -->
-			{#if commentToText && !showMeta}
+	<!-- Full-screen overlay -->
+	<div class="fixed inset-0 z-40 flex flex-col bg-white md:bg-black/30 md:items-center md:justify-center md:p-8">
+		<!-- On desktop: centered card. On mobile: full screen -->
+		<div class="flex flex-1 flex-col bg-white md:flex-initial md:w-full md:max-w-xl md:rounded-lg md:shadow-lg md:max-h-[80vh]">
+			<!-- Header -->
+			<div class="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+				<h2 class="text-sm font-medium text-gray-900">
+					{#if commentToText}
+						Kommentera
+					{:else}
+						Nytt inlägg
+					{/if}
+				</h2>
 				<button
-					onclick={() => showMeta = true}
-					class="mb-2 w-full truncate text-left text-xs text-gray-400 hover:text-gray-600"
+					onclick={handleCancel}
+					class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
 				>
-					{selectedConferenceName} &middot; {subject}
+					<X size={18} />
 				</button>
-			{:else}
-				<div class="mb-2 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-2">
-					<select
-						bind:value={selectedConference}
-						class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base text-gray-700 sm:w-auto sm:text-sm"
-					>
-						{#each conferences as conf}
-							<option value={conf.id}>{conf.name}</option>
-						{/each}
-					</select>
-					<input
-						type="text"
-						bind:value={subject}
-						placeholder="Ärende..."
-						class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-base sm:flex-1 sm:text-sm"
-					/>
-				</div>
+			</div>
+
+			<!-- Original text (collapsible, only for comments) -->
+			{#if commentToText}
+				<button
+					onclick={() => showOriginal = !showOriginal}
+					class="flex items-center gap-2 border-b border-gray-100 px-4 py-2 text-left text-xs text-gray-500 hover:bg-gray-50"
+				>
+					{#if showOriginal}
+						<ChevronUp size={14} class="shrink-0 text-gray-400" />
+					{:else}
+						<ChevronDown size={14} class="shrink-0 text-gray-400" />
+					{/if}
+					<span class="font-medium">{commentToAuthor?.name ?? 'Okänd'}</span>
+					<span class="min-w-0 truncate text-gray-400">{commentToText.subject}</span>
+				</button>
+				{#if showOriginal}
+					<div class="max-h-40 overflow-y-auto border-b border-gray-100 bg-gray-50 px-4 py-3 text-sm leading-relaxed text-gray-600 whitespace-pre-wrap">
+						{commentToText.body}
+					</div>
+				{/if}
 			{/if}
 
-			<div class="flex gap-2">
+			<!-- Conference + subject -->
+			<div class="border-b border-gray-100 px-4 py-2 space-y-2">
+				<select
+					bind:value={selectedConference}
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-sm text-gray-700"
+				>
+					{#each conferences as conf}
+						<option value={conf.id}>{conf.name}</option>
+					{/each}
+				</select>
+				<input
+					type="text"
+					bind:value={subject}
+					placeholder="Ärende..."
+					class="w-full rounded border border-gray-200 bg-gray-50 px-2 py-1.5 text-sm"
+				/>
+			</div>
+
+			<!-- Body -->
+			<div class="flex flex-1 flex-col p-4">
 				<textarea
 					bind:this={textareaEl}
 					bind:value={body}
 					onkeydown={handleKeydown}
-					rows={4}
 					placeholder={commentToText ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-					class="flex-1 resize-none rounded border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 placeholder:text-gray-400 focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 sm:text-sm"
+					class="flex-1 min-h-[120px] resize-none rounded border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 placeholder:text-gray-400 focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 md:text-sm"
 				></textarea>
+			</div>
 
+			<!-- Footer -->
+			<div class="flex items-center justify-between border-t border-gray-100 px-4 py-3">
+				<span class="text-xs text-gray-400">
+					{#if body.trim()}
+						Ctrl+Enter för att skicka
+					{/if}
+				</span>
 				<button
 					onclick={handleSend}
 					disabled={sent || !body.trim()}
-					class="flex h-9 w-9 shrink-0 items-center justify-center self-end rounded bg-lyskom-600 text-white hover:bg-lyskom-700 disabled:opacity-30 sm:h-8 sm:w-8"
+					class="flex items-center gap-2 rounded bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-30"
 				>
 					{#if sent}
-						<span class="text-xs">&#10003;</span>
+						<span>Skickat &#10003;</span>
 					{:else}
 						<Send size={14} />
+						Skicka
 					{/if}
 				</button>
 			</div>

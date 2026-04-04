@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { texts, conferences, users } from '$lib/data';
-	import { getAuthorColor } from '$lib/data';
 	import { base } from '$app/paths';
 	import StreamMessage from '$lib/components/StreamMessage.svelte';
 	import { Search, Globe, Lock, Eye, Users } from 'lucide-svelte';
@@ -125,13 +124,11 @@
 		{/each}
 	{:else}
 		{#each matchedUsers as user}
-			{@const colors = getAuthorColor(user.id)}
 			<a
 				href="{base}/users/{user.id}"
 				class="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50/80 transition-colors"
 			>
-				<div class="shrink-0 w-0.5 h-6 rounded-full {colors.border}"></div>
-				<span class="text-sm font-medium {colors.text}">{user.name}</span>
+				<span class="text-sm font-medium text-gray-900">{user.name}</span>
 				<span class="text-xs text-gray-400">{user.username}</span>
 				<span class="ml-auto text-xs text-gray-400">{user.totalTexts} texter</span>
 			</a>

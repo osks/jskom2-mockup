@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { getUserById, getMemberships, getConferenceById, getAuthorColor } from '$lib/data';
+	import { getUserById, getMemberships, getConferenceById } from '$lib/data';
 	import { base } from '$app/paths';
 	import { Mail } from 'lucide-svelte';
 
 	const userId = $derived(Number(page.params.id));
 	const user = $derived(getUserById(userId));
 	const userMemberships = $derived(getMemberships(userId));
-	const colors = $derived(getAuthorColor(userId));
 </script>
 
 <svelte:head>
@@ -18,12 +17,9 @@
 	{#if user}
 		<!-- User header -->
 		<div class="border-b border-gray-100 px-4 py-4">
-			<div class="flex items-center gap-3">
-				<div class="shrink-0 w-1 h-10 rounded-full {colors.border}"></div>
-				<div>
-					<h1 class="text-lg font-semibold {colors.text}">{user.name}</h1>
-					<span class="text-xs text-gray-400">{user.username}</span>
-				</div>
+			<div>
+				<h1 class="text-lg font-semibold text-gray-900">{user.name}</h1>
+				<span class="text-xs text-gray-400">{user.username}</span>
 			</div>
 
 			<div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400">

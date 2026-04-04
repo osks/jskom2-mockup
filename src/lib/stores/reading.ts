@@ -38,6 +38,8 @@ interface ReadingState {
 	currentConference: number | null;
 	// What pressing "next" will do
 	nextAction: NextAction;
+	// The text currently visible / receiving actions
+	activeTextId: number | null;
 	// For the compose bar
 	commentTo: number | null;
 	composingNew: boolean;
@@ -50,6 +52,7 @@ export const readingState = writable<ReadingState>({
 	todoList: [],
 	currentConference: null,
 	nextAction: { type: 'all-done', label: 'Inga olästa texter' },
+	activeTextId: null,
 	commentTo: null,
 	composingNew: false
 });
@@ -79,7 +82,9 @@ export function initReading(userId: number) {
 		todoList,
 		currentConference: null,
 		nextAction: computeNextAction([], todoList, null),
-		commentTo: null
+		activeTextId: null,
+		commentTo: null,
+		composingNew: false
 	});
 }
 
@@ -278,4 +283,8 @@ export function startCompose() {
 
 export function cancelCompose() {
 	readingState.update((s) => ({ ...s, composingNew: false }));
+}
+
+export function setActiveText(textId: number | null) {
+	readingState.update((s) => ({ ...s, activeTextId: textId }));
 }
