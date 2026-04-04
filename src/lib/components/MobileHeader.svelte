@@ -6,7 +6,7 @@
 <!-- Floating hamburger button — mobile only -->
 <button
 	onclick={toggleSidebar}
-	class="fixed left-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900/80 text-white shadow-lg backdrop-blur-sm active:scale-95 md:hidden"
+	class="fixed left-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/60 text-gray-500 shadow-sm backdrop-blur-sm active:scale-95 md:hidden"
 >
-	<Menu size={20} />
+	<Menu size={16} />
 </button>
