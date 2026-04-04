@@ -18,6 +18,7 @@
 	let subject = $state('');
 	let body = $state('');
 	let sent = $state(false);
+	let showMeta = $state(false);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
 
 	// Update defaults when commentTo changes
@@ -25,6 +26,7 @@
 		if (commentToText) {
 			selectedConference = commentToText.recipients[0] ?? 1;
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
+			showMeta = false;
 			tick().then(() => textareaEl?.focus());
 		}
 	});
@@ -110,11 +112,14 @@
 				</div>
 			{/if}
 
-			<!-- Conference + subject: static for comments, editable for new -->
-			{#if isComment}
-				<div class="border-b border-gray-100 px-4 py-2 text-xs text-gray-400">
+			<!-- Conference + subject -->
+			{#if isComment && !showMeta}
+				<button
+					onclick={() => showMeta = true}
+					class="w-full border-b border-gray-100 px-4 py-2 text-left text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-50"
+				>
 					{selectedConferenceName} · {subject}
-				</div>
+				</button>
 			{:else}
 				<div class="border-b border-gray-100 px-4 py-2 space-y-2">
 					<select
@@ -141,7 +146,7 @@
 					bind:value={body}
 					onkeydown={handleKeydown}
 					oninput={autoGrow}
-					rows={2}
+					rows={3}
 					placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 					class="w-full resize-none rounded border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 placeholder:text-gray-400 focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 md:text-sm"
 					style="max-height: 300px;"

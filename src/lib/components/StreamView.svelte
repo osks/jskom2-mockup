@@ -2,7 +2,7 @@
 	import { readingState, advanceReading, setCommentTo, setActiveText } from '$lib/stores/reading';
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import StreamMessage from './StreamMessage.svelte';
-	import { tick, onMount } from 'svelte';
+	import { tick } from 'svelte';
 
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);
@@ -11,51 +11,46 @@
 	let touchStartY = $state(0);
 	let touchStartTime = $state(0);
 
-	// Intersection observer for active text tracking
-	let observer: IntersectionObserver | undefined;
+	// Throttle flag for scroll-based active text tracking
+	let rafPending = false;
 
-	onMount(() => {
-		observer = new IntersectionObserver(
-			(entries) => {
-				// Find the most visible text, or the last one entering the viewport
-				let bestEntry: IntersectionObserverEntry | null = null;
-				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
-							bestEntry = entry;
-						}
-					}
-				}
-				if (bestEntry) {
-					const textId = Number((bestEntry.target as HTMLElement).dataset.textId);
-					if (textId) setActiveText(textId);
-				}
-			},
-			{
-				root: scrollContainer,
-				threshold: [0, 0.25, 0.5, 0.75, 1.0]
+	function updateActiveText() {
+		if (!scrollContainer) return;
+		const articles = scrollContainer.querySelectorAll('article[data-text-id]');
+		if (articles.length === 0) return;
+
+		const containerRect = scrollContainer.getBoundingClientRect();
+		const viewportCenter = containerRect.top + containerRect.height / 2;
+
+		let closest: Element | null = null;
+		let closestDist = Infinity;
+
+		for (const el of articles) {
+			const rect = el.getBoundingClientRect();
+			const elCenter = rect.top + rect.height / 2;
+			const dist = Math.abs(elCenter - viewportCenter);
+			if (dist < closestDist) {
+				closestDist = dist;
+				closest = el;
 			}
-		);
-
-		return () => observer?.disconnect();
-	});
-
-	// Observe new text articles as they appear
-	$effect(() => {
-		const len = $readingState.buffer.length;
-		if (len > 0 && observer && scrollContainer) {
-			tick().then(() => {
-				if (!scrollContainer || !observer) return;
-				const articles = scrollContainer.querySelectorAll('article[data-text-id]');
-				// Re-observe all (observer deduplicates)
-				for (const el of articles) {
-					observer.observe(el);
-				}
-			});
 		}
-	});
 
-	// Auto-scroll to bottom when new items are added
+		if (closest) {
+			const textId = Number((closest as HTMLElement).dataset.textId);
+			if (textId) setActiveText(textId);
+		}
+	}
+
+	function handleScroll() {
+		if (rafPending) return;
+		rafPending = true;
+		requestAnimationFrame(() => {
+			rafPending = false;
+			updateActiveText();
+		});
+	}
+
+	// Auto-scroll to bottom when new items are added, then update active
 	$effect(() => {
 		const len = $readingState.buffer.length;
 		if (len > prevBufferLen && scrollContainer) {
@@ -67,6 +62,8 @@
 						behavior: 'smooth'
 					});
 				}
+				// Update active after scroll settles
+				setTimeout(updateActiveText, 350);
 			});
 		}
 	});
@@ -126,6 +123,7 @@
 	bind:this={scrollContainer}
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
+	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden bg-white"
 >
 	<!-- Top fade -->
