@@ -3,31 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>jskom – iOS Style Mockup</title>
+<title>jskom – iOS 26 Liquid Glass Mockup</title>
 <style>
   /* ── Reset & Base ─────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f2f2f7;
-    --card: #ffffff;
-    --sep: rgba(60,60,67,.12);
+    --glass-bg: rgba(255,255,255,0.12);
+    --glass-bg-strong: rgba(255,255,255,0.18);
+    --glass-border: rgba(255,255,255,0.3);
+    --glass-border-subtle: rgba(255,255,255,0.15);
+    --glass-blur: blur(50px) saturate(180%) brightness(1.1);
+    --glass-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    --glass-highlight: inset 0 0.5px 0 rgba(255,255,255,0.5);
+    --glass-edge: inset 0 -0.5px 0 rgba(255,255,255,0.1);
     --label: #000000;
     --label2: rgba(60,60,67,.6);
     --label3: rgba(60,60,67,.3);
     --tint: #007aff;
-    --tint-bg: rgba(0,122,255,.08);
     --red: #ff3b30;
     --green: #34c759;
     --orange: #ff9500;
     --purple: #af52de;
-    --radius: 12px;
-    --nav-blur: saturate(180%) blur(20px);
+    --radius: 22px;
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: var(--bg);
     color: var(--label);
   }
 
@@ -37,24 +39,53 @@
     min-height: 100dvh;
     position: relative;
     overflow-x: hidden;
+    /* Rich gradient background so glass refraction is visible */
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(120,180,255,0.45) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 10%, rgba(200,140,255,0.35) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 60%, rgba(100,220,200,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 90%, rgba(255,170,130,0.2) 0%, transparent 45%),
+      linear-gradient(160deg, #e8edf5 0%, #f0e8f5 30%, #e5f0f0 60%, #f5ede8 100%);
+    background-attachment: fixed;
   }
 
-  /* ── Navigation Bar ────────────────────────────────── */
+  /* ── Liquid Glass material ─────────────────────────── */
+  .liquid-glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
+  }
+  .liquid-glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
+  }
+
+  /* ── Navigation Bar (floating glass pill) ────────── */
   .nav-bar {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(242,242,247,.72);
-    backdrop-filter: var(--nav-blur);
-    -webkit-backdrop-filter: var(--nav-blur);
-    border-bottom: .33px solid var(--sep);
-    padding: calc(var(--safe-top) + 8px) 16px 8px;
+    padding: calc(var(--safe-top) + 12px) 16px 8px;
   }
-  .nav-bar-row {
+  .nav-pill {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: 28px;
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 44px;
+    height: 48px;
+    padding: 0 16px;
   }
   .nav-back {
     display: flex; align-items: center; gap: 4px;
@@ -64,7 +95,7 @@
   .nav-back svg { flex-shrink: 0; }
   .nav-title-small {
     font-size: 17px; font-weight: 600; text-align: center;
-    position: absolute; left: 50%; transform: translateX(-50%);
+    flex: 1;
   }
   .nav-action {
     font-size: 17px; color: var(--tint); background: none; border: none;
@@ -72,7 +103,7 @@
   }
   .large-title {
     font-size: 34px; font-weight: 700; letter-spacing: .37px;
-    padding: 0 16px 8px;
+    padding: 8px 16px 8px;
   }
 
   /* ── Search Bar ────────────────────────────────────── */
@@ -82,15 +113,18 @@
   }
   .search-bar input {
     width: 100%;
-    height: 36px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(118,118,128,.12);
-    padding: 0 8px 0 32px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0.5px solid var(--glass-border-subtle);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    padding: 0 8px 0 36px;
     font-size: 17px;
     font-family: inherit;
     color: var(--label);
     outline: none;
+    box-shadow: inset 0 0.5px 0 rgba(255,255,255,0.3);
   }
   .search-bar input::placeholder { color: var(--label3); }
   .search-bar svg {
@@ -100,36 +134,37 @@
 
   /* ── Grouped List (insetGrouped) ──────────────────── */
   .section-header {
-    font-size: 13px; font-weight: 400; color: var(--label2);
-    text-transform: uppercase; letter-spacing: -.08px;
-    padding: 24px 20px 6px;
+    font-size: 13px; font-weight: 500; color: var(--label2);
+    text-transform: uppercase; letter-spacing: .02em;
+    padding: 28px 20px 8px;
   }
   .card {
-    background: var(--card);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
     border-radius: var(--radius);
     margin: 0 16px 8px;
     overflow: hidden;
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
   }
   .row {
     display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px;
-    min-height: 44px;
+    padding: 14px 16px;
+    min-height: 48px;
     text-decoration: none; color: inherit;
     cursor: pointer;
     transition: background .15s;
   }
-  .row:active { background: rgba(0,0,0,.04); }
-  .row + .row { border-top: .33px solid var(--sep); margin-left: 0; }
-  /* indent separator to match iOS */
+  .row:active { background: rgba(255,255,255,.1); }
   .row + .row { position: relative; }
   .row + .row::before {
     content: ''; position: absolute; top: 0; left: 56px; right: 0;
-    border-top: .33px solid var(--sep);
+    border-top: 0.5px solid rgba(255,255,255,0.12);
   }
-  .row + .row { border-top: none; }
 
   .row-icon {
-    width: 32px; height: 32px; border-radius: 7px;
+    width: 34px; height: 34px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; font-size: 16px; color: #fff;
   }
@@ -146,28 +181,36 @@
     color: var(--label3); flex-shrink: 0;
   }
 
-  /* ── Tab Bar ───────────────────────────────────────── */
+  /* ── Tab Bar (floating glass pill) ──────────────── */
   .tab-bar {
-    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 430px;
-    background: rgba(249,249,249,.94);
-    backdrop-filter: var(--nav-blur);
-    -webkit-backdrop-filter: var(--nav-blur);
-    border-top: .33px solid var(--sep);
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: 28px;
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
     display: flex;
-    padding: 4px 0 calc(var(--safe-bottom) + 4px);
+    padding: 6px 8px;
+    gap: 4px;
     z-index: 100;
   }
   .tab {
-    flex: 1; display: flex; flex-direction: column; align-items: center;
-    gap: 2px; padding: 4px 0;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; padding: 8px 16px;
     font-size: 10px; color: var(--label2);
     text-decoration: none; border: none; background: none; cursor: pointer;
     font-family: inherit; -webkit-tap-highlight-color: transparent;
+    border-radius: 20px;
+    transition: background .2s, color .2s;
+    position: relative;
   }
-  .tab.active { color: var(--tint); }
-  .tab svg { width: 24px; height: 24px; }
-  .tab-label { font-weight: 500; }
+  .tab.active {
+    color: var(--tint);
+    background: rgba(0,122,255,0.12);
+  }
+  .tab svg { width: 22px; height: 22px; }
+  .tab-label { font-weight: 600; font-size: 10px; }
   .tab-badge-wrap { position: relative; }
   .tab-badge {
     position: absolute; top: -4px; right: -8px;
@@ -178,8 +221,14 @@
 
   /* ── Text / Thread View ────────────────────────────── */
   .thread-header {
-    padding: 16px; background: var(--card);
-    border-bottom: .33px solid var(--sep);
+    padding: 20px 16px;
+    margin: 8px 16px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
   }
   .thread-subject {
     font-size: 22px; font-weight: 700; line-height: 1.25;
@@ -190,8 +239,14 @@
   }
 
   .message {
-    padding: 16px; background: var(--card);
-    border-bottom: .33px solid var(--sep);
+    padding: 16px;
+    margin: 8px 16px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border-subtle);
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06), var(--glass-highlight), var(--glass-edge);
   }
   .message-head {
     display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
@@ -212,45 +267,53 @@
     display: flex; align-items: center; gap: 4px;
   }
 
-  /* ── Compose Bar ───────────────────────────────────── */
+  /* ── Compose Bar (floating glass pill) ──────────── */
   .compose-bar {
-    position: fixed; bottom: 56px; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 430px;
-    background: rgba(249,249,249,.94);
-    backdrop-filter: var(--nav-blur);
-    -webkit-backdrop-filter: var(--nav-blur);
-    border-top: .33px solid var(--sep);
-    padding: 8px 12px calc(var(--safe-bottom) + 8px);
+    position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%);
+    width: calc(100% - 32px); max-width: 398px;
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 0.5px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
+    padding: 8px 12px;
     display: flex; align-items: center; gap: 8px;
+    z-index: 99;
   }
   .compose-input {
     flex: 1; min-height: 36px; border-radius: 18px;
-    border: .5px solid var(--sep); background: var(--card);
+    border: 0.5px solid var(--glass-border-subtle);
+    background: rgba(255,255,255,0.1);
     padding: 8px 14px; font-size: 17px; font-family: inherit;
     outline: none; resize: none; color: var(--label);
   }
   .compose-input::placeholder { color: var(--label3); }
   .compose-send {
-    width: 32px; height: 32px; border-radius: 50%;
+    width: 34px; height: 34px; border-radius: 50%;
     background: var(--tint); border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.3);
   }
   .compose-send svg { color: #fff; }
 
   /* ── Page containers ───────────────────────────────── */
-  .page { display: none; padding-bottom: 120px; }
+  .page { display: none; padding-bottom: 100px; }
   .page.active { display: block; }
 
   /* ── Misc ──────────────────────────────────────────── */
   .pill {
     display: inline-flex; align-items: center; gap: 4px;
-    font-size: 13px; font-weight: 500; padding: 3px 8px;
-    border-radius: 6px;
+    font-size: 13px; font-weight: 500; padding: 4px 10px;
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(255,255,255,0.2);
   }
-  .pill-open { background: rgba(52,199,89,.12); color: #248a3d; }
-  .pill-closed { background: rgba(255,149,0,.12); color: #c93400; }
-  .pill-secret { background: rgba(175,82,222,.12); color: #8944ab; }
+  .pill-open { background: rgba(52,199,89,.15); color: #248a3d; }
+  .pill-closed { background: rgba(255,149,0,.15); color: #c93400; }
+  .pill-secret { background: rgba(175,82,222,.15); color: #8944ab; }
   .unread-dot {
     width: 10px; height: 10px; border-radius: 50%; background: var(--tint);
     flex-shrink: 0;
@@ -258,10 +321,10 @@
 
   /* spring-like transition for page changes */
   @keyframes slideIn {
-    from { opacity: 0; transform: translateX(30px); }
-    to   { opacity: 1; transform: translateX(0); }
+    from { opacity: 0; transform: translateX(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateX(0) scale(1); }
   }
-  .page.active { animation: slideIn .3s cubic-bezier(.2,.9,.3,1); }
+  .page.active { animation: slideIn .35s cubic-bezier(.2,.9,.3,1); }
 </style>
 </head>
 <body>
@@ -271,9 +334,9 @@
      ============================================================ -->
 <div id="page-conferences" class="page active">
   <nav class="nav-bar">
-    <div class="nav-bar-row">
+    <div class="nav-pill">
       <span></span>
-      <span class="nav-title-small" style="display:none"></span>
+      <span class="nav-title-small">Läsa</span>
       <button class="nav-action" onclick="showPage('page-who')">Vem</button>
     </div>
   </nav>
@@ -351,7 +414,7 @@
      ============================================================ -->
 <div id="page-thread" class="page">
   <nav class="nav-bar">
-    <div class="nav-bar-row">
+    <div class="nav-pill">
       <button class="nav-back" onclick="showPage('page-conferences')">
         <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L2 10l8 8"/></svg>
         Programmering
@@ -510,11 +573,12 @@ Och async/await i Rust funkar bra med tokio numera.</div>
      ============================================================ -->
 <div id="page-who" class="page">
   <nav class="nav-bar">
-    <div class="nav-bar-row">
+    <div class="nav-pill">
       <button class="nav-back" onclick="showPage('page-conferences')">
         <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L2 10l8 8"/></svg>
         Tillbaka
       </button>
+      <span class="nav-title-small">Vem</span>
       <span></span>
     </div>
   </nav>
