@@ -3,9 +3,16 @@
 	import { getMemberships, getConferenceById } from '$lib/data';
 	import { BookOpen, Users, PenSquare, Search, LogOut } from 'lucide-svelte';
 	import { logout } from '$lib/stores/auth';
+	import { startCompose } from '$lib/stores/reading';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { base } from '$app/paths';
+
+	interface Props {
+		onNavigate?: () => void;
+	}
+
+	let { onNavigate }: Props = $props();
 
 	const memberships = $derived(
 		$currentUser ? getMemberships($currentUser.id) : []
@@ -21,23 +28,35 @@
 			const el = document.getElementById(`conference-${conferenceId}`);
 			if (el) {
 				el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				onNavigate?.();
 				return;
 			}
 		}
 		goto(`${base}/read`);
+		onNavigate?.();
+	}
+
+	function handleNav() {
+		onNavigate?.();
+	}
+
+	function handleCompose() {
+		startCompose();
+		onNavigate?.();
 	}
 </script>
 
-<nav class="flex h-full w-56 flex-col bg-gray-900 text-gray-300">
+<nav class="flex h-full w-full flex-col bg-gray-900 text-gray-300">
 	<!-- Logo -->
 	<div class="px-4 py-3">
-		<a href="{base}/read" class="text-base font-bold text-white">jskom2</a>
+		<a href="{base}/read" onclick={handleNav} class="text-base font-bold text-white">jskom2</a>
 	</div>
 
 	<!-- Main nav -->
 	<div class="flex-1 overflow-y-auto px-2 py-1">
 		<a
 			href="{base}/read"
+			onclick={handleNav}
 			class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
 			class:bg-gray-800={isActive('/read')}
 			class:text-white={isActive('/read')}
@@ -73,6 +92,7 @@
 		<div class="mt-4 space-y-px">
 			<a
 				href="{base}/who"
+				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
 				class:bg-gray-800={isActive('/who')}
 				class:text-white={isActive('/who')}
@@ -82,19 +102,16 @@
 				<Users size={16} />
 				Vilka
 			</a>
-			<a
-				href="{base}/compose"
-				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-				class:bg-gray-800={isActive('/compose')}
-				class:text-white={isActive('/compose')}
-				class:hover:bg-gray-800={!isActive('/compose')}
-				class:hover:text-white={!isActive('/compose')}
+			<button
+				onclick={handleCompose}
+				class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors hover:bg-gray-800 hover:text-white"
 			>
 				<PenSquare size={16} />
 				Skriv
-			</a>
+			</button>
 			<a
 				href="{base}/search"
+				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
 				class:bg-gray-800={isActive('/search')}
 				class:text-white={isActive('/search')}
@@ -110,7 +127,7 @@
 	<!-- User info -->
 	{#if $currentUser}
 		<div class="border-t border-gray-800 px-4 py-3">
-			<a href="{base}/users/{$currentUser.id}" class="text-sm text-gray-300 hover:text-white">
+			<a href="{base}/users/{$currentUser.id}" onclick={handleNav} class="text-sm text-gray-300 hover:text-white">
 				{$currentUser.name}
 			</a>
 			<button

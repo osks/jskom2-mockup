@@ -1,6 +1,8 @@
 <script lang="ts">
 	import NavSidebar from './NavSidebar.svelte';
-	import MobileNav from './MobileNav.svelte';
+	import MobileHeader from './MobileHeader.svelte';
+	import SidebarDrawer from './SidebarDrawer.svelte';
+	import ComposeBar from './ComposeBar.svelte';
 	import PersonalMessage from './PersonalMessage.svelte';
 	import { personalMessages } from '$lib/stores/messages';
 	import type { Snippet } from 'svelte';
@@ -14,21 +16,30 @@
 
 <div class="flex h-screen">
 	<!-- Desktop sidebar -->
-	<div class="hidden md:block">
+	<div class="hidden w-56 shrink-0 md:block">
 		<NavSidebar />
 	</div>
 
-	<!-- Main content — pb-14 leaves room for mobile nav -->
-	<main class="flex min-h-0 flex-1 flex-col pb-14 md:pb-0">
-		{@render children()}
-	</main>
+	<!-- Main column -->
+	<div class="flex min-h-0 flex-1 flex-col">
+		<!-- Mobile header -->
+		<MobileHeader />
 
-	<!-- Mobile nav -->
-	<MobileNav />
+		<!-- Page content -->
+		<main class="flex min-h-0 flex-1 flex-col bg-white">
+			{@render children()}
+		</main>
+
+		<!-- Global compose bar -->
+		<ComposeBar />
+	</div>
+
+	<!-- Mobile sidebar drawer -->
+	<SidebarDrawer />
 
 	<!-- Personal message toasts -->
 	{#if $personalMessages.length > 0}
-		<div class="fixed bottom-4 right-4 z-30 space-y-2 md:bottom-4">
+		<div class="fixed bottom-4 right-4 z-30 space-y-2">
 			{#each $personalMessages as msg, i}
 				<PersonalMessage message={msg} index={i} />
 			{/each}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { readingState, clearCommentTo } from '$lib/stores/reading';
+	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById } from '$lib/data';
 	import { Send, X } from 'lucide-svelte';
 
@@ -10,16 +10,28 @@
 		commentToText ? getUserById(commentToText.author) : null
 	);
 
+	const isVisible = $derived(!!commentToText || $readingState.composingNew);
+
 	let selectedConference = $state(1);
 	let subject = $state('');
 	let body = $state('');
 	let sent = $state(false);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
 
+	// Update defaults when commentTo changes
 	$effect(() => {
 		if (commentToText) {
 			selectedConference = commentToText.recipients[0] ?? 1;
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
+			textareaEl?.focus();
+		}
+	});
+
+	// Focus when opening new compose
+	$effect(() => {
+		if ($readingState.composingNew && !commentToText) {
+			selectedConference = $readingState.currentConference ?? 1;
+			subject = '';
 			textareaEl?.focus();
 		}
 	});
@@ -31,6 +43,7 @@
 			body = '';
 			subject = '';
 			clearCommentTo();
+			cancelCompose();
 		}, 1500);
 	}
 
@@ -38,6 +51,7 @@
 		body = '';
 		subject = '';
 		clearCommentTo();
+		cancelCompose();
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -51,16 +65,20 @@
 	}
 </script>
 
-{#if commentToText}
+{#if isVisible}
 	<div class="shrink-0 border-t border-gray-200 bg-white">
-		<!-- Comment reference header -->
+		<!-- Header: comment reference or new text indicator -->
 		<div class="flex items-center gap-2 px-4 py-1.5 text-xs text-gray-500">
-			<span class="text-gray-300">&larrhk;</span>
-			<span class="min-w-0 truncate">
-				{commentToAuthor?.name ?? 'Okänd'}: {commentToText.subject}
-			</span>
+			{#if commentToText}
+				<span class="text-gray-300">&larrhk;</span>
+				<span class="min-w-0 truncate">
+					{commentToAuthor?.name ?? 'Okänd'}: {commentToText.subject}
+				</span>
+			{:else}
+				<span class="text-gray-400">Nytt inlägg</span>
+			{/if}
 			<button
-				onclick={clearCommentTo}
+				onclick={handleCancel}
 				class="ml-auto shrink-0 rounded p-1 text-gray-300 hover:bg-gray-100 hover:text-gray-500"
 			>
 				<X size={14} />
@@ -92,7 +110,7 @@
 					bind:value={body}
 					onkeydown={handleKeydown}
 					rows={3}
-					placeholder="Skriv din kommentar..."
+					placeholder={commentToText ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 					class="flex-1 resize-none rounded border border-gray-200 bg-gray-50 px-3 py-2 text-base text-gray-800 placeholder:text-gray-400 focus:border-lyskom-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-lyskom-400 sm:text-sm"
 				></textarea>
 

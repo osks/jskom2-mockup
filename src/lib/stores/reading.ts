@@ -40,6 +40,7 @@ interface ReadingState {
 	nextAction: NextAction;
 	// For the compose bar
 	commentTo: number | null;
+	composingNew: boolean;
 }
 
 export const readingState = writable<ReadingState>({
@@ -49,7 +50,8 @@ export const readingState = writable<ReadingState>({
 	todoList: [],
 	currentConference: null,
 	nextAction: { type: 'all-done', label: 'Inga olästa texter' },
-	commentTo: null
+	commentTo: null,
+	composingNew: false
 });
 
 // Set of text IDs that have been read this session (to avoid re-reading)
@@ -268,4 +270,12 @@ export function setCommentTo(textId: number | null) {
 
 export function clearCommentTo() {
 	readingState.update((s) => ({ ...s, commentTo: null }));
+}
+
+export function startCompose() {
+	readingState.update((s) => ({ ...s, composingNew: true, commentTo: null }));
+}
+
+export function cancelCompose() {
+	readingState.update((s) => ({ ...s, composingNew: false }));
 }
