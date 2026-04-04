@@ -154,7 +154,7 @@
 			</div>
 
 			<!-- Footer (sticky) -->
-			<div class="sticky bottom-0 z-10 flex items-center justify-between border-t border-gray-100 bg-white px-4 py-3">
+			<div class="safe-bottom sticky bottom-0 z-10 flex items-center justify-between border-t border-gray-100 bg-white px-4 py-3">
 				<span class="text-xs text-gray-400">
 					{#if body.trim()}
 						Ctrl+Enter för att skicka
@@ -163,7 +163,7 @@
 				<button
 					onclick={handleSend}
 					disabled={sent || !body.trim()}
-					class="flex items-center gap-2 rounded bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-30"
+					class="flex items-center gap-2 rounded-full bg-gray-900 px-5 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-30"
 				>
 					{#if sent}
 						<span>Skickat &#10003;</span>

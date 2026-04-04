@@ -4,7 +4,7 @@
 	import { Menu } from 'lucide-svelte';
 </script>
 
-<div class="fixed top-0 left-0 right-0 z-20 flex h-14 items-center gap-3 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 md:hidden">
+<div class="safe-top fixed top-0 left-0 right-0 z-20 flex h-14 items-center gap-3 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 md:hidden">
 	<button
 		onclick={toggleSidebar}
 		class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-500 active:bg-gray-100"

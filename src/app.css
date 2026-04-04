@@ -22,3 +22,12 @@ html {
 body {
 	@apply bg-gray-50 text-gray-900 antialiased;
 }
+
+/* Safe area insets for notched/rounded-corner devices */
+.safe-bottom {
+	padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-top {
+	padding-top: env(safe-area-inset-top, 0px);
+}

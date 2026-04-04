@@ -183,7 +183,7 @@
 
 <!-- Sticky action bar -->
 {#if hasTexts || nextAction.type !== 'all-done'}
-	<div class="shrink-0 flex items-center gap-3 border-t border-gray-100 bg-white px-4 py-2">
+	<div class="safe-bottom shrink-0 flex items-center gap-3 border-t border-gray-100 bg-white px-4 py-2">
 		{#if activeText}
 			<div class="min-w-0 flex-1">
 				<span class="text-xs text-gray-500 truncate block">
@@ -192,7 +192,7 @@
 			</div>
 			<button
 				onclick={handleComment}
-				class="shrink-0 rounded px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 active:bg-gray-100"
+				class="shrink-0 rounded-full px-4 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 active:bg-gray-200"
 			>
 				kommentera
 			</button>
@@ -203,7 +203,7 @@
 		{#if nextAction.type !== 'all-done'}
 			<button
 				onclick={() => advanceReading()}
-				class="shrink-0 rounded bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-800 active:bg-gray-700"
+				class="shrink-0 rounded-full bg-gray-900 px-5 py-1.5 text-sm font-medium text-white hover:bg-gray-800 active:bg-gray-700"
 			>
 				nästa
 			</button>
