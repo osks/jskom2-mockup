@@ -14,7 +14,7 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="flex h-screen">
+<div class="fixed inset-0 flex overflow-hidden">
 	<!-- Desktop sidebar -->
 	<div class="hidden w-56 shrink-0 md:block">
 		<NavSidebar />
