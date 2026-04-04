@@ -1,8 +1,20 @@
 <script lang="ts">
 	import { readingState, advanceReading, setCommentTo, setActiveText } from '$lib/stores/reading';
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
+	import { pageTitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
 	import { tick } from 'svelte';
+
+	// Set mobile header title based on current conference
+	$effect(() => {
+		const confId = $readingState.currentConference;
+		if (confId) {
+			const conf = getConferenceById(confId);
+			pageTitle.set(conf?.name ?? 'Läsa');
+		} else {
+			pageTitle.set('Läsa');
+		}
+	});
 
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { texts, conferences, users } from '$lib/data';
 	import { base } from '$app/paths';
+	import { pageTitle } from '$lib/stores/page';
 	import StreamMessage from '$lib/components/StreamMessage.svelte';
 	import { Search, Globe, Lock, Eye, Users } from 'lucide-svelte';
+
+	pageTitle.set('Sök');
 
 	let query = $state('');
 	let activeTab: 'texts' | 'conferences' | 'users' = $state('texts');

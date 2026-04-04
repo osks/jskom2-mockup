@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { getUserById, getMemberships, getConferenceById } from '$lib/data';
+	import { pageTitle } from '$lib/stores/page';
 	import { base } from '$app/paths';
 	import { Mail } from 'lucide-svelte';
 
 	const userId = $derived(Number(page.params.id));
 	const user = $derived(getUserById(userId));
 	const userMemberships = $derived(getMemberships(userId));
+
+	$effect(() => {
+		pageTitle.set(user?.name ?? 'Användare');
+	});
 </script>
 
 <svelte:head>
