@@ -5,12 +5,21 @@
 	import StreamMessage from './StreamMessage.svelte';
 	import { tick } from 'svelte';
 
-	// Set mobile header title based on current conference
+	// Set mobile header title based on current conference + unread count
 	$effect(() => {
 		const confId = $readingState.currentConference;
 		if (confId) {
 			const conf = getConferenceById(confId);
-			pageTitle.set(conf?.name ?? 'Läsa');
+			const name = conf?.name ?? 'Läsa';
+			// Count remaining unread texts in the reading list for this conference
+			const remaining = $readingState.readingList.reduce(
+				(sum, entry) => sum + entry.textIds.length, 0
+			);
+			if (remaining > 0) {
+				pageTitle.set(`${name} · ${remaining} olästa`);
+			} else {
+				pageTitle.set(name);
+			}
 		} else {
 			pageTitle.set('Läsa');
 		}
