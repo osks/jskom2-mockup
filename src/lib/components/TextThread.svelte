@@ -1,0 +1,31 @@
+<script lang="ts">
+	import type { TextInfo } from '$lib/types';
+	import { getTextById } from '$lib/data';
+	import StreamMessage from './StreamMessage.svelte';
+	import TextThread from './TextThread.svelte';
+
+	interface Props {
+		textId: number;
+		highlightId?: number;
+		depth?: number;
+	}
+
+	let { textId, highlightId, depth = 0 }: Props = $props();
+
+	const text = $derived(getTextById(textId));
+</script>
+
+{#if text}
+	<div
+		class={depth > 0 ? 'ml-3 border-l-2 border-gray-100 md:ml-4' : ''}
+		class:bg-lyskom-50={highlightId === text.id}
+	>
+		<StreamMessage {text} />
+
+		{#if text.commentedIn && text.commentedIn.length > 0}
+			{#each text.commentedIn as childId}
+				<TextThread textId={childId} {highlightId} depth={depth + 1} />
+			{/each}
+		{/if}
+	</div>
+{/if}

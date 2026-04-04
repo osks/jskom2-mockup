@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/ibm-plex-sans';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+
+@theme {
+	--font-sans: 'IBM Plex Sans Variable', system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+	--color-lyskom-50: #eff6ff;
+	--color-lyskom-100: #dbeafe;
+	--color-lyskom-500: #3b82f6;
+	--color-lyskom-600: #2563eb;
+	--color-lyskom-700: #1d4ed8;
+	--color-lyskom-900: #1e3a5f;
+}
+
+html {
+	font-family: var(--font-sans);
+}
+
+body {
+	@apply bg-gray-50 text-gray-900 antialiased;
+}
