@@ -37,7 +37,8 @@
 		class="relative z-10 flex h-full bg-white transition-transform duration-250 ease-out"
 		class:translate-x-72={$sidebarOpen}
 		class:md:!translate-x-0={true}
-		class:shadow-[-8px_0_24px_rgba(0,0,0,0.15)]={$sidebarOpen}
+		class:shadow-[-12px_0_40px_rgba(0,0,0,0.3)]={$sidebarOpen}
+		class:rounded-l-2xl={$sidebarOpen}
 	>
 		<!-- Desktop sidebar -->
 		<div class="hidden w-56 shrink-0 md:block">
