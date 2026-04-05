@@ -58,7 +58,7 @@
 
 			<button
 				type="submit"
-				class="w-full rounded-full bg-gray-900/80 backdrop-blur-md px-4 py-2.5 text-sm font-semibold text-white shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.2),inset_0_0_0_0.5px_rgba(255,255,255,0.1)] active:bg-gray-700 transition-colors"
+				class="w-full rounded-[14px] bg-gray-900/80 backdrop-blur-md px-4 py-2.5 text-sm font-semibold text-white shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.2),inset_0_0_0_0.5px_rgba(255,255,255,0.1)] active:bg-gray-700 transition-colors"
 			>
 				Logga in
 			</button>
