@@ -17,7 +17,7 @@
 
 html {
 	font-family: var(--font-sans);
-	background-color: var(--color-gray-50);
+	background-color: transparent;
 	overscroll-behavior: none;
 }
 
