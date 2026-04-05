@@ -39,9 +39,23 @@ sw.addEventListener('fetch', (event) => {
 	// Skip cross-origin requests
 	if (url.origin !== location.origin) return;
 
-	event.respondWith(
-		caches.match(event.request).then((cached) => {
-			return cached || fetch(event.request);
-		})
-	);
+	if (event.request.mode === 'navigate') {
+		// HTML pages: network first, fall back to cache if offline
+		event.respondWith(
+			fetch(event.request)
+				.then((response) => {
+					const clone = response.clone();
+					caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+					return response;
+				})
+				.catch(() => caches.match(event.request).then((cached) => cached!))
+		);
+	} else {
+		// Assets: cache first (filenames are hashed per build)
+		event.respondWith(
+			caches.match(event.request).then((cached) => {
+				return cached || fetch(event.request);
+			})
+		);
+	}
 });
