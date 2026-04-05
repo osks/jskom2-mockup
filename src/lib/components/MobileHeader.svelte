@@ -8,7 +8,7 @@
 	}
 </script>
 
-<div class="safe-top fixed top-0 left-0 right-0 z-20 flex items-center gap-3 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 pb-3 pt-3 md:hidden">
+<div class="safe-top fixed top-0 left-0 right-0 z-20 flex min-h-14 items-center gap-3 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 pb-2 md:hidden">
 	<button
 		onclick={toggleSidebar}
 		class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-gray-500 active:bg-gray-100"
