@@ -28,7 +28,7 @@
 
 <div class="h-dvh w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
-	<div class="fixed inset-0 z-0 w-72 bg-gray-900 md:hidden">
+	<div class="fixed inset-0 z-0 w-72 bg-gray-50 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
 	</div>
 

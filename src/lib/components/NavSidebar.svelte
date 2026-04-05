@@ -46,10 +46,10 @@
 	}
 </script>
 
-<nav class="flex h-full w-full flex-col bg-gray-900 text-gray-300 safe-bottom">
+<nav class="flex h-full w-full flex-col bg-gray-50 text-gray-600 safe-bottom">
 	<!-- Logo -->
 	<div class="safe-top px-4 py-3">
-		<a href="{base}/read" onclick={handleNav} class="text-base font-bold text-white">jskom2</a>
+		<a href="{base}/read" onclick={handleNav} class="text-base font-bold text-gray-900">jskom2</a>
 	</div>
 
 	<!-- Main nav -->
@@ -58,10 +58,10 @@
 			href="{base}/read"
 			onclick={handleNav}
 			class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-			class:bg-gray-800={isActive('/read')}
-			class:text-white={isActive('/read')}
-			class:hover:bg-gray-800={!isActive('/read')}
-			class:hover:text-white={!isActive('/read')}
+			class:bg-gray-200={isActive('/read')}
+			class:text-gray-900={isActive('/read')}
+			class:hover:bg-gray-200={!isActive('/read')}
+			class:hover:text-gray-900={!isActive('/read')}
 		>
 			<BookOpen size={16} />
 			Läsa
@@ -76,7 +76,7 @@
 					{#if conf}
 						<button
 							onclick={() => scrollToConference(conf.id)}
-							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-gray-800 hover:text-white"
+							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-gray-200 hover:text-gray-900"
 						>
 							<span class="truncate">{conf.name}</span>
 							{#if m.unread > 0}
@@ -94,17 +94,17 @@
 				href="{base}/who"
 				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-				class:bg-gray-800={isActive('/who')}
-				class:text-white={isActive('/who')}
-				class:hover:bg-gray-800={!isActive('/who')}
-				class:hover:text-white={!isActive('/who')}
+				class:bg-gray-200={isActive('/who')}
+				class:text-gray-900={isActive('/who')}
+				class:hover:bg-gray-200={!isActive('/who')}
+				class:hover:text-gray-900={!isActive('/who')}
 			>
 				<Users size={16} />
 				Vilka
 			</a>
 			<button
 				onclick={handleCompose}
-				class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors hover:bg-gray-800 hover:text-white"
+				class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors hover:bg-gray-200 hover:text-gray-900"
 			>
 				<PenSquare size={16} />
 				Skriv
@@ -113,10 +113,10 @@
 				href="{base}/search"
 				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-				class:bg-gray-800={isActive('/search')}
-				class:text-white={isActive('/search')}
-				class:hover:bg-gray-800={!isActive('/search')}
-				class:hover:text-white={!isActive('/search')}
+				class:bg-gray-200={isActive('/search')}
+				class:text-gray-900={isActive('/search')}
+				class:hover:bg-gray-200={!isActive('/search')}
+				class:hover:text-gray-900={!isActive('/search')}
 			>
 				<Search size={16} />
 				Sök
@@ -126,13 +126,13 @@
 
 	<!-- User info -->
 	{#if $currentUser}
-		<div class="border-t border-gray-800 px-4 py-3">
-			<a href="{base}/users/{$currentUser.id}" onclick={handleNav} class="text-sm text-gray-300 hover:text-white">
+		<div class="border-t border-gray-200 px-4 py-3">
+			<a href="{base}/users/{$currentUser.id}" onclick={handleNav} class="text-sm text-gray-700 hover:text-gray-900">
 				{$currentUser.name}
 			</a>
 			<button
 				onclick={() => { logout(); window.location.href = `${base}/login`; }}
-				class="mt-1 flex items-center gap-1 text-xs text-gray-500 hover:text-gray-300"
+				class="mt-1 flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600"
 			>
 				<LogOut size={12} />
 				Logga ut
