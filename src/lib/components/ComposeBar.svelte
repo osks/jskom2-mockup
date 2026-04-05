@@ -159,7 +159,7 @@
 			</div>
 
 			<!-- Footer -->
-			<div class="safe-bottom flex items-center justify-between px-4 pt-1 pb-3">
+			<div class="safe-bottom flex items-center justify-between px-6 pt-1 pb-5">
 				<span class="text-xs text-gray-400">
 					{#if body.trim()}
 						&#8984;Enter

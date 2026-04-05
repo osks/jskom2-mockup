@@ -201,9 +201,15 @@
 </div>
 
 <!-- Floating action bar (hidden when compose panel is open) -->
-{#if (hasTexts || nextAction.type !== 'all-done') && !$readingState.commentTo && !$readingState.composingNew}
-	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5">
-		<div class="pointer-events-auto flex w-full max-w-md items-center gap-2.5">
+{#if hasTexts || nextAction.type !== 'all-done'}
+	{@const composing = !!$readingState.commentTo || $readingState.composingNew}
+	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5 transition-opacity duration-200"
+		class:opacity-0={composing}
+	>
+		<div class="flex w-full max-w-md items-center gap-2.5"
+			class:pointer-events-auto={!composing}
+			class:pointer-events-none={composing}
+		>
 			<!-- Secondary actions pill -->
 			{#if activeText}
 				<div class="relative">
