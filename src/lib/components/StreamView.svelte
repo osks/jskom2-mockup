@@ -185,7 +185,7 @@
 			{:else if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
 				{#if text}
-					{#if i > 0 && $readingState.buffer[i - 1]?.kind === 'text'}
+					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
 						<div class="mx-8 border-t border-gray-200"></div>
 					{/if}
 					<StreamMessage {text} active={item.textId === activeTextId} />
