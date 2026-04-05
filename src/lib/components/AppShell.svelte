@@ -63,10 +63,10 @@
 				onclick={handleContentClick}
 			></div>
 		{/if}
-	</div>
 
-	<!-- Mobile header bar (outside clipped wrapper so backdrop-blur works) -->
-	<MobileHeader />
+		<!-- Mobile header bar (inside wrapper so it slides with content) -->
+		<MobileHeader />
+	</div>
 
 	<!-- Personal message toasts -->
 	{#if $personalMessages.length > 0}
