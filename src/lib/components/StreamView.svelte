@@ -3,6 +3,7 @@
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
+	import { ChevronRight, Ellipsis } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
 	// Set mobile header title based on current conference + unread count
@@ -130,10 +131,20 @@
 	const activeAuthor = $derived(activeText ? getUserById(activeText.author) : null);
 	const hasTexts = $derived($readingState.buffer.some((b) => b.kind === 'text'));
 
+	let moreMenuOpen = $state(false);
+
 	function handleComment() {
 		if (activeTextId) {
 			setCommentTo(activeTextId);
 		}
+	}
+
+	function toggleMoreMenu() {
+		moreMenuOpen = !moreMenuOpen;
+	}
+
+	function closeMoreMenu() {
+		moreMenuOpen = false;
 	}
 </script>
 
@@ -183,39 +194,74 @@
 			<p class="px-4 py-12 text-center text-sm text-gray-400">Klart — du har läst allt.</p>
 		{/if}
 
-		<!-- Spacer so last text isn't hidden behind action bar -->
+		<!-- Spacer so last text isn't hidden behind floating bar -->
 		{#if hasTexts}
-			<div class="h-14"></div>
+			<div class="h-20"></div>
 		{/if}
 	</div>
 </div>
 
-<!-- Sticky action bar -->
+<!-- Floating action bar -->
 {#if hasTexts || nextAction.type !== 'all-done'}
-	<div class="safe-bottom shrink-0 flex items-center gap-3 border-t border-gray-100 bg-white px-4 py-2">
-		{#if activeText}
-			<div class="min-w-0 flex-1">
-				<span class="text-xs text-gray-500 truncate block">
-					{activeAuthor?.name ?? 'Okänd'} — {activeText.subject}
-				</span>
-			</div>
-			<button
-				onclick={handleComment}
-				class="shrink-0 rounded-full px-4 py-1.5 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-700 active:bg-gray-200"
-			>
-				kommentera
-			</button>
-		{:else}
-			<div class="flex-1"></div>
-		{/if}
+	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-4 pb-3">
+		<div class="pointer-events-auto flex w-full max-w-md items-center gap-2.5">
+			<!-- More actions -->
+			{#if activeText}
+				<div class="relative">
+					<button
+						onclick={toggleMoreMenu}
+						class="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-md active:bg-gray-100"
+						aria-label="Fler åtgärder"
+					>
+						<Ellipsis size={20} class="text-gray-500" />
+					</button>
 
-		{#if nextAction.type !== 'all-done'}
-			<button
-				onclick={() => advanceReading()}
-				class="shrink-0 rounded-full bg-gray-900 px-5 py-1.5 text-sm font-medium text-white hover:bg-gray-800 active:bg-gray-700"
-			>
-				nästa
-			</button>
-		{/if}
+					<!-- More menu popover -->
+					{#if moreMenuOpen}
+						<!-- Backdrop -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
+						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-44 rounded-xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera text
+							</button>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Avmarkera text
+							</button>
+							<div class="mx-3 my-1 border-t border-gray-100"></div>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera som läst
+							</button>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera som oläst
+							</button>
+						</div>
+					{/if}
+				</div>
+			{/if}
+
+			<!-- Comment input pill -->
+			{#if activeText}
+				<button
+					onclick={handleComment}
+					class="flex h-11 min-w-0 flex-1 items-center rounded-full bg-white px-4 shadow-md active:bg-gray-50"
+				>
+					<span class="truncate text-sm text-gray-400">Kommentera...</span>
+				</button>
+			{:else}
+				<div class="flex-1"></div>
+			{/if}
+
+			<!-- Next button -->
+			{#if nextAction.type !== 'all-done'}
+				<button
+					onclick={() => advanceReading()}
+					class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 shadow-lg active:bg-gray-700"
+					aria-label="Nästa olästa"
+				>
+					<ChevronRight size={24} class="text-white" />
+				</button>
+			{/if}
+		</div>
 	</div>
 {/if}
