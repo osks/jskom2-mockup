@@ -210,7 +210,7 @@
 				<div class="relative">
 					<button
 						onclick={toggleMoreMenu}
-						class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100/80 backdrop-blur-md shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.9),inset_0_0_0_0.5px_rgba(255,255,255,0.5)] active:bg-gray-200"
+						class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200/70 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.95),inset_0_0_0_1px_rgba(255,255,255,0.6)] active:bg-gray-300/70"
 						aria-label="Fler åtgärder"
 					>
 						<Ellipsis size={20} class="text-gray-500" />
@@ -244,7 +244,7 @@
 			{#if activeText}
 				<button
 					onclick={handleComment}
-					class="flex h-12 min-w-0 flex-1 items-center rounded-full bg-gray-100/80 backdrop-blur-md px-4 shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.9),inset_0_0_0_0.5px_rgba(255,255,255,0.5)] active:bg-gray-200"
+					class="flex h-12 min-w-0 flex-1 items-center rounded-full bg-gray-200/70 backdrop-blur-md px-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.95),inset_0_0_0_1px_rgba(255,255,255,0.6)] active:bg-gray-300/70"
 				>
 					<span class="truncate text-sm text-gray-400">Kommentera...</span>
 				</button>
@@ -256,7 +256,7 @@
 			{#if nextAction.type !== 'all-done'}
 				<button
 					onclick={() => advanceReading()}
-					class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900/80 backdrop-blur-md shadow-[inset_0_0.5px_0_0_rgba(255,255,255,0.2),inset_0_0_0_0.5px_rgba(255,255,255,0.1)] active:bg-gray-700"
+					class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900/80 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3),inset_0_0_0_1px_rgba(255,255,255,0.15)] active:bg-gray-700"
 					aria-label="Nästa olästa"
 				>
 					<ChevronRight size={24} class="text-white" />
