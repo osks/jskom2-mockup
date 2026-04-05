@@ -34,7 +34,7 @@
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
-		class="relative z-10 flex h-full bg-white overflow-clip transition-transform duration-250 ease-out"
+		class="relative z-10 flex h-full bg-gray-50 overflow-clip transition-transform duration-250 ease-out"
 		class:translate-x-72={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
@@ -55,9 +55,6 @@
 			<ComposeBar />
 		</div>
 
-		<!-- Mobile header bar (moves with content) -->
-		<MobileHeader />
-
 		<!-- Tap-to-close overlay when sidebar is open -->
 		{#if $sidebarOpen}
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -67,6 +64,9 @@
 			></div>
 		{/if}
 	</div>
+
+	<!-- Mobile header bar (outside clipped wrapper so backdrop-blur works) -->
+	<MobileHeader />
 
 	<!-- Personal message toasts -->
 	{#if $personalMessages.length > 0}
