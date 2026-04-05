@@ -107,11 +107,11 @@
 
 			<!-- Quoted original text (reply mode) -->
 			{#if isComment && commentToText}
-				<div class="mx-4 mt-2 max-h-32 overflow-y-auto border-l-2 border-gray-300 pl-3">
-					<div class="text-xs font-medium text-gray-400">
+				<div class="mx-4 mt-3 max-h-40 overflow-y-auto border-l-2 border-gray-300 pl-3">
+					<div class="text-sm font-semibold text-gray-700">
 						{commentToAuthor?.name ?? 'Okänd'}
 					</div>
-					<div class="mt-0.5 text-sm leading-relaxed text-gray-400 italic whitespace-pre-wrap break-words">
+					<div class="mt-1 text-base leading-relaxed text-gray-600 whitespace-pre-wrap break-words md:text-sm">
 						{commentToText.body}
 					</div>
 				</div>
@@ -168,12 +168,12 @@
 				<button
 					onclick={handleSend}
 					disabled={sent || !body.trim()}
-					class="flex items-center gap-2 rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 px-5 py-2 text-sm font-medium text-white active:bg-gray-700 disabled:opacity-30"
+					class="flex h-12 items-center gap-2 rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 px-6 text-sm font-medium text-white active:bg-gray-700 disabled:opacity-30"
 				>
 					{#if sent}
 						<span>Skickat &#10003;</span>
 					{:else}
-						<Send size={14} />
+						<Send size={18} />
 						Skicka
 					{/if}
 				</button>
