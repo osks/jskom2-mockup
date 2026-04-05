@@ -44,7 +44,7 @@
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
-		class="px-4 py-3 ml-1.5 border-l-2 border-b border-b-gray-100 transition-all duration-300"
+		class="px-4 py-3 ml-1.5 border-l-2 border-b-2 border-b-gray-100 transition-all duration-300"
 		class:border-gray-400={active}
 		class:border-transparent={!active}
 		class:opacity-60={!active}
