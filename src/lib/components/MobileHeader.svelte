@@ -11,7 +11,6 @@
 <!-- Single blur layer with gradient mask: full at top, fades to transparent below buttons -->
 <div
 	class="absolute inset-0 h-[calc(100%+24px)] pointer-events-none"
-	style="background: linear-gradient(rgb(249 250 251 / 0) 0%, rgb(249 250 251 / 0.5) 30%, rgb(249 250 251 / 0.5) 70%, transparent 100%);"
 ></div>
 
 <!-- Content -->

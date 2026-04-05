@@ -153,6 +153,7 @@
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header"
+	style="mask-image: linear-gradient(to bottom, transparent, black 120px); -webkit-mask-image: linear-gradient(to bottom, transparent, black 120px);"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
