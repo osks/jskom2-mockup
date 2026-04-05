@@ -9,11 +9,11 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --glass-bg: rgba(255,255,255,0.12);
-    --glass-bg-strong: rgba(255,255,255,0.18);
-    --glass-border: rgba(255,255,255,0.3);
-    --glass-border-subtle: rgba(255,255,255,0.15);
-    --glass-blur: blur(50px) saturate(180%) brightness(1.1);
+    --glass-bg: rgba(255,255,255,0.55);
+    --glass-bg-strong: rgba(255,255,255,0.65);
+    --glass-border: rgba(255,255,255,0.5);
+    --glass-border-subtle: rgba(255,255,255,0.35);
+    --glass-blur: blur(24px) saturate(140%) brightness(1.05);
     --glass-shadow: 0 8px 32px rgba(0,0,0,0.1);
     --glass-highlight: inset 0 0.5px 0 rgba(255,255,255,0.5);
     --glass-edge: inset 0 -0.5px 0 rgba(255,255,255,0.1);
@@ -79,13 +79,13 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 0.5px solid var(--glass-border);
-    border-radius: 28px;
+    border-radius: 9999px;
     box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 48px;
-    padding: 0 16px;
+    padding: 0 20px;
   }
   .nav-back {
     display: flex; align-items: center; gap: 4px;
@@ -114,11 +114,11 @@
   .search-bar input {
     width: 100%;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 9999px;
     border: 0.5px solid var(--glass-border-subtle);
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(30px) saturate(150%);
-    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     padding: 0 8px 0 36px;
     font-size: 17px;
     font-family: inherit;
@@ -188,7 +188,7 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 0.5px solid var(--glass-border);
-    border-radius: 28px;
+    border-radius: 9999px;
     box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
     display: flex;
     padding: 6px 8px;
@@ -201,7 +201,7 @@
     font-size: 10px; color: var(--label2);
     text-decoration: none; border: none; background: none; cursor: pointer;
     font-family: inherit; -webkit-tap-highlight-color: transparent;
-    border-radius: 20px;
+    border-radius: 9999px;
     transition: background .2s, color .2s;
     position: relative;
   }
@@ -275,7 +275,7 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border: 0.5px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 9999px;
     box-shadow: var(--glass-shadow), var(--glass-highlight), var(--glass-edge);
     padding: 8px 12px;
     display: flex; align-items: center; gap: 8px;
