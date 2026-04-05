@@ -202,7 +202,7 @@
 
 <!-- Floating action bar -->
 {#if hasTexts || nextAction.type !== 'all-done'}
-	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5">
+	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-6">
 		<div class="pointer-events-auto flex w-full max-w-md items-center gap-2.5">
 			<!-- Secondary actions pill -->
 			{#if activeText}
