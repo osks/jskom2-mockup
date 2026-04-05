@@ -107,11 +107,11 @@
 
 			<!-- Quoted original text (reply mode) -->
 			{#if isComment && commentToText}
-				<div class="mx-3 mt-2 max-h-32 overflow-y-auto rounded-xl bg-white/30 px-3 py-2 ring-1 ring-white/60">
-					<div class="text-xs font-medium text-gray-500">
+				<div class="mx-4 mt-2 max-h-32 overflow-y-auto border-l-2 border-gray-300 pl-3">
+					<div class="text-xs font-medium text-gray-400">
 						{commentToAuthor?.name ?? 'Okänd'}
 					</div>
-					<div class="mt-0.5 text-sm leading-relaxed text-gray-600 whitespace-pre-wrap break-words">
+					<div class="mt-0.5 text-sm leading-relaxed text-gray-400 italic whitespace-pre-wrap break-words">
 						{commentToText.body}
 					</div>
 				</div>
