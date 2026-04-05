@@ -15,7 +15,7 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+<div class="flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-100 via-gray-50 to-gray-200 px-4">
 	<div class="w-full max-w-sm">
 		<div class="mb-8 text-center">
 			<h1 class="text-3xl font-bold text-lyskom-700">jskom2</h1>
