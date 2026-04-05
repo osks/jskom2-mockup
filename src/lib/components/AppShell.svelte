@@ -1,9 +1,9 @@
 <script lang="ts">
 	import NavSidebar from './NavSidebar.svelte';
 	import MobileHeader from './MobileHeader.svelte';
-	import SidebarDrawer from './SidebarDrawer.svelte';
 	import ComposeBar from './ComposeBar.svelte';
 	import PersonalMessage from './PersonalMessage.svelte';
+	import { sidebarOpen, closeSidebar } from '$lib/stores/ui';
 	import { personalMessages } from '$lib/stores/messages';
 	import type { Snippet } from 'svelte';
 
@@ -12,30 +12,61 @@
 	}
 
 	let { children }: Props = $props();
+
+	function handleContentClick() {
+		if ($sidebarOpen) {
+			closeSidebar();
+		}
+	}
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key === 'Escape' && $sidebarOpen) closeSidebar();
+	}
 </script>
 
-<div class="fixed inset-0 flex overflow-hidden">
-	<!-- Desktop sidebar -->
-	<div class="hidden w-56 shrink-0 md:block">
-		<NavSidebar />
+<svelte:window onkeydown={handleKeydown} />
+
+<div class="fixed inset-0 overflow-hidden">
+	<!-- Mobile nav: always rendered, sits behind content -->
+	<div class="fixed inset-y-0 left-0 z-0 w-72 md:hidden">
+		<NavSidebar onNavigate={closeSidebar} />
 	</div>
 
-	<!-- Main column -->
-	<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header">
-		<!-- Page content -->
-		<main class="flex min-h-0 flex-1 flex-col bg-white">
-			{@render children()}
-		</main>
+	<!-- Desktop sidebar + main content wrapper -->
+	<div
+		class="relative z-10 flex h-full transition-transform duration-250 ease-out"
+		class:translate-x-72={$sidebarOpen}
+		class:md:!translate-x-0={true}
+		class:shadow-[-8px_0_24px_rgba(0,0,0,0.15)]={$sidebarOpen}
+	>
+		<!-- Desktop sidebar -->
+		<div class="hidden w-56 shrink-0 md:block">
+			<NavSidebar />
+		</div>
 
-		<!-- Global compose bar -->
-		<ComposeBar />
+		<!-- Main column -->
+		<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header bg-white">
+			<!-- Page content -->
+			<main class="flex min-h-0 flex-1 flex-col">
+				{@render children()}
+			</main>
+
+			<!-- Global compose bar -->
+			<ComposeBar />
+		</div>
+
+		<!-- Mobile header bar (moves with content) -->
+		<MobileHeader />
+
+		<!-- Tap-to-close overlay when sidebar is open -->
+		{#if $sidebarOpen}
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="fixed inset-0 z-30 md:hidden"
+				onclick={handleContentClick}
+			></div>
+		{/if}
 	</div>
-
-	<!-- Mobile header bar -->
-	<MobileHeader />
-
-	<!-- Mobile sidebar drawer -->
-	<SidebarDrawer />
 
 	<!-- Personal message toasts -->
 	{#if $personalMessages.length > 0}
