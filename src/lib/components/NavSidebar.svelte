@@ -46,7 +46,7 @@
 	}
 </script>
 
-<nav class="flex h-full w-full flex-col bg-gray-900 text-gray-300">
+<nav class="flex h-full w-full flex-col bg-gray-900 text-gray-300 safe-bottom">
 	<!-- Logo -->
 	<div class="safe-top px-4 py-3">
 		<a href="{base}/read" onclick={handleNav} class="text-base font-bold text-white">jskom2</a>
@@ -126,7 +126,7 @@
 
 	<!-- User info -->
 	{#if $currentUser}
-		<div class="safe-bottom border-t border-gray-800 px-4 py-3">
+		<div class="border-t border-gray-800 px-4 py-3">
 			<a href="{base}/users/{$currentUser.id}" onclick={handleNav} class="text-sm text-gray-300 hover:text-white">
 				{$currentUser.name}
 			</a>
