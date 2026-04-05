@@ -33,7 +33,7 @@
 					<span class="max-w-full truncate text-sm font-medium text-gray-800">{$pageTitle}</span>
 				{/if}
 				{#if $pageSubtitle}
-					<span class="max-w-full truncate text-[11px] text-gray-400 -mt-0.5">{$pageSubtitle}</span>
+					<span class="max-w-full truncate text-[11px] text-gray-600 -mt-0.5">{$pageSubtitle}</span>
 				{/if}
 			</div>
 
