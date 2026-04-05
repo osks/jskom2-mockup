@@ -8,9 +8,7 @@
 	}
 </script>
 
-<div class="fixed top-0 left-0 right-0 z-20 md:hidden">
-	<!-- Main header area with translucent bg + blur -->
-	<div>
+<div>
 		<div class="safe-top"></div>
 		<div class="flex h-14 items-center gap-2.5 px-4">
 			<!-- Hamburger -->
@@ -39,5 +37,4 @@
 				<RotateCw size={16} />
 			</button>
 		</div>
-	</div>
 </div>

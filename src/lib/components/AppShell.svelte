@@ -64,7 +64,13 @@
 			></div>
 		{/if}
 
-		<!-- Mobile header bar (inside wrapper so it slides with content) -->
+	</div>
+
+	<!-- Mobile header bar (outside wrapper so backdrop-filter can see through to content) -->
+	<div
+		class="fixed top-0 left-0 right-0 z-20 md:hidden transition-transform duration-250 ease-out"
+		class:translate-x-72={$sidebarOpen}
+	>
 		<MobileHeader />
 	</div>
 
