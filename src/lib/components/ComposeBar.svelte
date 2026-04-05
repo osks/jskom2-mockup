@@ -168,7 +168,7 @@
 				<button
 					onclick={handleSend}
 					disabled={sent || !body.trim()}
-					class="flex h-12 items-center gap-2 rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 px-6 text-sm font-medium text-white active:bg-gray-700 disabled:opacity-30"
+					class="flex h-12 items-center gap-2 rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 px-6 text-sm font-medium text-white active:bg-gray-700 disabled:opacity-50"
 				>
 					{#if sent}
 						<span>Skickat &#10003;</span>
