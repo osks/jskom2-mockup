@@ -216,7 +216,7 @@
 					<div class="flex h-12 items-center rounded-full bg-gray-200/70 backdrop-blur-md ring-[1.5px] ring-white/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)]">
 						<button
 							onclick={handleComment}
-							class="flex h-12 items-center justify-center rounded-l-full pl-5 pr-4 active:bg-gray-300/50"
+							class="flex h-12 items-center justify-center rounded-l-full pl-5 pr-5 active:bg-gray-300/50"
 							aria-label="Kommentera"
 						>
 							<MessageSquare size={18} class="text-gray-800" />
@@ -224,7 +224,7 @@
 						<div class="h-5 w-px bg-gray-400/30"></div>
 						<button
 							onclick={toggleMoreMenu}
-							class="flex h-12 items-center justify-center rounded-r-full pl-4 pr-5 active:bg-gray-300/50"
+							class="flex h-12 items-center justify-center rounded-r-full pl-5 pr-5 active:bg-gray-300/50"
 							aria-label="Fler åtgärder"
 						>
 							<Ellipsis size={18} class="text-gray-800" />
