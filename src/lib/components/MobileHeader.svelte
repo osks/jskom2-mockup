@@ -11,6 +11,7 @@
 <!-- Single blur layer with gradient mask: full at top, fades to transparent below buttons -->
 <div
 	class="absolute inset-0 h-[calc(100%+24px)] pointer-events-none"
+	style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);"
 ></div>
 
 <!-- Content -->
