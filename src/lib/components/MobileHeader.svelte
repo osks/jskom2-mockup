@@ -10,7 +10,7 @@
 
 <div class="fixed top-0 left-0 right-0 z-20 md:hidden">
 	<!-- Main header area with translucent bg + blur -->
-	<div class="bg-gray-50/80" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+	<div>
 		<div class="safe-top"></div>
 		<div class="flex h-14 items-center gap-2.5 px-4">
 			<!-- Hamburger -->
@@ -40,6 +40,4 @@
 			</button>
 		</div>
 	</div>
-	<!-- Soft fade below the header -->
-	<div class="h-3 bg-gradient-to-b from-gray-50/60 to-transparent pointer-events-none"></div>
 </div>
