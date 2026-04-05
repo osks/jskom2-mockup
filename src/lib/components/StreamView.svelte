@@ -152,7 +152,7 @@
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
-	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none"
+	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none bg-gray-50"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
