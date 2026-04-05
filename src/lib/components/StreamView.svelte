@@ -206,7 +206,7 @@
 			<!-- Secondary actions pill -->
 			{#if activeText}
 				<div class="relative">
-					<div class="flex h-12 items-center rounded-full bg-gray-200/55 backdrop-blur-md ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)]">
+					<div class="flex h-12 items-center rounded-full bg-gray-200/55 backdrop-blur-md ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)]">
 						<button
 							onclick={handleComment}
 							class="flex h-12 w-12 items-center justify-center rounded-l-full active:bg-gray-300/50"
