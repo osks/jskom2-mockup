@@ -145,7 +145,7 @@
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
-	class="relative flex-1 overflow-y-auto overflow-x-hidden bg-white"
+	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none bg-white"
 >
 	<!-- Top fade -->
 	<div class="pointer-events-none sticky top-0 z-10 h-6 bg-gradient-to-b from-white to-transparent"></div>
