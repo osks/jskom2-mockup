@@ -44,9 +44,10 @@
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
-		class="px-4 py-3 border-l-2 transition-colors duration-300"
+		class="px-4 py-3 border-l-2 transition-all duration-300"
 		class:border-gray-900={active}
 		class:border-transparent={!active}
+		class:opacity-60={!active}
 	>
 		<div class="min-w-0">
 			{#if commentParent}
