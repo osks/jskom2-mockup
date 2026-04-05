@@ -84,7 +84,7 @@
 	<div class="fixed inset-0 z-40 flex flex-col bg-white md:bg-black/30 md:items-center md:justify-center md:p-8">
 		<div class="flex flex-1 flex-col overflow-y-auto bg-white md:flex-initial md:w-full md:max-w-xl md:rounded-lg md:shadow-lg md:max-h-[80vh]">
 			<!-- Header (sticky) -->
-			<div class="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
+			<div class="safe-top sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
 				<h2 class="text-sm font-medium text-gray-900">
 					{#if isComment}
 						Kommentera
