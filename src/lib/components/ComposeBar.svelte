@@ -99,9 +99,9 @@
 				</h2>
 				<button
 					onclick={handleCancel}
-					class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200/70 backdrop-blur-md ring-[1.5px] ring-white/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-gray-600 active:bg-gray-300/50"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-300/80 text-gray-600 active:bg-gray-400/50 md:h-8 md:w-8 md:bg-gray-200/70 md:backdrop-blur-md md:ring-[1.5px] md:ring-white/80 md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)]"
 				>
-					<X size={14} />
+					<X size={16} />
 				</button>
 			</div>
 
