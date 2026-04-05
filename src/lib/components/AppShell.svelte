@@ -45,7 +45,7 @@
 		</div>
 
 		<!-- Main column -->
-		<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header bg-white">
+		<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header safe-bottom bg-white">
 			<!-- Page content -->
 			<main class="flex min-h-0 flex-1 flex-col">
 				{@render children()}
