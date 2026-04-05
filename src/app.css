@@ -36,7 +36,7 @@ body {
 
 
 .pt-below-header {
-	padding-top: calc(env(safe-area-inset-top, 0px) + 4rem);
+	padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
 }
 
 @media (min-width: 768px) {
