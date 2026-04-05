@@ -212,7 +212,7 @@
 							class="flex h-12 items-center justify-center rounded-l-full pl-5 pr-4 active:bg-gray-300/50"
 							aria-label="Kommentera"
 						>
-							<MessageSquare size={18} class="text-gray-600" />
+							<MessageSquare size={18} class="text-gray-700" />
 						</button>
 						<div class="h-5 w-px bg-gray-400/30"></div>
 						<button
@@ -220,7 +220,7 @@
 							class="flex h-12 items-center justify-center rounded-r-full pl-4 pr-5 active:bg-gray-300/50"
 							aria-label="Fler åtgärder"
 						>
-							<Ellipsis size={18} class="text-gray-600" />
+							<Ellipsis size={18} class="text-gray-700" />
 						</button>
 					</div>
 
