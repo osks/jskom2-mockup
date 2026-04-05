@@ -26,7 +26,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="fixed inset-0 overflow-hidden bg-gray-900">
+<div class="fixed inset-0 overflow-hidden">
 	<!-- Mobile nav: always rendered, sits behind content -->
 	<div class="fixed inset-y-0 left-0 z-0 w-72 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
@@ -45,7 +45,7 @@
 		</div>
 
 		<!-- Main column -->
-		<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header bg-white cover-safe-bottom">
+		<div class="flex min-h-0 min-w-0 flex-1 flex-col pt-below-header bg-white">
 			<!-- Page content -->
 			<main class="flex min-h-0 flex-1 flex-col">
 				{@render children()}

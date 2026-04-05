@@ -17,7 +17,7 @@
 
 html {
 	font-family: var(--font-sans);
-	background-color: #111827;
+	background-color: #ffffff;
 }
 
 body {
@@ -33,17 +33,6 @@ body {
 	padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* White strip covering the bottom safe area (outside inset-0 on iOS) */
-.cover-safe-bottom::after {
-	content: '';
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: env(safe-area-inset-bottom, 0px);
-	background: white;
-	z-index: 10;
-}
 
 .pt-below-header {
 	padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
