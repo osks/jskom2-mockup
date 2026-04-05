@@ -153,7 +153,7 @@
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header"
-	style="mask-image: linear-gradient(to bottom, transparent, black calc(env(safe-area-inset-top, 0px) + 2rem)); -webkit-mask-image: linear-gradient(to bottom, transparent, black calc(env(safe-area-inset-top, 0px) + 2rem));"
+	style="mask-image: linear-gradient(to bottom, transparent, black calc(env(safe-area-inset-top, 0px) + 4rem)); -webkit-mask-image: linear-gradient(to bottom, transparent, black calc(env(safe-area-inset-top, 0px) + 4rem));"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
