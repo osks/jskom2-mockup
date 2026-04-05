@@ -8,7 +8,7 @@
 	}
 </script>
 
-<div class="bg-gray-50/75" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+<div class="bg-gray-50/50" style="backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);">
 		<div class="safe-top"></div>
 		<div class="flex h-14 items-center gap-2.5 px-4">
 			<!-- Hamburger -->
