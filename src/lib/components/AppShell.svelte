@@ -47,7 +47,7 @@
 		<!-- Main column -->
 		<div class="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-none pt-below-header">
 			<!-- Page content -->
-			<main class="flex min-h-0 flex-1 flex-col">
+			<main class="flex min-h-0 flex-1 flex-col bg-gray-50">
 				{@render children()}
 			</main>
 
