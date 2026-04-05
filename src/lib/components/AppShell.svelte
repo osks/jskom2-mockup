@@ -26,7 +26,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="h-dvh w-full overflow-hidden">
+<div class="h-dvh w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
 	<div class="fixed inset-0 z-0 w-72 bg-gray-900 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
@@ -34,7 +34,7 @@
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
-		class="relative z-10 flex h-full bg-white transition-transform duration-250 ease-out"
+		class="relative z-10 flex h-full bg-white overflow-hidden transition-transform duration-250 ease-out"
 		class:translate-x-72={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-12px_0_40px_rgba(0,0,0,0.3)]={$sidebarOpen}
