@@ -210,7 +210,7 @@
 				<div class="relative">
 					<button
 						onclick={toggleMoreMenu}
-						class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200/80 ring-[1.5px] ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] active:bg-gray-300/50"
+						class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200 ring-[1.5px] ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] active:bg-gray-300/50"
 						aria-label="Fler åtgärder"
 					>
 						<Ellipsis size={20} class="text-gray-500" />
@@ -244,7 +244,7 @@
 			{#if activeText}
 				<button
 					onclick={handleComment}
-					class="flex h-12 min-w-0 flex-1 items-center rounded-full bg-gray-200/80 ring-[1.5px] ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] px-4 active:bg-gray-300/50"
+					class="flex h-12 min-w-0 flex-1 items-center rounded-full bg-gray-200 ring-[1.5px] ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] px-4 active:bg-gray-300/50"
 				>
 					<span class="truncate text-sm text-gray-400">Kommentera...</span>
 				</button>
