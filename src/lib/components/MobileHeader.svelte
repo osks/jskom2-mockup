@@ -9,7 +9,7 @@
 </script>
 
 <div class="fixed top-0 left-0 right-0 z-20 md:hidden">
-	<div class="safe-top bg-white/5 backdrop-blur-sm"></div>
+	<div class="safe-top"></div>
 	<div class="flex h-14 items-center gap-2.5 bg-white/5 backdrop-blur-sm px-4">
 		<!-- Hamburger -->
 		<button
