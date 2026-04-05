@@ -145,7 +145,7 @@
 			{/if}
 
 			<!-- Input widget (textarea + send) -->
-			<div class="safe-bottom sticky bottom-0 mt-auto px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
+			<div class="safe-bottom sticky bottom-0 px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
 				<div class="flex flex-col rounded-2xl bg-white ring-1 ring-gray-200 focus-within:ring-1 focus-within:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus-within:ring-lyskom-500">
 					<textarea
 						bind:this={textareaEl}
