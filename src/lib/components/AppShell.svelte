@@ -4,8 +4,11 @@
 	import ComposeBar from './ComposeBar.svelte';
 	import PersonalMessage from './PersonalMessage.svelte';
 	import { sidebarOpen, closeSidebar } from '$lib/stores/ui';
+	import { readingState } from '$lib/stores/reading';
 	import { personalMessages } from '$lib/stores/messages';
 	import type { Snippet } from 'svelte';
+
+	const isComposing = $derived(!!$readingState.commentTo || $readingState.composingNew);
 
 	interface Props {
 		children: Snippet;
@@ -67,12 +70,14 @@
 	</div>
 
 	<!-- Mobile header bar (outside wrapper so backdrop-filter can see through to content) -->
-	<div
-		class="fixed top-0 left-0 right-0 z-20 md:hidden transition-transform duration-250 ease-out"
-		class:translate-x-72={$sidebarOpen}
-	>
-		<MobileHeader />
-	</div>
+	{#if !isComposing}
+		<div
+			class="fixed top-0 left-0 right-0 z-20 md:hidden transition-transform duration-250 ease-out"
+			class:translate-x-72={$sidebarOpen}
+		>
+			<MobileHeader />
+		</div>
+	{/if}
 
 	<!-- Personal message toasts -->
 	{#if $personalMessages.length > 0}
