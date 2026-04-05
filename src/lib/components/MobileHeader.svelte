@@ -9,8 +9,8 @@
 </script>
 
 <div class="fixed top-0 left-0 right-0 z-20 md:hidden">
-	<div class="safe-top bg-gray-50/30 backdrop-blur-md"></div>
-	<div class="flex h-14 items-center gap-2.5 bg-gray-50/30 backdrop-blur-md px-4">
+	<div class="safe-top bg-white/10 backdrop-blur-lg"></div>
+	<div class="flex h-14 items-center gap-2.5 bg-white/10 backdrop-blur-lg px-4">
 		<!-- Hamburger -->
 		<button
 			onclick={toggleSidebar}
