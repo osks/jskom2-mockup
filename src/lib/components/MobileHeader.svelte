@@ -11,7 +11,7 @@
 <!-- Single blur layer with gradient mask: full at top, fades to transparent below buttons -->
 <div
 	class="absolute inset-0 h-[calc(100%+5px)] pointer-events-none"
-	style="backdrop-filter: blur(1.5px); -webkit-backdrop-filter: blur(1.5px); mask-image: linear-gradient(to bottom, black, black calc(100% - 10px), transparent); -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 10px), transparent);"
+	style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); mask-image: linear-gradient(to bottom, black, black 50%, transparent); -webkit-mask-image: linear-gradient(to bottom, black, black 50%, transparent);"
 ></div>
 
 <!-- Content -->
