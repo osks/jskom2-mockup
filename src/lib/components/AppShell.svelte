@@ -34,7 +34,7 @@
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
-		class="relative z-10 flex h-full bg-gray-50 overflow-clip transition-transform duration-250 ease-out"
+		class="relative z-10 flex h-full overflow-clip transition-transform duration-250 ease-out"
 		class:translate-x-72={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
@@ -45,7 +45,7 @@
 		</div>
 
 		<!-- Main column -->
-		<div class="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-none pt-below-header">
+		<div class="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-none bg-gray-50 pt-below-header">
 			<!-- Page content -->
 			<main class="flex min-h-0 flex-1 flex-col">
 				{@render children()}
