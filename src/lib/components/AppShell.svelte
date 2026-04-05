@@ -34,7 +34,7 @@
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
-		class="relative z-10 flex h-full transition-transform duration-250 ease-out"
+		class="relative z-10 flex h-full bg-white transition-transform duration-250 ease-out"
 		class:translate-x-72={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-8px_0_24px_rgba(0,0,0,0.15)]={$sidebarOpen}
