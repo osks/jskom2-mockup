@@ -8,7 +8,14 @@
 	}
 </script>
 
-<div class="bg-gray-50/50" style="backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);">
+<!-- Single blur layer with gradient mask: full at top, fades to transparent below buttons -->
+<div
+	class="absolute inset-0 h-[calc(100%+24px)] pointer-events-none"
+	style="backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); background: linear-gradient(to bottom, rgb(249 250 251 / 0.5) calc(100% - 24px), transparent); mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent); -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);"
+></div>
+
+<!-- Content -->
+<div class="relative z-10">
 		<div class="safe-top"></div>
 		<div class="flex h-14 items-center gap-2.5 px-4">
 			<!-- Hamburger -->
@@ -38,5 +45,3 @@
 			</button>
 		</div>
 </div>
-<!-- Gradient fade from blurred to clear -->
-<div class="h-6 pointer-events-none" style="background: linear-gradient(to bottom, rgb(249 250 251 / 0.5), transparent); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); mask-image: linear-gradient(to bottom, black, transparent); -webkit-mask-image: linear-gradient(to bottom, black, transparent);"></div>
