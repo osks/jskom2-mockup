@@ -154,9 +154,6 @@
 	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none bg-gray-50"
 >
-	<!-- Top fade -->
-	<div class="pointer-events-none sticky top-0 z-10 h-6 bg-gradient-to-b from-gray-50 to-transparent"></div>
-
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
 		<div class="min-h-[60vh] shrink-0"></div>
