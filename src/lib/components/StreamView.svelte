@@ -3,7 +3,7 @@
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
-	import { ChevronRight, Ellipsis } from 'lucide-svelte';
+	import { ChevronRight, Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
 	// Set mobile header title based on current conference + unread count
@@ -203,16 +203,26 @@
 {#if hasTexts || nextAction.type !== 'all-done'}
 	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5">
 		<div class="pointer-events-auto flex w-full max-w-md items-center gap-2.5">
-			<!-- More actions -->
+			<!-- Secondary actions pill -->
 			{#if activeText}
 				<div class="relative">
-					<button
-						onclick={toggleMoreMenu}
-						class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200/55 backdrop-blur-md ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] active:bg-gray-300/50"
-						aria-label="Fler åtgärder"
-					>
-						<Ellipsis size={20} class="text-gray-500" />
-					</button>
+					<div class="flex h-12 items-center rounded-full bg-gray-200/55 backdrop-blur-md ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)]">
+						<button
+							onclick={handleComment}
+							class="flex h-12 w-12 items-center justify-center rounded-l-full active:bg-gray-300/50"
+							aria-label="Kommentera"
+						>
+							<MessageSquare size={18} class="text-gray-500" />
+						</button>
+						<div class="h-5 w-px bg-gray-400/30"></div>
+						<button
+							onclick={toggleMoreMenu}
+							class="flex h-12 w-12 items-center justify-center rounded-r-full active:bg-gray-300/50"
+							aria-label="Fler åtgärder"
+						>
+							<Ellipsis size={18} class="text-gray-500" />
+						</button>
+					</div>
 
 					<!-- More menu popover -->
 					{#if moreMenuOpen}
@@ -238,17 +248,7 @@
 				</div>
 			{/if}
 
-			<!-- Comment input pill -->
-			{#if activeText}
-				<button
-					onclick={handleComment}
-					class="flex h-12 min-w-0 flex-1 items-center rounded-full bg-gray-200/55 backdrop-blur-md ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] px-4 active:bg-gray-300/50"
-				>
-					<span class="truncate text-sm text-gray-400">Kommentera...</span>
-				</button>
-			{:else}
-				<div class="flex-1"></div>
-			{/if}
+			<div class="flex-1"></div>
 
 			<!-- Next button -->
 			{#if nextAction.type !== 'all-done'}
