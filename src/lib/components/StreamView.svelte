@@ -153,7 +153,7 @@
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header"
-	style="mask-image: linear-gradient(to bottom, transparent 0px, rgba(0,0,0,0.03) calc(env(safe-area-inset-top, 0px) + 2rem), rgba(0,0,0,0.1) calc(env(safe-area-inset-top, 0px) + 3rem), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem)); -webkit-mask-image: linear-gradient(to bottom, transparent 0px, rgba(0,0,0,0.03) calc(env(safe-area-inset-top, 0px) + 2rem), rgba(0,0,0,0.1) calc(env(safe-area-inset-top, 0px) + 3rem), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem));"
+	style="mask-image: linear-gradient(to bottom, black 5px, rgba(0,0,0,0.15) calc(env(safe-area-inset-top, 0px) + 2rem), rgba(0,0,0,0.25) calc(env(safe-area-inset-top, 0px) + 3rem), rgba(0,0,0,0.5) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem)); -webkit-mask-image: linear-gradient(to bottom, black 5px, rgba(0,0,0,0.15) calc(env(safe-area-inset-top, 0px) + 2rem), rgba(0,0,0,0.25) calc(env(safe-area-inset-top, 0px) + 3rem), rgba(0,0,0,0.5) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem));"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
