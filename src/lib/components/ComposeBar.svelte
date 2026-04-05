@@ -121,7 +121,7 @@
 			{#if isComment && !showMeta}
 				<button
 					onclick={() => showMeta = true}
-					class="mx-3 mt-2 rounded-full bg-white/40 px-3 py-1 text-left text-xs text-gray-500 ring-1 ring-white/60 hover:bg-white/60 transition-colors"
+					class="mx-3 mt-2 rounded-full bg-white px-3 py-1 text-left text-xs text-gray-500 ring-1 ring-gray-200 hover:bg-gray-50 transition-colors md:bg-white/40 md:ring-white/60 md:hover:bg-white/60"
 				>
 					{selectedConferenceName} · {subject}
 				</button>
@@ -129,7 +129,7 @@
 				<div class="mx-3 mt-2 space-y-1.5">
 					<select
 						bind:value={selectedConference}
-						class="w-full rounded-full bg-white/60 px-3 py-1.5 text-sm text-gray-700 ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+						class="w-full rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
 					>
 						{#each conferences as conf}
 							<option value={conf.id}>{conf.name}</option>
@@ -139,7 +139,7 @@
 						type="text"
 						bind:value={subject}
 						placeholder="Ärende..."
-						class="w-full rounded-full bg-white/60 px-3 py-1.5 text-sm ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+						class="w-full rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
 					/>
 				</div>
 			{/if}
@@ -153,7 +153,7 @@
 					oninput={autoGrow}
 					rows={3}
 					placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-					class="w-full resize-none rounded-xl bg-white/60 px-3 py-2 text-base text-gray-800 ring-1 ring-white/80 placeholder:text-gray-400 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:text-sm"
+					class="w-full resize-none rounded-xl bg-white px-3 py-2 text-base text-gray-800 ring-1 ring-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80 md:text-sm"
 					style="max-height: 250px;"
 				></textarea>
 			</div>
