@@ -84,12 +84,12 @@
 {#if isVisible}
 	<!-- Floating compose overlay -->
 	<div
-		class="fixed inset-0 z-40 flex flex-col bg-gray-50 md:pointer-events-none md:items-center md:justify-center md:bg-transparent md:p-6"
+		class="fixed inset-x-0 bottom-0 top-12 z-40 flex flex-col md:inset-0 md:pointer-events-none md:items-center md:justify-center md:bg-transparent md:p-6"
 		transition:fly={{ y: 300, duration: 300, easing: cubicOut }}
 	>
-		<div class="flex flex-1 flex-col overflow-y-auto md:pointer-events-auto md:flex-initial md:w-full md:max-w-lg md:max-h-[85vh] md:rounded-2xl md:bg-gray-200/40 md:backdrop-blur-md md:ring-1 md:ring-white/80 md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)]">
+		<div class="flex flex-1 flex-col overflow-y-auto rounded-t-2xl bg-gray-50 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] md:rounded-2xl md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)] md:pointer-events-auto md:flex-initial md:w-full md:max-w-lg md:max-h-[85vh] md:bg-gray-200/40 md:backdrop-blur-md md:ring-1 md:ring-white/80">
 			<!-- Header -->
-			<div class="safe-top flex items-center justify-between px-4 pt-3 pb-1">
+			<div class="flex items-center justify-between px-4 pt-3 pb-1">
 				<h2 class="text-sm font-medium text-gray-700">
 					{#if isComment}
 						Kommentera
