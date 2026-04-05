@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById } from '$lib/data';
-	import { Send, X } from 'lucide-svelte';
+	import { ArrowUp, Check, X } from 'lucide-svelte';
 
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
@@ -144,39 +144,33 @@
 				</div>
 			{/if}
 
-			<!-- Body -->
-			<div class="flex flex-1 flex-col px-3 pt-2">
-				<textarea
-					bind:this={textareaEl}
-					bind:value={body}
-					onkeydown={handleKeydown}
-					oninput={autoGrow}
-					rows={3}
-					placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-					class="w-full resize-none rounded-xl bg-white px-3 py-2 text-base text-gray-800 ring-1 ring-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80 md:text-sm"
-					style="max-height: 250px;"
-				></textarea>
-			</div>
-
-			<!-- Footer -->
-			<div class="safe-bottom sticky bottom-0 flex items-center justify-between bg-gray-50 px-6 pt-1 pb-5 md:bg-transparent">
-				<span class="text-xs text-gray-400">
-					{#if body.trim()}
-						&#8984;Enter
-					{/if}
-				</span>
-				<button
-					onclick={handleSend}
-					disabled={sent || !body.trim()}
-					class="flex h-12 items-center gap-2 rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 px-6 text-sm font-medium text-white active:bg-gray-700 disabled:opacity-50"
-				>
-					{#if sent}
-						<span>Skickat &#10003;</span>
-					{:else}
-						<Send size={18} />
-						Skicka
-					{/if}
-				</button>
+			<!-- Input widget (textarea + send) -->
+			<div class="safe-bottom sticky bottom-0 mt-auto px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
+				<div class="flex flex-col rounded-2xl bg-white ring-1 ring-gray-200 focus-within:ring-1 focus-within:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus-within:ring-lyskom-500">
+					<textarea
+						bind:this={textareaEl}
+						bind:value={body}
+						onkeydown={handleKeydown}
+						oninput={autoGrow}
+						rows={3}
+						placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
+						class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-base text-gray-800 placeholder:text-gray-400 focus:outline-none md:text-sm"
+						style="max-height: 250px;"
+					></textarea>
+					<div class="flex items-center justify-end px-2 pb-2">
+						<button
+							onclick={handleSend}
+							disabled={sent || !body.trim()}
+							class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-900/80 text-white active:bg-gray-700 disabled:opacity-30 transition-opacity"
+						>
+							{#if sent}
+								<Check size={18} />
+							{:else}
+								<ArrowUp size={18} />
+							{/if}
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
