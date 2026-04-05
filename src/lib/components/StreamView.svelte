@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { readingState, advanceReading, setCommentTo, setActiveText } from '$lib/stores/reading';
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
-	import { pageTitle } from '$lib/stores/page';
+	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
 	import { ChevronRight, Ellipsis } from 'lucide-svelte';
 	import { tick } from 'svelte';
@@ -11,18 +11,14 @@
 		const confId = $readingState.currentConference;
 		if (confId) {
 			const conf = getConferenceById(confId);
-			const name = conf?.name ?? 'Läsa';
-			// Count remaining unread texts in the reading list for this conference
+			pageTitle.set(conf?.name ?? 'Läsa');
 			const remaining = $readingState.readingList.reduce(
 				(sum, entry) => sum + entry.textIds.length, 0
 			);
-			if (remaining > 0) {
-				pageTitle.set(`${name} · ${remaining} olästa`);
-			} else {
-				pageTitle.set(name);
-			}
+			pageSubtitle.set(remaining > 0 ? `${remaining} olästa` : '');
 		} else {
 			pageTitle.set('Läsa');
+			pageSubtitle.set('');
 		}
 	});
 
