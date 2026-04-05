@@ -20,7 +20,7 @@
 		</button>
 
 		<!-- Center: meeting name + unread count -->
-		<div class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-full bg-gray-200/55 ring-1 ring-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.06)] h-12 px-4">
+		<div class="flex min-w-0 flex-1 flex-col items-center justify-center">
 			{#if $pageTitle}
 				<span class="max-w-full truncate text-sm font-medium text-gray-700">{$pageTitle}</span>
 			{/if}
