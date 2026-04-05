@@ -11,8 +11,8 @@
 <div class="fixed top-0 left-0 right-0 z-20 md:hidden">
 	<!-- Blur backdrop with gradient fade -->
 	<div
-		class="pointer-events-none absolute inset-0 h-[calc(100%+16px)]"
-		style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(to bottom, black 50%, transparent); -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent);"
+		class="pointer-events-none absolute inset-0 h-[calc(100%+12px)]"
+		style="backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) calc(100% - 12px), transparent 100%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) calc(100% - 12px), transparent 100%);"
 	></div>
 
 	<!-- Content -->
