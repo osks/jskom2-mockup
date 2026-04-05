@@ -32,7 +32,13 @@ body {
 	padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* Mobile header height = safe-area-top + content (approx 48px) */
+/* Mobile header height = safe-area-top + content */
 .pt-mobile-header {
 	padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
+}
+
+@media (min-width: 768px) {
+	.pt-mobile-header {
+		padding-top: 0;
+	}
 }
