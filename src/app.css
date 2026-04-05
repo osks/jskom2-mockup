@@ -18,6 +18,7 @@
 html {
 	font-family: var(--font-sans);
 	background-color: #ffffff;
+	overscroll-behavior: none;
 }
 
 body {
