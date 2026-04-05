@@ -24,7 +24,7 @@
 
 		<form
 			onsubmit={(e) => { e.preventDefault(); handleLogin(); }}
-			class="rounded-2xl bg-gray-200/40 ring-[1.5px] ring-white/80 p-6 space-y-4"
+			class="rounded-2xl bg-gray-200/40 backdrop-blur-md ring-1 ring-white/80 p-6 space-y-4"
 		>
 			<div>
 				<label for="server" class="block text-sm font-medium text-gray-700">Server</label>
@@ -32,7 +32,7 @@
 					id="server"
 					type="text"
 					bind:value={server}
-					class="mt-1 w-full rounded-xl bg-white/60 px-3 py-2 text-sm font-mono ring-[1.5px] ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm font-mono ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
 				/>
 			</div>
 
@@ -42,7 +42,7 @@
 					id="username"
 					type="text"
 					bind:value={username}
-					class="mt-1 w-full rounded-xl bg-white/60 px-3 py-2 text-sm ring-[1.5px] ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
 				/>
 			</div>
 
@@ -52,13 +52,13 @@
 					id="password"
 					type="password"
 					bind:value={password}
-					class="mt-1 w-full rounded-xl bg-white/60 px-3 py-2 text-sm ring-[1.5px] ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
 				/>
 			</div>
 
 			<button
 				type="submit"
-				class="w-full rounded-full bg-gray-900/80 ring-[1.5px] ring-white/25 px-4 py-2.5 text-sm font-semibold text-white active:bg-gray-700 transition-colors"
+				class="w-full rounded-full bg-gray-900/80 ring-1 ring-white/25 px-4 py-2.5 text-sm font-semibold text-white active:bg-gray-700 transition-colors"
 			>
 				Logga in
 			</button>
