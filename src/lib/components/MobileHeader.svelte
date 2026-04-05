@@ -16,7 +16,7 @@
 	></div>
 
 	<!-- Content -->
-	<div class="relative">
+	<div class="relative z-10">
 		<div class="safe-top"></div>
 		<div class="flex h-14 items-center gap-2.5 px-4">
 			<!-- Hamburger -->
