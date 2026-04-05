@@ -38,3 +38,5 @@
 			</button>
 		</div>
 </div>
+<!-- Gradient fade from blurred to clear -->
+<div class="h-6 pointer-events-none" style="background: linear-gradient(to bottom, rgb(249 250 251 / 0.5), transparent); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); mask-image: linear-gradient(to bottom, black, transparent); -webkit-mask-image: linear-gradient(to bottom, black, transparent);"></div>
