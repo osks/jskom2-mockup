@@ -30,8 +30,11 @@
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
 			showMeta = false;
 			tick().then(() => {
-				textareaEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-				textareaEl?.focus();
+				// Wait for fly transition to finish before scrolling
+				setTimeout(() => {
+					textareaEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					setTimeout(() => textareaEl?.focus(), 300);
+				}, 350);
 			});
 		}
 	});
