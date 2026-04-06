@@ -100,7 +100,7 @@
 	>
 		<div
 			class="flex flex-1 flex-col overflow-y-auto rounded-t-3xl bg-gray-50 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] md:rounded-2xl md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)] md:pointer-events-auto md:flex-initial md:w-full md:max-w-lg md:max-h-[85vh] md:bg-gray-200/40 md:backdrop-blur-md md:ring-1 md:ring-white/80"
-			transition:fly={{ y: 500, duration: 300, easing: cubicOut }}
+			transition:fly={{ y: window.innerHeight, duration: 300, easing: cubicOut }}
 		>
 			<!-- Header -->
 			<div class="flex items-center justify-between px-4 pt-3 pb-1">
