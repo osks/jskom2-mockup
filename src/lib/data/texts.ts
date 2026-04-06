@@ -79,12 +79,12 @@ export const texts: TextInfo[] = [
 		id: 110,
 		author: 1,
 		created: '2026-04-02T19:20:00',
-		subject: 'Re: Rust eller Go?',
-		body: `Visst, goroutines är smidiga. Men Rusts typsystem ger dig\ngarantier vid kompilering som Go inte kan matcha. Det\nbetyder färre buggar i produktion.\n\nOch async/await i Rust funkar bra med tokio numera.`,
+		subject: 'Tokio och async i Rust',
+		body: `Visst, goroutines är smidiga. Men Rusts typsystem ger dig\ngarantier vid kompilering som Go inte kan matcha. Det\nbetyder färre buggar i produktion.\n\nOch async/await i Rust funkar bra med tokio numera.\nJag har bytt helt till tokio för alla mina nätverkstjänster.`,
 		recipients: [2],
 		commentTo: [106],
 		commentedIn: [],
-		lines: 5,
+		lines: 6,
 		contentType: 'text/plain'
 	},
 

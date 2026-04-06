@@ -62,13 +62,6 @@
 		}))
 	);
 
-	// Only show subject if it's a new topic (not inherited from parent)
-	const showSubject = $derived.by(() => {
-		if (commentParents.length === 0) return true;
-		const parent = getTextById(text.commentTo![0]);
-		if (!parent) return true;
-		return text.subject !== `Re: ${parent.subject.replace(/^Re: /, '')}`;
-	});
 
 	const markTypeLabel: Record<TextMark['type'], string> = {
 		'important': 'viktig',
@@ -204,9 +197,7 @@
 			{/if}
 
 			<!-- Subject -->
-			{#if showSubject}
-				<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
-			{/if}
+			<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
 
 			<!-- Body -->
 			<div class="mt-1.5 text-base leading-relaxed text-gray-800 whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
