@@ -154,20 +154,25 @@
 					</div>
 				{:else}
 					<!-- Static display -->
-					<button
-						onclick={() => showMeta = true}
-						class="group flex flex-col gap-0.5 text-left"
-					>
-						{#each recipientNames as name}
-							<div class="text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
-								<span class="text-gray-400">@</span> {name}
+					<div class="flex items-start justify-between">
+						<div class="flex flex-col gap-0.5">
+							{#each recipientNames as name}
+								<div class="text-sm text-gray-500">
+									<span class="text-gray-400">@</span> {name}
+								</div>
+							{/each}
+							<div class="text-sm text-gray-700">
+								Ärende: {subject || 'Inget ärende'}
 							</div>
-						{/each}
-						<div class="flex items-baseline gap-1.5 text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-							<span>Ärende: {subject || 'Inget ärende'}</span>
-							<Pencil size={12} class="text-gray-400" />
 						</div>
-					</button>
+						<button
+							onclick={() => showMeta = true}
+							class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-gray-400 hover:bg-gray-200/50 hover:text-gray-600 transition-colors"
+							aria-label="Redigera"
+						>
+							<Pencil size={14} />
+						</button>
+					</div>
 				{/if}
 			</div>
 
