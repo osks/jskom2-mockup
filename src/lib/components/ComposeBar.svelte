@@ -113,7 +113,7 @@
 
 			<!-- Quoted original text (reply mode) -->
 			{#if isComment && commentToText}
-				<div class="mx-4 mt-3 max-h-40 overflow-y-auto border-l-2 border-gray-300 pl-3">
+				<div class="mx-4 mt-3 border-l-2 border-gray-300 pl-3">
 					<div class="text-sm font-semibold text-gray-700">
 						{commentToAuthor?.name ?? 'Okänd'}
 					</div>
