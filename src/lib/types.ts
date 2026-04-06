@@ -70,3 +70,10 @@ export interface PersonalMessage {
 	timestamp: string;
 	body: string;
 }
+
+export interface ServerConnection {
+	id: string;
+	serverName: string;
+	userId: number;
+	userName: string;
+}
