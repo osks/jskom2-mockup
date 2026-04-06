@@ -288,3 +288,15 @@ export function cancelCompose() {
 export function setActiveText(textId: number | null) {
 	readingState.update((s) => ({ ...s, activeTextId: textId }));
 }
+
+// Återse: show a text in the reader (add to buffer as if it were next)
+export function återseText(textId: number) {
+	const text = getTextById(textId);
+	if (!text) return;
+
+	readingState.update((s) => {
+		const buffer = [...s.buffer];
+		buffer.push({ kind: 'text', textId, conferenceId: s.currentConference ?? undefined });
+		return { ...s, buffer };
+	});
+}

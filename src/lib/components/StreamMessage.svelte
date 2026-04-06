@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { TextInfo, TextMark } from '$lib/types';
 	import { getUserById, getTextById, getConferenceById } from '$lib/data';
+	import { återseText } from '$lib/stores/reading';
 	import { base } from '$app/paths';
 	import InfoPopover from './InfoPopover.svelte';
 
@@ -94,7 +95,20 @@
 		<div class="min-w-0">
 			<!-- First line: #textno / datetime / author -->
 			<div class="flex items-baseline gap-1.5 text-sm flex-wrap">
-				<span class="font-mono text-gray-400">#{text.id}</span>
+				<InfoPopover>
+					{#snippet children()}
+						<span class="font-mono text-gray-400">#{text.id}</span>
+					{/snippet}
+					{#snippet popup()}
+						<div class="text-sm">
+							<div class="font-semibold text-gray-900 mb-1">Text #{text.id}</div>
+							<button
+								onclick={() => återseText(text.id)}
+								class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+							>Återse</button>
+						</div>
+					{/snippet}
+				</InfoPopover>
 				<span class="text-gray-300">/</span>
 				<span class="text-gray-400">{isoTimeStr}</span>
 				<span class="text-gray-300">/</span>
@@ -119,7 +133,20 @@
 			{#each commentParents as parent}
 				<div class="mt-0.5 text-sm text-gray-500">
 					<span class="text-gray-400">↳</span>
-					<a href="#text-{parent.id}" class="font-mono hover:text-gray-700">#{parent.id}</a>
+					<InfoPopover>
+						{#snippet children()}
+							<span class="font-mono cursor-pointer hover:text-gray-700">#{parent.id}</span>
+						{/snippet}
+						{#snippet popup()}
+							<div class="text-sm">
+								<div class="font-semibold text-gray-900 mb-1">Text #{parent.id}</div>
+								<button
+									onclick={() => återseText(parent.id)}
+									class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+								>Återse</button>
+							</div>
+						{/snippet}
+					</InfoPopover>
 					by
 					<InfoPopover>
 						{#snippet children()}
@@ -218,7 +245,20 @@
 					{#each commentChildren as child}
 						<div class="text-sm text-gray-500">
 							<span class="text-gray-400">↳</span>
-							<a href="#text-{child.id}" class="font-mono hover:text-gray-700">#{child.id}</a>
+							<InfoPopover>
+								{#snippet children()}
+									<span class="font-mono cursor-pointer hover:text-gray-700">#{child.id}</span>
+								{/snippet}
+								{#snippet popup()}
+									<div class="text-sm">
+										<div class="font-semibold text-gray-900 mb-1">Text #{child.id}</div>
+										<button
+											onclick={() => återseText(child.id)}
+											class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+										>Återse</button>
+									</div>
+								{/snippet}
+							</InfoPopover>
 							by
 							<InfoPopover>
 								{#snippet children()}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { readingState, advanceReading, setCommentTo, setActiveText } from '$lib/stores/reading';
+	import { readingState, advanceReading, setCommentTo, setActiveText, återseText } from '$lib/stores/reading';
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
@@ -24,6 +24,21 @@
 
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);
+
+	// Återse text input
+	let showÅterseInput = $state(false);
+	let återseInputValue = $state('');
+	let återseInputEl: HTMLInputElement | undefined = $state();
+
+	function handleÅterse() {
+		const id = parseInt(återseInputValue.trim(), 10);
+		if (!isNaN(id) && id > 0) {
+			återseText(id);
+			återseInputValue = '';
+			showÅterseInput = false;
+			closeMoreMenu();
+		}
+	}
 
 	// Touch tracking for swipe-up
 	let touchStartY = $state(0);
@@ -141,6 +156,8 @@
 
 	function closeMoreMenu() {
 		moreMenuOpen = false;
+		showÅterseInput = false;
+		återseInputValue = '';
 	}
 </script>
 
@@ -236,20 +253,44 @@
 						<!-- Backdrop -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
-						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-44 rounded-xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-								Markera text
-							</button>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-								Avmarkera text
-							</button>
-							<div class="mx-3 my-1 border-t border-gray-100"></div>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-								Markera som läst
-							</button>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-								Markera som oläst
-							</button>
+						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
+							{#if showÅterseInput}
+								<div class="px-3 py-2">
+									<div class="text-xs font-medium text-gray-500 mb-1.5">Textnummer</div>
+									<form onsubmit={(e) => { e.preventDefault(); handleÅterse(); }} class="flex items-center gap-2">
+										<input
+											bind:this={återseInputEl}
+											bind:value={återseInputValue}
+											type="number"
+											placeholder="#"
+											class="w-full rounded-lg bg-gray-100 px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+										/>
+										<button
+											type="submit"
+											disabled={!återseInputValue.trim()}
+											class="shrink-0 rounded-lg bg-gray-900/80 px-3 py-1.5 text-sm text-white disabled:opacity-30"
+										>Visa</button>
+									</form>
+								</div>
+							{:else}
+								<button onclick={() => { showÅterseInput = true; tick().then(() => återseInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+									Återse text
+								</button>
+								<div class="mx-3 my-1 border-t border-gray-100"></div>
+								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+									Markera text
+								</button>
+								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+									Avmarkera text
+								</button>
+								<div class="mx-3 my-1 border-t border-gray-100"></div>
+								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+									Markera som läst
+								</button>
+								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+									Markera som oläst
+								</button>
+							{/if}
 						</div>
 					{/if}
 				</div>
