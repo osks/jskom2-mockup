@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById } from '$lib/data';
-	import { ArrowUp, Check, X } from 'lucide-svelte';
+	import { ArrowUp, Check, X, Settings2 } from 'lucide-svelte';
 
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
@@ -38,6 +38,7 @@
 		if ($readingState.composingNew && !commentToText) {
 			selectedConference = $readingState.currentConference ?? 1;
 			subject = '';
+			showMeta = true;
 			tick().then(() => textareaEl?.focus());
 		}
 	});
@@ -117,15 +118,8 @@
 				</div>
 			{/if}
 
-			<!-- Conference + subject -->
-			{#if isComment && !showMeta}
-				<button
-					onclick={() => showMeta = true}
-					class="mx-3 mt-2 rounded-full bg-white px-3 py-1 text-left text-xs text-gray-500 ring-1 ring-gray-200 hover:bg-gray-50 transition-colors md:bg-white/40 md:ring-white/60 md:hover:bg-white/60"
-				>
-					{selectedConferenceName} · {subject}
-				</button>
-			{:else}
+			<!-- Conference + subject (expandable) -->
+			{#if showMeta}
 				<div class="mx-3 mt-2 space-y-1.5">
 					<select
 						bind:value={selectedConference}
@@ -144,7 +138,7 @@
 				</div>
 			{/if}
 
-			<!-- Input widget (textarea + send) -->
+			<!-- Input widget (textarea + toolbar) -->
 			<div class="safe-bottom sticky bottom-0 px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
 				<div class="flex flex-col rounded-2xl bg-white ring-1 ring-gray-200 focus-within:ring-1 focus-within:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus-within:ring-lyskom-500">
 					<textarea
@@ -157,7 +151,17 @@
 						class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-base text-gray-800 placeholder:text-gray-400 focus:outline-none md:text-sm"
 						style="max-height: 250px;"
 					></textarea>
-					<div class="flex items-center justify-end px-2 pb-2">
+					<div class="flex items-center justify-between px-2 pb-2">
+						<div class="flex items-center gap-1">
+							<button
+								onclick={() => showMeta = !showMeta}
+								class="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 active:bg-gray-100 transition-colors"
+								class:text-gray-600={showMeta}
+								aria-label="Inställningar"
+							>
+								<Settings2 size={18} />
+							</button>
+						</div>
 						<button
 							onclick={handleSend}
 							disabled={sent || !body.trim()}
