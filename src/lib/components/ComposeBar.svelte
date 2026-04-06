@@ -4,7 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById } from '$lib/data';
-	import { ArrowUp, Check, X, Settings2 } from 'lucide-svelte';
+	import { ArrowUp, Check, X, Pencil } from 'lucide-svelte';
 
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
@@ -118,27 +118,39 @@
 				</div>
 			{/if}
 
-			<!-- Conference + subject (expandable) -->
-			{#if showMeta}
-				<div class="mx-3 mt-2 space-y-1.5">
-					<select
-						bind:value={selectedConference}
-						class="w-full rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+			<!-- Conference + subject -->
+			<div class="mx-4 mt-2">
+				{#if showMeta}
+					<!-- Editable fields -->
+					<div class="space-y-1.5">
+						<select
+							bind:value={selectedConference}
+							class="w-full rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+						>
+							{#each conferences as conf}
+								<option value={conf.id}>{conf.name}</option>
+							{/each}
+						</select>
+						<input
+							type="text"
+							bind:value={subject}
+							placeholder="Ärende..."
+							class="w-full rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+						/>
+					</div>
+				{:else}
+					<!-- Static display -->
+					<button
+						onclick={() => showMeta = true}
+						class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 transition-colors"
 					>
-						{#each conferences as conf}
-							<option value={conf.id}>{conf.name}</option>
-						{/each}
-					</select>
-					<input
-						type="text"
-						bind:value={subject}
-						placeholder="Ärende..."
-						class="w-full rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
-					/>
-				</div>
-			{/if}
+						<span>{selectedConferenceName} · {subject || 'Inget ärende'}</span>
+						<Pencil size={12} />
+					</button>
+				{/if}
+			</div>
 
-			<!-- Input widget (textarea + toolbar) -->
+			<!-- Input widget (textarea + send) -->
 			<div class="safe-bottom sticky bottom-0 px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
 				<div class="flex flex-col rounded-2xl bg-white ring-1 ring-gray-200 focus-within:ring-1 focus-within:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus-within:ring-lyskom-500">
 					<textarea
@@ -151,17 +163,7 @@
 						class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-base text-gray-800 placeholder:text-gray-400 focus:outline-none md:text-sm"
 						style="max-height: 250px;"
 					></textarea>
-					<div class="flex items-center justify-between px-2 pb-2">
-						<div class="flex items-center gap-1">
-							<button
-								onclick={() => showMeta = !showMeta}
-								class="flex h-9 w-9 items-center justify-center rounded-full text-gray-400 active:bg-gray-100 transition-colors"
-								class:text-gray-600={showMeta}
-								aria-label="Inställningar"
-							>
-								<Settings2 size={18} />
-							</button>
-						</div>
+					<div class="flex items-center justify-end px-2 pb-2">
 						<button
 							onclick={handleSend}
 							disabled={sent || !body.trim()}
