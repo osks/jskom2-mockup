@@ -63,7 +63,7 @@
 	);
 
 	// Only show subject if it's a new topic (not inherited from parent)
-	const showSubject = $derived(() => {
+	const showSubject = $derived.by(() => {
 		if (commentParents.length === 0) return true;
 		const parent = getTextById(text.commentTo![0]);
 		if (!parent) return true;
@@ -204,7 +204,7 @@
 			{/if}
 
 			<!-- Subject -->
-			{#if showSubject()}
+			{#if showSubject}
 				<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
 			{/if}
 
