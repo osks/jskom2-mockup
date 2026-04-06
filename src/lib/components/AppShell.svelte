@@ -31,14 +31,14 @@
 
 <div class="h-screen w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
-	<div class="fixed inset-0 z-0 w-72 bg-gray-50 md:hidden">
+	<div class="fixed inset-0 z-0 w-80 bg-gray-50 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
 	</div>
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
 		class="relative z-10 flex h-full bg-gray-50 overflow-clip transition-transform duration-250 ease-out"
-		class:translate-x-72={$sidebarOpen}
+		class:translate-x-80={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
 	>
@@ -73,7 +73,7 @@
 	{#if !isComposing}
 		<div
 			class="fixed top-0 left-0 right-0 z-20 md:hidden transition-transform duration-250 ease-out"
-			class:translate-x-72={$sidebarOpen}
+			class:translate-x-80={$sidebarOpen}
 		>
 			<MobileHeader />
 		</div>
