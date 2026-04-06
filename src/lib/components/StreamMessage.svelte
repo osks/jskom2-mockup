@@ -119,6 +119,7 @@
 			{#each commentParents as parent}
 				<div class="mt-0.5 pl-4 text-sm text-gray-500">
 					<span class="text-gray-400">↳</span>
+					<a href="#text-{parent.id}" class="font-mono hover:text-gray-700">#{parent.id}</a>
 					<InfoPopover>
 						{#snippet children()}
 							<span>{parent.authorName}</span>
@@ -216,6 +217,7 @@
 					{#each commentChildren as child}
 						<div class="text-sm text-gray-500">
 							<span class="text-gray-400">↳</span>
+							<a href="#text-{child.id}" class="font-mono hover:text-gray-700">#{child.id}</a>
 							<InfoPopover>
 								{#snippet children()}
 									<span>{child.authorName}</span>
