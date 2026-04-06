@@ -117,7 +117,7 @@
 
 			<!-- Comment parents -->
 			{#each commentParents as parent}
-				<div class="mt-0.5 text-sm text-gray-500">
+				<div class="mt-0.5 pl-4 text-sm text-gray-500">
 					<span class="text-gray-400">↳</span>
 					<InfoPopover>
 						{#snippet children()}
@@ -139,7 +139,7 @@
 
 			<!-- Recipients -->
 			{#each recipientConfs as { id, conf }}
-				<div class="mt-0.5 text-sm text-gray-500">
+				<div class="mt-0.5 pl-4 text-sm text-gray-500">
 					<span class="text-gray-400">@</span>
 					<InfoPopover>
 						{#snippet children()}
@@ -161,7 +161,7 @@
 
 			<!-- CC Recipients -->
 			{#each ccRecipientConfs as { id, conf }}
-				<div class="mt-0.5 text-sm text-gray-500">
+				<div class="mt-0.5 pl-4 text-sm text-gray-500">
 					<span class="text-gray-400">cc</span>
 					<InfoPopover>
 						{#snippet children()}
@@ -183,7 +183,7 @@
 
 			<!-- Marks -->
 			{#if text.marks && text.marks.length > 0}
-				<div class="mt-0.5 text-sm text-gray-500">
+				<div class="mt-0.5 pl-4 text-sm text-gray-500">
 					<span class="text-gray-400">★</span>
 					{text.marks.map((m) => {
 						const name = getUserById(m.userId)?.name ?? 'Okänd';
@@ -200,7 +200,7 @@
 
 			<!-- Anmärkningar (remarks) -->
 			{#if remarkAuthors.length > 0}
-				<div class="mt-2 space-y-0.5">
+				<div class="mt-2 pl-4 space-y-0.5">
 					{#each remarkAuthors as remark}
 						<div class="text-sm text-gray-500">
 							<span class="text-gray-400">—</span>
@@ -212,7 +212,7 @@
 
 			<!-- Comment children -->
 			{#if commentChildren.length > 0}
-				<div class="mt-2 space-y-0.5">
+				<div class="mt-2 pl-4 space-y-0.5">
 					{#each commentChildren as child}
 						<div class="text-sm text-gray-500">
 							<span class="text-gray-400">↳</span>
