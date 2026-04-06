@@ -117,9 +117,10 @@
 
 			<!-- Comment parents -->
 			{#each commentParents as parent}
-				<div class="mt-0.5 pl-4 text-sm text-gray-500">
+				<div class="mt-0.5 text-sm text-gray-500">
 					<span class="text-gray-400">↳</span>
 					<a href="#text-{parent.id}" class="font-mono hover:text-gray-700">#{parent.id}</a>
+					by
 					<InfoPopover>
 						{#snippet children()}
 							<span>{parent.authorName}</span>
@@ -140,7 +141,7 @@
 
 			<!-- Recipients -->
 			{#each recipientConfs as { id, conf }}
-				<div class="mt-0.5 pl-4 text-sm text-gray-500">
+				<div class="mt-0.5 text-sm text-gray-500">
 					<span class="text-gray-400">@</span>
 					<InfoPopover>
 						{#snippet children()}
@@ -162,7 +163,7 @@
 
 			<!-- CC Recipients -->
 			{#each ccRecipientConfs as { id, conf }}
-				<div class="mt-0.5 pl-4 text-sm text-gray-500">
+				<div class="mt-0.5 text-sm text-gray-500">
 					<span class="text-gray-400">cc</span>
 					<InfoPopover>
 						{#snippet children()}
@@ -184,7 +185,7 @@
 
 			<!-- Marks -->
 			{#if text.marks && text.marks.length > 0}
-				<div class="mt-0.5 pl-4 text-sm text-gray-500">
+				<div class="mt-0.5 text-sm text-gray-500">
 					<span class="text-gray-400">★</span>
 					{text.marks.map((m) => {
 						const name = getUserById(m.userId)?.name ?? 'Okänd';
@@ -218,6 +219,7 @@
 						<div class="text-sm text-gray-500">
 							<span class="text-gray-400">↳</span>
 							<a href="#text-{child.id}" class="font-mono hover:text-gray-700">#{child.id}</a>
+							by
 							<InfoPopover>
 								{#snippet children()}
 									<span>{child.authorName}</span>
