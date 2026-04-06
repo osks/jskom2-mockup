@@ -29,7 +29,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="h-dvh w-full">
+<div class="h-screen w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
 	<div class="fixed inset-0 z-0 w-72 bg-gray-50 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
