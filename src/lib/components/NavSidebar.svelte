@@ -142,21 +142,9 @@
 	<!-- Account section -->
 	{#if $activeConnection}
 		<div class="border-t border-gray-200">
-			<!-- Collapsed: current account -->
-			<button
-				onclick={() => expanded = !expanded}
-				class="flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-gray-100"
-			>
-				<div class="min-w-0 flex-1">
-					<div class="truncate text-sm font-medium text-gray-900">{$activeConnection.userName}</div>
-					<div class="truncate text-xs text-gray-400 font-mono">{$activeConnection.serverName}</div>
-				</div>
-				<ChevronUp size={14} class="shrink-0 text-gray-400 transition-transform {expanded ? '' : 'rotate-180'}" />
-			</button>
-
-			<!-- Expanded panel -->
+			<!-- Expanded panel (above the toggle) -->
 			{#if expanded}
-				<div class="border-t border-gray-100 px-2 py-2 space-y-px">
+				<div class="px-2 py-2 space-y-px">
 					<!-- All connections in stable order -->
 					{#if $connections.length > 1}
 						{#each $connections as conn}
@@ -206,6 +194,18 @@
 					</div>
 				</div>
 			{/if}
+
+			<!-- Toggle button (always at bottom) -->
+			<button
+				onclick={() => expanded = !expanded}
+				class="flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-gray-100 {expanded ? 'border-t border-gray-100' : ''}"
+			>
+				<div class="min-w-0 flex-1">
+					<div class="truncate text-sm font-medium text-gray-900">{$activeConnection.userName}</div>
+					<div class="truncate text-xs text-gray-400 font-mono">{$activeConnection.serverName}</div>
+				</div>
+				<ChevronUp size={14} class="shrink-0 text-gray-400 transition-transform {expanded ? '' : 'rotate-180'}" />
+			</button>
 		</div>
 	{/if}
 </nav>
