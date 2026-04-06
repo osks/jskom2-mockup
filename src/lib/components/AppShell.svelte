@@ -55,7 +55,7 @@
 			{#if showRail}
 				<ServerRail />
 			{/if}
-			<div class="w-56">
+			<div class="w-60">
 				<NavSidebar />
 			</div>
 		</div>
