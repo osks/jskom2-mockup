@@ -31,7 +31,7 @@
 	{#each $connections as conn}
 		{@const active = conn.id === $activeConnectionId}
 		{@const color = getAuthorColor(conn.userId)}
-		{@const unread = !active ? totalUnread(conn.userId) : 0}
+		{@const unread = totalUnread(conn.userId)}
 		<div class="relative">
 			<button
 				onclick={() => handleSwitch(conn.id)}
