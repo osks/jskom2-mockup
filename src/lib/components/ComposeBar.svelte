@@ -127,7 +127,7 @@
 			<div class="mx-4 mt-2">
 				{#if showMeta}
 					<!-- Editable fields -->
-					<div class="space-y-1.5">
+					<div class="space-y-2 py-0.5">
 						{#each recipients as recipientId, i}
 							<div class="flex items-center gap-2">
 								<span class="shrink-0 text-sm text-gray-400">@</span>
