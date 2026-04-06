@@ -9,8 +9,17 @@ export const texts: TextInfo[] = [
 		subject: 'Rust eller Go?',
 		body: `Jag har funderat ett tag på att lära mig ett nytt systemspråk.\nRust verkar ha bra säkerhetsgarantier men är svårare att lära sig.\nGo är enklare men saknar en del features.\n\nVad tycker ni? Har någon erfarenhet av båda?`,
 		recipients: [2],
+		ccRecipients: [3],
 		commentTo: [],
 		commentedIn: [103, 105],
+		marks: [
+			{ userId: 1, type: 'important' },
+			{ userId: 7, type: 'bookmark' }
+		],
+		remarks: [
+			{ author: 1, created: '2026-04-02T15:00:00', body: 'Bra fråga!' },
+			{ author: 7, created: '2026-04-02T17:50:00', body: '👍' }
+		],
 		lines: 5,
 		contentType: 'text/plain'
 	},
@@ -59,6 +68,10 @@ export const texts: TextInfo[] = [
 		recipients: [2],
 		commentTo: [103],
 		commentedIn: [],
+		remarks: [
+			{ author: 4, created: '2026-04-02T18:00:00', body: 'Bra sammanfattning!' },
+			{ author: 1, created: '2026-04-02T18:10:00', body: 'Håller med om Cargo' }
+		],
 		lines: 17,
 		contentType: 'text/plain'
 	},
@@ -133,8 +146,15 @@ export const texts: TextInfo[] = [
 		subject: 'Webbklient för LysKOM',
 		body: `Jag har börjat fundera på att bygga en modern webbklient\nför LysKOM. Elisp-klienten är fantastisk men inte alla\nanvänder Emacs.\n\njskom finns redan men jag tänker att det kanske är dags\nför en ny version med modernare teknik.\n\nTankar? Vad borde prioriteras i en ny webbklient?`,
 		recipients: [3],
+		ccRecipients: [1],
 		commentTo: [],
 		commentedIn: [111, 112, 113],
+		marks: [
+			{ userId: 1, type: 'bookmark' }
+		],
+		remarks: [
+			{ author: 4, created: '2026-04-01T10:30:00', body: 'Spännande projekt!' }
+		],
 		lines: 8,
 		contentType: 'text/plain'
 	},

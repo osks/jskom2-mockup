@@ -18,6 +18,17 @@ export interface Conference {
 	totalTexts: number;
 }
 
+export interface TextMark {
+	userId: number;
+	type: 'important' | 'to-read' | 'personal' | 'bookmark';
+}
+
+export interface TextRemark {
+	author: number;
+	created: string;
+	body: string;
+}
+
 export interface TextInfo {
 	id: number;
 	author: number;
@@ -28,6 +39,8 @@ export interface TextInfo {
 	ccRecipients?: number[];
 	commentTo?: number[];
 	commentedIn?: number[];
+	marks?: TextMark[];
+	remarks?: TextRemark[];
 	lines: number;
 	contentType: 'text/plain' | 'text/enriched';
 }
