@@ -155,6 +155,8 @@
 	}
 
 	function closeMoreMenu() {
+		// Blur input first to dismiss keyboard before layout changes
+		återseInputEl?.blur();
 		moreMenuOpen = false;
 		showÅterseInput = false;
 		återseInputValue = '';
@@ -220,7 +222,7 @@
 <!-- Floating action bar (hidden when compose panel is open) -->
 {#if hasTexts || nextAction.type !== 'all-done'}
 	{@const composing = !!$readingState.commentTo || $readingState.composingNew}
-	<div class="safe-bottom pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5 transition-opacity duration-200"
+	<div class="safe-bottom pointer-events-none fixed inset-x-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5 transition-opacity duration-200"
 		class:opacity-0={composing}
 	>
 		<div class="flex w-full max-w-md items-center gap-2.5"
