@@ -25,18 +25,16 @@
 	let scrollContainer: HTMLElement | undefined = $state();
 	let prevBufferLen = $state(0);
 
-	// Återse text input
-	let showÅterseInput = $state(false);
-	let återseInputValue = $state('');
-	let återseInputEl: HTMLInputElement | undefined = $state();
+	// Review text input
+	let showReviewInput = $state(false);
+	let reviewInputValue = $state('');
+	let reviewInputEl: HTMLInputElement | undefined = $state();
 
-	function handleÅterse() {
-		const id = parseInt(återseInputValue.trim(), 10);
+	function handleReview() {
+		const id = parseInt(reviewInputValue.trim(), 10);
 		if (!isNaN(id) && id > 0) {
 			återseText(id);
-			återseInputValue = '';
-			showÅterseInput = false;
-			closeMoreMenu();
+			closeReviewInput();
 		}
 	}
 
@@ -155,11 +153,13 @@
 	}
 
 	function closeMoreMenu() {
-		// Blur input first to dismiss keyboard before layout changes
-		återseInputEl?.blur();
 		moreMenuOpen = false;
-		showÅterseInput = false;
-		återseInputValue = '';
+	}
+
+	function closeReviewInput() {
+		reviewInputEl?.blur();
+		showReviewInput = false;
+		reviewInputValue = '';
 	}
 </script>
 
@@ -256,43 +256,23 @@
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
 						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
-							{#if showÅterseInput}
-								<div class="px-3 py-2">
-									<div class="text-xs font-medium text-gray-500 mb-1.5">Textnummer</div>
-									<form onsubmit={(e) => { e.preventDefault(); handleÅterse(); }} class="flex items-center gap-2">
-										<input
-											bind:this={återseInputEl}
-											bind:value={återseInputValue}
-											type="number"
-											placeholder="#"
-											class="w-full rounded-lg bg-gray-100 px-3 py-1.5 text-base ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
-										/>
-										<button
-											type="submit"
-											disabled={!återseInputValue.trim()}
-											class="shrink-0 rounded-lg bg-gray-900/80 px-3 py-1.5 text-sm text-white disabled:opacity-30"
-										>Visa</button>
-									</form>
-								</div>
-							{:else}
-								<button onclick={() => { showÅterseInput = true; tick().then(() => återseInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-									Återse text
-								</button>
-								<div class="mx-3 my-1 border-t border-gray-100"></div>
-								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-									Markera text
-								</button>
-								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-									Avmarkera text
-								</button>
-								<div class="mx-3 my-1 border-t border-gray-100"></div>
-								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-									Markera som läst
-								</button>
-								<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
-									Markera som oläst
-								</button>
-							{/if}
+							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Återse text
+							</button>
+							<div class="mx-3 my-1 border-t border-gray-100"></div>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera text
+							</button>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Avmarkera text
+							</button>
+							<div class="mx-3 my-1 border-t border-gray-100"></div>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera som läst
+							</button>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+								Markera som oläst
+							</button>
 						</div>
 					{/if}
 				</div>
@@ -310,6 +290,31 @@
 					<span class="text-sm font-medium text-white">Nästa</span>
 				</button>
 			{/if}
+		</div>
+	</div>
+{/if}
+
+<!-- Återse text dialog (separate from floating bar to avoid keyboard layout issues) -->
+{#if showReviewInput}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/20" onclick={closeReviewInput}>
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div class="mx-6 w-full max-w-xs rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-200/60" onclick={(e) => e.stopPropagation()}>
+			<div class="text-sm font-medium text-gray-700 mb-3">Återse text</div>
+			<form onsubmit={(e) => { e.preventDefault(); handleReview(); }} class="flex items-center gap-2">
+				<input
+					bind:this={reviewInputEl}
+					bind:value={reviewInputValue}
+					type="number"
+					placeholder="Textnummer"
+					class="w-full rounded-xl bg-gray-100 px-4 py-2.5 text-base ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+				/>
+				<button
+					type="submit"
+					disabled={!reviewInputValue.trim()}
+					class="shrink-0 rounded-xl bg-gray-900/80 px-4 py-2.5 text-sm font-medium text-white disabled:opacity-30"
+				>Visa</button>
+			</form>
 		</div>
 	</div>
 {/if}
