@@ -25,7 +25,7 @@
 	<title>{conference?.name ?? 'Möte'} — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-2xl bg-white">
+<div class="mx-auto max-w-2xl bg-white pt-below-header">
 	{#if conference}
 		<!-- Conference header: full on desktop, description below on mobile -->
 		<div class="hidden md:block sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">

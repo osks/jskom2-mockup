@@ -18,7 +18,7 @@
 	<title>{user?.name ?? 'Användare'} — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-2xl bg-white">
+<div class="mx-auto max-w-2xl bg-white pt-below-header">
 	{#if user}
 		<!-- User header -->
 		<div class="border-b border-gray-100 px-4 py-4">
