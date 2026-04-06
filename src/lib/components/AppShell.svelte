@@ -34,7 +34,7 @@
 
 <div class="h-screen w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
-	<div class="fixed inset-0 z-0 flex md:hidden" style="width: {showRail ? '21rem' : '18rem'}">
+	<div class="fixed inset-0 z-0 flex md:hidden" style="width: {showRail ? '22rem' : '18rem'}">
 		{#if showRail}
 			<ServerRail onNavigate={closeSidebar} />
 		{/if}
@@ -46,7 +46,7 @@
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
 		class="relative z-10 flex h-full bg-gray-50 overflow-clip transition-transform duration-250 ease-out"
-		style:transform={$sidebarOpen ? `translateX(${showRail ? '21rem' : '18rem'})` : ''}
+		style:transform={$sidebarOpen ? `translateX(${showRail ? '22rem' : '18rem'})` : ''}
 		class:md:!translate-x-0={true}
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
 	>
@@ -86,7 +86,7 @@
 	{#if !isComposing}
 		<div
 			class="fixed top-0 left-0 right-0 z-20 md:hidden transition-transform duration-250 ease-out"
-			style:transform={$sidebarOpen ? `translateX(${showRail ? '21rem' : '18rem'})` : ''}
+			style:transform={$sidebarOpen ? `translateX(${showRail ? '22rem' : '18rem'})` : ''}
 		>
 			<MobileHeader />
 		</div>

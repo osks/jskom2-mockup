@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="flex h-full w-12 flex-col items-center bg-gray-100 py-3 gap-2 safe-top safe-bottom">
+<div class="flex h-full w-16 flex-col items-center bg-gray-100 py-3 gap-2 safe-top safe-bottom">
 	{#each $connections as conn}
 		{@const active = conn.id === $activeConnectionId}
 		{@const color = getAuthorColor(conn.userId)}
@@ -35,7 +35,7 @@
 		<div class="relative">
 			<button
 				onclick={() => handleSwitch(conn.id)}
-				class="flex h-9 w-9 items-center justify-center text-sm font-semibold text-white transition-all {color.bg} {active ? 'rounded-xl ring-2 ring-lyskom-500 ring-offset-2 ring-offset-gray-100' : 'rounded-2xl hover:rounded-xl opacity-80 hover:opacity-100'}"
+				class="flex h-11 w-11 items-center justify-center text-sm font-semibold text-white transition-all {color.bg} {active ? 'rounded-xl ring-2 ring-lyskom-500 ring-offset-2 ring-offset-gray-100' : 'rounded-2xl hover:rounded-xl opacity-80 hover:opacity-100'}"
 				title="{conn.userName} @ {conn.serverName}"
 			>
 				{conn.userName.charAt(0).toUpperCase()}
@@ -50,7 +50,7 @@
 
 	<button
 		onclick={handleAdd}
-		class="flex h-9 w-9 items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 text-gray-400 transition-all hover:rounded-xl hover:border-gray-400 hover:text-gray-500"
+		class="flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 text-gray-400 transition-all hover:rounded-xl hover:border-gray-400 hover:text-gray-500"
 		title="Anslut till server"
 	>
 		<Plus size={18} />
