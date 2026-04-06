@@ -29,7 +29,10 @@
 			recipients = [...commentToText.recipients];
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
 			showMeta = false;
-			tick().then(() => textareaEl?.focus());
+			tick().then(() => {
+				textareaEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				textareaEl?.focus();
+			});
 		}
 	});
 
