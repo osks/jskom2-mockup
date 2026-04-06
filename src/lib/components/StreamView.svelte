@@ -178,24 +178,7 @@
 		<!-- Top spacer so first text can sit near bottom of viewport -->
 		<div class="min-h-[60vh] shrink-0"></div>
 		{#each $readingState.buffer as item, i}
-			{#if item.kind === 'conference-enter'}
-				{@const conf = item.conferenceId ? getConferenceById(item.conferenceId) : null}
-				{#if conf}
-					<div
-						id="conference-{item.conferenceId}"
-						class="hidden md:sticky md:block top-0 z-10 bg-white/95 backdrop-blur-sm px-4 py-2 border-b border-gray-100"
-					>
-						<span class="text-xs font-medium text-gray-500">
-							{conf.name}
-						</span>
-						{#if item.conferenceUnread && item.conferenceUnread > 0}
-							<span class="ml-1.5 text-xs text-gray-400">
-								{item.conferenceUnread} olästa
-							</span>
-						{/if}
-					</div>
-				{/if}
-			{:else if item.kind === 'text' && item.textId}
+			{#if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
