@@ -43,7 +43,7 @@
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
 	>
 		<!-- Desktop sidebar -->
-		<div class="hidden w-56 shrink-0 md:block">
+		<div class="hidden w-64 shrink-0 md:block">
 			<NavSidebar />
 		</div>
 
