@@ -94,10 +94,7 @@
 		<div class="min-w-0">
 			<!-- First line: #textno / datetime / author -->
 			<div class="flex items-baseline gap-1.5 text-sm flex-wrap">
-				<a
-					href="{base}/texts/{text.id}"
-					class="font-mono text-gray-400 hover:text-gray-600"
-				>#{text.id}</a>
+				<span class="font-mono text-gray-400">#{text.id}</span>
 				<span class="text-gray-300">/</span>
 				<span class="text-gray-400">{isoTimeStr}</span>
 				<span class="text-gray-300">/</span>
