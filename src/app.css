@@ -19,6 +19,7 @@ html {
 	font-family: var(--font-sans);
 	background-color: var(--color-gray-50);
 	overscroll-behavior: none;
+	touch-action: manipulation;
 }
 
 body {
