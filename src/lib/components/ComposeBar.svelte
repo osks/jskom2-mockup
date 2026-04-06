@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
-	import { conferences, getTextById, getUserById } from '$lib/data';
+	import { conferences, getTextById, getUserById, getConferenceById } from '$lib/data';
 	import { ArrowUp, Check, X, Pencil } from 'lucide-svelte';
 
 	const commentToText = $derived(
@@ -16,7 +16,7 @@
 	const isVisible = $derived(!!commentToText || $readingState.composingNew);
 	const isComment = $derived(!!commentToText);
 
-	let selectedConference = $state(1);
+	let recipients = $state<number[]>([1]);
 	let subject = $state('');
 	let body = $state('');
 	let sent = $state(false);
@@ -26,7 +26,7 @@
 	// Update defaults when commentTo changes
 	$effect(() => {
 		if (commentToText) {
-			selectedConference = commentToText.recipients[0] ?? 1;
+			recipients = [...commentToText.recipients];
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
 			showMeta = false;
 			tick().then(() => textareaEl?.focus());
@@ -36,12 +36,16 @@
 	// Focus when opening new compose
 	$effect(() => {
 		if ($readingState.composingNew && !commentToText) {
-			selectedConference = $readingState.currentConference ?? 1;
+			recipients = $readingState.currentConference ? [$readingState.currentConference] : [1];
 			subject = '';
 			showMeta = true;
 			tick().then(() => textareaEl?.focus());
 		}
 	});
+
+	const recipientNames = $derived(
+		recipients.map((id) => getConferenceById(id)?.name ?? `Möte ${id}`)
+	);
 
 	function handleSend() {
 		sent = true;
@@ -57,6 +61,7 @@
 	function handleCancel() {
 		body = '';
 		subject = '';
+		recipients = [1];
 		clearCommentTo();
 		cancelCompose();
 	}
@@ -77,9 +82,9 @@
 		el.style.height = Math.min(el.scrollHeight, 250) + 'px';
 	}
 
-	const selectedConferenceName = $derived(
-		conferences.find((c) => c.id === selectedConference)?.name ?? ''
-	);
+	function updateRecipient(index: number, value: number) {
+		recipients = recipients.map((r, i) => i === index ? value : r);
+	}
 </script>
 
 {#if isVisible}
@@ -123,29 +128,47 @@
 				{#if showMeta}
 					<!-- Editable fields -->
 					<div class="space-y-1.5">
-						<select
-							bind:value={selectedConference}
-							class="w-full rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
-						>
-							{#each conferences as conf}
-								<option value={conf.id}>{conf.name}</option>
-							{/each}
-						</select>
-						<input
-							type="text"
-							bind:value={subject}
-							placeholder="Ärende..."
-							class="w-full rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
-						/>
+						{#each recipients as recipientId, i}
+							<div class="flex items-center gap-2">
+								<span class="shrink-0 text-xs text-gray-400 w-12">Möte</span>
+								<select
+									value={recipientId}
+									onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
+									class="flex-1 rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+								>
+									{#each conferences as conf}
+										<option value={conf.id}>{conf.name}</option>
+									{/each}
+								</select>
+							</div>
+						{/each}
+						<div class="flex items-center gap-2">
+							<span class="shrink-0 text-xs text-gray-400 w-12">Ärende</span>
+							<input
+								type="text"
+								bind:value={subject}
+								placeholder="Ärende..."
+								class="flex-1 rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+							/>
+						</div>
 					</div>
 				{:else}
 					<!-- Static display -->
 					<button
 						onclick={() => showMeta = true}
-						class="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 transition-colors"
+						class="group flex flex-col gap-0.5 text-left"
 					>
-						<span>{selectedConferenceName} · {subject || 'Inget ärende'}</span>
-						<Pencil size={12} />
+						{#each recipientNames as name}
+							<div class="flex items-center gap-1.5 text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
+								<span class="shrink-0 text-gray-400">Möte</span>
+								<span>{name}</span>
+							</div>
+						{/each}
+						<div class="flex items-center gap-1.5 text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
+							<span class="shrink-0 text-gray-400">Ärende</span>
+							<span>{subject || 'Inget ärende'}</span>
+							<Pencil size={10} class="text-gray-400" />
+						</div>
 					</button>
 				{/if}
 			</div>
