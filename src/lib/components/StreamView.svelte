@@ -3,7 +3,7 @@
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
-	import { ChevronRight, Ellipsis, MessageSquare } from 'lucide-svelte';
+	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
 	// Set mobile header title based on current conference + unread count
@@ -302,10 +302,10 @@
 			{#if nextAction.type !== 'all-done'}
 				<button
 					onclick={() => advanceReading()}
-					class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-900/80 backdrop-blur-md ring-[1.5px] ring-white/25 active:bg-gray-700"
+					class="flex h-12 items-center justify-center rounded-full bg-gray-900/80 backdrop-blur-md px-5 ring-[1.5px] ring-white/25 active:bg-gray-700"
 					aria-label="Nästa olästa"
 				>
-					<ChevronRight size={24} class="text-white" />
+					<span class="text-sm font-medium text-white">Nästa</span>
 				</button>
 			{/if}
 		</div>
