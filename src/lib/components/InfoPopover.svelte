@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Hash } from 'lucide-svelte';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -9,7 +8,6 @@
 
 	let { children, popup }: Props = $props();
 	let open = $state(false);
-	let triggerEl: HTMLElement | undefined = $state();
 
 	function toggle(e: MouseEvent) {
 		e.preventDefault();
@@ -22,16 +20,11 @@
 	}
 </script>
 
-<span class="relative inline-flex items-baseline gap-0.5">
-	{@render children()}
-	<button
-		bind:this={triggerEl}
-		onclick={toggle}
-		class="inline-flex items-center justify-center text-gray-300 hover:text-gray-500 transition-colors"
-		aria-label="Visa info"
-	>
-		<Hash size={12} />
-	</button>
+<span class="relative inline">
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<span onclick={toggle} class="cursor-pointer">
+		{@render children()}
+	</span>
 
 	{#if open}
 		<!-- Backdrop -->

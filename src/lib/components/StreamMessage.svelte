@@ -110,10 +110,7 @@
 				<span class="text-gray-300">/</span>
 				<InfoPopover>
 					{#snippet children()}
-						<a
-							href="{base}/users/{text.author}"
-							class="font-semibold text-gray-900 hover:underline"
-						>{author?.name ?? 'Okänd'}</a>
+						<span class="font-semibold text-gray-900">{author?.name ?? 'Okänd'}</span>
 					{/snippet}
 					{#snippet popup()}
 						<div class="space-y-1 text-sm">
