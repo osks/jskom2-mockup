@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { currentUser, connections, activeConnection, activeConnectionId, switchConnection, logout } from '$lib/stores/auth';
 	import { getMemberships, getConferenceById } from '$lib/data';
-	import { BookOpen, Users, PenSquare, Search, LogOut, Plus, KeyRound, ChevronUp } from 'lucide-svelte';
+	import { BookOpen, Users, PenSquare, Search, LogOut, Plus, KeyRound } from 'lucide-svelte';
 	import { startCompose } from '$lib/stores/reading';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
@@ -13,7 +13,7 @@
 
 	let { onNavigate }: Props = $props();
 
-	let expanded = $state(false);
+	let menuOpen = $state(false);
 
 	const memberships = $derived(
 		$currentUser ? getMemberships($currentUser.id) : []
@@ -139,73 +139,73 @@
 		</div>
 	</div>
 
-	<!-- Account section -->
+	<!-- Session pill -->
 	{#if $activeConnection}
-		<div class="border-t border-gray-200">
-			<!-- Expanded panel (above the toggle) -->
-			{#if expanded}
-				<div class="px-2 py-2 space-y-px">
-					<!-- All connections in stable order -->
-					{#if $connections.length > 1}
-						{#each $connections as conn}
-							{@const active = conn.id === $activeConnectionId}
-							{@const unread = totalUnread(conn.userId)}
-							<button
-								onclick={() => handleSwitch(conn.id)}
-								class="flex w-full items-center gap-2 rounded px-2 py-1.5 text-left text-sm transition-colors"
-								class:bg-gray-200={active}
-								class:text-gray-900={active}
-								class:font-medium={active}
-								class:hover:bg-gray-200={!active}
-							>
-								<div class="min-w-0 flex-1">
-									<div class="truncate">{conn.userName}</div>
-									<div class="truncate text-[11px] text-gray-400 font-mono">{conn.serverName}</div>
-								</div>
-								{#if unread > 0}
-									<span class="text-xs text-gray-500">{unread}</span>
-								{/if}
-							</button>
-						{/each}
-					{/if}
+		<div class="border-t border-gray-200 px-3 py-3">
+			<div class="relative">
+				<button
+					onclick={() => menuOpen = !menuOpen}
+					class="flex w-full items-center gap-2 rounded-full bg-gray-200/70 px-4 py-2 text-left transition-colors hover:bg-gray-200"
+				>
+					<div class="min-w-0 flex-1">
+						<div class="truncate text-sm font-medium text-gray-900">{$activeConnection.userName}</div>
+						<div class="truncate text-[11px] text-gray-400 font-mono">{$activeConnection.serverName}</div>
+					</div>
+				</button>
 
-					<button
-						onclick={handleAddConnection}
-						class="flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-xs text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
-					>
-						<Plus size={12} />
-						Anslut till server
-					</button>
+				<!-- Popover menu -->
+				{#if menuOpen}
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
+					<div class="absolute bottom-full left-0 right-0 z-40 mb-2 rounded-2xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
+						<!-- Other connections -->
+						{#if $connections.length > 1}
+							{#each $connections as conn}
+								{@const active = conn.id === $activeConnectionId}
+								{@const unread = totalUnread(conn.userId)}
+								<button
+									onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
+									class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm transition-colors {active ? 'text-gray-900 font-medium' : 'text-gray-700'} active:bg-gray-100"
+								>
+									<div class="min-w-0 flex-1">
+										<div class="truncate">{conn.userName}</div>
+										<div class="truncate text-[11px] text-gray-400 font-mono">{conn.serverName}</div>
+									</div>
+									{#if unread > 0}
+										<span class="text-xs text-gray-500">{unread}</span>
+									{/if}
+								</button>
+							{/each}
+							<div class="mx-3 my-1 border-t border-gray-100"></div>
+						{/if}
 
-					<div class="border-t border-gray-100 mt-1 pt-1">
 						<button
-							class="flex w-full items-center gap-2 rounded px-2 py-1.5 text-xs text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
+							onclick={() => { handleAddConnection(); menuOpen = false; }}
+							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100"
 						>
-							<KeyRound size={12} />
+							<Plus size={14} class="text-gray-400" />
+							Anslut till server
+						</button>
+
+						<div class="mx-3 my-1 border-t border-gray-100"></div>
+
+						<button
+							onclick={() => menuOpen = false}
+							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100"
+						>
+							<KeyRound size={14} class="text-gray-400" />
 							Byt lösenord
 						</button>
 						<button
-							onclick={() => { logout(); window.location.href = `${base}/login`; }}
-							class="flex w-full items-center gap-2 rounded px-2 py-1.5 text-xs text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
+							onclick={() => { menuOpen = false; logout(); window.location.href = `${base}/login`; }}
+							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100"
 						>
-							<LogOut size={12} />
+							<LogOut size={14} class="text-gray-400" />
 							Logga ut
 						</button>
 					</div>
-				</div>
-			{/if}
-
-			<!-- Toggle button (always at bottom) -->
-			<button
-				onclick={() => expanded = !expanded}
-				class="flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-gray-100 {expanded ? 'border-t border-gray-100' : ''}"
-			>
-				<div class="min-w-0 flex-1">
-					<div class="truncate text-sm font-medium text-gray-900">{$activeConnection.userName}</div>
-					<div class="truncate text-xs text-gray-400 font-mono">{$activeConnection.serverName}</div>
-				</div>
-				<ChevronUp size={14} class="shrink-0 text-gray-400 transition-transform {expanded ? '' : 'rotate-180'}" />
-			</button>
+				{/if}
+			</div>
 		</div>
 	{/if}
 </nav>
