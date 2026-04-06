@@ -263,7 +263,7 @@
 											bind:value={återseInputValue}
 											type="number"
 											placeholder="#"
-											class="w-full rounded-lg bg-gray-100 px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+											class="w-full rounded-lg bg-gray-100 px-3 py-1.5 text-base ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
 										/>
 										<button
 											type="submit"
