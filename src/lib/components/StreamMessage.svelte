@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { TextInfo, TextMark } from '$lib/types';
+	import type { TextInfo } from '$lib/types';
 	import { getUserById, getTextById, getConferenceById } from '$lib/data';
 	import { återseText } from '$lib/stores/reading';
 	import { base } from '$app/paths';
@@ -64,12 +64,6 @@
 	);
 
 
-	const markTypeLabel: Record<TextMark['type'], string> = {
-		'important': 'viktig',
-		'to-read': 'att läsa',
-		'personal': 'personlig',
-		'bookmark': 'bokmärke'
-	};
 </script>
 
 {#if compact}
@@ -209,17 +203,6 @@
 					</InfoPopover>
 				</div>
 			{/each}
-
-			<!-- Marks -->
-			{#if text.marks && text.marks.length > 0}
-				<div class="mt-0.5 text-sm text-gray-500">
-					<span class="text-gray-400">★</span>
-					{text.marks.map((m) => {
-						const name = getUserById(m.userId)?.name ?? 'Okänd';
-						return `${name} (${markTypeLabel[m.type]})`;
-					}).join(', ')}
-				</div>
-			{/if}
 
 			<!-- Subject -->
 			<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
