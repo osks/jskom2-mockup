@@ -11,7 +11,7 @@
 	import type { Snippet } from 'svelte';
 
 	const isComposing = $derived(!!$readingState.commentTo || $readingState.composingNew);
-	const showRail = $derived($connections.length > 1);
+	const showRail = $derived($connections.length > 0);
 
 	interface Props {
 		children: Snippet;
@@ -51,7 +51,7 @@
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
 	>
 		<!-- Desktop sidebar -->
-		<div class="hidden shrink-0 md:flex">
+		<div class="hidden h-full shrink-0 md:flex">
 			{#if showRail}
 				<ServerRail />
 			{/if}
