@@ -219,7 +219,7 @@
 				<div class="mt-2 space-y-0.5">
 					{#each remarkAuthors as remark}
 						<div class="text-sm text-gray-500">
-							<span class="text-gray-400">✎</span>
+							<span class="text-gray-400">—</span>
 							{remark.authorName}: <span class="text-gray-600">{remark.body}</span>
 						</div>
 					{/each}
