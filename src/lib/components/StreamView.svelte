@@ -255,7 +255,7 @@
 						<!-- Backdrop -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
-						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
+						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
 							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
 								Återse text
 							</button>
