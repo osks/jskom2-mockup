@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { TextInfo } from '$lib/types';
-	import { getUserById, getTextById } from '$lib/data';
+	import { getUserById, getTextById, getConferenceById } from '$lib/data';
 	import { base } from '$app/paths';
 
 	interface Props {
@@ -12,7 +12,16 @@
 	let { text, compact = false, active = false }: Props = $props();
 
 	const author = $derived(getUserById(text.author));
-	const timeStr = $derived(
+	const isoTimeStr = $derived(
+		new Date(text.created).toLocaleString('sv-SE', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			hour: '2-digit',
+			minute: '2-digit'
+		})
+	);
+	const shortTimeStr = $derived(
 		new Date(text.created).toLocaleDateString('sv-SE', {
 			day: 'numeric',
 			month: 'short',
@@ -21,11 +30,33 @@
 		})
 	);
 
-	const commentParent = $derived(
-		text.commentTo && text.commentTo.length > 0 ? getTextById(text.commentTo[0]) : null
+	const commentParents = $derived(
+		(text.commentTo ?? []).map((id) => {
+			const t = getTextById(id);
+			const a = t ? getUserById(t.author) : null;
+			return { id, author: a?.name ?? `person ${t?.author ?? '?'}` };
+		})
 	);
-	const parentAuthor = $derived(commentParent ? getUserById(commentParent.author) : null);
-	const commentCount = $derived(text.commentedIn?.length ?? 0);
+
+	const commentChildren = $derived(
+		(text.commentedIn ?? []).map((id) => {
+			const t = getTextById(id);
+			const a = t ? getUserById(t.author) : null;
+			return { id, author: a?.name ?? `person ${t?.author ?? '?'}` };
+		})
+	);
+
+	const recipientNames = $derived(
+		text.recipients.map((id) => getConferenceById(id)?.name ?? `Möte ${id}`)
+	);
+
+	// Only show subject if it's a new topic (not inherited from parent)
+	const showSubject = $derived(() => {
+		if (commentParents.length === 0) return true;
+		const parent = getTextById(text.commentTo![0]);
+		if (!parent) return true;
+		return text.subject !== `Re: ${parent.subject.replace(/^Re: /, '')}`;
+	});
 </script>
 
 {#if compact}
@@ -35,54 +66,72 @@
 	>
 		<span class="shrink-0 text-sm font-medium text-gray-900">{author?.name ?? 'Okänd'}</span>
 		<span class="min-w-0 flex-1 truncate text-sm text-gray-600">{text.subject}</span>
-		<span class="shrink-0 text-xs text-gray-400">{timeStr}</span>
-		{#if commentCount > 0}
-			<span class="shrink-0 text-xs text-gray-400">{commentCount}&#8617;</span>
+		<span class="shrink-0 text-xs text-gray-400">{shortTimeStr}</span>
+		{#if commentChildren.length > 0}
+			<span class="shrink-0 text-xs text-gray-400">{commentChildren.length}↳</span>
 		{/if}
 	</a>
 {:else}
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
-		class="px-4 py-3 ml-1.5 border-l-2  transition-all duration-300"
+		class="px-4 py-3 ml-1.5 border-l-2 transition-all duration-300"
 		class:border-gray-400={active}
 		class:border-transparent={!active}
 	>
 		<div class="min-w-0">
-			{#if commentParent}
-				<a
-					href="#text-{commentParent.id}"
-					class="mb-1 inline-block text-xs text-gray-400 hover:text-gray-600"
-				>
-					re {parentAuthor?.name ?? `text ${commentParent.id}`}
-				</a>
-			{/if}
-
-			<div class="flex items-baseline gap-2">
-				<a
-					href="{base}/users/{text.author}"
-					class="text-sm font-semibold text-gray-900 hover:underline"
-				>
-					{author?.name ?? 'Okänd'}
-				</a>
-				<span class="text-xs text-gray-400">{timeStr}</span>
+			<!-- First line: #textno / datetime / author -->
+			<div class="flex items-baseline gap-1.5 text-sm">
 				<a
 					href="{base}/texts/{text.id}"
-					class="font-mono text-xs text-gray-300 hover:text-gray-600"
-				>
-					#{text.id}
-				</a>
+					class="font-mono text-gray-400 hover:text-gray-600"
+				>#{text.id}</a>
+				<span class="text-gray-300">/</span>
+				<span class="text-gray-400">{isoTimeStr}</span>
+				<span class="text-gray-300">/</span>
+				<a
+					href="{base}/users/{text.author}"
+					class="font-semibold text-gray-900 hover:underline"
+				>{author?.name ?? 'Okänd'}</a>
 			</div>
 
-			{#if !commentParent || text.subject !== `Re: ${commentParent.subject.replace(/^Re: /, '')}`}
-				<div class="mt-0.5 text-sm font-medium text-gray-900">{text.subject}</div>
+			<!-- Comment parents -->
+			{#each commentParents as parent}
+				<div class="mt-0.5 text-sm text-gray-500">
+					<span class="text-gray-400">↳</span>
+					<a href="#text-{parent.id}" class="hover:text-gray-700">
+						<span class="font-mono">#{parent.id}</span> {parent.author}
+					</a>
+				</div>
+			{/each}
+
+			<!-- Recipients -->
+			{#each recipientNames as name}
+				<div class="mt-0.5 text-sm text-gray-500">
+					<span class="text-gray-400">@</span>
+					{name}
+				</div>
+			{/each}
+
+			<!-- Subject -->
+			{#if showSubject()}
+				<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
 			{/if}
 
-			<div class="mt-1 text-base leading-relaxed text-gray-800 whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
+			<!-- Body -->
+			<div class="mt-1.5 text-base leading-relaxed text-gray-800 whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
 
-			{#if commentCount > 0}
-				<div class="mt-1.5 text-xs text-gray-400">
-					{commentCount} {commentCount === 1 ? 'kommentar' : 'kommentarer'}
+			<!-- Comment children -->
+			{#if commentChildren.length > 0}
+				<div class="mt-2 space-y-0.5">
+					{#each commentChildren as child}
+						<div class="text-sm text-gray-500">
+							<span class="text-gray-400">↳</span>
+							<a href="#text-{child.id}" class="hover:text-gray-700">
+								<span class="font-mono">#{child.id}</span> {child.author}
+							</a>
+						</div>
+					{/each}
 				</div>
 			{/if}
 		</div>

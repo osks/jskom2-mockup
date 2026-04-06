@@ -130,7 +130,7 @@
 					<div class="space-y-1.5">
 						{#each recipients as recipientId, i}
 							<div class="flex items-center gap-2">
-								<span class="shrink-0 text-sm text-gray-400 w-14">Möte</span>
+								<span class="shrink-0 text-sm text-gray-400">@</span>
 								<select
 									value={recipientId}
 									onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
@@ -143,7 +143,7 @@
 							</div>
 						{/each}
 						<div class="flex items-center gap-2">
-							<span class="shrink-0 text-sm text-gray-400 w-14">Ärende</span>
+							<span class="shrink-0 text-sm text-gray-400">Ärende</span>
 							<input
 								type="text"
 								bind:value={subject}
@@ -156,17 +156,15 @@
 					<!-- Static display -->
 					<button
 						onclick={() => showMeta = true}
-						class="group flex flex-col gap-1 text-left"
+						class="group flex flex-col gap-0.5 text-left"
 					>
 						{#each recipientNames as name}
-							<div class="flex items-baseline gap-2 text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-								<span class="shrink-0 text-xs text-gray-400">Möte</span>
-								<span>{name}</span>
+							<div class="text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
+								<span class="text-gray-400">@</span> {name}
 							</div>
 						{/each}
-						<div class="flex items-baseline gap-2 text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-							<span class="shrink-0 text-xs text-gray-400">Ärende</span>
-							<span>{subject || 'Inget ärende'}</span>
+						<div class="flex items-baseline gap-1.5 text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
+							<span>Ärende: {subject || 'Inget ärende'}</span>
 							<Pencil size={12} class="text-gray-400" />
 						</div>
 					</button>
