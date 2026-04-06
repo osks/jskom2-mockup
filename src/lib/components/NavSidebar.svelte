@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { currentUser, connections, activeConnectionId, switchConnection, disconnectConnection } from '$lib/stores/auth';
+	import { get } from 'svelte/store';
 	import { getMemberships, getConferenceById } from '$lib/data';
 	import { BookOpen, Users, PenSquare, Search, LogOut, Plus, X, Server } from 'lucide-svelte';
 	import { logout } from '$lib/stores/auth';
@@ -60,8 +61,7 @@
 	function handleDisconnect(e: MouseEvent, id: string) {
 		e.stopPropagation();
 		disconnectConnection(id);
-		// If no connections left, go to login
-		if ($connections.length === 0) {
+		if (get(connections).length === 0) {
 			window.location.href = `${base}/login`;
 		}
 	}
@@ -79,18 +79,19 @@
 			<div class="px-3 mb-1 text-[11px] font-semibold uppercase tracking-wider text-gray-500">Sessioner</div>
 			<div class="space-y-px">
 				{#each $connections as conn}
+					{@const active = conn.id === $activeConnectionId}
 					<button
 						onclick={() => handleSwitch(conn.id)}
 						class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors group"
-						class:bg-lyskom-50={conn.id === $activeConnectionId}
-						class:text-lyskom-700={conn.id === $activeConnectionId}
-						class:font-medium={conn.id === $activeConnectionId}
-						class:hover:bg-gray-200={conn.id !== $activeConnectionId}
+						class:bg-lyskom-50={active}
+						class:text-lyskom-700={active}
+						class:font-medium={active}
+						class:hover:bg-gray-200={!active}
 					>
-						<Server size={14} class="shrink-0 {conn.id === $activeConnectionId ? 'text-lyskom-500' : 'text-gray-400'}" />
+						<Server size={14} class="shrink-0 {active ? 'text-lyskom-500' : 'text-gray-400'}" />
 						<div class="min-w-0 flex-1 text-left">
 							<div class="truncate text-xs font-mono">{conn.serverName}</div>
-							<div class="truncate text-[11px] {conn.id === $activeConnectionId ? 'text-lyskom-500' : 'text-gray-400'}">{conn.userName}</div>
+							<div class="truncate text-[11px] {active ? 'text-lyskom-500' : 'text-gray-400'}">{conn.userName}</div>
 						</div>
 						{#if multipleConnections}
 							<button

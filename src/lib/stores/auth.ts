@@ -1,4 +1,4 @@
-import { writable, derived, get } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import type { Person, ServerConnection } from '$lib/types';
 import { getUserById } from '$lib/data';
 
@@ -23,7 +23,6 @@ export function login(userId: number, serverName: string) {
 	const id = `${serverName}:${userId}`;
 
 	connections.update((conns) => {
-		// Don't add duplicate
 		if (conns.some((c) => c.id === id)) return conns;
 		return [...conns, { id, serverName, userId, userName: user.name }];
 	});
@@ -32,14 +31,17 @@ export function login(userId: number, serverName: string) {
 }
 
 export function switchConnection(id: string) {
-	activeConnectionId.set(id);
+	activeConnectionId.update((current) => (current === id ? current : id));
 }
 
 export function disconnectConnection(id: string) {
-	connections.update((conns) => conns.filter((c) => c.id !== id));
-	const remaining = get(connections);
+	let remaining: ServerConnection[];
+	connections.update((conns) => {
+		remaining = conns.filter((c) => c.id !== id);
+		return remaining;
+	});
 	activeConnectionId.update((current) =>
-		current === id ? (remaining[0]?.id ?? null) : current
+		current === id ? (remaining![0]?.id ?? null) : current
 	);
 }
 
