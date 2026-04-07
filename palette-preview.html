@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Preview</title>
+<style>
+:root {
+  --primary: #2E7D52;
+  --primary-light: #56A87A;
+  --primary-dark: #1B5438;
+  --secondary: #7A6652;
+  --secondary-light: #A08B74;
+  --secondary-dark: #6F4E2B;
+  --accent: #E8834A;
+  --accent-light: #F0A878;
+  --accent-dark: #B85E28;
+  --background: #F5F3EF;
+  --text: #1C2018;
+  --text-secondary: #6B6357;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--background); color: var(--text); padding: 2rem; }
+h1 { margin-bottom: 0.5rem; }
+.subtitle { color: var(--text-secondary); margin-bottom: 2rem; }
+
+.group { margin-bottom: 2rem; }
+.group h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.swatch {
+  width: 160px; height: 100px; border-radius: 12px; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0.6rem 0.75rem; font-size: 0.8rem; font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.swatch .name { font-weight: 600; }
+.swatch .hex { opacity: 0.8; font-size: 0.75rem; }
+.light-text { color: #fff; }
+.dark-text { color: var(--text); }
+
+/* Demo UI section */
+.demo { margin-top: 2.5rem; padding: 2rem; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.demo h2 { margin-bottom: 1rem; }
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.btn {
+  padding: 0.6rem 1.4rem; border: none; border-radius: 8px; font-size: 0.9rem;
+  font-weight: 600; cursor: pointer; color: #fff;
+}
+.btn-primary { background: var(--primary); }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-accent { background: var(--accent); }
+.btn-accent:hover { background: var(--accent-dark); }
+.btn-secondary { background: var(--secondary); }
+.btn-secondary:hover { background: var(--secondary-dark); }
+.btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+
+.card-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.card {
+  flex: 1; min-width: 200px; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card-header { padding: 1.25rem; color: #fff; }
+.card-body { padding: 1rem; background: #fff; color: var(--text); font-size: 0.9rem; }
+.card-body p { color: var(--text-secondary); margin-top: 0.25rem; font-size: 0.85rem; }
+
+.text-demo { margin-top: 1.5rem; }
+.text-demo h3 { color: var(--primary); margin-bottom: 0.25rem; }
+.text-demo p { color: var(--text-secondary); line-height: 1.6; }
+.text-demo a { color: var(--accent); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>Color Palette Preview</h1>
+<p class="subtitle">Earthy green, warm brown, and orange accent</p>
+
+<div class="group">
+  <h2>Primary</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="hex">#1B5438</span></div>
+    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="hex">#2E7D52</span></div>
+    <div class="swatch light-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="hex">#56A87A</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Secondary</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="hex">#6F4E2B</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="hex">#7A6652</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="hex">#A08B74</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Accent</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="hex">#B85E28</span></div>
+    <div class="swatch light-text" style="background:var(--accent)"><span class="name">Accent</span><span class="hex">#E8834A</span></div>
+    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="hex">#F0A878</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Neutrals</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="hex">#1C2018</span></div>
+    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="hex">#6B6357</span></div>
+    <div class="swatch dark-text" style="background:var(--background); border:1px solid #ddd;"><span class="name">Background</span><span class="hex">#F5F3EF</span></div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2>UI Demo</h2>
+  <div class="btn-row">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-accent">Accent</button>
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-outline">Outline</button>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
+      <div class="card-body"><strong>Feature One</strong><p>A description using the secondary text color for supporting content.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
+      <div class="card-body"><strong>Feature Two</strong><p>The warm orange accent draws attention to calls-to-action.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--secondary)"><strong>Secondary Card</strong></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Earthy browns ground the design with a natural feel.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3>Typography Sample</h3>
+    <p>Body text in the main text color on the warm off-white background. Secondary text like this provides <a href="#">linked content</a> with the accent color, keeping everything cohesive.</p>
+  </div>
+</div>
+
+</body>
+</html>
