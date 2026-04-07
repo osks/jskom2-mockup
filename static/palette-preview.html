@@ -6,20 +6,20 @@
 <title>Color Palette Preview</title>
 <style>
 :root {
-  --primary: oklch(0.6670 0.1200 157.2);         /* #56A87A */
-  --primary-light: oklch(0.7480 0.0894 159.2);   /* #7ABF99 */
-  --primary-dark: oklch(0.5292 0.1031 156.2);    /* #2E7D52 */
-  --secondary: oklch(0.6495 0.0550 69.5);        /* #A08B74 */
-  --secondary-light: oklch(0.7378 0.0332 70.4);  /* #B8A794 */
-  --secondary-dark: oklch(0.5241 0.0395 66.8);   /* #7A6652 */
-  --accent: oklch(0.7500 0.1300 54.3);           /* adjusted */
-  --accent-light: oklch(0.8200 0.0900 57.9);     /* adjusted */
-  --accent-dark: oklch(0.7099 0.1434 48.4);      /* #E8834A */
-  --surface: oklch(1.0000 0 0);                   /* #FFFFFF */
-  --background: oklch(0.9646 0.0090 78.0);       /* adjusted warmer */
-  --background-dark: oklch(0.9292 0.0090 78.0);  /* adjusted warmer */
-  --text: oklch(0.2365 0.0160 129.2);            /* #1C2018 */
-  --text-secondary: oklch(0.5035 0.0211 78.1);   /* #6B6357 */
+  --primary: oklch(0.6670 0.1200 157.2);
+  --primary-light: oklch(0.7480 0.0894 159.2);
+  --primary-dark: oklch(0.5292 0.1031 156.2);
+  --secondary: oklch(0.6495 0.0550 69.5);
+  --secondary-light: oklch(0.7378 0.0332 70.4);
+  --secondary-dark: oklch(0.5241 0.0395 66.8);
+  --accent: oklch(0.7500 0.1300 54.3);
+  --accent-light: oklch(0.8200 0.0900 57.9);
+  --accent-dark: oklch(0.7099 0.1434 48.4);
+  --surface: oklch(0.9900 0.0040 78.0);
+  --background: oklch(0.9646 0.0090 78.0);
+  --background-dark: oklch(0.9292 0.0090 78.0);
+  --text: oklch(0.2365 0.0160 129.2);
+  --text-secondary: oklch(0.5035 0.0211 78.1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -94,38 +94,38 @@ h1 { margin-bottom: 0.5rem; }
 <div class="group">
   <h2>Primary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="hex">#2E7D52</span></div>
-    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="hex">#56A87A</span></div>
-    <div class="swatch dark-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="hex">#7ABF99</span></div>
+    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span></div>
+    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span></div>
+    <div class="swatch dark-text" style="background:var(--primary-light)"><span class="name">Primary Light</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Secondary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="hex">#7A6652</span></div>
-    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="hex">#A08B74</span></div>
-    <div class="swatch dark-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="hex">#B8A794</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span></div>
+    <div class="swatch dark-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Accent</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="hex">#E8834A</span></div>
-    <div class="swatch dark-text" style="background:var(--accent)"><span class="name">Accent</span><span class="hex">#F0A878</span></div>
-    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="hex">#F5C4A0</span></div>
+    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span></div>
+    <div class="swatch dark-text" style="background:var(--accent)"><span class="name">Accent</span></div>
+    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Neutrals</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="hex">#1C2018</span></div>
-    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="hex">#6B6357</span></div>
-    <div class="swatch dark-text" style="background:var(--surface); border:1px solid #ddd;"><span class="name">Surface</span><span class="hex">#FFFFFF</span></div>
-    <div class="swatch dark-text" style="background:var(--background); border:1px solid #ddd;"><span class="name">Background</span><span class="hex">#F5F3EF</span></div>
-    <div class="swatch dark-text" style="background:var(--background-dark)"><span class="name">Background Dark</span><span class="hex">~#E8E4DD</span></div>
+    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span></div>
+    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span></div>
+    <div class="swatch dark-text" style="background:var(--surface); border:1px solid #ddd;"><span class="name">Surface</span></div>
+    <div class="swatch dark-text" style="background:var(--background); border:1px solid #ddd;"><span class="name">Background</span></div>
+    <div class="swatch dark-text" style="background:var(--background-dark)"><span class="name">Background Dark</span></div>
   </div>
 </div>
 
@@ -202,24 +202,24 @@ h1 { margin-bottom: 0.5rem; }
 <div class="code-block">
   <h2>CSS Values</h2>
   <pre><code>:root {
-  --primary:          oklch(0.6670 0.1200 157.2);  /* #56A87A */
-  --primary-light:    oklch(0.7480 0.0894 159.2);  /* #7ABF99 */
-  --primary-dark:     oklch(0.5292 0.1031 156.2);  /* #2E7D52 */
+  --primary:          oklch(0.6670 0.1200 157.2);
+  --primary-light:    oklch(0.7480 0.0894 159.2);
+  --primary-dark:     oklch(0.5292 0.1031 156.2);
 
-  --secondary:        oklch(0.6495 0.0550 69.5);   /* #A08B74 */
-  --secondary-light:  oklch(0.7378 0.0332 70.4);   /* #B8A794 */
-  --secondary-dark:   oklch(0.5241 0.0395 66.8);   /* #7A6652 */
+  --secondary:        oklch(0.6495 0.0550 69.5);
+  --secondary-light:  oklch(0.7378 0.0332 70.4);
+  --secondary-dark:   oklch(0.5241 0.0395 66.8);
 
-  --accent:           oklch(0.7500 0.1300 54.3);   /* adjusted */
-  --accent-light:     oklch(0.8200 0.0900 57.9);   /* adjusted */
-  --accent-dark:      oklch(0.7099 0.1434 48.4);   /* #E8834A */
+  --accent:           oklch(0.7500 0.1300 54.3);
+  --accent-light:     oklch(0.8200 0.0900 57.9);
+  --accent-dark:      oklch(0.7099 0.1434 48.4);
 
-  --surface:          oklch(1.0000 0 0);            /* #FFFFFF */
-  --background:       oklch(0.9646 0.0090 78.0);   /* adjusted warmer */
-  --background-dark:  oklch(0.9292 0.0090 78.0);   /* adjusted warmer */
+  --surface:          oklch(0.9900 0.0040 78.0);
+  --background:       oklch(0.9646 0.0090 78.0);
+  --background-dark:  oklch(0.9292 0.0090 78.0);
 
-  --text:             oklch(0.2365 0.0160 129.2);  /* #1C2018 */
-  --text-secondary:   oklch(0.5035 0.0211 78.1);   /* #6B6357 */
+  --text:             oklch(0.2365 0.0160 129.2);
+  --text-secondary:   oklch(0.5035 0.0211 78.1);
 }</code></pre>
 </div>
 
