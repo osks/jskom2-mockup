@@ -6,15 +6,15 @@
 <title>Color Palette Preview</title>
 <style>
 :root {
-  --primary: oklch(0.6470 0.1200 157.2);
-  --primary-light: oklch(0.7280 0.0894 159.2);
-  --primary-dark: oklch(0.5092 0.1031 156.2);
-  --secondary: oklch(0.6295 0.0600 69.5);
-  --secondary-light: oklch(0.7178 0.0400 70.4);
-  --secondary-dark: oklch(0.5041 0.0470 66.8);
-  --accent: oklch(0.7300 0.1300 54.3);
-  --accent-light: oklch(0.8000 0.0900 57.9);
-  --accent-dark: oklch(0.6899 0.1434 48.4);
+  --primary: oklch(0.5092 0.1031 156.2);
+  --primary-light: oklch(0.6470 0.1200 157.2);
+  --primary-dark: oklch(0.3800 0.0900 155.0);
+  --secondary: oklch(0.5041 0.0470 66.8);
+  --secondary-light: oklch(0.6295 0.0600 69.5);
+  --secondary-dark: oklch(0.3800 0.0400 65.0);
+  --accent: oklch(0.6899 0.1434 48.4);
+  --accent-light: oklch(0.7300 0.1300 54.3);
+  --accent-dark: oklch(0.5700 0.1500 46.0);
   --surface: oklch(0.9900 0.0040 78.0);
   --background: oklch(0.9646 0.0090 78.0);
   --background-dark: oklch(0.9292 0.0120 78.0);
@@ -59,6 +59,7 @@ h2 { margin-bottom: 0.75rem; }
 .btn-secondary { background: var(--secondary); }
 .btn-secondary:hover { background: var(--secondary-dark); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+.btn-outline-light { background: transparent; color: var(--primary-light); border: 2px solid var(--primary-light); }
 .btn-outline-dark { background: transparent; color: var(--primary-dark); border: 2px solid var(--primary-dark); }
 
 .card-row { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -97,27 +98,27 @@ h2 { margin-bottom: 0.75rem; }
 <div class="group">
   <h2>Primary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="val">L 0.51 C 0.10 H 156</span></div>
-    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="val">L 0.65 C 0.12 H 157</span></div>
-    <div class="swatch dark-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="val">L 0.73 C 0.09 H 159</span></div>
+    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="val">L 0.38 C 0.09 H 155</span></div>
+    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="val">L 0.51 C 0.10 H 156</span></div>
+    <div class="swatch light-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="val">L 0.65 C 0.12 H 157</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Secondary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.50 C 0.05 H 67</span></div>
-    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.63 C 0.06 H 70</span></div>
-    <div class="swatch dark-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.72 C 0.04 H 70</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.04 H 65</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.05 H 67</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.06 H 70</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Accent</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="val">L 0.69 C 0.14 H 48</span></div>
-    <div class="swatch dark-text" style="background:var(--accent)"><span class="name">Accent</span><span class="val">L 0.73 C 0.13 H 54</span></div>
-    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="val">L 0.80 C 0.09 H 58</span></div>
+    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="val">L 0.57 C 0.15 H 46</span></div>
+    <div class="swatch light-text" style="background:var(--accent)"><span class="name">Accent</span><span class="val">L 0.69 C 0.14 H 48</span></div>
+    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="val">L 0.73 C 0.13 H 54</span></div>
   </div>
 </div>
 
@@ -165,6 +166,36 @@ h2 { margin-bottom: 0.75rem; }
 </div>
 
 <div class="demo">
+  <h2>Light Palette</h2>
+  <div class="btn-row">
+    <button class="btn" style="background:var(--primary-light)">Primary Light</button>
+    <button class="btn" style="background:var(--accent-light)">Accent Light</button>
+    <button class="btn" style="background:var(--secondary-light)">Secondary Light</button>
+    <button class="btn btn-outline-light">Outline</button>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-header" style="background:var(--primary-light)"><strong>Primary Card</strong></div>
+      <div class="card-body"><strong>Feature One</strong><p>The lighter primary for a softer, more approachable feel.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--accent-light)"><strong>Accent Card</strong></div>
+      <div class="card-body"><strong>Feature Two</strong><p>A gentler accent that still carries warmth.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--secondary-light)"><strong>Secondary Card</strong></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Lighter earthy tones for a relaxed, open feel.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3 style="color:var(--primary-light)">Typography Sample</h3>
+    <p>Body text with the lighter colors for a <a href="#" style="color:var(--accent-light)">softer, airier</a> feel overall.</p>
+  </div>
+</div>
+
+<div class="demo">
   <h2>Dark Palette</h2>
   <div class="btn-row">
     <button class="btn" style="background:var(--primary-dark)">Primary Dark</button>
@@ -176,21 +207,21 @@ h2 { margin-bottom: 0.75rem; }
   <div class="card-row">
     <div class="card">
       <div class="card-header" style="background:var(--primary-dark)"><strong>Primary Card</strong></div>
-      <div class="card-body"><strong>Feature One</strong><p>Using the dark primary for a deeper, more grounded feel.</p></div>
+      <div class="card-body"><strong>Feature One</strong><p>The deepest primary for bold, high-contrast moments.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--accent-dark)"><strong>Accent Card</strong></div>
-      <div class="card-body"><strong>Feature Two</strong><p>The darker accent brings warmth without lightness.</p></div>
+      <div class="card-body"><strong>Feature Two</strong><p>A rich, deep accent with strong presence.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--secondary-dark)"><strong>Secondary Card</strong></div>
-      <div class="card-body"><strong>Feature Three</strong><p>Deep earthy brown for a rich, natural tone.</p></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Deep earthy brown for a rich, grounded tone.</p></div>
     </div>
   </div>
 
   <div class="text-demo">
     <h3 style="color:var(--primary-dark)">Typography Sample</h3>
-    <p>Body text with the deeper colors for a <a href="#" style="color:var(--accent-dark)">more grounded</a> feel overall.</p>
+    <p>Body text with the deepest colors for a <a href="#" style="color:var(--accent-dark)">bold, grounded</a> feel overall.</p>
   </div>
 </div>
 
@@ -264,17 +295,17 @@ h2 { margin-bottom: 0.75rem; }
 <div class="code-block">
   <h2>CSS Values</h2>
   <pre><code>:root {
-  --primary:          oklch(0.6470 0.1200 157.2);
-  --primary-light:    oklch(0.7280 0.0894 159.2);
-  --primary-dark:     oklch(0.5092 0.1031 156.2);
+  --primary:          oklch(0.5092 0.1031 156.2);
+  --primary-light:    oklch(0.6470 0.1200 157.2);
+  --primary-dark:     oklch(0.3800 0.0900 155.0);
 
-  --secondary:        oklch(0.6295 0.0600 69.5);
-  --secondary-light:  oklch(0.7178 0.0400 70.4);
-  --secondary-dark:   oklch(0.5041 0.0470 66.8);
+  --secondary:        oklch(0.5041 0.0470 66.8);
+  --secondary-light:  oklch(0.6295 0.0600 69.5);
+  --secondary-dark:   oklch(0.3800 0.0400 65.0);
 
-  --accent:           oklch(0.7300 0.1300 54.3);
-  --accent-light:     oklch(0.8000 0.0900 57.9);
-  --accent-dark:      oklch(0.6899 0.1434 48.4);
+  --accent:           oklch(0.6899 0.1434 48.4);
+  --accent-light:     oklch(0.7300 0.1300 54.3);
+  --accent-dark:      oklch(0.5700 0.1500 46.0);
 
   --surface:          oklch(0.9900 0.0040 78.0);
   --background:       oklch(0.9646 0.0090 78.0);
