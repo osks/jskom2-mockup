@@ -61,6 +61,10 @@
   --accent:        var(--orange-2);
   --accent-hover:  var(--orange-4);
   --accent-active: var(--orange-1);
+
+  --subtle:        var(--neutral-9);
+  --subtle-hover:  var(--neutral-8);
+  --subtle-active: var(--neutral-7);
 }
 
 /* =============================================
@@ -87,6 +91,10 @@
   --accent:        var(--orange-3);
   --accent-hover:  var(--orange-4);
   --accent-active: var(--orange-2);
+
+  --subtle:        var(--neutral-3);
+  --subtle-hover:  var(--neutral-4);
+  --subtle-active: var(--neutral-2);
 }
 
 /* =============================================
@@ -136,6 +144,9 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .btn-secondary { background: var(--secondary); }
 .btn-secondary:hover { background: var(--secondary-hover); }
 .btn-secondary:active { background: var(--secondary-active); }
+.btn-subtle { background: var(--subtle); color: var(--text); }
+.btn-subtle:hover { background: var(--subtle-hover); }
+.btn-subtle:active { background: var(--subtle-active); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
 .btn-outline:hover { color: var(--primary-hover); border-color: var(--primary-hover); }
 .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
@@ -407,6 +418,35 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-purpose">Pressed, selected</div>
   </div>
 
+  <div class="role-separator"></div>
+
+  <div class="role-item">
+    <div class="role-name"><code>--subtle</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-3)"></span> neutral-3</div>
+    </div>
+    <div class="role-purpose">Low-emphasis buttons, ghost actions</div>
+  </div>
+
+  <div class="role-item">
+    <div class="role-name"><code>--subtle-hover</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-4)"></span> neutral-4</div>
+    </div>
+    <div class="role-purpose">Hover state</div>
+  </div>
+
+  <div class="role-item">
+    <div class="role-name"><code>--subtle-active</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-7)"></span> neutral-7</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
+    </div>
+    <div class="role-purpose">Pressed, selected</div>
+  </div>
+
 </div>
 
 
@@ -434,6 +474,11 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <button class="btn btn-secondary">Secondary</button>
     <button class="btn" style="background:var(--secondary-hover)">Hover</button>
     <button class="btn" style="background:var(--secondary-active)">Active</button>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-subtle">Subtle</button>
+    <button class="btn" style="background:var(--subtle-hover); color:var(--text)">Hover</button>
+    <button class="btn" style="background:var(--subtle-active); color:var(--text)">Active</button>
   </div>
   <div class="btn-row">
     <button class="btn btn-outline">Outline</button>
@@ -570,6 +615,11 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <button class="btn btn-secondary">Secondary</button>
     <button class="btn" style="background:var(--secondary-hover)">Hover</button>
     <button class="btn" style="background:var(--secondary-active)">Active</button>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-subtle">Subtle</button>
+    <button class="btn" style="background:var(--subtle-hover); color:var(--text)">Hover</button>
+    <button class="btn" style="background:var(--subtle-active); color:var(--text)">Active</button>
   </div>
   <div class="btn-row">
     <button class="btn btn-outline">Outline</button>
