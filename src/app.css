@@ -28,16 +28,16 @@
 	--forest-orange-4: oklch(0.8500 0.1000 60.0);
 
 	/* Neutral (backgrounds, text) */
-	--forest-neutral-1:  oklch(0.1300 0.0055 72.0);
-	--forest-neutral-2:  oklch(0.2100 0.0080 72.0);
-	--forest-neutral-3:  oklch(0.2900 0.0080 72.0);
-	--forest-neutral-4:  oklch(0.4200 0.0150 72.0);
-	--forest-neutral-5:  oklch(0.5800 0.0130 72.0);
-	--forest-neutral-6:  oklch(0.7200 0.0120 72.0);
-	--forest-neutral-7:  oklch(0.9100 0.0080 72.0);
-	--forest-neutral-8:  oklch(0.9500 0.0060 72.0);
-	--forest-neutral-9:  oklch(0.9800 0.0030 72.0);
-	--forest-neutral-10: oklch(0.9900 0.0020 72.0);
+	--forest-neutral-1:  oklch(0.1300 0.0055 95.0);
+	--forest-neutral-2:  oklch(0.2100 0.0080 95.0);
+	--forest-neutral-3:  oklch(0.2900 0.0080 95.0);
+	--forest-neutral-4:  oklch(0.4200 0.0150 95.0);
+	--forest-neutral-5:  oklch(0.5800 0.0130 95.0);
+	--forest-neutral-6:  oklch(0.7200 0.0120 95.0);
+	--forest-neutral-7:  oklch(0.9100 0.0080 95.0);
+	--forest-neutral-8:  oklch(0.9500 0.0060 95.0);
+	--forest-neutral-9:  oklch(0.9800 0.0030 95.0);
+	--forest-neutral-10: oklch(0.9900 0.0020 95.0);
 }
 
 /* =============================================
