@@ -110,56 +110,6 @@ h2 { margin-bottom: 0.75rem; }
 <h1>Forest</h1>
 
 <div class="panel">
-<div class="group">
-  <h2>Secondary vs Background — How they meet</h2>
-
-  <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Secondary extended lighter (H~67→76, C falling) and background extended darker (H 78, C rising). Do they converge into one tone?</p>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Secondary — full range dark to light (H 65→78, C falling)</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0300 65.0)"><span class="name">Sec Dark</span><span class="val">L 0.38 C 0.03 H 65</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0350 66.8)"><span class="name">Sec</span><span class="val">L 0.50 C 0.035 H 67</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6295 0.0450 69.5)"><span class="name">Sec Light</span><span class="val">L 0.63 C 0.045 H 70</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.7200 0.0380 72.0)"><span class="name">Sec +1</span><span class="val">L 0.72 C 0.038 H 72</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.8100 0.0280 74.0)"><span class="name">Sec +2</span><span class="val">L 0.81 C 0.028 H 74</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.8800 0.0180 76.0)"><span class="name">Sec +3</span><span class="val">L 0.88 C 0.018 H 76</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9300 0.0120 77.0)"><span class="name">Sec +4</span><span class="val">L 0.93 C 0.012 H 77</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9600 0.0070 77.5)"><span class="name">Sec +5</span><span class="val">L 0.96 C 0.007 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9900 0.0040 78.0)"><span class="name">Sec +6</span><span class="val">L 0.99 C 0.004 H 78</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Background — full range light to dark (H 78, C rising)</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch dark-text" style="background:oklch(0.9900 0.0040 78.0)"><span class="name">Bg 1</span><span class="val">L 0.99 C 0.004 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9646 0.0090 78.0)"><span class="name">Bg 2</span><span class="val">L 0.96 C 0.009 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9292 0.0120 78.0)"><span class="name">Bg 3</span><span class="val">L 0.93 C 0.012 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.8800 0.0150 78.0)"><span class="name">Bg +1</span><span class="val">L 0.88 C 0.015 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.8100 0.0180 78.0)"><span class="name">Bg +2</span><span class="val">L 0.81 C 0.018 H 78</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.7200 0.0220 78.0)"><span class="name">Bg +3</span><span class="val">L 0.72 C 0.022 H 78</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6300 0.0260 78.0)"><span class="name">Bg +4</span><span class="val">L 0.63 C 0.026 H 78</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5000 0.0300 78.0)"><span class="name">Bg +5</span><span class="val">L 0.50 C 0.030 H 78</span></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0340 78.0)"><span class="name">Bg +6</span><span class="val">L 0.38 C 0.034 H 78</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Side by side at same lightness</p>
-  <div class="swatches">
-    <div class="swatch dark-text" style="background:oklch(0.9300 0.0120 77.0); border: 2px solid oklch(0.7 0.02 77)"><span class="name">Sec +4</span><span class="val">L 0.93 H 77</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.9292 0.0120 78.0); border: 2px solid oklch(0.7 0.02 78)"><span class="name">Bg 3</span><span class="val">L 0.93 H 78</span></div>
-    <div style="width: 0.5rem;"></div>
-    <div class="swatch dark-text" style="background:oklch(0.8100 0.0280 74.0); border: 2px solid oklch(0.6 0.02 74)"><span class="name">Sec +2</span><span class="val">L 0.81 H 74</span></div>
-    <div class="swatch dark-text" style="background:oklch(0.8100 0.0180 78.0); border: 2px solid oklch(0.6 0.02 78)"><span class="name">Bg +2</span><span class="val">L 0.81 H 78</span></div>
-    <div style="width: 0.5rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.6295 0.0450 69.5); border: 2px solid oklch(0.4 0.02 70)"><span class="name">Sec Light</span><span class="val">L 0.63 H 70</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6300 0.0260 78.0); border: 2px solid oklch(0.4 0.02 78)"><span class="name">Bg +4</span><span class="val">L 0.63 H 78</span></div>
-    <div style="width: 0.5rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0350 66.8); border: 2px solid oklch(0.3 0.02 67)"><span class="name">Sec</span><span class="val">L 0.50 H 67</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5000 0.0300 78.0); border: 2px solid oklch(0.3 0.02 78)"><span class="name">Bg +5</span><span class="val">L 0.50 H 78</span></div>
-  </div>
-
-</div>
-</div>
-
-<div class="panel">
 
 <div class="group">
   <h2>Primary</h2>
