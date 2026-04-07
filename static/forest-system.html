@@ -101,14 +101,16 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 /* Role mapping: card layout for mobile, table for wider */
 .role-list { display: flex; flex-direction: column; gap: 0.5rem; }
-.role-item { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; padding: 0.5rem 0; border-bottom: 1px solid var(--bg-3); font-size: 0.8rem; }
+.role-item { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 0; border-bottom: 1px solid var(--bg-3); font-size: 0.8rem; }
 .role-item code { font-size: 0.75rem; background: var(--bg-3); padding: 0.15rem 0.4rem; border-radius: 4px; }
-.role-name { font-weight: 600; min-width: 100%; }
-.role-modes { display: flex; gap: 1rem; width: 100%; }
-.role-mode { display: flex; align-items: center; gap: 0.3rem; flex: 1; }
-.role-mode-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; min-width: 2.5rem; }
-.color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: middle; flex-shrink: 0; }
-.role-purpose { font-size: 0.75rem; color: var(--text-secondary); width: 100%; }
+.role-name { font-weight: 600; width: 100%; padding: 0.5rem 0.5rem 0.3rem; }
+.role-modes { display: flex; gap: 0; width: 100%; }
+.role-mode { display: flex; align-items: center; gap: 0.3rem; flex: 1; padding: 0.4rem 0.5rem; border-radius: 6px; font-size: 0.8rem; }
+.role-mode.mode-light { background: var(--neutral-9); color: var(--neutral-2); }
+.role-mode.mode-dark { background: var(--neutral-1); color: oklch(0.93 0.008 78); }
+.role-mode-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.03em; min-width: 2.5rem; opacity: 0.5; }
+.color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: middle; flex-shrink: 0; border: 1px solid oklch(0.5 0 0 / 0.2); }
+.role-purpose { font-size: 0.75rem; color: var(--text-secondary); width: 100%; padding: 0.2rem 0.5rem 0.5rem; }
 .role-separator { height: 0.5rem; border: none; }
 
 .btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--text-inverse); }
@@ -231,8 +233,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--bg-1</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
     </div>
     <div class="role-purpose">Page background</div>
   </div>
@@ -240,8 +242,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--bg-2</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
     </div>
     <div class="role-purpose">Panels, cards</div>
   </div>
@@ -249,8 +251,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--bg-3</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-7)"></span> neutral-7</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-3)"></span> neutral-3</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-7)"></span> neutral-7</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-3)"></span> neutral-3</div>
     </div>
     <div class="role-purpose">Inset, deeper sections</div>
   </div>
@@ -260,8 +262,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--text</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.93 0.008 78)"></span> L 0.93*</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.93 0.008 78)"></span> L 0.93*</div>
     </div>
     <div class="role-purpose">Body text, headings</div>
   </div>
@@ -269,8 +271,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--text-secondary</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-4)"></span> neutral-4</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-6)"></span> neutral-6</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-4)"></span> neutral-4</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-6)"></span> neutral-6</div>
     </div>
     <div class="role-purpose">Labels, metadata</div>
   </div>
@@ -278,8 +280,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--text-muted</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.55 0.014 78)"></span> L 0.55*</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.55 0.014 78)"></span> L 0.55*</div>
     </div>
     <div class="role-purpose">Timestamps, placeholders</div>
   </div>
@@ -287,8 +289,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--text-inverse</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
     </div>
     <div class="role-purpose">Text on colored surfaces</div>
   </div>
@@ -298,8 +300,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
     </div>
     <div class="role-purpose">Main brand color</div>
   </div>
@@ -307,8 +309,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary-light</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
     </div>
     <div class="role-purpose">Hover, soft emphasis</div>
   </div>
@@ -316,8 +318,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary-dark</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
     </div>
     <div class="role-purpose">Active, strong emphasis</div>
   </div>
@@ -327,8 +329,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--secondary</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
     </div>
     <div class="role-purpose">Supporting color</div>
   </div>
@@ -336,8 +338,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--secondary-light</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
     </div>
     <div class="role-purpose">Soft secondary</div>
   </div>
@@ -345,8 +347,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--secondary-dark</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
     </div>
     <div class="role-purpose">Strong secondary</div>
   </div>
@@ -356,8 +358,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--accent</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
     </div>
     <div class="role-purpose">Call to action</div>
   </div>
@@ -365,8 +367,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--accent-light</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
     </div>
     <div class="role-purpose">Soft accent</div>
   </div>
@@ -374,8 +376,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--accent-dark</code></div>
     <div class="role-modes">
-      <div class="role-mode"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
-      <div class="role-mode"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
     </div>
     <div class="role-purpose">Strong accent</div>
   </div>
