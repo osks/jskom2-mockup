@@ -21,7 +21,7 @@
   --text: oklch(0.2000 0.0120 78.0);
   --text-secondary: oklch(0.4200 0.0180 78.0);
   --text-muted: oklch(0.5800 0.0160 78.0);
-  --text-light: oklch(0.9900 0.0040 78.0);
+  --text-inverse: oklch(0.9900 0.0040 78.0);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,7 +42,7 @@ h2 { margin-bottom: 0.75rem; }
 }
 .swatch .name { font-weight: 600; }
 .swatch .val { opacity: 0.75; font-size: 0.65rem; font-family: monospace; margin-top: 0.15rem; }
-.light-text { color: var(--text-light); }
+.light-text { color: var(--text-inverse); }
 .dark-text { color: var(--text); }
 
 /* Demo UI section */
@@ -51,7 +51,7 @@ h2 { margin-bottom: 0.75rem; }
 .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .btn {
   padding: 0.6rem 1.4rem; border: none; border-radius: 8px; font-size: 0.9rem;
-  font-weight: 600; cursor: pointer; color: var(--text-light);
+  font-weight: 600; cursor: pointer; color: var(--text-inverse);
 }
 .btn-primary { background: var(--primary); }
 .btn-primary:hover { background: var(--primary-dark); }
@@ -67,7 +67,7 @@ h2 { margin-bottom: 0.75rem; }
 .card {
   flex: 1; min-width: 200px; border-radius: 12px; overflow: hidden;
 }
-.card-header { padding: 1.25rem; color: var(--text-light); }
+.card-header { padding: 1.25rem; color: var(--text-inverse); }
 .card-body { padding: 1rem; background: var(--bg-light); color: var(--text); font-size: 0.9rem; }
 .card-body p { color: var(--text); margin-top: 0.25rem; font-size: 0.85rem; }
 
@@ -87,7 +87,7 @@ h2 { margin-bottom: 0.75rem; }
 .layer-col { flex: 1; min-width: 250px; }
 
 .code-block { margin-bottom: 2rem; }
-.code-block pre { background: var(--text); color: var(--text-light); padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
+.code-block pre { background: var(--text); color: var(--text-inverse); padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
 
 /* Dark mode overrides */
 .dark-mode {
@@ -97,7 +97,7 @@ h2 { margin-bottom: 0.75rem; }
   --text: oklch(0.9300 0.0080 78.0);
   --text-secondary: oklch(0.7200 0.0140 78.0);
   --text-muted: oklch(0.5500 0.0140 78.0);
-  --text-light: oklch(0.1500 0.0080 78.0);
+  --text-inverse: oklch(0.1500 0.0080 78.0);
   background: var(--bg-light);
   color: var(--text);
   margin: 0 -2rem;
@@ -144,7 +144,7 @@ h2 { margin-bottom: 0.75rem; }
     <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="val">L 0.20 C 0.01 H 78</span></div>
     <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="val">L 0.42 C 0.018 H 78</span></div>
     <div class="swatch light-text" style="background:var(--text-muted)"><span class="name">Text Muted</span><span class="val">L 0.58 C 0.016 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--text-light)"><span class="name">Text Light</span><span class="val">L 0.99 C 0.004 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--text-inverse)"><span class="name">Text Inverse</span><span class="val">L 0.99 C 0.004 H 78</span></div>
   </div>
 </div>
 
@@ -362,7 +362,7 @@ h2 { margin-bottom: 0.75rem; }
   --text:             oklch(0.2000 0.0120 78.0);
   --text-secondary:   oklch(0.4200 0.0180 78.0);
   --text-muted:       oklch(0.5800 0.0160 78.0);
-  --text-light:       oklch(0.9900 0.0040 78.0);
+  --text-inverse:       oklch(0.9900 0.0040 78.0);
 }</code></pre>
 </div>
 
@@ -405,7 +405,7 @@ h2 { margin-bottom: 0.75rem; }
     <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="val">L 0.93 C 0.008 H 78</span></div>
     <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="val">L 0.72 C 0.014 H 78</span></div>
     <div class="swatch light-text" style="background:var(--text-muted)"><span class="name">Text Muted</span><span class="val">L 0.55 C 0.014 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--text-light)"><span class="name">Text Light</span><span class="val">L 0.15 C 0.008 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--text-inverse)"><span class="name">Text Inverse</span><span class="val">L 0.15 C 0.008 H 78</span></div>
   </div>
 </div>
 
@@ -611,7 +611,7 @@ h2 { margin-bottom: 0.75rem; }
   --text:             oklch(0.9300 0.0080 78.0);
   --text-secondary:   oklch(0.7200 0.0140 78.0);
   --text-muted:       oklch(0.5500 0.0140 78.0);
-  --text-light:       oklch(0.1500 0.0080 78.0);
+  --text-inverse:       oklch(0.1500 0.0080 78.0);
 
   /* primary, secondary, accent: unchanged */
 }</code></pre>
