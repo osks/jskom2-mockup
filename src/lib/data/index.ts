@@ -66,14 +66,14 @@ export function getUnreadTexts(userId: number, confId: number): TextInfo[] {
 }
 
 const authorColorMap = [
-	{ border: 'border-blue-400', text: 'text-blue-700', bg: 'bg-blue-500' },
 	{ border: 'border-emerald-400', text: 'text-emerald-700', bg: 'bg-emerald-500' },
+	{ border: 'border-teal-400', text: 'text-teal-700', bg: 'bg-teal-500' },
 	{ border: 'border-amber-400', text: 'text-amber-700', bg: 'bg-amber-500' },
-	{ border: 'border-rose-400', text: 'text-rose-700', bg: 'bg-rose-500' },
-	{ border: 'border-purple-400', text: 'text-purple-700', bg: 'bg-purple-500' },
-	{ border: 'border-cyan-400', text: 'text-cyan-700', bg: 'bg-cyan-500' },
 	{ border: 'border-orange-400', text: 'text-orange-700', bg: 'bg-orange-500' },
-	{ border: 'border-indigo-400', text: 'text-indigo-700', bg: 'bg-indigo-500' }
+	{ border: 'border-lime-400', text: 'text-lime-700', bg: 'bg-lime-500' },
+	{ border: 'border-cyan-400', text: 'text-cyan-700', bg: 'bg-cyan-500' },
+	{ border: 'border-yellow-400', text: 'text-yellow-700', bg: 'bg-yellow-500' },
+	{ border: 'border-rose-400', text: 'text-rose-700', bg: 'bg-rose-500' }
 ];
 
 export function getAuthorColor(userId: number) {

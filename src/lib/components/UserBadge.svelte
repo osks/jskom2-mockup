@@ -27,7 +27,7 @@
 		<a href="{base}/users/{userId}" class="inline-flex items-center gap-1.5 hover:underline">
 			{#if showAvatar}
 				<span
-					class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-medium text-white {colors.bg}"
+					class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-medium text-txt-inverse {colors.bg}"
 				>
 					{initials}
 				</span>
@@ -38,7 +38,7 @@
 		<span class="inline-flex items-center gap-1.5">
 			{#if showAvatar}
 				<span
-					class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-medium text-white {colors.bg}"
+					class="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-medium text-txt-inverse {colors.bg}"
 				>
 					{initials}
 				</span>
@@ -47,5 +47,5 @@
 		</span>
 	{/if}
 {:else}
-	<span class="text-gray-400">Okänd användare</span>
+	<span class="text-txt-muted">Okänd användare</span>
 {/if}

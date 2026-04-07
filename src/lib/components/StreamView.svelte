@@ -182,7 +182,7 @@
 				{@const text = getTextById(item.textId)}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
-						<div class="mx-8 border-t border-gray-200"></div>
+						<div class="mx-8 border-t border-surface-3"></div>
 					{/if}
 					<StreamMessage {text} active={item.textId === activeTextId} />
 				{/if}
@@ -190,9 +190,9 @@
 		{/each}
 
 		{#if nextAction.type === 'all-done' && $readingState.buffer.length === 0}
-			<p class="px-4 py-16 text-center text-sm text-gray-400">Inga olästa texter.</p>
+			<p class="px-4 py-16 text-center text-sm text-txt-muted">Inga olästa texter.</p>
 		{:else if nextAction.type === 'all-done'}
-			<p class="px-4 py-12 text-center text-sm text-gray-400">Klart — du har läst allt.</p>
+			<p class="px-4 py-12 text-center text-sm text-txt-muted">Klart — du har läst allt.</p>
 		{/if}
 
 		<!-- Spacer so last text isn't hidden behind floating bar -->
@@ -215,21 +215,21 @@
 			<!-- Secondary actions pill -->
 			{#if activeText}
 				<div class="relative">
-					<div class="flex h-12 items-center rounded-full bg-gray-200/70 backdrop-blur-md ring-[1.5px] ring-white/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)]">
+					<div class="flex h-12 items-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)]">
 						<button
 							onclick={handleComment}
-							class="flex h-12 items-center justify-center rounded-l-full pl-5 pr-5 active:bg-gray-300/50"
+							class="flex h-12 items-center justify-center rounded-l-full pl-5 pr-5 active:bg-surface-3/50"
 							aria-label="Kommentera"
 						>
-							<MessageSquare size={18} class="text-gray-800" />
+							<MessageSquare size={18} class="text-txt" />
 						</button>
-						<div class="h-5 w-px bg-gray-400/30"></div>
+						<div class="h-5 w-px bg-txt-muted/30"></div>
 						<button
 							onclick={toggleMoreMenu}
-							class="flex h-12 items-center justify-center rounded-r-full pl-5 pr-5 active:bg-gray-300/50"
+							class="flex h-12 items-center justify-center rounded-r-full pl-5 pr-5 active:bg-surface-3/50"
 							aria-label="Fler åtgärder"
 						>
-							<Ellipsis size={18} class="text-gray-800" />
+							<Ellipsis size={18} class="text-txt" />
 						</button>
 					</div>
 
@@ -238,22 +238,22 @@
 						<!-- Backdrop -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
-						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-white py-1.5 shadow-lg ring-1 ring-gray-200/60">
-							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-surface-2 py-1.5 shadow-lg ring-1 ring-surface-3/60">
+							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Återse text
 							</button>
-							<div class="mx-3 my-1 border-t border-gray-100"></div>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+							<div class="mx-3 my-1 border-t border-surface-2"></div>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Markera text
 							</button>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Avmarkera text
 							</button>
-							<div class="mx-3 my-1 border-t border-gray-100"></div>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+							<div class="mx-3 my-1 border-t border-surface-2"></div>
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Markera som läst
 							</button>
-							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-gray-700 active:bg-gray-100">
+							<button onclick={() => { closeMoreMenu(); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Markera som oläst
 							</button>
 						</div>
@@ -267,10 +267,10 @@
 			{#if nextAction.type !== 'all-done'}
 				<button
 					onclick={() => advanceReading()}
-					class="flex h-12 items-center justify-center rounded-full bg-gray-900/80 backdrop-blur-md px-5 ring-[1.5px] ring-white/25 active:bg-gray-700"
+					class="flex h-12 items-center justify-center rounded-full bg-primary backdrop-blur-md px-5 ring-[1.5px] ring-surface-1/25 active:bg-primary-active"
 					aria-label="Nästa olästa"
 				>
-					<span class="text-sm font-medium text-white">Nästa</span>
+					<span class="text-sm font-medium text-txt-inverse">Nästa</span>
 				</button>
 			{/if}
 		</div>
@@ -282,20 +282,20 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/20" onclick={closeReviewInput}>
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="mx-6 w-full max-w-xs rounded-2xl bg-white p-4 shadow-xl ring-1 ring-gray-200/60" onclick={(e) => e.stopPropagation()}>
-			<div class="text-sm font-medium text-gray-700 mb-3">Återse text</div>
+		<div class="mx-6 w-full max-w-xs rounded-2xl bg-surface-2 p-4 shadow-xl ring-1 ring-surface-3/60" onclick={(e) => e.stopPropagation()}>
+			<div class="text-sm font-medium text-txt-secondary mb-3">Återse text</div>
 			<form onsubmit={(e) => { e.preventDefault(); handleReview(); }} class="flex items-center gap-2">
 				<input
 					bind:this={reviewInputEl}
 					bind:value={reviewInputValue}
 					type="number"
 					placeholder="Textnummer"
-					class="w-full rounded-xl bg-gray-100 px-4 py-2.5 text-base ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="w-full rounded-xl bg-surface-2 px-4 py-2.5 text-base ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary"
 				/>
 				<button
 					type="submit"
 					disabled={!reviewInputValue.trim()}
-					class="shrink-0 rounded-xl bg-gray-900/80 px-4 py-2.5 text-sm font-medium text-white disabled:opacity-30"
+					class="shrink-0 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-txt-inverse disabled:opacity-30"
 				>Visa</button>
 			</form>
 		</div>

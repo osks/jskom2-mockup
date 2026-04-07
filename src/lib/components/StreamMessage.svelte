@@ -69,13 +69,13 @@
 {#if compact}
 	<a
 		href="{base}/texts/{text.id}"
-		class="group flex items-center gap-3 px-4 py-1.5 hover:bg-gray-50/80 transition-colors"
+		class="group flex items-center gap-3 px-4 py-1.5 hover:bg-surface-1/80 transition-colors"
 	>
-		<span class="shrink-0 text-sm font-medium text-gray-900">{author?.name ?? 'Okänd'}</span>
-		<span class="min-w-0 flex-1 truncate text-sm text-gray-600">{text.subject}</span>
-		<span class="shrink-0 text-xs text-gray-400">{shortTimeStr}</span>
+		<span class="shrink-0 text-sm font-medium text-txt">{author?.name ?? 'Okänd'}</span>
+		<span class="min-w-0 flex-1 truncate text-sm text-txt-secondary">{text.subject}</span>
+		<span class="shrink-0 text-xs text-txt-muted">{shortTimeStr}</span>
 		{#if commentChildren.length > 0}
-			<span class="shrink-0 text-xs text-gray-400">{commentChildren.length}↳</span>
+			<span class="shrink-0 text-xs text-txt-muted">{commentChildren.length}↳</span>
 		{/if}
 	</a>
 {:else}
@@ -83,7 +83,7 @@
 		id="text-{text.id}"
 		data-text-id={text.id}
 		class="px-4 py-3 ml-1.5 border-l-2 transition-all duration-300"
-		class:border-gray-400={active}
+		class:border-txt-muted={active}
 		class:border-transparent={!active}
 	>
 		<div class="min-w-0">
@@ -91,32 +91,32 @@
 			<div class="flex items-baseline gap-1.5 text-sm flex-wrap">
 				<InfoPopover>
 					{#snippet children()}
-						<span class="font-mono text-gray-400">#{text.id}</span>
+						<span class="font-mono text-txt-muted">#{text.id}</span>
 					{/snippet}
 					{#snippet popup()}
 						<div class="text-sm">
-							<div class="font-semibold text-gray-900 mb-1">Text #{text.id}</div>
+							<div class="font-semibold text-txt mb-1">Text #{text.id}</div>
 							<button
 								onclick={() => återseText(text.id)}
-								class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+								class="block w-full text-left px-1 py-1 text-primary hover:underline"
 							>Återse</button>
 						</div>
 					{/snippet}
 				</InfoPopover>
-				<span class="text-gray-300">/</span>
-				<span class="text-gray-400">{isoTimeStr}</span>
-				<span class="text-gray-300">/</span>
+				<span class="text-txt-muted">/</span>
+				<span class="text-txt-muted">{isoTimeStr}</span>
+				<span class="text-txt-muted">/</span>
 				<InfoPopover>
 					{#snippet children()}
-						<span class="font-semibold text-gray-900">{author?.name ?? 'Okänd'}</span>
+						<span class="font-semibold text-txt">{author?.name ?? 'Okänd'}</span>
 					{/snippet}
 					{#snippet popup()}
 						<div class="space-y-1 text-sm">
-							<div class="font-semibold text-gray-900">{author?.name ?? 'Okänd'}</div>
-							<div class="text-gray-500">Person <span class="font-mono">#{text.author}</span></div>
+							<div class="font-semibold text-txt">{author?.name ?? 'Okänd'}</div>
+							<div class="text-txt-secondary">Person <span class="font-mono">#{text.author}</span></div>
 							{#if author}
-								<div class="text-gray-500">{author.totalTexts} texter</div>
-								<a href="{base}/users/{text.author}" class="block text-lyskom-600 hover:underline">Visa profil</a>
+								<div class="text-txt-secondary">{author.totalTexts} texter</div>
+								<a href="{base}/users/{text.author}" class="block text-primary hover:underline">Visa profil</a>
 							{/if}
 						</div>
 					{/snippet}
@@ -125,18 +125,18 @@
 
 			<!-- Comment parents -->
 			{#each commentParents as parent}
-				<div class="mt-0.5 text-sm text-gray-500">
-					<span class="text-gray-400">↳</span>
+				<div class="mt-0.5 text-sm text-txt-secondary">
+					<span class="text-txt-muted">↳</span>
 					<InfoPopover>
 						{#snippet children()}
-							<span class="font-mono cursor-pointer hover:text-gray-700">#{parent.id}</span>
+							<span class="font-mono cursor-pointer hover:text-txt-secondary">#{parent.id}</span>
 						{/snippet}
 						{#snippet popup()}
 							<div class="text-sm">
-								<div class="font-semibold text-gray-900 mb-1">Text #{parent.id}</div>
+								<div class="font-semibold text-txt mb-1">Text #{parent.id}</div>
 								<button
 									onclick={() => återseText(parent.id)}
-									class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+									class="block w-full text-left px-1 py-1 text-primary hover:underline"
 								>Återse</button>
 							</div>
 						{/snippet}
@@ -148,11 +148,11 @@
 						{/snippet}
 						{#snippet popup()}
 							<div class="space-y-1 text-sm">
-								<div class="font-semibold text-gray-900">{parent.authorName}</div>
+								<div class="font-semibold text-txt">{parent.authorName}</div>
 								{#if parent.author}
-									<div class="text-gray-500">Person <span class="font-mono">#{parent.author.id}</span></div>
-									<div class="text-gray-500">{parent.author.totalTexts} texter</div>
-									<a href="{base}/users/{parent.author.id}" class="block text-lyskom-600 hover:underline">Visa profil</a>
+									<div class="text-txt-secondary">Person <span class="font-mono">#{parent.author.id}</span></div>
+									<div class="text-txt-secondary">{parent.author.totalTexts} texter</div>
+									<a href="{base}/users/{parent.author.id}" class="block text-primary hover:underline">Visa profil</a>
 								{/if}
 							</div>
 						{/snippet}
@@ -162,19 +162,19 @@
 
 			<!-- Recipients -->
 			{#each recipientConfs as { id, conf }}
-				<div class="mt-0.5 text-sm text-gray-500">
-					<span class="text-gray-400">@</span>
+				<div class="mt-0.5 text-sm text-txt-secondary">
+					<span class="text-txt-muted">@</span>
 					<InfoPopover>
 						{#snippet children()}
 							<span>{conf?.name ?? `Möte ${id}`}</span>
 						{/snippet}
 						{#snippet popup()}
 							<div class="space-y-1 text-sm">
-								<div class="font-semibold text-gray-900">{conf?.name ?? `Möte ${id}`}</div>
-								<div class="text-gray-500">Möte <span class="font-mono">#{id}</span></div>
+								<div class="font-semibold text-txt">{conf?.name ?? `Möte ${id}`}</div>
+								<div class="text-txt-secondary">Möte <span class="font-mono">#{id}</span></div>
 								{#if conf}
-									<div class="text-gray-500">{conf.members} medlemmar · {conf.totalTexts} texter</div>
-									<a href="{base}/conferences/{id}" class="block text-lyskom-600 hover:underline">Visa möte</a>
+									<div class="text-txt-secondary">{conf.members} medlemmar · {conf.totalTexts} texter</div>
+									<a href="{base}/conferences/{id}" class="block text-primary hover:underline">Visa möte</a>
 								{/if}
 							</div>
 						{/snippet}
@@ -184,19 +184,19 @@
 
 			<!-- CC Recipients -->
 			{#each ccRecipientConfs as { id, conf }}
-				<div class="mt-0.5 text-sm text-gray-500">
-					<span class="text-gray-400">cc</span>
+				<div class="mt-0.5 text-sm text-txt-secondary">
+					<span class="text-txt-muted">cc</span>
 					<InfoPopover>
 						{#snippet children()}
 							<span>{conf?.name ?? `Möte ${id}`}</span>
 						{/snippet}
 						{#snippet popup()}
 							<div class="space-y-1 text-sm">
-								<div class="font-semibold text-gray-900">{conf?.name ?? `Möte ${id}`}</div>
-								<div class="text-gray-500">Möte <span class="font-mono">#{id}</span></div>
+								<div class="font-semibold text-txt">{conf?.name ?? `Möte ${id}`}</div>
+								<div class="text-txt-secondary">Möte <span class="font-mono">#{id}</span></div>
 								{#if conf}
-									<div class="text-gray-500">{conf.members} medlemmar · {conf.totalTexts} texter</div>
-									<a href="{base}/conferences/{id}" class="block text-lyskom-600 hover:underline">Visa möte</a>
+									<div class="text-txt-secondary">{conf.members} medlemmar · {conf.totalTexts} texter</div>
+									<a href="{base}/conferences/{id}" class="block text-primary hover:underline">Visa möte</a>
 								{/if}
 							</div>
 						{/snippet}
@@ -205,18 +205,18 @@
 			{/each}
 
 			<!-- Subject -->
-			<div class="mt-1 text-sm font-medium text-gray-900">Ärende: {text.subject}</div>
+			<div class="mt-1 text-sm font-medium text-txt">Ärende: {text.subject}</div>
 
 			<!-- Body -->
-			<div class="mt-1.5 text-base leading-relaxed text-gray-800 whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
+			<div class="mt-1.5 text-base leading-relaxed text-txt whitespace-pre-wrap break-words overflow-hidden md:text-sm">{text.body}</div>
 
 			<!-- Anmärkningar (remarks) -->
 			{#if remarkAuthors.length > 0}
 				<div class="mt-2 pl-4 space-y-0.5">
 					{#each remarkAuthors as remark}
-						<div class="text-sm text-gray-500">
-							<span class="text-gray-400">—</span>
-							{remark.authorName}: <span class="text-gray-600">{remark.body}</span>
+						<div class="text-sm text-txt-secondary">
+							<span class="text-txt-muted">—</span>
+							{remark.authorName}: <span class="text-txt-secondary">{remark.body}</span>
 						</div>
 					{/each}
 				</div>
@@ -226,18 +226,18 @@
 			{#if commentChildren.length > 0}
 				<div class="mt-2 pl-4 space-y-0.5">
 					{#each commentChildren as child}
-						<div class="text-sm text-gray-500">
-							<span class="text-gray-400">↳</span>
+						<div class="text-sm text-txt-secondary">
+							<span class="text-txt-muted">↳</span>
 							<InfoPopover>
 								{#snippet children()}
-									<span class="font-mono cursor-pointer hover:text-gray-700">#{child.id}</span>
+									<span class="font-mono cursor-pointer hover:text-txt-secondary">#{child.id}</span>
 								{/snippet}
 								{#snippet popup()}
 									<div class="text-sm">
-										<div class="font-semibold text-gray-900 mb-1">Text #{child.id}</div>
+										<div class="font-semibold text-txt mb-1">Text #{child.id}</div>
 										<button
 											onclick={() => återseText(child.id)}
-											class="block w-full text-left px-1 py-1 text-lyskom-600 hover:underline"
+											class="block w-full text-left px-1 py-1 text-primary hover:underline"
 										>Återse</button>
 									</div>
 								{/snippet}
@@ -249,11 +249,11 @@
 								{/snippet}
 								{#snippet popup()}
 									<div class="space-y-1 text-sm">
-										<div class="font-semibold text-gray-900">{child.authorName}</div>
+										<div class="font-semibold text-txt">{child.authorName}</div>
 										{#if child.author}
-											<div class="text-gray-500">Person <span class="font-mono">#{child.author.id}</span></div>
-											<div class="text-gray-500">{child.author.totalTexts} texter</div>
-											<a href="{base}/users/{child.author.id}" class="block text-lyskom-600 hover:underline">Visa profil</a>
+											<div class="text-txt-secondary">Person <span class="font-mono">#{child.author.id}</span></div>
+											<div class="text-txt-secondary">{child.author.totalTexts} texter</div>
+											<a href="{base}/users/{child.author.id}" class="block text-primary hover:underline">Visa profil</a>
 										{/if}
 									</div>
 								{/snippet}

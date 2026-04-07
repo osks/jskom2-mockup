@@ -4,26 +4,113 @@
 @import '@fontsource/ibm-plex-mono/500.css';
 @import '@fontsource/ibm-plex-mono/600.css';
 
+/* =============================================
+   Forest Design System — Layer 1: Raw Palette
+   ============================================= */
+:root {
+	/* Green (primary family) */
+	--forest-green-1: oklch(0.3800 0.0900 155.0);
+	--forest-green-2: oklch(0.4400 0.0950 155.5);
+	--forest-green-3: oklch(0.5092 0.1031 156.2);
+	--forest-green-4: oklch(0.6470 0.1200 157.2);
+	--forest-green-5: oklch(0.7500 0.1300 158.0);
+
+	/* Brown (secondary family) */
+	--forest-brown-1: oklch(0.3800 0.0300 65.0);
+	--forest-brown-2: oklch(0.5041 0.0350 66.8);
+	--forest-brown-3: oklch(0.6295 0.0450 69.5);
+
+	/* Orange (accent family) */
+	--forest-orange-1: oklch(0.5700 0.1500 46.0);
+	--forest-orange-2: oklch(0.6899 0.1434 48.4);
+	--forest-orange-3: oklch(0.7300 0.1300 54.3);
+	--forest-orange-4: oklch(0.8500 0.1000 60.0);
+
+	/* Neutral (backgrounds, text) */
+	--forest-neutral-1: oklch(0.1300 0.0080 75.0);
+	--forest-neutral-2: oklch(0.2100 0.0120 75.0);
+	--forest-neutral-3: oklch(0.2900 0.0120 75.0);
+	--forest-neutral-4: oklch(0.4200 0.0220 75.0);
+	--forest-neutral-5: oklch(0.5800 0.0200 75.0);
+	--forest-neutral-6: oklch(0.7200 0.0180 75.0);
+	--forest-neutral-7: oklch(0.9292 0.0120 75.0);
+	--forest-neutral-8: oklch(0.9646 0.0090 75.0);
+	--forest-neutral-9: oklch(0.9900 0.0040 75.0);
+}
+
+/* =============================================
+   Forest Design System — Layer 2: Role Mappings (Light Mode)
+   ============================================= */
+:root {
+	--forest-bg-1: var(--forest-neutral-9);
+	--forest-bg-2: var(--forest-neutral-8);
+	--forest-bg-3: var(--forest-neutral-7);
+
+	--forest-text:           var(--forest-neutral-2);
+	--forest-text-secondary: var(--forest-neutral-4);
+	--forest-text-muted:     var(--forest-neutral-5);
+	--forest-text-inverse:   var(--forest-neutral-9);
+
+	--forest-primary:        var(--forest-green-3);
+	--forest-primary-hover:  var(--forest-green-4);
+	--forest-primary-active: var(--forest-green-1);
+
+	--forest-secondary:        var(--forest-neutral-4);
+	--forest-secondary-hover:  var(--forest-neutral-5);
+	--forest-secondary-active: var(--forest-neutral-3);
+
+	--forest-accent:        var(--forest-orange-2);
+	--forest-accent-hover:  var(--forest-orange-4);
+	--forest-accent-active: var(--forest-orange-1);
+
+	--forest-subtle:        var(--forest-neutral-9);
+	--forest-subtle-hover:  var(--forest-neutral-8);
+	--forest-subtle-active: var(--forest-neutral-7);
+}
+
+/* =============================================
+   Tailwind Theme — Semantic colors only
+   ============================================= */
 @theme {
 	--font-sans: 'IBM Plex Sans Variable', system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-	--color-lyskom-50: #eff6ff;
-	--color-lyskom-100: #dbeafe;
-	--color-lyskom-500: #3b82f6;
-	--color-lyskom-600: #2563eb;
-	--color-lyskom-700: #1d4ed8;
-	--color-lyskom-900: #1e3a5f;
+
+	/* Semantic surfaces */
+	--color-surface-1: var(--forest-bg-1);
+	--color-surface-2: var(--forest-bg-2);
+	--color-surface-3: var(--forest-bg-3);
+
+	/* Semantic text */
+	--color-txt:           var(--forest-text);
+	--color-txt-secondary: var(--forest-text-secondary);
+	--color-txt-muted:     var(--forest-text-muted);
+	--color-txt-inverse:   var(--forest-text-inverse);
+
+	/* Primary (green) */
+	--color-primary:        var(--forest-primary);
+	--color-primary-hover:  var(--forest-primary-hover);
+	--color-primary-active: var(--forest-primary-active);
+
+	/* Accent (orange) */
+	--color-accent:        var(--forest-accent);
+	--color-accent-hover:  var(--forest-accent-hover);
+	--color-accent-active: var(--forest-accent-active);
+
+	/* Subtle (ghost/subtle buttons) */
+	--color-subtle:        var(--forest-subtle);
+	--color-subtle-hover:  var(--forest-subtle-hover);
+	--color-subtle-active: var(--forest-subtle-active);
 }
 
 html {
 	font-family: var(--font-sans);
-	background-color: var(--color-gray-50);
+	background-color: var(--color-surface-1);
 	overscroll-behavior: none;
 	touch-action: manipulation;
 }
 
 body {
-	@apply text-gray-900 antialiased;
+	@apply text-txt antialiased;
 }
 
 /* Safe area insets for notched/rounded-corner devices */

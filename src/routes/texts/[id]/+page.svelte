@@ -25,9 +25,9 @@
 	<title>{text?.subject ?? 'Text'} — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-2xl bg-white pt-below-header">
-	<div class="hidden md:block sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-2">
-		<span class="text-xs font-medium text-gray-500">
+<div class="mx-auto max-w-2xl bg-surface-2 pt-below-header">
+	<div class="hidden md:block sticky top-0 z-10 bg-surface-2/95 backdrop-blur-sm border-b border-surface-2 px-4 py-2">
+		<span class="text-xs font-medium text-txt-secondary">
 			Tråd — {rootText?.subject ?? `text ${rootId}`}
 		</span>
 	</div>
@@ -35,6 +35,6 @@
 	{#if rootText}
 		<TextThread textId={rootId} highlightId={textId} />
 	{:else}
-		<p class="px-4 py-8 text-center text-sm text-gray-400">Texten hittades inte.</p>
+		<p class="px-4 py-8 text-center text-sm text-txt-muted">Texten hittades inte.</p>
 	{/if}
 </div>

@@ -25,13 +25,13 @@
 	<title>{conference?.name ?? 'Möte'} — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-2xl bg-white pt-below-header">
+<div class="mx-auto max-w-2xl bg-surface-2 pt-below-header">
 	{#if conference}
 		<!-- Conference header: full on desktop, description below on mobile -->
-		<div class="hidden md:block sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">
-			<div class="text-base font-medium text-gray-900">{conference.name}</div>
-			<p class="mt-0.5 text-xs text-gray-500">{conference.description}</p>
-			<div class="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-gray-400">
+		<div class="hidden md:block sticky top-0 z-10 bg-surface-2/95 backdrop-blur-sm border-b border-surface-2 px-4 py-3">
+			<div class="text-base font-medium text-txt">{conference.name}</div>
+			<p class="mt-0.5 text-xs text-txt-secondary">{conference.description}</p>
+			<div class="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-txt-muted">
 				<span class="flex items-center gap-1">
 					<Users size={12} />
 					{conference.members} medlemmar
@@ -47,9 +47,9 @@
 		</div>
 
 		<!-- Mobile-only: compact info below the header bar -->
-		<div class="md:hidden border-b border-gray-100 px-4 py-2">
-			<p class="text-xs text-gray-500">{conference.description}</p>
-			<div class="mt-1 flex flex-wrap items-center gap-3 text-xs text-gray-400">
+		<div class="md:hidden border-b border-surface-2 px-4 py-2">
+			<p class="text-xs text-txt-secondary">{conference.description}</p>
+			<div class="mt-1 flex flex-wrap items-center gap-3 text-xs text-txt-muted">
 				<span>{conference.members} medlemmar</span>
 				<span>{conference.totalTexts} texter</span>
 			</div>
@@ -59,9 +59,9 @@
 		{#each texts as text}
 			<StreamMessage {text} compact />
 		{:else}
-			<p class="px-4 py-8 text-center text-sm text-gray-400">Inga texter i detta möte.</p>
+			<p class="px-4 py-8 text-center text-sm text-txt-muted">Inga texter i detta möte.</p>
 		{/each}
 	{:else}
-		<p class="px-4 py-8 text-center text-sm text-gray-400">Mötet hittades inte.</p>
+		<p class="px-4 py-8 text-center text-sm text-txt-muted">Mötet hittades inte.</p>
 	{/if}
 </div>

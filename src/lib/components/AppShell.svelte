@@ -31,19 +31,19 @@
 
 <div class="h-screen w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
-	<div class="fixed inset-0 z-0 w-80 bg-gray-50 md:hidden">
+	<div class="fixed inset-0 z-0 w-80 bg-surface-1 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
 	</div>
 
 	<!-- Desktop sidebar + main content wrapper -->
 	<div
-		class="relative z-10 flex h-full bg-gray-50 overflow-clip transition-transform duration-250 ease-out"
+		class="relative z-10 flex h-full bg-surface-1 overflow-clip transition-transform duration-250 ease-out"
 		class:translate-x-80={$sidebarOpen}
 		class:md:!translate-x-0={true}
 		class:shadow-[-4px_0_12px_rgba(0,0,0,0.08)]={$sidebarOpen}
 	>
 		<!-- Desktop sidebar -->
-		<div class="hidden w-72 shrink-0 border-r border-gray-200 md:block">
+		<div class="hidden w-72 shrink-0 border-r border-surface-3 md:block">
 			<NavSidebar />
 		</div>
 

@@ -18,23 +18,23 @@
 	<title>{user?.name ?? 'Användare'} — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-2xl bg-white pt-below-header">
+<div class="mx-auto max-w-2xl bg-surface-2 pt-below-header">
 	{#if user}
 		<!-- User header -->
-		<div class="border-b border-gray-100 px-4 py-4">
+		<div class="border-b border-surface-2 px-4 py-4">
 			<div>
-				<h1 class="text-lg font-semibold text-gray-900">{user.name}</h1>
-				<span class="text-xs text-gray-400">{user.username}</span>
+				<h1 class="text-lg font-semibold text-txt">{user.name}</h1>
+				<span class="text-xs text-txt-muted">{user.username}</span>
 			</div>
 
-			<div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400">
+			<div class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-txt-muted">
 				<span>Medlem sedan {new Date(user.created).toLocaleDateString('sv-SE')}</span>
 				<span>{user.totalTexts.toLocaleString('sv-SE')} texter</span>
 				<span>Senast inloggad {new Date(user.lastLogin).toLocaleDateString('sv-SE')}</span>
 			</div>
 
 			<button
-				class="mt-3 flex items-center gap-1.5 rounded px-2 py-1 text-xs text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+				class="mt-3 flex items-center gap-1.5 rounded px-2 py-1 text-xs text-txt-secondary hover:bg-surface-1 hover:text-txt-secondary"
 			>
 				<Mail size={12} />
 				Skicka personligt meddelande
@@ -44,22 +44,22 @@
 		<!-- Memberships -->
 		{#if userMemberships.length > 0}
 			<div class="px-4 py-2">
-				<span class="text-xs font-medium text-gray-500">Medlem i</span>
+				<span class="text-xs font-medium text-txt-secondary">Medlem i</span>
 			</div>
 			{#each userMemberships as m}
 				{@const conf = getConferenceById(m.conferenceId)}
 				{#if conf}
 					<a
 						href="{base}/conferences/{conf.id}"
-						class="flex items-center justify-between px-4 py-2 hover:bg-gray-50/80 transition-colors"
+						class="flex items-center justify-between px-4 py-2 hover:bg-surface-1/80 transition-colors"
 					>
-						<span class="text-sm text-gray-700">{conf.name}</span>
-						<span class="text-xs text-gray-400">Prioritet {m.priority}</span>
+						<span class="text-sm text-txt-secondary">{conf.name}</span>
+						<span class="text-xs text-txt-muted">Prioritet {m.priority}</span>
 					</a>
 				{/if}
 			{/each}
 		{/if}
 	{:else}
-		<p class="px-4 py-8 text-center text-sm text-gray-400">Användaren hittades inte.</p>
+		<p class="px-4 py-8 text-center text-sm text-txt-muted">Användaren hittades inte.</p>
 	{/if}
 </div>

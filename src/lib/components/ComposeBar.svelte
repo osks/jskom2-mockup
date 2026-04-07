@@ -99,12 +99,12 @@
 		class="fixed inset-x-0 bottom-0 top-12 z-40 flex flex-col md:inset-0 md:pointer-events-none md:items-center md:justify-center md:bg-transparent md:p-6"
 	>
 		<div
-			class="flex flex-1 flex-col overflow-y-auto rounded-t-3xl bg-gray-50 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] md:rounded-2xl md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)] md:pointer-events-auto md:flex-initial md:w-full md:max-w-lg md:max-h-[85vh] md:bg-gray-200/40 md:backdrop-blur-md md:ring-1 md:ring-white/80"
+			class="flex flex-1 flex-col overflow-y-auto rounded-t-3xl bg-surface-1 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] md:rounded-2xl md:shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)] md:pointer-events-auto md:flex-initial md:w-full md:max-w-lg md:max-h-[85vh] md:bg-surface-3/40 md:backdrop-blur-md md:ring-1 md:ring-surface-1/80"
 			transition:fly={{ y: window.innerHeight, duration: 300, easing: cubicOut }}
 		>
 			<!-- Header -->
 			<div class="flex items-center justify-between px-4 pt-3 pb-1">
-				<h2 class="text-sm font-medium text-gray-700">
+				<h2 class="text-sm font-medium text-txt-secondary">
 					{#if isComment}
 						Kommentera
 					{:else}
@@ -113,7 +113,7 @@
 				</h2>
 				<button
 					onclick={handleCancel}
-					class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200/70 backdrop-blur-md ring-[1.5px] ring-white/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-gray-800 active:bg-gray-300/50 md:h-8 md:w-8"
+					class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-3/50 md:h-8 md:w-8"
 				>
 					<X size={18} />
 				</button>
@@ -121,11 +121,11 @@
 
 			<!-- Quoted original text (reply mode) -->
 			{#if isComment && commentToText}
-				<div class="mx-4 mt-3 border-l-2 border-gray-300 pl-3">
-					<div class="text-sm font-semibold text-gray-700">
+				<div class="mx-4 mt-3 border-l-2 border-surface-3 pl-3">
+					<div class="text-sm font-semibold text-txt-secondary">
 						{commentToAuthor?.name ?? 'Okänd'}
 					</div>
-					<div class="mt-1 text-base leading-relaxed text-gray-600 whitespace-pre-wrap break-words md:text-sm">
+					<div class="mt-1 text-base leading-relaxed text-txt-secondary whitespace-pre-wrap break-words md:text-sm">
 						{commentToText.body}
 					</div>
 				</div>
@@ -138,11 +138,11 @@
 					<div class="space-y-2 py-0.5">
 						{#each recipients as recipientId, i}
 							<div class="flex items-center gap-2">
-								<span class="shrink-0 text-sm text-gray-400">@</span>
+								<span class="shrink-0 text-sm text-txt-muted">@</span>
 								<select
 									value={recipientId}
 									onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
-									class="flex-1 rounded-full bg-white px-3 py-1.5 text-sm text-gray-700 ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+									class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80"
 								>
 									{#each conferences as conf}
 										<option value={conf.id}>{conf.name}</option>
@@ -151,12 +151,12 @@
 							</div>
 						{/each}
 						<div class="flex items-center gap-2">
-							<span class="shrink-0 text-sm text-gray-400">Ärende</span>
+							<span class="shrink-0 text-sm text-txt-muted">Ärende</span>
 							<input
 								type="text"
 								bind:value={subject}
 								placeholder="Ärende..."
-								class="flex-1 rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-gray-200 focus:outline-none focus:ring-1 focus:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus:bg-white/80"
+								class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80"
 							/>
 						</div>
 					</div>
@@ -165,17 +165,17 @@
 					<div class="flex items-start justify-between">
 						<div class="flex flex-col gap-0.5">
 							{#each recipientNames as name}
-								<div class="text-sm text-gray-500">
-									<span class="text-gray-400">@</span> {name}
+								<div class="text-sm text-txt-secondary">
+									<span class="text-txt-muted">@</span> {name}
 								</div>
 							{/each}
-							<div class="text-sm text-gray-700">
+							<div class="text-sm text-txt-secondary">
 								Ärende: {subject || 'Inget ärende'}
 							</div>
 						</div>
 						<button
 							onclick={() => showMeta = true}
-							class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-gray-400 hover:bg-gray-200/50 hover:text-gray-600 transition-colors"
+							class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
 							aria-label="Redigera"
 						>
 							<Pencil size={14} />
@@ -185,8 +185,8 @@
 			</div>
 
 			<!-- Input widget (textarea + send) -->
-			<div class="safe-bottom sticky bottom-0 px-3 pb-5 pt-2 bg-gray-50 md:bg-transparent">
-				<div class="flex flex-col rounded-2xl bg-white ring-1 ring-gray-200 focus-within:ring-1 focus-within:ring-lyskom-500 md:bg-white/60 md:ring-white/80 md:focus-within:ring-lyskom-500">
+			<div class="safe-bottom sticky bottom-0 px-3 pb-5 pt-2 bg-surface-1 md:bg-transparent">
+				<div class="flex flex-col rounded-2xl bg-surface-2 ring-1 ring-surface-3 focus-within:ring-1 focus-within:ring-primary md:bg-surface-2/60 md:ring-surface-1/80 md:focus-within:ring-primary">
 					<textarea
 						bind:this={textareaEl}
 						bind:value={body}
@@ -194,14 +194,14 @@
 						oninput={autoGrow}
 						rows={3}
 						placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-						class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-base text-gray-800 placeholder:text-gray-400 focus:outline-none md:text-sm"
+						class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-base text-txt placeholder:text-txt-muted focus:outline-none md:text-sm"
 						style="max-height: 250px;"
 					></textarea>
 					<div class="flex items-center justify-end px-2 pb-2">
 						<button
 							onclick={handleSend}
 							disabled={sent || !body.trim()}
-							class="flex h-9 w-9 items-center justify-center rounded-full bg-gray-900/80 text-white active:bg-gray-700 disabled:opacity-30 transition-opacity"
+							class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-opacity"
 						>
 							{#if sent}
 								<Check size={18} />

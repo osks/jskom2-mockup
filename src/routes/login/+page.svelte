@@ -27,11 +27,11 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 px-4">
+<div class="flex min-h-screen items-center justify-center bg-surface-3 px-4">
 	<div class="w-full max-w-sm">
 		<div class="mb-8 text-center">
-			<h1 class="text-3xl font-bold text-lyskom-700">jskom2</h1>
-			<p class="mt-1 text-sm text-gray-500">
+			<h1 class="text-3xl font-bold text-primary">jskom2</h1>
+			<p class="mt-1 text-sm text-txt-secondary">
 				{#if hasConnections}
 					Anslut till en till server
 				{:else}
@@ -42,14 +42,14 @@
 
 		<form
 			onsubmit={(e) => { e.preventDefault(); handleLogin(); }}
-			class="rounded-2xl bg-gray-200/40 backdrop-blur-md ring-1 ring-white/80 p-6 space-y-4"
+			class="rounded-2xl bg-surface-3/40 backdrop-blur-md ring-1 ring-surface-1/80 p-6 space-y-4"
 		>
 			<div>
-				<label for="server" class="block text-sm font-medium text-gray-700">Server</label>
+				<label for="server" class="block text-sm font-medium text-txt-secondary">Server</label>
 				<select
 					id="server"
 					bind:value={server}
-					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm font-mono ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500 appearance-none"
+					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm font-mono ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary appearance-none"
 				>
 					{#each servers as s}
 						<option value={s.name}>{s.name}</option>
@@ -58,28 +58,28 @@
 			</div>
 
 			<div>
-				<label for="username" class="block text-sm font-medium text-gray-700">Namn</label>
+				<label for="username" class="block text-sm font-medium text-txt-secondary">Namn</label>
 				<input
 					id="username"
 					type="text"
 					bind:value={username}
-					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary"
 				/>
 			</div>
 
 			<div>
-				<label for="password" class="block text-sm font-medium text-gray-700">Lösenord</label>
+				<label for="password" class="block text-sm font-medium text-txt-secondary">Lösenord</label>
 				<input
 					id="password"
 					type="password"
 					bind:value={password}
-					class="mt-1 w-full rounded-full bg-white/60 px-4 py-2 text-sm ring-1 ring-white/80 focus:bg-white/80 focus:outline-none focus:ring-1 focus:ring-lyskom-500"
+					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary"
 				/>
 			</div>
 
 			<button
 				type="submit"
-				class="w-full rounded-full bg-gray-900/80 ring-1 ring-white/25 px-4 py-2.5 text-sm font-semibold text-white active:bg-gray-700 transition-colors"
+				class="w-full rounded-full bg-primary ring-1 ring-surface-1/25 px-4 py-2.5 text-sm font-semibold text-txt-inverse active:bg-primary-active transition-colors"
 			>
 				Logga in
 			</button>
@@ -88,7 +88,7 @@
 				<button
 					type="button"
 					onclick={handleBack}
-					class="w-full rounded-full px-4 py-2 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+					class="w-full rounded-full px-4 py-2 text-sm text-txt-secondary hover:text-txt-secondary transition-colors"
 				>
 					Tillbaka
 				</button>
