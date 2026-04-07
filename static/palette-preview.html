@@ -18,7 +18,7 @@
   --surface: oklch(0.9900 0.0040 78.0);
   --background: oklch(0.9646 0.0090 78.0);
   --background-dark: oklch(0.9292 0.0120 78.0);
-  --text: oklch(0.2365 0.0160 129.2);
+  --text: oklch(0.2500 0.0120 78.0);
   --text-secondary: oklch(0.5035 0.0211 78.1);
 }
 
@@ -159,6 +159,33 @@ h1 { margin-bottom: 0.5rem; }
   </div>
 </div>
 
+<div class="text-contrast">
+  <h2>Text on Backgrounds</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--surface);">
+        <div class="layer-label">--surface</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--background);">
+        <div class="layer-label">--background</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--background-dark);">
+        <div class="layer-label">--background-dark</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="layers">
   <h2>Background Layering</h2>
   <div class="layer-row">
@@ -218,7 +245,7 @@ h1 { margin-bottom: 0.5rem; }
   --background:       oklch(0.9646 0.0090 78.0);
   --background-dark:  oklch(0.9292 0.0120 78.0);
 
-  --text:             oklch(0.2365 0.0160 129.2);
+  --text:             oklch(0.2500 0.0120 78.0);
   --text-secondary:   oklch(0.5035 0.0211 78.1);
 }</code></pre>
 </div>
