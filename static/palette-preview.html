@@ -20,24 +20,25 @@
   --background-dark: oklch(0.9292 0.0120 78.0);
   --text: oklch(0.2500 0.0120 78.0);
   --text-secondary: oklch(0.5035 0.0211 78.1);
+  --text-light: oklch(0.9900 0.0040 78.0);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, sans-serif; background: var(--background); color: var(--text); padding: 2rem; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--background-dark); color: var(--text); padding: 2rem; }
 h1 { margin-bottom: 0.5rem; }
-.subtitle { color: var(--text-secondary); margin-bottom: 2rem; }
+h2 { margin-bottom: 0.75rem; }
 
 .group { margin-bottom: 2rem; }
 .group h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.75rem; }
 .swatches { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
 .swatch {
-  width: 160px; height: 100px; border-radius: 12px; display: flex; flex-direction: column;
+  width: 180px; height: 110px; border-radius: 12px; display: flex; flex-direction: column;
   justify-content: flex-end; padding: 0.6rem 0.75rem; font-size: 0.8rem; font-weight: 500;
 }
 .swatch .name { font-weight: 600; }
-.swatch .hex { opacity: 0.8; font-size: 0.75rem; }
-.light-text { color: #fff; }
+.swatch .val { opacity: 0.75; font-size: 0.65rem; font-family: monospace; margin-top: 0.15rem; }
+.light-text { color: var(--text-light); }
 .dark-text { color: var(--text); }
 
 /* Demo UI section */
@@ -46,7 +47,7 @@ h1 { margin-bottom: 0.5rem; }
 .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .btn {
   padding: 0.6rem 1.4rem; border: none; border-radius: 8px; font-size: 0.9rem;
-  font-weight: 600; cursor: pointer; color: #fff;
+  font-weight: 600; cursor: pointer; color: var(--text-light);
 }
 .btn-primary { background: var(--primary); }
 .btn-primary:hover { background: var(--primary-dark); }
@@ -55,13 +56,14 @@ h1 { margin-bottom: 0.5rem; }
 .btn-secondary { background: var(--secondary); }
 .btn-secondary:hover { background: var(--secondary-dark); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+.btn-outline-dark { background: transparent; color: var(--primary-dark); border: 2px solid var(--primary-dark); }
 
 .card-row { display: flex; gap: 1rem; flex-wrap: wrap; }
 .card {
   flex: 1; min-width: 200px; border-radius: 12px; overflow: hidden;
 }
-.card-header { padding: 1.25rem; color: #fff; }
-.card-body { padding: 1rem; background: var(--background); color: var(--text); font-size: 0.9rem; }
+.card-header { padding: 1.25rem; color: var(--text-light); }
+.card-body { padding: 1rem; background: var(--surface); color: var(--text); font-size: 0.9rem; }
 .card-body p { color: var(--text-secondary); margin-top: 0.25rem; font-size: 0.85rem; }
 
 .text-demo { margin-top: 1.5rem; }
@@ -69,8 +71,8 @@ h1 { margin-bottom: 0.5rem; }
 .text-demo p { color: var(--text-secondary); line-height: 1.6; }
 .text-demo a { color: var(--accent); text-decoration: underline; }
 
+.text-contrast { margin-top: 2.5rem; }
 .layers { margin-top: 2.5rem; }
-.layers h2 { margin-bottom: 0.75rem; }
 .layer-demo { border-radius: 16px; padding: 1.5rem; }
 .layer-demo h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; }
 .layer-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
@@ -80,50 +82,48 @@ h1 { margin-bottom: 0.5rem; }
 .layer-col { flex: 1; min-width: 250px; }
 
 .code-block { margin-top: 2.5rem; }
-.code-block h2 { margin-bottom: 0.75rem; }
-.code-block pre { background: var(--text); color: #e0ddd8; padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
+.code-block pre { background: var(--text); color: var(--text-light); padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
 </style>
 </head>
 <body>
 
 <h1>Color Palette Preview</h1>
-<p class="subtitle">oklch palette — hex equivalents in comments</p>
 
 <div class="group">
   <h2>Primary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span></div>
-    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span></div>
-    <div class="swatch dark-text" style="background:var(--primary-light)"><span class="name">Primary Light</span></div>
+    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="val">L 0.51 C 0.10 H 156</span></div>
+    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="val">L 0.65 C 0.12 H 157</span></div>
+    <div class="swatch dark-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="val">L 0.73 C 0.09 H 159</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Secondary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span></div>
-    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span></div>
-    <div class="swatch dark-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.50 C 0.05 H 67</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.63 C 0.06 H 70</span></div>
+    <div class="swatch dark-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.72 C 0.04 H 70</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Accent</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span></div>
-    <div class="swatch dark-text" style="background:var(--accent)"><span class="name">Accent</span></div>
-    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span></div>
+    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="val">L 0.69 C 0.14 H 48</span></div>
+    <div class="swatch dark-text" style="background:var(--accent)"><span class="name">Accent</span><span class="val">L 0.73 C 0.13 H 54</span></div>
+    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="val">L 0.80 C 0.09 H 58</span></div>
   </div>
 </div>
 
 <div class="group">
   <h2>Neutrals</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span></div>
-    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span></div>
-    <div class="swatch dark-text" style="background:var(--surface); border:1px solid #ddd;"><span class="name">Surface</span></div>
-    <div class="swatch dark-text" style="background:var(--background); border:1px solid #ddd;"><span class="name">Background</span></div>
-    <div class="swatch dark-text" style="background:var(--background-dark)"><span class="name">Background Dark</span></div>
+    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="val">L 0.25 C 0.01 H 78</span></div>
+    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="val">L 0.50 C 0.02 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--surface)"><span class="name">Surface</span><span class="val">L 0.99 C 0.004 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--background)"><span class="name">Background</span><span class="val">L 0.96 C 0.009 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--background-dark)"><span class="name">Background Dark</span><span class="val">L 0.93 C 0.012 H 78</span></div>
   </div>
 </div>
 
@@ -157,13 +157,13 @@ h1 { margin-bottom: 0.5rem; }
   </div>
 </div>
 
-<div class="demo" style="background: var(--background);">
+<div class="demo">
   <h2>UI Demo (Dark Variants)</h2>
   <div class="btn-row">
     <button class="btn" style="background:var(--primary-dark)">Primary Dark</button>
     <button class="btn" style="background:var(--accent-dark)">Accent Dark</button>
     <button class="btn" style="background:var(--secondary-dark)">Secondary Dark</button>
-    <button class="btn btn-outline" style="color:var(--primary-dark); border-color:var(--primary-dark);">Outline</button>
+    <button class="btn btn-outline-dark">Outline</button>
   </div>
 
   <div class="card-row">
@@ -183,7 +183,7 @@ h1 { margin-bottom: 0.5rem; }
 
   <div class="text-demo">
     <h3 style="color:var(--primary-dark)">Typography Sample</h3>
-    <p>Body text on the darker background. The deeper colors pair well with the warmer surface, giving a <a href="#" style="color:var(--accent-dark)">more grounded</a> feel overall.</p>
+    <p>Body text with the deeper colors for a <a href="#" style="color:var(--accent-dark)">more grounded</a> feel overall.</p>
   </div>
 </div>
 
@@ -231,22 +231,22 @@ h1 { margin-bottom: 0.5rem; }
 
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--background);">
-        <h3>Background &rarr; Surface (white)</h3>
+        <h3>Background &rarr; Surface</h3>
         <div class="layer-label">outer: --background</div>
         <div class="layer-panel" style="background: var(--surface);">
           <div class="layer-label">inner: --surface</div>
-          <p>A white card on the warm off-white. Classic elevated panel look with a clean feel.</p>
+          <p>A card on the warm off-white. Classic elevated panel look with a clean feel.</p>
         </div>
       </div>
     </div>
 
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--background-dark);">
-        <h3>Dark bg &rarr; Surface (white)</h3>
+        <h3>Dark bg &rarr; Surface</h3>
         <div class="layer-label">outer: --background-dark</div>
         <div class="layer-panel" style="background: var(--surface);">
           <div class="layer-label">inner: --surface</div>
-          <p>Maximum contrast between surface layers. White panels pop clearly against the darker background.</p>
+          <p>Maximum contrast between surface layers. Panels pop clearly against the darker background.</p>
         </div>
       </div>
     </div>
@@ -261,9 +261,9 @@ h1 { margin-bottom: 0.5rem; }
   --primary-light:    oklch(0.7280 0.0894 159.2);
   --primary-dark:     oklch(0.5092 0.1031 156.2);
 
-  --secondary:        oklch(0.6295 0.0700 69.5);
-  --secondary-light:  oklch(0.7178 0.0480 70.4);
-  --secondary-dark:   oklch(0.5041 0.0550 66.8);
+  --secondary:        oklch(0.6295 0.0600 69.5);
+  --secondary-light:  oklch(0.7178 0.0400 70.4);
+  --secondary-dark:   oklch(0.5041 0.0470 66.8);
 
   --accent:           oklch(0.7300 0.1300 54.3);
   --accent-light:     oklch(0.8000 0.0900 57.9);
@@ -275,6 +275,7 @@ h1 { margin-bottom: 0.5rem; }
 
   --text:             oklch(0.2500 0.0120 78.0);
   --text-secondary:   oklch(0.5035 0.0211 78.1);
+  --text-light:       oklch(0.9900 0.0040 78.0);
 }</code></pre>
 </div>
 
