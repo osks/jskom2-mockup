@@ -88,6 +88,21 @@ h2 { margin-bottom: 0.75rem; }
 
 .code-block { margin-bottom: 2rem; }
 .code-block pre { background: var(--text); color: var(--text-light); padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
+
+/* Dark mode overrides */
+.dark-mode {
+  --bg-light: oklch(0.1500 0.0080 78.0);
+  --bg: oklch(0.2000 0.0100 78.0);
+  --bg-dark: oklch(0.2500 0.0120 78.0);
+  --text: oklch(0.9300 0.0080 78.0);
+  --text-secondary: oklch(0.7200 0.0140 78.0);
+  --text-muted: oklch(0.5500 0.0140 78.0);
+  --text-light: oklch(0.1500 0.0080 78.0);
+  background: var(--bg-light);
+  color: var(--text);
+  margin: 0 -2rem;
+  padding: 2rem;
+}
 </style>
 </head>
 <body>
@@ -349,6 +364,259 @@ h2 { margin-bottom: 0.75rem; }
   --text-muted:       oklch(0.5800 0.0160 78.0);
   --text-light:       oklch(0.9900 0.0040 78.0);
 }</code></pre>
+</div>
+
+<div class="dark-mode">
+
+<h1>Forest — Dark Mode</h1>
+
+<div class="panel">
+
+<div class="group">
+  <h2>Primary</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--primary-dark)"><span class="name">Primary Dark</span><span class="val">L 0.38 C 0.09 H 155</span></div>
+    <div class="swatch light-text" style="background:var(--primary)"><span class="name">Primary</span><span class="val">L 0.51 C 0.10 H 156</span></div>
+    <div class="swatch light-text" style="background:var(--primary-light)"><span class="name">Primary Light</span><span class="val">L 0.65 C 0.12 H 157</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Secondary</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.04 H 65</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.05 H 67</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.06 H 70</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Accent</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--accent-dark)"><span class="name">Accent Dark</span><span class="val">L 0.57 C 0.15 H 46</span></div>
+    <div class="swatch light-text" style="background:var(--accent)"><span class="name">Accent</span><span class="val">L 0.69 C 0.14 H 48</span></div>
+    <div class="swatch dark-text" style="background:var(--accent-light)"><span class="name">Accent Light</span><span class="val">L 0.73 C 0.13 H 54</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Text</h2>
+  <div class="swatches">
+    <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="val">L 0.93 C 0.008 H 78</span></div>
+    <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="val">L 0.72 C 0.014 H 78</span></div>
+    <div class="swatch light-text" style="background:var(--text-muted)"><span class="name">Text Muted</span><span class="val">L 0.55 C 0.014 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--text-light)"><span class="name">Text Light</span><span class="val">L 0.15 C 0.008 H 78</span></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Background</h2>
+  <div class="swatches">
+    <div class="swatch dark-text" style="background:var(--bg-light)"><span class="name">Bg Light</span><span class="val">L 0.15 C 0.008 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg)"><span class="name">Bg</span><span class="val">L 0.20 C 0.010 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-dark)"><span class="name">Bg Dark</span><span class="val">L 0.25 C 0.012 H 78</span></div>
+  </div>
+</div>
+
+</div>
+
+<div class="demo">
+  <h2>Main Palette</h2>
+  <div class="btn-row">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-accent">Accent</button>
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-outline">Outline</button>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
+      <div class="card-body"><strong>Feature One</strong><p>A description using the secondary text color for supporting content.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
+      <div class="card-body"><strong>Feature Two</strong><p>The warm orange accent draws attention to calls-to-action.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--secondary)"><strong>Secondary Card</strong></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Earthy browns ground the design with a natural feel.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3>Typography Sample</h3>
+    <p>Body text in the main text color on the dark background. Secondary text like this provides <a href="#">linked content</a> with the accent color, keeping everything cohesive.</p>
+  </div>
+</div>
+
+<div class="demo">
+  <h2>Text Hierarchy</h2>
+  <div class="layer-row">
+    <div class="layer-col" style="min-width: 300px;">
+      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+        <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Trail conditions updated</h3>
+        <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing. Recommended footwear: waterproof boots.</p>
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
+      </div>
+    </div>
+    <div class="layer-col" style="min-width: 300px;">
+      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+        <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">--text-muted: Upcoming event</p>
+        <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Spring wildflower walk</h3>
+        <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species and their role in the local ecosystem.</p>
+        <p style="color: var(--text-secondary); font-size: 0.8rem;">--text-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2>Light Palette</h2>
+  <div class="btn-row">
+    <button class="btn" style="background:var(--primary-light)">Primary Light</button>
+    <button class="btn" style="background:var(--accent-light)">Accent Light</button>
+    <button class="btn" style="background:var(--secondary-light)">Secondary Light</button>
+    <button class="btn btn-outline-light">Outline</button>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-header" style="background:var(--primary-light)"><strong>Primary Card</strong></div>
+      <div class="card-body"><strong>Feature One</strong><p>The lighter primary for a softer, more approachable feel.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--accent-light)"><strong>Accent Card</strong></div>
+      <div class="card-body"><strong>Feature Two</strong><p>A gentler accent that still carries warmth.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--secondary-light)"><strong>Secondary Card</strong></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Lighter earthy tones for a relaxed, open feel.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3 style="color:var(--primary-light)">Typography Sample</h3>
+    <p>Body text with the lighter colors for a <a href="#" style="color:var(--accent-light)">softer, airier</a> feel overall.</p>
+  </div>
+</div>
+
+<div class="demo">
+  <h2>Dark Palette</h2>
+  <div class="btn-row">
+    <button class="btn" style="background:var(--primary-dark)">Primary Dark</button>
+    <button class="btn" style="background:var(--accent-dark)">Accent Dark</button>
+    <button class="btn" style="background:var(--secondary-dark)">Secondary Dark</button>
+    <button class="btn btn-outline-dark">Outline</button>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-header" style="background:var(--primary-dark)"><strong>Primary Card</strong></div>
+      <div class="card-body"><strong>Feature One</strong><p>The deepest primary for bold, high-contrast moments.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--accent-dark)"><strong>Accent Card</strong></div>
+      <div class="card-body"><strong>Feature Two</strong><p>A rich, deep accent with strong presence.</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header" style="background:var(--secondary-dark)"><strong>Secondary Card</strong></div>
+      <div class="card-body"><strong>Feature Three</strong><p>Deep earthy brown for a rich, grounded tone.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3 style="color:var(--primary-dark)">Typography Sample</h3>
+    <p>Body text with the deepest colors for a <a href="#" style="color:var(--accent-dark)">bold, grounded</a> feel overall.</p>
+  </div>
+</div>
+
+<div class="text-contrast">
+  <h2>Text on Backgrounds</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-light);">
+        <div class="layer-label">--bg-light</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg);">
+        <div class="layer-label">--bg</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-dark);">
+        <div class="layer-label">--bg-dark</div>
+        <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layers">
+  <h2>Background Layering</h2>
+  <div class="layer-row">
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-dark);">
+        <h3>Bg Dark &rarr; Bg</h3>
+        <div class="layer-label">outer: --bg-dark</div>
+        <div class="layer-panel" style="background: var(--bg);">
+          <div class="layer-label">inner: --bg</div>
+          <p>A panel sitting on a lighter dark section. The subtle contrast separates content without hard borders.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg);">
+        <h3>Bg &rarr; Bg Light</h3>
+        <div class="layer-label">outer: --bg</div>
+        <div class="layer-panel" style="background: var(--bg-light);">
+          <div class="layer-label">inner: --bg-light</div>
+          <p>A darker card on the mid-dark surface. Recessed panel feel.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-dark);">
+        <h3>Bg Dark &rarr; Bg Light</h3>
+        <div class="layer-label">outer: --bg-dark</div>
+        <div class="layer-panel" style="background: var(--bg-light);">
+          <div class="layer-label">inner: --bg-light</div>
+          <p>Maximum contrast between dark surface layers.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="code-block">
+  <h2>CSS Values — Dark Mode</h2>
+  <pre><code>.dark-mode {
+  --bg-light:         oklch(0.1500 0.0080 78.0);
+  --bg:               oklch(0.2000 0.0100 78.0);
+  --bg-dark:          oklch(0.2500 0.0120 78.0);
+
+  --text:             oklch(0.9300 0.0080 78.0);
+  --text-secondary:   oklch(0.7200 0.0140 78.0);
+  --text-muted:       oklch(0.5500 0.0140 78.0);
+  --text-light:       oklch(0.1500 0.0080 78.0);
+
+  /* primary, secondary, accent: unchanged */
+}</code></pre>
+</div>
+
 </div>
 
 </body>
