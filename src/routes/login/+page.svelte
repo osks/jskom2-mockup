@@ -79,7 +79,7 @@
 
 			<button
 				type="submit"
-				class="w-full rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-txt-inverse active:bg-primary-active transition-colors"
+				class="w-full rounded-full bg-primary hover:bg-primary-hover px-4 py-2.5 text-sm font-semibold text-txt-inverse active:bg-primary-active transition-colors"
 			>
 				Logga in
 			</button>

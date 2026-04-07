@@ -267,7 +267,7 @@
 			{#if nextAction.type !== 'all-done'}
 				<button
 					onclick={() => advanceReading()}
-					class="flex h-12 items-center justify-center rounded-full bg-primary backdrop-blur-md px-5 ring-[1.5px] ring-surface-1/25 active:bg-primary-active"
+					class="flex h-12 items-center justify-center rounded-full bg-primary hover:bg-primary-hover backdrop-blur-md px-5 ring-[1.5px] ring-surface-1/25 active:bg-primary-active transition-colors"
 					aria-label="Nästa olästa"
 				>
 					<span class="text-sm font-medium text-txt-inverse">Nästa</span>
@@ -295,7 +295,7 @@
 				<button
 					type="submit"
 					disabled={!reviewInputValue.trim()}
-					class="shrink-0 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-txt-inverse disabled:opacity-30"
+					class="shrink-0 rounded-xl bg-primary hover:bg-primary-hover px-4 py-2.5 text-sm font-medium text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
 				>Visa</button>
 			</form>
 		</div>

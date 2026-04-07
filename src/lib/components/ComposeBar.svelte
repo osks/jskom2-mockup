@@ -201,7 +201,7 @@
 						<button
 							onclick={handleSend}
 							disabled={sent || !body.trim()}
-							class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-opacity"
+							class="flex h-9 w-9 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
 						>
 							{#if sent}
 								<Check size={18} />
