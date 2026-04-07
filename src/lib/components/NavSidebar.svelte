@@ -61,7 +61,7 @@
 	}
 </script>
 
-<nav class="flex h-full w-full flex-col bg-surface-1 text-txt-secondary safe-bottom">
+<nav class="flex h-full w-full flex-col bg-surface-2 text-txt-secondary safe-bottom">
 	<!-- Logo -->
 	<div class="safe-top px-4 py-3">
 		<a href="{base}/read" onclick={handleNav} class="text-base font-bold text-txt">jskom2</a>

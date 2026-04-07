@@ -31,7 +31,7 @@
 
 <div class="h-screen w-full">
 	<!-- Mobile nav: always rendered, sits behind content -->
-	<div class="fixed inset-0 z-0 w-80 bg-surface-1 md:hidden">
+	<div class="fixed inset-0 z-0 w-80 bg-surface-2 md:hidden">
 		<NavSidebar onNavigate={closeSidebar} />
 	</div>
 
