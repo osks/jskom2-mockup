@@ -126,6 +126,19 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 .demo { padding: 1rem; background: var(--bg-2); border-radius: 16px; margin-bottom: 1.5rem; }
 
+.text-demo { margin-top: 1rem; }
+.text-demo h3 { color: var(--primary); margin-bottom: 0.25rem; text-transform: none; letter-spacing: normal; font-size: 1rem; }
+.text-demo p { color: var(--text); line-height: 1.6; font-size: 0.85rem; }
+.text-demo a { color: var(--accent); text-decoration: underline; }
+
+.layer-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.layer-col { flex: 1 1 100%; }
+.layer-demo { border-radius: 12px; padding: 1rem; }
+.layer-demo h3 { margin-bottom: 0.5rem; }
+.layer-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+.layer-panel { border-radius: 10px; padding: 1rem; margin-top: 0.5rem; }
+.layer-panel p { font-size: 0.85rem; line-height: 1.5; }
+
 .dark-mode {
   background: var(--bg-1);
   color: var(--text);
@@ -141,6 +154,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   .swatch .name { font-size: 0.7rem; }
   .swatch .val { font-size: 0.6rem; }
   .card { flex: 1 1 0; min-width: 180px; }
+  .layer-col { flex: 1 1 0; min-width: 200px; }
   .dark-mode { margin: 0 -2rem; padding: 2rem; }
 }
 </style>
@@ -400,10 +414,99 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
       <div class="card-body"><strong>Feature Three</strong><p>Earthy brown grounds the design.</p></div>
     </div>
   </div>
+
+  <div class="text-demo">
+    <h3>Typography Sample</h3>
+    <p>Body text in --text on the warm off-white --bg-2. Links use <a href="#">--accent for inline emphasis</a>, keeping everything cohesive.</p>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
+        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
+        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+        <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
+        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
+        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
+        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-1);">
+        <div class="layer-label">--bg-1</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">--bg-2</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">--bg-3</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">outer: --bg-3</div>
+        <div class="layer-panel" style="background: var(--bg-2);">
+          <div class="layer-label">inner: --bg-2</div>
+          <p>Panel on a darker section. Subtle contrast separates content without borders.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">outer: --bg-2</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-1</div>
+          <p>Card on warm off-white. Classic elevated panel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">outer: --bg-3</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-1</div>
+          <p>Maximum contrast between surface layers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ============================================
-     DARK MODE DEMO
+     DARK MODE
      ============================================ -->
 
 <div class="dark-mode">
@@ -430,6 +533,95 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="card">
       <div class="card-header" style="background:var(--secondary)"><strong>Secondary Card</strong></div>
       <div class="card-body"><strong>Feature Three</strong><p>Same brown on dark surfaces.</p></div>
+    </div>
+  </div>
+
+  <div class="text-demo">
+    <h3>Typography Sample</h3>
+    <p>Body text in --text on the dark --bg-2. Links use <a href="#">--accent for inline emphasis</a>, same as light mode.</p>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
+        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
+        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+        <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
+        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
+        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
+        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-1);">
+        <div class="layer-label">--bg-1</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">--bg-2</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">--bg-3</div>
+        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="demo">
+  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
+  <div class="layer-row">
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">outer: --bg-3</div>
+        <div class="layer-panel" style="background: var(--bg-2);">
+          <div class="layer-label">inner: --bg-2</div>
+          <p>Panel on a lighter dark section. Subtle contrast without borders.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">outer: --bg-2</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-1</div>
+          <p>Darker card on the mid-dark surface. Recessed feel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">outer: --bg-3</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-1</div>
+          <p>Maximum contrast between dark surface layers.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
