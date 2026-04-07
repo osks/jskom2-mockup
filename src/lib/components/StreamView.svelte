@@ -238,7 +238,7 @@
 						<!-- Backdrop -->
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
-						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-surface-2 py-1.5 shadow-lg ring-1 ring-surface-3/60">
+						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-surface-1 py-1.5 shadow-lg ring-1 ring-surface-3/60">
 							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center px-4 py-2.5 text-sm text-txt-secondary active:bg-surface-2">
 								Återse text
 							</button>
@@ -282,7 +282,7 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/20" onclick={closeReviewInput}>
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="mx-6 w-full max-w-xs rounded-2xl bg-surface-2 p-4 shadow-xl ring-1 ring-surface-3/60" onclick={(e) => e.stopPropagation()}>
+		<div class="mx-6 w-full max-w-xs rounded-2xl bg-surface-1 p-4 shadow-xl ring-1 ring-surface-3/60" onclick={(e) => e.stopPropagation()}>
 			<div class="text-sm font-medium text-txt-secondary mb-3">Återse text</div>
 			<form onsubmit={(e) => { e.preventDefault(); handleReview(); }} class="flex items-center gap-2">
 				<input

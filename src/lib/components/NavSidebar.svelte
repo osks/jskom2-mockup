@@ -157,7 +157,7 @@
 				{#if menuOpen}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
-					<div class="absolute bottom-full left-0 right-0 z-40 mb-2 rounded-2xl bg-surface-2 py-1.5 shadow-lg ring-1 ring-surface-3/60">
+					<div class="absolute bottom-full left-0 right-0 z-40 mb-2 rounded-2xl bg-surface-1 py-1.5 shadow-lg ring-1 ring-surface-3/60">
 						<!-- Other connections -->
 						{#if $connections.length > 1}
 							{#each $connections as conn}
