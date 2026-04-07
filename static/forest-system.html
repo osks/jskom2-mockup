@@ -74,17 +74,17 @@
   --text-muted:     var(--neutral-5);
   --text-inverse:   var(--neutral-1);
 
-  --primary:        var(--green-3);
-  --primary-hover:  var(--green-4);
-  --primary-active: var(--green-1);
+  --primary:        var(--green-4);
+  --primary-hover:  var(--green-4);  /* needs green-5 */
+  --primary-active: var(--green-2);
 
   --secondary:        var(--neutral-5);
   --secondary-hover:  var(--neutral-6);
   --secondary-active: var(--neutral-4);
 
-  --accent:        var(--orange-2);
-  --accent-hover:  var(--orange-3);
-  --accent-active: var(--orange-1);
+  --accent:        var(--orange-3);
+  --accent-hover:  var(--orange-3);  /* needs orange-4 */
+  --accent-active: var(--orange-2);
 }
 
 /* =============================================
@@ -322,7 +322,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--primary</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4</div>
     </div>
     <div class="role-purpose">Default buttons, links, nav</div>
   </div>
@@ -331,16 +331,16 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--primary-hover</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4 *</div>
     </div>
-    <div class="role-purpose">Hover state, subtle emphasis</div>
+    <div class="role-purpose">Hover state — needs green-5 for dark</div>
   </div>
 
   <div class="role-item">
     <div class="role-name"><code>--primary-active</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
     </div>
     <div class="role-purpose">Pressed, selected, focus</div>
   </div>
@@ -380,7 +380,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--accent</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
     </div>
     <div class="role-purpose">CTA buttons, notifications, badges</div>
   </div>
@@ -389,16 +389,16 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--accent-hover</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3 *</div>
     </div>
-    <div class="role-purpose">Hover state</div>
+    <div class="role-purpose">Hover state — needs orange-4 for dark</div>
   </div>
 
   <div class="role-item">
     <div class="role-name"><code>--accent-active</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
     </div>
     <div class="role-purpose">Pressed, selected</div>
   </div>
