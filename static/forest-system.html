@@ -48,16 +48,16 @@
   --text-inverse:   var(--neutral-9);
 
   --primary:        var(--green-2);
-  --primary-light:  var(--green-3);
-  --primary-dark:   var(--green-1);
+  --primary-hover:  var(--green-3);
+  --primary-active: var(--green-1);
 
-  --secondary:       var(--brown-2);
-  --secondary-light: var(--brown-3);
-  --secondary-dark:  var(--brown-1);
+  --secondary:        var(--brown-2);
+  --secondary-hover:  var(--brown-3);
+  --secondary-active: var(--brown-1);
 
-  --accent:       var(--orange-2);
-  --accent-light: var(--orange-3);
-  --accent-dark:  var(--orange-1);
+  --accent:        var(--orange-2);
+  --accent-hover:  var(--orange-3);
+  --accent-active: var(--orange-1);
 }
 
 /* =============================================
@@ -73,7 +73,17 @@
   --text-muted:     var(--neutral-5);
   --text-inverse:   var(--neutral-1);
 
-  /* primary, secondary, accent: unchanged */
+  --primary:        var(--green-2);
+  --primary-hover:  var(--green-3);
+  --primary-active: var(--green-2);
+
+  --secondary:        var(--brown-2);
+  --secondary-hover:  var(--brown-3);
+  --secondary-active: var(--brown-2);
+
+  --accent:        var(--orange-2);
+  --accent-hover:  var(--orange-3);
+  --accent-active: var(--orange-1);
 }
 
 /* =============================================
@@ -115,9 +125,16 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 .btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--text-inverse); }
 .btn-primary { background: var(--primary); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:active { background: var(--primary-active); }
 .btn-accent { background: var(--accent); }
+.btn-accent:hover { background: var(--accent-hover); }
+.btn-accent:active { background: var(--accent-active); }
 .btn-secondary { background: var(--secondary); }
+.btn-secondary:hover { background: var(--secondary-hover); }
+.btn-secondary:active { background: var(--secondary-active); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+.btn-outline:hover { color: var(--primary-hover); border-color: var(--primary-hover); }
 .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
 
 .card-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
@@ -305,25 +322,25 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
     </div>
-    <div class="role-purpose">Main brand color</div>
+    <div class="role-purpose">Default buttons, links, nav</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--primary-light</code></div>
+    <div class="role-name"><code>--primary-hover</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
     </div>
-    <div class="role-purpose">Hover, soft emphasis</div>
+    <div class="role-purpose">Hover state, subtle emphasis</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--primary-dark</code></div>
+    <div class="role-name"><code>--primary-active</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
     </div>
-    <div class="role-purpose">Active, strong emphasis</div>
+    <div class="role-purpose">Pressed, selected, focus</div>
   </div>
 
   <div class="role-separator"></div>
@@ -334,25 +351,25 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
     </div>
-    <div class="role-purpose">Supporting color</div>
+    <div class="role-purpose">Secondary buttons, tags, labels</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--secondary-light</code></div>
+    <div class="role-name"><code>--secondary-hover</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-3)"></span> brown-3</div>
     </div>
-    <div class="role-purpose">Soft secondary</div>
+    <div class="role-purpose">Hover state</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--secondary-dark</code></div>
+    <div class="role-name"><code>--secondary-active</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-1)"></span> brown-1</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--brown-2)"></span> brown-2</div>
     </div>
-    <div class="role-purpose">Strong secondary</div>
+    <div class="role-purpose">Pressed, selected</div>
   </div>
 
   <div class="role-separator"></div>
@@ -363,25 +380,25 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-2)"></span> orange-2</div>
     </div>
-    <div class="role-purpose">Call to action</div>
+    <div class="role-purpose">CTA buttons, notifications, badges</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--accent-light</code></div>
+    <div class="role-name"><code>--accent-hover</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
     </div>
-    <div class="role-purpose">Soft accent</div>
+    <div class="role-purpose">Hover state</div>
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--accent-dark</code></div>
+    <div class="role-name"><code>--accent-active</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-1)"></span> orange-1</div>
     </div>
-    <div class="role-purpose">Strong accent</div>
+    <div class="role-purpose">Pressed, selected</div>
   </div>
 
 </div>
