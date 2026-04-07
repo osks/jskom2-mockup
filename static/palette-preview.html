@@ -69,6 +69,10 @@ h1 { margin-bottom: 0.5rem; }
 .text-demo h3 { color: var(--primary); margin-bottom: 0.25rem; }
 .text-demo p { color: var(--text-secondary); line-height: 1.6; }
 .text-demo a { color: var(--accent); text-decoration: underline; }
+
+.code-block { margin-top: 2.5rem; }
+.code-block h2 { margin-bottom: 0.75rem; }
+.code-block pre { background: var(--text); color: #e0ddd8; padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
 </style>
 </head>
 <body>
@@ -141,6 +145,29 @@ h1 { margin-bottom: 0.5rem; }
     <h3>Typography Sample</h3>
     <p>Body text in the main text color on the warm off-white background. Secondary text like this provides <a href="#">linked content</a> with the accent color, keeping everything cohesive.</p>
   </div>
+</div>
+
+<div class="code-block">
+  <h2>CSS Values</h2>
+  <pre><code>:root {
+  --primary:          oklch(0.6670 0.1066 157.2);  /* #56A87A */
+  --primary-light:    oklch(0.7480 0.0894 159.2);  /* #7ABF99 */
+  --primary-dark:     oklch(0.5292 0.1031 156.2);  /* #2E7D52 */
+
+  --secondary:        oklch(0.6495 0.0416 69.5);   /* #A08B74 */
+  --secondary-light:  oklch(0.7378 0.0332 70.4);   /* #B8A794 */
+  --secondary-dark:   oklch(0.5241 0.0395 66.8);   /* #7A6652 */
+
+  --accent:           oklch(0.7903 0.1061 54.3);   /* #F0A878 */
+  --accent-light:     oklch(0.8548 0.0738 57.9);   /* #F5C4A0 */
+  --accent-dark:      oklch(0.7099 0.1434 48.4);   /* #E8834A */
+
+  --background:       oklch(0.9646 0.0057 84.6);   /* #F5F3EF */
+  --background-dark:  oklch(0.9400 0.0090 75.0);
+
+  --text:             oklch(0.2365 0.0160 129.2);  /* #1C2018 */
+  --text-secondary:   oklch(0.5035 0.0211 78.1);   /* #6B6357 */
+}</code></pre>
 </div>
 
 </body>
