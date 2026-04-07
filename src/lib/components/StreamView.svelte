@@ -205,7 +205,7 @@
 <!-- Floating action bar (hidden when compose panel is open) -->
 {#if hasTexts || nextAction.type !== 'all-done'}
 	{@const composing = !!$readingState.commentTo || $readingState.composingNew}
-	<div class="action-bar safe-bottom pointer-events-none fixed right-0 bottom-0 z-20 flex items-end justify-center px-6 pb-5 md:pb-8 transition-opacity duration-200"
+	<div class="safe-bottom pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-6 pb-8 transition-opacity duration-200"
 		class:opacity-0={composing}
 	>
 		<div class="flex w-full max-w-2xl items-center gap-2.5"
@@ -301,14 +301,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.action-bar {
-		left: 0;
-	}
-	@media (min-width: 768px) {
-		.action-bar {
-			left: 18rem;
-		}
-	}
-</style>
