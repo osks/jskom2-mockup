@@ -42,9 +42,9 @@
   /* =============================================
      Layer 2: Role mapping — Light mode
      ============================================= */
-  --bg-1:           var(--neutral-9);
-  --bg-2:           var(--neutral-8);
-  --bg-3:           var(--neutral-7);
+  --surface-1:           var(--neutral-9);
+  --surface-2:           var(--neutral-8);
+  --surface-3:           var(--neutral-7);
 
   --text:           var(--neutral-2);
   --text-secondary: var(--neutral-4);
@@ -72,9 +72,9 @@
    Layer 2: Role mapping — Dark mode
    ============================================= */
 .dark-mode {
-  --bg-1:           var(--neutral-1);
-  --bg-2:           var(--neutral-2);
-  --bg-3:           var(--neutral-3);
+  --surface-1:           var(--neutral-1);
+  --surface-2:           var(--neutral-2);
+  --surface-3:           var(--neutral-3);
 
   --text:           var(--neutral-8);
   --text-secondary: var(--neutral-6);
@@ -102,12 +102,12 @@
    Styles
    ============================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg-1); color: var(--text); padding: 1rem; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--surface-1); color: var(--text); padding: 1rem; }
 h1 { margin-bottom: 0.5rem; }
 h2 { margin-bottom: 0.75rem; font-size: 1.1rem; }
 h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.75rem; }
 
-.panel { background: var(--bg-2); border-radius: 16px; padding: 1rem; margin-bottom: 1.5rem; }
+.panel { background: var(--surface-2); border-radius: 16px; padding: 1rem; margin-bottom: 1.5rem; }
 .group { margin-bottom: 1.5rem; }
 .group:last-child { margin-bottom: 0; }
 
@@ -123,8 +123,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 /* Role mapping: card layout for mobile, table for wider */
 .role-list { display: flex; flex-direction: column; gap: 0.5rem; }
-.role-item { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 0; border-bottom: 1px solid var(--bg-3); font-size: 0.8rem; }
-.role-item code { font-size: 0.75rem; background: var(--bg-3); padding: 0.15rem 0.4rem; border-radius: 4px; }
+.role-item { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 0; border-bottom: 1px solid var(--surface-3); font-size: 0.8rem; }
+.role-item code { font-size: 0.75rem; background: var(--surface-3); padding: 0.15rem 0.4rem; border-radius: 4px; }
 .role-name { font-weight: 600; width: 100%; padding: 0.5rem 0.5rem 0.3rem; }
 .role-modes { display: flex; gap: 0; width: 100%; }
 .role-mode { display: flex; align-items: center; gap: 0.4rem; flex: 1; padding: 1.2rem 0.6rem; border-radius: 6px; font-size: 0.8rem; }
@@ -155,10 +155,10 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .card-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .card { flex: 1 1 100%; border-radius: 12px; overflow: hidden; }
 .card-header { padding: 1rem; color: var(--text-inverse); }
-.card-body { padding: 0.75rem; background: var(--bg-1); color: var(--text); font-size: 0.85rem; }
+.card-body { padding: 0.75rem; background: var(--surface-1); color: var(--text); font-size: 0.85rem; }
 .card-body p { color: var(--text); margin-top: 0.2rem; font-size: 0.8rem; }
 
-.demo { padding: 1rem; background: var(--bg-2); border-radius: 16px; margin-bottom: 1.5rem; }
+.demo { padding: 1rem; background: var(--surface-2); border-radius: 16px; margin-bottom: 1.5rem; }
 
 .text-demo { margin-top: 1rem; }
 .text-demo h3 { color: var(--primary); margin-bottom: 0.25rem; text-transform: none; letter-spacing: normal; font-size: 1rem; }
@@ -174,7 +174,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .layer-panel p { font-size: 0.85rem; line-height: 1.5; }
 
 .dark-mode {
-  background: var(--bg-1);
+  background: var(--surface-1);
   color: var(--text);
   margin: 0 -1rem;
   padding: 1rem;
@@ -269,7 +269,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 <div class="role-list">
 
   <div class="role-item">
-    <div class="role-name"><code>--bg-1</code></div>
+    <div class="role-name"><code>--surface-1</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
@@ -278,7 +278,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--bg-2</code></div>
+    <div class="role-name"><code>--surface-2</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
@@ -287,7 +287,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--bg-3</code></div>
+    <div class="role-name"><code>--surface-3</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-7)"></span> neutral-7</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-3)"></span> neutral-3</div>
@@ -491,7 +491,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="card-row">
     <div class="card">
       <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
-      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --bg-1.</p></div>
+      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --surface-1.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
@@ -505,7 +505,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
   <div class="text-demo">
     <h3>Typography Sample</h3>
-    <p>Body text in --text on the warm off-white --bg-2. Links use <a href="#">--accent for inline emphasis</a>, keeping everything cohesive.</p>
+    <p>Body text in --text on the warm off-white --surface-2. Links use <a href="#">--accent for inline emphasis</a>, keeping everything cohesive.</p>
   </div>
 </div>
 
@@ -513,14 +513,14 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+      <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
         <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
         <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
         <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col">
-      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+      <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
         <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
         <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
         <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
@@ -534,24 +534,24 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-1);">
-        <div class="layer-label">--bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-1);">
+        <div class="layer-label">--surface-1</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-2);">
-        <div class="layer-label">--bg-2</div>
+      <div class="layer-demo" style="background: var(--surface-2);">
+        <div class="layer-label">--surface-2</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">--bg-3</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">--surface-3</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
@@ -564,28 +564,28 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">outer: --bg-3</div>
-        <div class="layer-panel" style="background: var(--bg-2);">
-          <div class="layer-label">inner: --bg-2</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">outer: --surface-3</div>
+        <div class="layer-panel" style="background: var(--surface-2);">
+          <div class="layer-label">inner: --surface-2</div>
           <p>Panel on a darker section. Subtle contrast separates content without borders.</p>
         </div>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-2);">
-        <div class="layer-label">outer: --bg-2</div>
-        <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-2);">
+        <div class="layer-label">outer: --surface-2</div>
+        <div class="layer-panel" style="background: var(--surface-1);">
+          <div class="layer-label">inner: --surface-1</div>
           <p>Card on warm off-white. Classic elevated panel.</p>
         </div>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">outer: --bg-3</div>
-        <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">outer: --surface-3</div>
+        <div class="layer-panel" style="background: var(--surface-1);">
+          <div class="layer-label">inner: --surface-1</div>
           <p>Maximum contrast between surface layers.</p>
         </div>
       </div>
@@ -632,7 +632,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="card-row">
     <div class="card">
       <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
-      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --bg-1.</p></div>
+      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --surface-1.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
@@ -646,7 +646,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
   <div class="text-demo">
     <h3>Typography Sample</h3>
-    <p>Body text in --text on the dark --bg-2. Links use <a href="#">--accent for inline emphasis</a>, same as light mode.</p>
+    <p>Body text in --text on the dark --surface-2. Links use <a href="#">--accent for inline emphasis</a>, same as light mode.</p>
   </div>
 </div>
 
@@ -654,14 +654,14 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+      <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
         <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
         <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
         <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col">
-      <div style="background: var(--bg-1); border-radius: 10px; padding: 1rem;">
+      <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
         <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
         <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
         <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
@@ -675,24 +675,24 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-1);">
-        <div class="layer-label">--bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-1);">
+        <div class="layer-label">--surface-1</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-2);">
-        <div class="layer-label">--bg-2</div>
+      <div class="layer-demo" style="background: var(--surface-2);">
+        <div class="layer-label">--surface-2</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">--bg-3</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">--surface-3</div>
         <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
@@ -705,28 +705,28 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">outer: --bg-3</div>
-        <div class="layer-panel" style="background: var(--bg-2);">
-          <div class="layer-label">inner: --bg-2</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">outer: --surface-3</div>
+        <div class="layer-panel" style="background: var(--surface-2);">
+          <div class="layer-label">inner: --surface-2</div>
           <p>Panel on a lighter dark section. Subtle contrast without borders.</p>
         </div>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-2);">
-        <div class="layer-label">outer: --bg-2</div>
-        <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-2);">
+        <div class="layer-label">outer: --surface-2</div>
+        <div class="layer-panel" style="background: var(--surface-1);">
+          <div class="layer-label">inner: --surface-1</div>
           <p>Darker card on the mid-dark surface. Recessed feel.</p>
         </div>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-3);">
-        <div class="layer-label">outer: --bg-3</div>
-        <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-1</div>
+      <div class="layer-demo" style="background: var(--surface-3);">
+        <div class="layer-label">outer: --surface-3</div>
+        <div class="layer-panel" style="background: var(--surface-1);">
+          <div class="layer-label">inner: --surface-1</div>
           <p>Maximum contrast between dark surface layers.</p>
         </div>
       </div>
