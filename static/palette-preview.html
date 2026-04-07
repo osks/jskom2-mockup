@@ -15,9 +15,9 @@
   --accent: oklch(0.6899 0.1434 48.4);
   --accent-light: oklch(0.7300 0.1300 54.3);
   --accent-dark: oklch(0.5700 0.1500 46.0);
-  --bg-light: oklch(0.9900 0.0040 78.0);
-  --bg: oklch(0.9646 0.0090 78.0);
-  --bg-dark: oklch(0.9292 0.0120 78.0);
+  --bg-1: oklch(0.9900 0.0040 78.0);
+  --bg-2: oklch(0.9646 0.0090 78.0);
+  --bg-3: oklch(0.9292 0.0120 78.0);
   --text: oklch(0.2000 0.0120 78.0);
   --text-secondary: oklch(0.4200 0.0180 78.0);
   --text-muted: oklch(0.5800 0.0160 78.0);
@@ -25,11 +25,11 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg-light); color: var(--text); padding: 2rem; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg-1); color: var(--text); padding: 2rem; }
 h1 { margin-bottom: 0.5rem; }
 h2 { margin-bottom: 0.75rem; }
 
-.panel { background: var(--bg); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+.panel { background: var(--bg-2); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
 
 .group { margin-bottom: 1.5rem; }
 .group:last-child { margin-bottom: 0; }
@@ -46,7 +46,7 @@ h2 { margin-bottom: 0.75rem; }
 .dark-text { color: var(--text); }
 
 /* Demo UI section */
-.demo { margin-top: 0; padding: 2rem; background: var(--bg); border-radius: 16px; margin-bottom: 2rem; }
+.demo { margin-top: 0; padding: 2rem; background: var(--bg-2); border-radius: 16px; margin-bottom: 2rem; }
 .demo h2 { margin-bottom: 1rem; }
 .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .btn {
@@ -68,7 +68,7 @@ h2 { margin-bottom: 0.75rem; }
   flex: 1; min-width: 200px; border-radius: 12px; overflow: hidden;
 }
 .card-header { padding: 1.25rem; color: var(--text-inverse); }
-.card-body { padding: 1rem; background: var(--bg-light); color: var(--text); font-size: 0.9rem; }
+.card-body { padding: 1rem; background: var(--bg-1); color: var(--text); font-size: 0.9rem; }
 .card-body p { color: var(--text); margin-top: 0.25rem; font-size: 0.85rem; }
 
 .text-demo { margin-top: 1.5rem; }
@@ -76,8 +76,8 @@ h2 { margin-bottom: 0.75rem; }
 .text-demo p { color: var(--text); line-height: 1.6; }
 .text-demo a { color: var(--accent); text-decoration: underline; }
 
-.text-contrast { background: var(--bg); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
-.layers { background: var(--bg); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+.text-contrast { background: var(--bg-2); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+.layers { background: var(--bg-2); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
 .layer-demo { border-radius: 16px; padding: 1.5rem; }
 .layer-demo h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; }
 .layer-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
@@ -91,14 +91,14 @@ h2 { margin-bottom: 0.75rem; }
 
 /* Dark mode overrides */
 .dark-mode {
-  --bg-light: oklch(0.1500 0.0080 78.0);
-  --bg: oklch(0.2000 0.0100 78.0);
-  --bg-dark: oklch(0.2500 0.0120 78.0);
+  --bg-1: oklch(0.1500 0.0080 78.0);
+  --bg-2: oklch(0.2000 0.0100 78.0);
+  --bg-3: oklch(0.2500 0.0120 78.0);
   --text: oklch(0.9300 0.0080 78.0);
   --text-secondary: oklch(0.7200 0.0140 78.0);
   --text-muted: oklch(0.5500 0.0140 78.0);
   --text-inverse: oklch(0.1500 0.0080 78.0);
-  background: var(--bg-light);
+  background: var(--bg-1);
   color: var(--text);
   margin: 0 -2rem;
   padding: 2rem;
@@ -151,9 +151,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="group">
   <h2>Background</h2>
   <div class="swatches">
-    <div class="swatch dark-text" style="background:var(--bg-light)"><span class="name">Bg Light</span><span class="val">L 0.99 C 0.004 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--bg)"><span class="name">Bg</span><span class="val">L 0.96 C 0.009 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--bg-dark)"><span class="name">Bg Dark</span><span class="val">L 0.93 C 0.012 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-1)"><span class="name">Bg 1</span><span class="val">L 0.99 C 0.004 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-2)"><span class="name">Bg 2</span><span class="val">L 0.96 C 0.009 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-3)"><span class="name">Bg 3</span><span class="val">L 0.93 C 0.012 H 78</span></div>
   </div>
 </div>
 
@@ -193,14 +193,14 @@ h2 { margin-bottom: 0.75rem; }
   <h2>Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col" style="min-width: 300px;">
-      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+      <div style="background: var(--bg-1); border-radius: 12px; padding: 1.25rem;">
         <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Trail conditions updated</h3>
         <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing. Recommended footwear: waterproof boots.</p>
         <p style="color: var(--text-secondary); font-size: 0.8rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col" style="min-width: 300px;">
-      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+      <div style="background: var(--bg-1); border-radius: 12px; padding: 1.25rem;">
         <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">--text-muted: Upcoming event</p>
         <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Spring wildflower walk</h3>
         <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species and their role in the local ecosystem.</p>
@@ -274,24 +274,24 @@ h2 { margin-bottom: 0.75rem; }
   <h2>Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-light);">
-        <div class="layer-label">--bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-1);">
+        <div class="layer-label">--bg-1</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg);">
-        <div class="layer-label">--bg</div>
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">--bg-2</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <div class="layer-label">--bg-dark</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">--bg-3</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
@@ -305,33 +305,33 @@ h2 { margin-bottom: 0.75rem; }
   <div class="layer-row">
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <h3>Bg Dark &rarr; Bg</h3>
-        <div class="layer-label">outer: --bg-dark</div>
-        <div class="layer-panel" style="background: var(--bg);">
-          <div class="layer-label">inner: --bg</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <h3>Bg 3 &rarr; Bg 2</h3>
+        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-panel" style="background: var(--bg-2);">
+          <div class="layer-label">inner: --bg-2</div>
           <p>A panel sitting on a darker page section. The subtle contrast separates content without hard borders.</p>
         </div>
       </div>
     </div>
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg);">
-        <h3>Bg &rarr; Bg Light</h3>
-        <div class="layer-label">outer: --bg</div>
-        <div class="layer-panel" style="background: var(--bg-light);">
-          <div class="layer-label">inner: --bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <h3>Bg 2 &rarr; Bg 1</h3>
+        <div class="layer-label">outer: --bg-2</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-2-1</div>
           <p>A card on the warm off-white. Classic elevated panel look with a clean feel.</p>
         </div>
       </div>
     </div>
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <h3>Bg Dark &rarr; Bg Light</h3>
-        <div class="layer-label">outer: --bg-dark</div>
-        <div class="layer-panel" style="background: var(--bg-light);">
-          <div class="layer-label">inner: --bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <h3>Bg 3 &rarr; Bg 1</h3>
+        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-2-1</div>
           <p>Maximum contrast between surface layers. Panels pop clearly against the darker background.</p>
         </div>
       </div>
@@ -355,9 +355,9 @@ h2 { margin-bottom: 0.75rem; }
   --accent-light:     oklch(0.7300 0.1300 54.3);
   --accent-dark:      oklch(0.5700 0.1500 46.0);
 
-  --bg-light:          oklch(0.9900 0.0040 78.0);
+  --bg-1:          oklch(0.9900 0.0040 78.0);
   --bg:       oklch(0.9646 0.0090 78.0);
-  --bg-dark:  oklch(0.9292 0.0120 78.0);
+  --bg-3:  oklch(0.9292 0.0120 78.0);
 
   --text:             oklch(0.2000 0.0120 78.0);
   --text-secondary:   oklch(0.4200 0.0180 78.0);
@@ -412,9 +412,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="group">
   <h2>Background</h2>
   <div class="swatches">
-    <div class="swatch dark-text" style="background:var(--bg-light)"><span class="name">Bg Light</span><span class="val">L 0.15 C 0.008 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--bg)"><span class="name">Bg</span><span class="val">L 0.20 C 0.010 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--bg-dark)"><span class="name">Bg Dark</span><span class="val">L 0.25 C 0.012 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-1)"><span class="name">Bg 1</span><span class="val">L 0.15 C 0.008 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-2)"><span class="name">Bg 2</span><span class="val">L 0.20 C 0.010 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-3)"><span class="name">Bg 3</span><span class="val">L 0.25 C 0.012 H 78</span></div>
   </div>
 </div>
 
@@ -454,14 +454,14 @@ h2 { margin-bottom: 0.75rem; }
   <h2>Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col" style="min-width: 300px;">
-      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+      <div style="background: var(--bg-1); border-radius: 12px; padding: 1.25rem;">
         <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Trail conditions updated</h3>
         <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing. Recommended footwear: waterproof boots.</p>
         <p style="color: var(--text-secondary); font-size: 0.8rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col" style="min-width: 300px;">
-      <div style="background: var(--bg-light); border-radius: 12px; padding: 1.25rem;">
+      <div style="background: var(--bg-1); border-radius: 12px; padding: 1.25rem;">
         <p style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">--text-muted: Upcoming event</p>
         <h3 style="color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem;">--text: Spring wildflower walk</h3>
         <p style="color: var(--text); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species and their role in the local ecosystem.</p>
@@ -535,24 +535,24 @@ h2 { margin-bottom: 0.75rem; }
   <h2>Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-light);">
-        <div class="layer-label">--bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-1);">
+        <div class="layer-label">--bg-1</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg);">
-        <div class="layer-label">--bg</div>
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <div class="layer-label">--bg-2</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <div class="layer-label">--bg-dark</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <div class="layer-label">--bg-3</div>
         <p style="color: var(--text); font-size: 1rem; margin-bottom: 0.5rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-secondary); font-size: 1rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
         <p style="color: var(--text-muted); font-size: 1rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
@@ -566,33 +566,33 @@ h2 { margin-bottom: 0.75rem; }
   <div class="layer-row">
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <h3>Bg Dark &rarr; Bg</h3>
-        <div class="layer-label">outer: --bg-dark</div>
-        <div class="layer-panel" style="background: var(--bg);">
-          <div class="layer-label">inner: --bg</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <h3>Bg 3 &rarr; Bg 2</h3>
+        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-panel" style="background: var(--bg-2);">
+          <div class="layer-label">inner: --bg-2</div>
           <p>A panel sitting on a lighter dark section. The subtle contrast separates content without hard borders.</p>
         </div>
       </div>
     </div>
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg);">
-        <h3>Bg &rarr; Bg Light</h3>
-        <div class="layer-label">outer: --bg</div>
-        <div class="layer-panel" style="background: var(--bg-light);">
-          <div class="layer-label">inner: --bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-2);">
+        <h3>Bg 2 &rarr; Bg 1</h3>
+        <div class="layer-label">outer: --bg-2</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-2-1</div>
           <p>A darker card on the mid-dark surface. Recessed panel feel.</p>
         </div>
       </div>
     </div>
 
     <div class="layer-col">
-      <div class="layer-demo" style="background: var(--bg-dark);">
-        <h3>Bg Dark &rarr; Bg Light</h3>
-        <div class="layer-label">outer: --bg-dark</div>
-        <div class="layer-panel" style="background: var(--bg-light);">
-          <div class="layer-label">inner: --bg-light</div>
+      <div class="layer-demo" style="background: var(--bg-3);">
+        <h3>Bg 3 &rarr; Bg 1</h3>
+        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-panel" style="background: var(--bg-1);">
+          <div class="layer-label">inner: --bg-2-1</div>
           <p>Maximum contrast between dark surface layers.</p>
         </div>
       </div>
@@ -604,9 +604,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="code-block">
   <h2>CSS Values — Dark Mode</h2>
   <pre><code>.dark-mode {
-  --bg-light:         oklch(0.1500 0.0080 78.0);
+  --bg-1:         oklch(0.1500 0.0080 78.0);
   --bg:               oklch(0.2000 0.0100 78.0);
-  --bg-dark:          oklch(0.2500 0.0120 78.0);
+  --bg-3:          oklch(0.2500 0.0120 78.0);
 
   --text:             oklch(0.9300 0.0080 78.0);
   --text-secondary:   oklch(0.7200 0.0140 78.0);
