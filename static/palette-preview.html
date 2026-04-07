@@ -15,6 +15,7 @@
   --accent: oklch(0.7903 0.1061 54.3);           /* #F0A878 */
   --accent-light: oklch(0.8548 0.0738 57.9);     /* #F5C4A0 */
   --accent-dark: oklch(0.7099 0.1434 48.4);      /* #E8834A */
+  --surface: oklch(1.0000 0 0);                   /* #FFFFFF */
   --background: oklch(0.9646 0.0057 84.6);       /* #F5F3EF */
   --background-dark: oklch(0.9400 0.0090 75.0);  /* warmer + slightly darker */
   --text: oklch(0.2365 0.0160 129.2);            /* #1C2018 */
@@ -70,6 +71,16 @@ h1 { margin-bottom: 0.5rem; }
 .text-demo p { color: var(--text-secondary); line-height: 1.6; }
 .text-demo a { color: var(--accent); text-decoration: underline; }
 
+.layers { margin-top: 2.5rem; }
+.layers h2 { margin-bottom: 0.75rem; }
+.layer-demo { border-radius: 16px; padding: 1.5rem; }
+.layer-demo h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.layer-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+.layer-panel { border-radius: 12px; padding: 1.25rem; }
+.layer-panel p { font-size: 0.9rem; line-height: 1.5; }
+.layer-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.layer-col { flex: 1; min-width: 250px; }
+
 .code-block { margin-top: 2.5rem; }
 .code-block h2 { margin-bottom: 0.75rem; }
 .code-block pre { background: var(--text); color: #e0ddd8; padding: 1.25rem 1.5rem; border-radius: 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; user-select: all; }
@@ -112,6 +123,7 @@ h1 { margin-bottom: 0.5rem; }
   <div class="swatches">
     <div class="swatch light-text" style="background:var(--text)"><span class="name">Text</span><span class="hex">#1C2018</span></div>
     <div class="swatch light-text" style="background:var(--text-secondary)"><span class="name">Text Secondary</span><span class="hex">#6B6357</span></div>
+    <div class="swatch dark-text" style="background:var(--surface); border:1px solid #ddd;"><span class="name">Surface</span><span class="hex">#FFFFFF</span></div>
     <div class="swatch dark-text" style="background:var(--background); border:1px solid #ddd;"><span class="name">Background</span><span class="hex">#F5F3EF</span></div>
     <div class="swatch dark-text" style="background:var(--background-dark)"><span class="name">Background Dark</span><span class="hex">~#E8E4DD</span></div>
   </div>
@@ -147,6 +159,46 @@ h1 { margin-bottom: 0.5rem; }
   </div>
 </div>
 
+<div class="layers">
+  <h2>Background Layering</h2>
+  <div class="layer-row">
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--background-dark);">
+        <h3>Dark bg &rarr; Background</h3>
+        <div class="layer-label">outer: --background-dark</div>
+        <div class="layer-panel" style="background: var(--background);">
+          <div class="layer-label">inner: --background</div>
+          <p>A panel sitting on a darker page section. The subtle contrast separates content without hard borders.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--background);">
+        <h3>Background &rarr; Surface (white)</h3>
+        <div class="layer-label">outer: --background</div>
+        <div class="layer-panel" style="background: var(--surface);">
+          <div class="layer-label">inner: --surface (#fff)</div>
+          <p>A white card on the warm off-white. Classic elevated panel look with a clean feel.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer-col">
+      <div class="layer-demo" style="background: var(--background-dark);">
+        <h3>Dark bg &rarr; Surface (white)</h3>
+        <div class="layer-label">outer: --background-dark</div>
+        <div class="layer-panel" style="background: var(--surface);">
+          <div class="layer-label">inner: --surface (#fff)</div>
+          <p>Maximum contrast between surface layers. White panels pop clearly against the darker background.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="code-block">
   <h2>CSS Values</h2>
   <pre><code>:root {
@@ -162,6 +214,7 @@ h1 { margin-bottom: 0.5rem; }
   --accent-light:     oklch(0.8548 0.0738 57.9);   /* #F5C4A0 */
   --accent-dark:      oklch(0.7099 0.1434 48.4);   /* #E8834A */
 
+  --surface:          oklch(1.0000 0 0);            /* #FFFFFF */
   --background:       oklch(0.9646 0.0057 84.6);   /* #F5F3EF */
   --background-dark:  oklch(0.9400 0.0090 75.0);
 
