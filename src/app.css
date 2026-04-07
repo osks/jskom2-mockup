@@ -9,11 +9,12 @@
    ============================================= */
 :root {
 	/* Green (primary family) */
-	--forest-green-1: oklch(0.3800 0.0900 155.0);
-	--forest-green-2: oklch(0.4400 0.0950 155.5);
-	--forest-green-3: oklch(0.5092 0.1031 156.2);
-	--forest-green-4: oklch(0.6470 0.1200 157.2);
-	--forest-green-5: oklch(0.7500 0.1300 158.0);
+	--forest-green-1: oklch(0.3000 0.0800 154.5);
+	--forest-green-2: oklch(0.3800 0.0900 155.0);
+	--forest-green-3: oklch(0.4400 0.0950 155.5);
+	--forest-green-4: oklch(0.5092 0.1031 156.2);
+	--forest-green-5: oklch(0.6470 0.1200 157.2);
+	--forest-green-6: oklch(0.7500 0.1300 158.0);
 
 	/* Brown (secondary family) */
 	--forest-brown-1: oklch(0.3800 0.0300 65.0);
@@ -51,9 +52,9 @@
 	--forest-text-muted:     var(--forest-neutral-5);
 	--forest-text-inverse:   var(--forest-neutral-9);
 
-	--forest-primary:        var(--forest-green-2);
-	--forest-primary-hover:  var(--forest-green-3);
-	--forest-primary-active: var(--forest-green-1);
+	--forest-primary:        var(--forest-green-3);
+	--forest-primary-hover:  var(--forest-green-4);
+	--forest-primary-active: var(--forest-green-2);
 
 	--forest-secondary:        var(--forest-neutral-4);
 	--forest-secondary-hover:  var(--forest-neutral-5);

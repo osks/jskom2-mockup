@@ -10,11 +10,12 @@
    ============================================= */
 :root {
   /* Green (primary family) */
-  --green-1: oklch(0.3800 0.0900 155.0);
-  --green-2: oklch(0.4400 0.0950 155.5);
-  --green-3: oklch(0.5092 0.1031 156.2);
-  --green-4: oklch(0.6470 0.1200 157.2);
-  --green-5: oklch(0.7500 0.1300 158.0);
+  --green-1: oklch(0.3000 0.0800 154.5);
+  --green-2: oklch(0.3800 0.0900 155.0);
+  --green-3: oklch(0.4400 0.0950 155.5);
+  --green-4: oklch(0.5092 0.1031 156.2);
+  --green-5: oklch(0.6470 0.1200 157.2);
+  --green-6: oklch(0.7500 0.1300 158.0);
 
   /* Brown (secondary family) */
   --brown-1: oklch(0.3800 0.0300 65.0);
@@ -50,9 +51,9 @@
   --text-muted:     var(--neutral-5);
   --text-inverse:   var(--neutral-9);
 
-  --primary:        var(--green-2);
-  --primary-hover:  var(--green-3);
-  --primary-active: var(--green-1);
+  --primary:        var(--green-3);
+  --primary-hover:  var(--green-4);
+  --primary-active: var(--green-2);
 
   --secondary:        var(--neutral-4);
   --secondary-hover:  var(--neutral-5);
@@ -80,9 +81,9 @@
   --text-muted:     var(--neutral-5);
   --text-inverse:   var(--neutral-1);
 
-  --primary:        var(--green-4);
-  --primary-hover:  var(--green-5);
-  --primary-active: var(--green-2);
+  --primary:        var(--green-5);
+  --primary-hover:  var(--green-6);
+  --primary-active: var(--green-3);
 
   --secondary:        var(--neutral-5);
   --secondary-hover:  var(--neutral-6);
@@ -209,11 +210,12 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 <div class="group">
   <h3>Green</h3>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--green-1)"><span class="name">green-1</span><span class="val">L 0.38 C 0.09 H 155</span></div>
-    <div class="swatch light-text" style="background:var(--green-2)"><span class="name">green-2</span><span class="val">L 0.44 C 0.095 H 156</span></div>
-    <div class="swatch light-text" style="background:var(--green-3)"><span class="name">green-3</span><span class="val">L 0.51 C 0.10 H 156</span></div>
-    <div class="swatch light-text" style="background:var(--green-4)"><span class="name">green-4</span><span class="val">L 0.65 C 0.12 H 157</span></div>
-    <div class="swatch dark-text" style="background:var(--green-5)"><span class="name">green-5</span><span class="val">L 0.75 C 0.13 H 158</span></div>
+    <div class="swatch light-text" style="background:var(--green-1)"><span class="name">green-1</span><span class="val">L 0.30 C 0.08 H 155</span></div>
+    <div class="swatch light-text" style="background:var(--green-2)"><span class="name">green-2</span><span class="val">L 0.38 C 0.09 H 155</span></div>
+    <div class="swatch light-text" style="background:var(--green-3)"><span class="name">green-3</span><span class="val">L 0.44 C 0.095 H 156</span></div>
+    <div class="swatch light-text" style="background:var(--green-4)"><span class="name">green-4</span><span class="val">L 0.51 C 0.10 H 156</span></div>
+    <div class="swatch light-text" style="background:var(--green-5)"><span class="name">green-5</span><span class="val">L 0.65 C 0.12 H 157</span></div>
+    <div class="swatch dark-text" style="background:var(--green-6)"><span class="name">green-6</span><span class="val">L 0.75 C 0.13 H 158</span></div>
   </div>
 </div>
 
@@ -336,8 +338,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary</code></div>
     <div class="role-modes">
-      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-5)"></span> green-5</div>
     </div>
     <div class="role-purpose">Default buttons, links, nav</div>
   </div>
@@ -345,8 +347,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary-hover</code></div>
     <div class="role-modes">
-      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-5)"></span> green-5</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-4)"></span> green-4</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-6)"></span> green-6</div>
     </div>
     <div class="role-purpose">Hover state, subtle emphasis</div>
   </div>
@@ -354,8 +356,8 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--primary-active</code></div>
     <div class="role-modes">
-      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-1)"></span> green-1</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--green-3)"></span> green-3</div>
     </div>
     <div class="role-purpose">Pressed, selected, focus</div>
   </div>
