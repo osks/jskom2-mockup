@@ -68,9 +68,9 @@
   --bg-2:           var(--neutral-2);
   --bg-3:           var(--neutral-3);
 
-  --text:           oklch(0.9300 0.0080 78.0);
+  --text:           var(--neutral-7);
   --text-secondary: var(--neutral-6);
-  --text-muted:     oklch(0.5500 0.0140 78.0);
+  --text-muted:     var(--neutral-5);
   --text-inverse:   var(--neutral-1);
 
   /* primary, secondary, accent: unchanged */
@@ -107,7 +107,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .role-modes { display: flex; gap: 0; width: 100%; }
 .role-mode { display: flex; align-items: center; gap: 0.3rem; flex: 1; padding: 0.8rem 0.5rem; border-radius: 6px; font-size: 0.8rem; }
 .role-mode.mode-light { background: var(--neutral-9); color: var(--neutral-2); }
-.role-mode.mode-dark { background: var(--neutral-1); color: oklch(0.93 0.008 78); }
+.role-mode.mode-dark { background: var(--neutral-1); color: var(--neutral-7); }
 .role-mode-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.03em; min-width: 2.5rem; opacity: 0.5; }
 .color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: middle; flex-shrink: 0; border: 1px solid oklch(0.5 0 0 / 0.2); }
 .role-purpose { font-size: 0.75rem; color: var(--text-secondary); width: 100%; padding: 0.2rem 0.5rem 0.5rem; }
@@ -263,7 +263,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--text</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.93 0.008 78)"></span> L 0.93*</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-7)"></span> neutral-7</div>
     </div>
     <div class="role-purpose">Body text, headings</div>
   </div>
@@ -281,7 +281,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="role-name"><code>--text-muted</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:oklch(0.55 0.014 78)"></span> L 0.55*</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
     </div>
     <div class="role-purpose">Timestamps, placeholders</div>
   </div>
@@ -384,7 +384,6 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 </div>
 
-<p style="color: var(--text-muted); font-size: 0.7rem; margin-top: 1rem;">* Dark mode --text and --text-muted use values not yet in the numbered palette (L 0.93 and L 0.55). The neutral scale could be expanded to include them.</p>
 
 </div>
 
