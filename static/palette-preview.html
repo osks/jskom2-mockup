@@ -376,7 +376,7 @@ h2 { margin-bottom: 0.75rem; }
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--bg-3);">
         <h3>Bg 3 &rarr; Bg 2</h3>
-        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-label">outer: --bg-3</div>
         <div class="layer-panel" style="background: var(--bg-2);">
           <div class="layer-label">inner: --bg-2</div>
           <p>A panel sitting on a darker page section. The subtle contrast separates content without hard borders.</p>
@@ -389,7 +389,7 @@ h2 { margin-bottom: 0.75rem; }
         <h3>Bg 2 &rarr; Bg 1</h3>
         <div class="layer-label">outer: --bg-2</div>
         <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-2-1</div>
+          <div class="layer-label">inner: --bg-1</div>
           <p>A card on the warm off-white. Classic elevated panel look with a clean feel.</p>
         </div>
       </div>
@@ -398,9 +398,9 @@ h2 { margin-bottom: 0.75rem; }
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--bg-3);">
         <h3>Bg 3 &rarr; Bg 1</h3>
-        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-label">outer: --bg-3</div>
         <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-2-1</div>
+          <div class="layer-label">inner: --bg-1</div>
           <p>Maximum contrast between surface layers. Panels pop clearly against the darker background.</p>
         </div>
       </div>
@@ -424,9 +424,9 @@ h2 { margin-bottom: 0.75rem; }
   --accent-light:     oklch(0.7300 0.1300 54.3);
   --accent-dark:      oklch(0.5700 0.1500 46.0);
 
-  --bg-1:          oklch(0.9900 0.0040 78.0);
-  --bg:       oklch(0.9646 0.0090 78.0);
-  --bg-3:  oklch(0.9292 0.0120 78.0);
+  --bg-1:             oklch(0.9900 0.0040 78.0);
+  --bg-2:             oklch(0.9646 0.0090 78.0);
+  --bg-3:             oklch(0.9292 0.0120 78.0);
 
   --text:             oklch(0.2000 0.0120 78.0);
   --text-secondary:   oklch(0.4200 0.0180 78.0);
@@ -482,7 +482,7 @@ h2 { margin-bottom: 0.75rem; }
   <h2>Background</h2>
   <div class="swatches">
     <div class="swatch dark-text" style="background:var(--bg-1)"><span class="name">Bg 1</span><span class="val">L 0.15 C 0.008 H 78</span></div>
-    <div class="swatch dark-text" style="background:var(--bg-2)"><span class="name">Bg 2</span><span class="val">L 0.20 C 0.010 H 78</span></div>
+    <div class="swatch dark-text" style="background:var(--bg-2)"><span class="name">Bg 2</span><span class="val">L 0.20 C 0.012 H 78</span></div>
     <div class="swatch dark-text" style="background:var(--bg-3)"><span class="name">Bg 3</span><span class="val">L 0.25 C 0.012 H 78</span></div>
   </div>
 </div>
@@ -637,7 +637,7 @@ h2 { margin-bottom: 0.75rem; }
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--bg-3);">
         <h3>Bg 3 &rarr; Bg 2</h3>
-        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-label">outer: --bg-3</div>
         <div class="layer-panel" style="background: var(--bg-2);">
           <div class="layer-label">inner: --bg-2</div>
           <p>A panel sitting on a lighter dark section. The subtle contrast separates content without hard borders.</p>
@@ -650,7 +650,7 @@ h2 { margin-bottom: 0.75rem; }
         <h3>Bg 2 &rarr; Bg 1</h3>
         <div class="layer-label">outer: --bg-2</div>
         <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-2-1</div>
+          <div class="layer-label">inner: --bg-1</div>
           <p>A darker card on the mid-dark surface. Recessed panel feel.</p>
         </div>
       </div>
@@ -659,9 +659,9 @@ h2 { margin-bottom: 0.75rem; }
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--bg-3);">
         <h3>Bg 3 &rarr; Bg 1</h3>
-        <div class="layer-label">outer: --bg-2-3</div>
+        <div class="layer-label">outer: --bg-3</div>
         <div class="layer-panel" style="background: var(--bg-1);">
-          <div class="layer-label">inner: --bg-2-1</div>
+          <div class="layer-label">inner: --bg-1</div>
           <p>Maximum contrast between dark surface layers.</p>
         </div>
       </div>
@@ -673,9 +673,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="code-block">
   <h2>CSS Values — Dark Mode</h2>
   <pre><code>.dark-mode {
-  --bg-1:         oklch(0.1500 0.0080 78.0);
-  --bg:               oklch(0.2000 0.0100 78.0);
-  --bg-3:          oklch(0.2500 0.0120 78.0);
+  --bg-1:             oklch(0.1500 0.0080 78.0);
+  --bg-2:             oklch(0.2000 0.0120 78.0);
+  --bg-3:             oklch(0.2500 0.0120 78.0);
 
   --text:             oklch(0.9300 0.0080 78.0);
   --text-secondary:   oklch(0.7200 0.0140 78.0);
