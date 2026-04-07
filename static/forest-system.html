@@ -25,6 +25,7 @@
   --orange-1: oklch(0.5700 0.1500 46.0);
   --orange-2: oklch(0.6899 0.1434 48.4);
   --orange-3: oklch(0.7300 0.1300 54.3);
+  --orange-4: oklch(0.8000 0.1150 58.0);
 
   /* Neutral (backgrounds, text) */
   --neutral-1:  oklch(0.1300 0.0080 75.0);
@@ -58,7 +59,7 @@
   --secondary-active: var(--neutral-3);
 
   --accent:        var(--orange-2);
-  --accent-hover:  var(--orange-3);
+  --accent-hover:  var(--orange-4);
   --accent-active: var(--orange-1);
 }
 
@@ -84,7 +85,7 @@
   --secondary-active: var(--neutral-4);
 
   --accent:        var(--orange-3);
-  --accent-hover:  var(--orange-3);  /* needs orange-4 */
+  --accent-hover:  var(--orange-4);
   --accent-active: var(--orange-2);
 }
 
@@ -220,6 +221,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <div class="swatch light-text" style="background:var(--orange-1)"><span class="name">orange-1</span><span class="val">L 0.57 C 0.15 H 46</span></div>
     <div class="swatch light-text" style="background:var(--orange-2)"><span class="name">orange-2</span><span class="val">L 0.69 C 0.14 H 48</span></div>
     <div class="swatch dark-text" style="background:var(--orange-3)"><span class="name">orange-3</span><span class="val">L 0.73 C 0.13 H 54</span></div>
+    <div class="swatch dark-text" style="background:var(--orange-4)"><span class="name">orange-4</span><span class="val">L 0.80 C 0.115 H 58</span></div>
   </div>
 </div>
 
@@ -390,10 +392,10 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-item">
     <div class="role-name"><code>--accent-hover</code></div>
     <div class="role-modes">
-      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3</div>
-      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-3)"></span> orange-3 *</div>
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--orange-4)"></span> orange-4</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--orange-4)"></span> orange-4</div>
     </div>
-    <div class="role-purpose">Hover state — needs orange-4 for dark</div>
+    <div class="role-purpose">Hover state</div>
   </div>
 
   <div class="role-item">
