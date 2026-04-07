@@ -42,14 +42,14 @@
 
 		<form
 			onsubmit={(e) => { e.preventDefault(); handleLogin(); }}
-			class="rounded-2xl bg-surface-3/40 backdrop-blur-md ring-1 ring-surface-1/80 p-6 space-y-4"
+			class="rounded-2xl bg-surface-1 ring-1 ring-surface-3/60 p-6 space-y-4"
 		>
 			<div>
 				<label for="server" class="block text-sm font-medium text-txt-secondary">Server</label>
 				<select
 					id="server"
 					bind:value={server}
-					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm font-mono ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary appearance-none"
+					class="mt-1 w-full rounded-full bg-surface-2 px-4 py-2 text-sm font-mono ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary appearance-none"
 				>
 					{#each servers as s}
 						<option value={s.name}>{s.name}</option>
@@ -63,7 +63,7 @@
 					id="username"
 					type="text"
 					bind:value={username}
-					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary"
+					class="mt-1 w-full rounded-full bg-surface-2 px-4 py-2 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary"
 				/>
 			</div>
 
@@ -73,13 +73,13 @@
 					id="password"
 					type="password"
 					bind:value={password}
-					class="mt-1 w-full rounded-full bg-surface-2/60 px-4 py-2 text-sm ring-1 ring-surface-1/80 focus:bg-surface-2/80 focus:outline-none focus:ring-1 focus:ring-primary"
+					class="mt-1 w-full rounded-full bg-surface-2 px-4 py-2 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary"
 				/>
 			</div>
 
 			<button
 				type="submit"
-				class="w-full rounded-full bg-primary ring-1 ring-surface-1/25 px-4 py-2.5 text-sm font-semibold text-txt-inverse active:bg-primary-active transition-colors"
+				class="w-full rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-txt-inverse active:bg-primary-active transition-colors"
 			>
 				Logga in
 			</button>
