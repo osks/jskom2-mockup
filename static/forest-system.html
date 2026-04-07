@@ -46,10 +46,10 @@
   --surface-2:           var(--neutral-8);
   --surface-3:           var(--neutral-7);
 
-  --text:           var(--neutral-2);
-  --text-secondary: var(--neutral-4);
-  --text-muted:     var(--neutral-5);
-  --text-inverse:   var(--neutral-9);
+  --txt:           var(--neutral-2);
+  --txt-secondary: var(--neutral-4);
+  --txt-muted:     var(--neutral-5);
+  --txt-inverse:   var(--neutral-9);
 
   --primary:        var(--green-2);
   --primary-hover:  var(--green-3);
@@ -76,10 +76,10 @@
   --surface-2:           var(--neutral-2);
   --surface-3:           var(--neutral-3);
 
-  --text:           var(--neutral-8);
-  --text-secondary: var(--neutral-6);
-  --text-muted:     var(--neutral-5);
-  --text-inverse:   var(--neutral-1);
+  --txt:           var(--neutral-8);
+  --txt-secondary: var(--neutral-6);
+  --txt-muted:     var(--neutral-5);
+  --txt-inverse:   var(--neutral-1);
 
   --primary:        var(--green-5);
   --primary-hover:  var(--green-6);
@@ -102,10 +102,10 @@
    Styles
    ============================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, -apple-system, sans-serif; background: var(--surface-1); color: var(--text); padding: 1rem; }
+body { font-family: system-ui, -apple-system, sans-serif; background: var(--surface-1); color: var(--txt); padding: 1rem; }
 h1 { margin-bottom: 0.5rem; }
 h2 { margin-bottom: 0.75rem; font-size: 1.1rem; }
-h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 0.75rem; }
+h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--txt-secondary); margin-bottom: 0.75rem; }
 
 .panel { background: var(--surface-2); border-radius: 16px; padding: 1rem; margin-bottom: 1.5rem; }
 .group { margin-bottom: 1.5rem; }
@@ -132,10 +132,10 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .role-mode.mode-dark { background: var(--neutral-1); color: var(--neutral-8); }
 .role-mode-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.03em; min-width: 2.5rem; opacity: 0.5; }
 .color-dot { display: inline-block; width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; flex-shrink: 0; border: 1px solid oklch(0.5 0 0 / 0.2); }
-.role-purpose { font-size: 0.75rem; color: var(--text-secondary); width: 100%; padding: 0.2rem 0.5rem 0.5rem; }
+.role-purpose { font-size: 0.75rem; color: var(--txt-secondary); width: 100%; padding: 0.2rem 0.5rem 0.5rem; }
 .role-separator { height: 0.5rem; border: none; }
 
-.btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--text-inverse); }
+.btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--txt-inverse); }
 .btn-primary { background: var(--primary); }
 .btn-primary:hover { background: var(--primary-hover); }
 .btn-primary:active { background: var(--primary-active); }
@@ -145,7 +145,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 .btn-secondary { background: var(--secondary); }
 .btn-secondary:hover { background: var(--secondary-hover); }
 .btn-secondary:active { background: var(--secondary-active); }
-.btn-subtle { background: var(--subtle); color: var(--text); }
+.btn-subtle { background: var(--subtle); color: var(--txt); }
 .btn-subtle:hover { background: var(--subtle-hover); }
 .btn-subtle:active { background: var(--subtle-active); }
 .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
@@ -154,28 +154,28 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
 .card-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .card { flex: 1 1 100%; border-radius: 12px; overflow: hidden; }
-.card-header { padding: 1rem; color: var(--text-inverse); }
-.card-body { padding: 0.75rem; background: var(--surface-1); color: var(--text); font-size: 0.85rem; }
-.card-body p { color: var(--text); margin-top: 0.2rem; font-size: 0.8rem; }
+.card-header { padding: 1rem; color: var(--txt-inverse); }
+.card-body { padding: 0.75rem; background: var(--surface-1); color: var(--txt); font-size: 0.85rem; }
+.card-body p { color: var(--txt); margin-top: 0.2rem; font-size: 0.8rem; }
 
 .demo { padding: 1rem; background: var(--surface-2); border-radius: 16px; margin-bottom: 1.5rem; }
 
 .text-demo { margin-top: 1rem; }
 .text-demo h3 { color: var(--primary); margin-bottom: 0.25rem; text-transform: none; letter-spacing: normal; font-size: 1rem; }
-.text-demo p { color: var(--text); line-height: 1.6; font-size: 0.85rem; }
+.text-demo p { color: var(--txt); line-height: 1.6; font-size: 0.85rem; }
 .text-demo a { color: var(--accent); text-decoration: underline; }
 
 .layer-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .layer-col { flex: 1 1 100%; }
 .layer-demo { border-radius: 12px; padding: 1rem; }
 .layer-demo h3 { margin-bottom: 0.5rem; }
-.layer-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+.layer-label { font-size: 0.7rem; color: var(--txt-muted); margin-bottom: 0.4rem; }
 .layer-panel { border-radius: 10px; padding: 1rem; margin-top: 0.5rem; }
 .layer-panel p { font-size: 0.85rem; line-height: 1.5; }
 
 .dark-mode {
   background: var(--surface-1);
-  color: var(--text);
+  color: var(--txt);
   margin: 0 -1rem;
   padding: 1rem;
 }
@@ -196,14 +196,14 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 <body>
 
 <h1>Forest — Design System</h1>
-<p style="color: var(--text-secondary); margin-bottom: 2rem;">Two layers: raw palette colors, then role mappings per mode.</p>
+<p style="color: var(--txt-secondary); margin-bottom: 2rem;">Two layers: raw palette colors, then role mappings per mode.</p>
 
 <!-- ============================================
      LAYER 1: THE PALETTE
      ============================================ -->
 
 <h2>Layer 1 — The Palette</h2>
-<p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Mode-agnostic. These are all the colors that exist.</p>
+<p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Mode-agnostic. These are all the colors that exist.</p>
 
 <div class="panel">
 
@@ -262,7 +262,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
      ============================================ -->
 
 <h2>Layer 2 — Role Mappings</h2>
-<p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Which palette colors are used for what, per mode.</p>
+<p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Which palette colors are used for what, per mode.</p>
 
 <div class="panel">
 
@@ -298,7 +298,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-separator"></div>
 
   <div class="role-item">
-    <div class="role-name"><code>--text</code></div>
+    <div class="role-name"><code>--txt</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-2)"></span> neutral-2</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
@@ -307,7 +307,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--text-secondary</code></div>
+    <div class="role-name"><code>--txt-secondary</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-4)"></span> neutral-4</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-6)"></span> neutral-6</div>
@@ -316,7 +316,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--text-muted</code></div>
+    <div class="role-name"><code>--txt-muted</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
@@ -325,7 +325,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
 
   <div class="role-item">
-    <div class="role-name"><code>--text-inverse</code></div>
+    <div class="role-name"><code>--txt-inverse</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-9)"></span> neutral-9</div>
       <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-1)"></span> neutral-1</div>
@@ -461,7 +461,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 <h2>Light Mode</h2>
 
 <div class="demo">
-  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--text);">Buttons — default / hover / active</h3>
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt);">Buttons — default / hover / active</h3>
   <div class="btn-row">
     <button class="btn btn-primary">Primary</button>
     <button class="btn" style="background:var(--primary-hover)">Hover</button>
@@ -479,19 +479,19 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
   <div class="btn-row">
     <button class="btn btn-subtle">Subtle</button>
-    <button class="btn" style="background:var(--subtle-hover); color:var(--text)">Hover</button>
-    <button class="btn" style="background:var(--subtle-active); color:var(--text)">Active</button>
+    <button class="btn" style="background:var(--subtle-hover); color:var(--txt)">Hover</button>
+    <button class="btn" style="background:var(--subtle-active); color:var(--txt)">Active</button>
   </div>
   <div class="btn-row">
     <button class="btn btn-outline">Outline</button>
     <button class="btn" style="background:transparent; color:var(--primary-hover); border:2px solid var(--primary-hover)">Hover</button>
   </div>
 
-  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--text); margin-top: 1.5rem;">Cards</h3>
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Cards</h3>
   <div class="card-row">
     <div class="card">
       <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
-      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --surface-1.</p></div>
+      <div class="card-body"><strong>Feature One</strong><p>Body text using --txt on --surface-1.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
@@ -505,63 +505,63 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
   <div class="text-demo">
     <h3>Typography Sample</h3>
-    <p>Body text in --text on the warm off-white --surface-2. Links use <a href="#">--accent for inline emphasis</a>, keeping everything cohesive.</p>
+    <p>Body text in --txt on the warm off-white --surface-2. Links use <a href="#">--accent for inline emphasis</a>, keeping everything cohesive.</p>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
-        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
-        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
-        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
+        <h3 style="color: var(--txt); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--txt: Trail conditions updated</h3>
+        <p style="color: var(--txt); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--txt: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.75rem;">--txt-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col">
       <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
-        <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
-        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
-        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
-        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
+        <p style="color: var(--txt-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--txt-muted: Upcoming event</p>
+        <h3 style="color: var(--txt); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--txt: Spring wildflower walk</h3>
+        <p style="color: var(--txt); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--txt: Join our guided tour through the meadow trails. Learn to identify native species.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.75rem;">--txt-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-1);">
         <div class="layer-label">--surface-1</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-2);">
         <div class="layer-label">--surface-2</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-3);">
         <div class="layer-label">--surface-3</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-3);">
@@ -602,7 +602,7 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 <h2>Dark Mode</h2>
 
 <div class="demo">
-  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--text);">Buttons — default / hover / active</h3>
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt);">Buttons — default / hover / active</h3>
   <div class="btn-row">
     <button class="btn btn-primary">Primary</button>
     <button class="btn" style="background:var(--primary-hover)">Hover</button>
@@ -620,19 +620,19 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   </div>
   <div class="btn-row">
     <button class="btn btn-subtle">Subtle</button>
-    <button class="btn" style="background:var(--subtle-hover); color:var(--text)">Hover</button>
-    <button class="btn" style="background:var(--subtle-active); color:var(--text)">Active</button>
+    <button class="btn" style="background:var(--subtle-hover); color:var(--txt)">Hover</button>
+    <button class="btn" style="background:var(--subtle-active); color:var(--txt)">Active</button>
   </div>
   <div class="btn-row">
     <button class="btn btn-outline">Outline</button>
     <button class="btn" style="background:transparent; color:var(--primary-hover); border:2px solid var(--primary-hover)">Hover</button>
   </div>
 
-  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--text); margin-top: 1.5rem;">Cards</h3>
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Cards</h3>
   <div class="card-row">
     <div class="card">
       <div class="card-header" style="background:var(--primary)"><strong>Primary Card</strong></div>
-      <div class="card-body"><strong>Feature One</strong><p>Body text using --text on --surface-1.</p></div>
+      <div class="card-body"><strong>Feature One</strong><p>Body text using --txt on --surface-1.</p></div>
     </div>
     <div class="card">
       <div class="card-header" style="background:var(--accent)"><strong>Accent Card</strong></div>
@@ -646,63 +646,63 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
 
   <div class="text-demo">
     <h3>Typography Sample</h3>
-    <p>Body text in --text on the dark --surface-2. Links use <a href="#">--accent for inline emphasis</a>, same as light mode.</p>
+    <p>Body text in --txt on the dark --surface-2. Links use <a href="#">--accent for inline emphasis</a>, same as light mode.</p>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text Hierarchy</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
-        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Trail conditions updated</h3>
-        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
-        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Updated 2 hours ago by Park Services</p>
+        <h3 style="color: var(--txt); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--txt: Trail conditions updated</h3>
+        <p style="color: var(--txt); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--txt: The northern ridge path has been cleared after last week's storm. Expect muddy sections near the creek crossing.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.75rem;">--txt-secondary: Updated 2 hours ago by Park Services</p>
       </div>
     </div>
     <div class="layer-col">
       <div style="background: var(--surface-1); border-radius: 10px; padding: 1rem;">
-        <p style="color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--text-muted: Upcoming event</p>
-        <h3 style="color: var(--text); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--text: Spring wildflower walk</h3>
-        <p style="color: var(--text); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--text: Join our guided tour through the meadow trails. Learn to identify native species.</p>
-        <p style="color: var(--text-secondary); font-size: 0.75rem;">--text-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
+        <p style="color: var(--txt-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">--txt-muted: Upcoming event</p>
+        <h3 style="color: var(--txt); font-size: 1.05rem; text-transform: none; letter-spacing: normal; margin-bottom: 0.2rem;">--txt: Spring wildflower walk</h3>
+        <p style="color: var(--txt); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">--txt: Join our guided tour through the meadow trails. Learn to identify native species.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.75rem;">--txt-secondary: Sat 12 Apr &middot; 09:00 &middot; <span style="color: var(--primary);">--primary: 12 spots left</span></p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Text on Backgrounds</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-1);">
         <div class="layer-label">--surface-1</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-2);">
         <div class="layer-label">--surface-2</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-3);">
         <div class="layer-label">--surface-3</div>
-        <p style="color: var(--text); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--text:</strong> The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--text-secondary: The quick brown fox jumps over the lazy dog.</p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">--text-muted: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt); font-size: 0.85rem; margin-bottom: 0.3rem;"><strong>--txt:</strong> The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-secondary); font-size: 0.85rem; margin-bottom: 0.3rem;">--txt-secondary: The quick brown fox jumps over the lazy dog.</p>
+        <p style="color: var(--txt-muted); font-size: 0.85rem;">--txt-muted: The quick brown fox jumps over the lazy dog.</p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="demo">
-  <h2 style="color: var(--text); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
+  <h2 style="color: var(--txt); font-size: 1.1rem; text-transform: none; letter-spacing: normal;">Background Layering</h2>
   <div class="layer-row">
     <div class="layer-col">
       <div class="layer-demo" style="background: var(--surface-3);">
