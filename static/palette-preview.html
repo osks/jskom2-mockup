@@ -9,9 +9,9 @@
   --primary: oklch(0.5092 0.1031 156.2);
   --primary-light: oklch(0.6470 0.1200 157.2);
   --primary-dark: oklch(0.3800 0.0900 155.0);
-  --secondary: oklch(0.5041 0.0470 66.8);
-  --secondary-light: oklch(0.6295 0.0600 69.5);
-  --secondary-dark: oklch(0.3800 0.0400 65.0);
+  --secondary: oklch(0.5041 0.0350 66.8);
+  --secondary-light: oklch(0.6295 0.0450 69.5);
+  --secondary-dark: oklch(0.3800 0.0300 65.0);
   --accent: oklch(0.6899 0.1434 48.4);
   --accent-light: oklch(0.7300 0.1300 54.3);
   --accent-dark: oklch(0.5700 0.1500 46.0);
@@ -110,75 +110,6 @@ h2 { margin-bottom: 0.75rem; }
 <h1>Forest</h1>
 
 <div class="panel">
-<div class="group">
-  <h2>Secondary vs Accent — Comparison</h2>
-
-  <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Current secondary (H~67) and accent (H~48) are too close. Exploring options to separate them.</p>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Current</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0900 155.0)"><span class="name">Pri Dark</span><span class="val">L 0.38 C 0.09 H 155</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5092 0.1031 156.2)"><span class="name">Pri</span><span class="val">L 0.51 C 0.10 H 156</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0400 65.0)"><span class="name">Sec Dark</span><span class="val">L 0.38 C 0.04 H 65</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0470 66.8)"><span class="name">Sec</span><span class="val">L 0.50 C 0.05 H 67</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5700 0.1500 46.0)"><span class="name">Acc Dark</span><span class="val">L 0.57 C 0.15 H 46</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6899 0.1434 48.4)"><span class="name">Acc</span><span class="val">L 0.69 C 0.14 H 48</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Option A — Secondary to olive (H 65→90)</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0900 155.0)"><span class="name">Pri Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5092 0.1031 156.2)"><span class="name">Pri</span><span class="val">unchanged</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0400 88.0)"><span class="name">Sec Dark</span><span class="val">L 0.38 C 0.04 H 88</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0470 90.0)"><span class="name">Sec</span><span class="val">L 0.50 C 0.05 H 90</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5700 0.1500 46.0)"><span class="name">Acc Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6899 0.1434 48.4)"><span class="name">Acc</span><span class="val">unchanged</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Option B — Accent to coral/red (H 48→35)</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0900 155.0)"><span class="name">Pri Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5092 0.1031 156.2)"><span class="name">Pri</span><span class="val">unchanged</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0400 65.0)"><span class="name">Sec Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0470 66.8)"><span class="name">Sec</span><span class="val">unchanged</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5700 0.1500 33.0)"><span class="name">Acc Dark</span><span class="val">L 0.57 C 0.15 H 33</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6899 0.1434 35.0)"><span class="name">Acc</span><span class="val">L 0.69 C 0.14 H 35</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Option C — Both: secondary to olive + accent to coral</p>
-  <div class="swatches" style="margin-bottom: 1.5rem;">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0900 155.0)"><span class="name">Pri Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5092 0.1031 156.2)"><span class="name">Pri</span><span class="val">unchanged</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0400 88.0)"><span class="name">Sec Dark</span><span class="val">L 0.38 C 0.04 H 88</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0470 90.0)"><span class="name">Sec</span><span class="val">L 0.50 C 0.05 H 90</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5700 0.1500 33.0)"><span class="name">Acc Dark</span><span class="val">L 0.57 C 0.15 H 33</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6899 0.1434 35.0)"><span class="name">Acc</span><span class="val">L 0.69 C 0.14 H 35</span></div>
-  </div>
-
-  <p style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Option D — Secondary neutral (lower chroma), accent unchanged</p>
-  <div class="swatches">
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0900 155.0)"><span class="name">Pri Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5092 0.1031 156.2)"><span class="name">Pri</span><span class="val">unchanged</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.3800 0.0200 70.0)"><span class="name">Sec Dark</span><span class="val">L 0.38 C 0.02 H 70</span></div>
-    <div class="swatch light-text" style="background:oklch(0.5041 0.0250 70.0)"><span class="name">Sec</span><span class="val">L 0.50 C 0.025 H 70</span></div>
-    <div style="width: 1rem;"></div>
-    <div class="swatch light-text" style="background:oklch(0.5700 0.1500 46.0)"><span class="name">Acc Dark</span><span class="val">unchanged</span></div>
-    <div class="swatch light-text" style="background:oklch(0.6899 0.1434 48.4)"><span class="name">Acc</span><span class="val">unchanged</span></div>
-  </div>
-
-</div>
-</div>
-
-<div class="panel">
 
 <div class="group">
   <h2>Primary</h2>
@@ -192,9 +123,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="group">
   <h2>Secondary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.04 H 65</span></div>
-    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.05 H 67</span></div>
-    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.06 H 70</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.03 H 65</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.035 H 67</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.045 H 70</span></div>
   </div>
 </div>
 
@@ -416,9 +347,9 @@ h2 { margin-bottom: 0.75rem; }
   --primary-light:    oklch(0.6470 0.1200 157.2);
   --primary-dark:     oklch(0.3800 0.0900 155.0);
 
-  --secondary:        oklch(0.5041 0.0470 66.8);
-  --secondary-light:  oklch(0.6295 0.0600 69.5);
-  --secondary-dark:   oklch(0.3800 0.0400 65.0);
+  --secondary:        oklch(0.5041 0.0350 66.8);
+  --secondary-light:  oklch(0.6295 0.0450 69.5);
+  --secondary-dark:   oklch(0.3800 0.0300 65.0);
 
   --accent:           oklch(0.6899 0.1434 48.4);
   --accent-light:     oklch(0.7300 0.1300 54.3);
@@ -453,9 +384,9 @@ h2 { margin-bottom: 0.75rem; }
 <div class="group">
   <h2>Secondary</h2>
   <div class="swatches">
-    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.04 H 65</span></div>
-    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.05 H 67</span></div>
-    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.06 H 70</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-dark)"><span class="name">Secondary Dark</span><span class="val">L 0.38 C 0.03 H 65</span></div>
+    <div class="swatch light-text" style="background:var(--secondary)"><span class="name">Secondary</span><span class="val">L 0.50 C 0.035 H 67</span></div>
+    <div class="swatch light-text" style="background:var(--secondary-light)"><span class="name">Secondary Light</span><span class="val">L 0.63 C 0.045 H 70</span></div>
   </div>
 </div>
 
