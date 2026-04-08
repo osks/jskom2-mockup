@@ -37,10 +37,10 @@
 
 {#if isVisible}
 	<div
-		class="hidden md:flex justify-center border-t border-surface-3"
+		class="hidden md:flex justify-center"
 		transition:slide={{ duration: 200, easing: cubicOut }}
 	>
-		<div class="w-full max-w-2xl">
+		<div class="w-full max-w-2xl border-t border-surface-3">
 			<!-- "Replying to" context bar -->
 			{#if commentToText}
 				<div class="flex items-center gap-2 px-4 pt-2 pb-0">
