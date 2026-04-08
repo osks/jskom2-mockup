@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { readingState, collapseCompose } from '$lib/stores/reading';
+	import { readingState } from '$lib/stores/reading';
 	import { getTextById } from '$lib/data';
 	import ComposeForm from './ComposeForm.svelte';
 
@@ -12,17 +12,8 @@
 	// Mobile: show for any compose (comment or new text)
 	const mobileVisible = $derived(!!commentToText || $readingState.composingNew);
 
-	// Desktop: show only for new texts OR when expanded from bottom bar comment
-	const desktopVisible = $derived(
-		$readingState.composingNew || (!!commentToText && $readingState.composeExpanded)
-	);
-
-	// Can collapse back to bottom bar (only when expanded from a comment, not for new texts)
-	const canCollapse = $derived(!!commentToText && $readingState.composeExpanded);
-
-	function handleCollapse() {
-		collapseCompose();
-	}
+	// Desktop: show only for new texts (comments use ComposeBottomBar)
+	const desktopVisible = $derived($readingState.composingNew);
 </script>
 
 <!-- Mobile overlay (bottom sheet) -->
@@ -39,7 +30,7 @@
 	</div>
 {/if}
 
-<!-- Desktop overlay (centered modal, for new texts + expanded from bottom bar) -->
+<!-- Desktop overlay (centered modal, for new texts only) -->
 {#if desktopVisible}
 	<div
 		class="fixed inset-0 z-40 hidden items-center justify-center p-6 md:flex"
@@ -48,7 +39,7 @@
 			class="flex w-full max-w-lg max-h-[85vh] flex-col overflow-y-auto rounded-2xl bg-surface-3/40 backdrop-blur-md shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.08),0_8px_24px_rgba(0,0,0,0.12)] ring-1 ring-surface-1/80"
 			transition:fly={{ y: 60, duration: 200, easing: cubicOut }}
 		>
-			<ComposeForm {commentToText} onCollapse={canCollapse ? handleCollapse : null} />
+			<ComposeForm {commentToText} />
 		</div>
 	</div>
 {/if}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { readingState, expandCompose } from '$lib/stores/reading';
+	import { readingState } from '$lib/stores/reading';
 	import { getTextById, getUserById } from '$lib/data';
 	import { ArrowUp as ScrollUpIcon } from 'lucide-svelte';
 	import ComposeForm from './ComposeForm.svelte';
@@ -20,13 +20,7 @@
 		commentToText ? getUserById(commentToText.author) : null
 	);
 
-	const isVisible = $derived(
-		!!commentToText && !$readingState.composeExpanded
-	);
-
-	function handleExpand() {
-		expandCompose();
-	}
+	const isVisible = $derived(!!commentToText);
 
 	function handleScrollToParent() {
 		if ($readingState.commentTo) {
@@ -57,7 +51,6 @@
 			<ComposeForm
 				{commentToText}
 				variant="bottombar"
-				onExpand={handleExpand}
 			/>
 		</div>
 	</div>

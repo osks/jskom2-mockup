@@ -43,9 +43,7 @@ interface ReadingState {
 	// For the compose bar
 	commentTo: number | null;
 	composingNew: boolean;
-	// Desktop: inline compose expanded to full-screen overlay
-	composeExpanded: boolean;
-	// Shared compose body text (persists across inline <-> expanded transitions)
+	// Shared compose body text (persists when remounting)
 	composeBody: string;
 }
 
@@ -59,7 +57,6 @@ export const readingState = writable<ReadingState>({
 	activeTextId: null,
 	commentTo: null,
 	composingNew: false,
-	composeExpanded: false,
 	composeBody: ''
 });
 
@@ -91,7 +88,6 @@ export function initReading(userId: number) {
 		activeTextId: null,
 		commentTo: null,
 		composingNew: false,
-		composeExpanded: false,
 		composeBody: ''
 	});
 }
@@ -282,7 +278,7 @@ export function setCommentTo(textId: number | null) {
 }
 
 export function clearCommentTo() {
-	readingState.update((s) => ({ ...s, commentTo: null, composeExpanded: false, composeBody: '' }));
+	readingState.update((s) => ({ ...s, commentTo: null, composeBody: '' }));
 }
 
 export function startCompose() {
@@ -290,15 +286,7 @@ export function startCompose() {
 }
 
 export function cancelCompose() {
-	readingState.update((s) => ({ ...s, composingNew: false, composeExpanded: false, composeBody: '' }));
-}
-
-export function expandCompose() {
-	readingState.update((s) => ({ ...s, composeExpanded: true }));
-}
-
-export function collapseCompose() {
-	readingState.update((s) => ({ ...s, composeExpanded: false }));
+	readingState.update((s) => ({ ...s, composingNew: false, composeBody: '' }));
 }
 
 export function setComposeBody(body: string) {
