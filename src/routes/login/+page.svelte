@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-surface-3 px-4">
+<div class="flex min-h-screen items-center justify-center bg-surface-4 px-4">
 	<div class="w-full max-w-sm">
 		<div class="mb-8 text-center">
 			<h1 class="text-3xl font-bold text-primary">jskom2</h1>

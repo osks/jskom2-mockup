@@ -55,7 +55,7 @@
 
 <div class="mx-auto max-w-2xl bg-surface-2 pt-below-header">
 	<!-- Sticky search header -->
-	<div class="sticky top-0 z-10 bg-surface-2/95 backdrop-blur-sm border-b border-surface-2">
+	<div class="sticky top-0 z-10 bg-surface-2/95 backdrop-blur-sm border-b border-surface-3">
 		<div class="px-4 pt-3 pb-2">
 			<div class="relative">
 				<Search size={16} class="absolute left-3 top-1/2 -translate-y-1/2 text-txt-muted" />

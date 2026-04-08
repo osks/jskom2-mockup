@@ -113,7 +113,7 @@
 
 html {
 	font-family: var(--font-sans);
-	background-color: var(--color-surface-1);
+	background-color: var(--color-surface-2);
 	overscroll-behavior: none;
 	touch-action: manipulation;
 }

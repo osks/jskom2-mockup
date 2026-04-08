@@ -17,7 +17,7 @@
 
 {#if text}
 	<div
-		class="{depth > 0 ? 'ml-3 border-l-2 border-surface-2 md:ml-4' : ''} {highlightId === text.id ? 'bg-primary/10' : ''}"
+		class="{depth > 0 ? 'ml-3 border-l-2 border-surface-3 md:ml-4' : ''} {highlightId === text.id ? 'bg-primary/10' : ''}"
 	>
 		<StreamMessage {text} />
 

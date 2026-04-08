@@ -21,7 +21,7 @@
 <div class="mx-auto max-w-2xl bg-surface-2 pt-below-header">
 	{#if user}
 		<!-- User header -->
-		<div class="border-b border-surface-2 px-4 py-4">
+		<div class="border-b border-surface-3 px-4 py-4">
 			<div>
 				<h1 class="text-lg font-semibold text-txt">{user.name}</h1>
 				<span class="text-xs text-txt-muted">{user.username}</span>
