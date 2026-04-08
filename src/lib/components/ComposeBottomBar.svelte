@@ -8,9 +8,10 @@
 
 	interface Props {
 		onScrollToText?: (textId: number) => void;
+		onExpand?: () => void;
 	}
 
-	let { onScrollToText }: Props = $props();
+	let { onScrollToText, onExpand }: Props = $props();
 
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
@@ -51,6 +52,7 @@
 			<ComposeForm
 				{commentToText}
 				variant="bottombar"
+				{onExpand}
 			/>
 		</div>
 	</div>

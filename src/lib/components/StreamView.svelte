@@ -4,6 +4,7 @@
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
 	import ComposeBottomBar from './ComposeBottomBar.svelte';
+	import ComposeFocusView from './ComposeFocusView.svelte';
 	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
@@ -168,6 +169,17 @@
 
 	// The text currently being commented on (for highlighting in stream)
 	const commentToId = $derived($readingState.commentTo);
+	const commentToText = $derived(commentToId ? getTextById(commentToId) : null);
+
+	// Focus mode: replaces the stream with a split view (parent text + compose)
+	let focusMode = $state(false);
+
+	// Reset focus mode when compose closes
+	$effect(() => {
+		if (!$readingState.commentTo) {
+			focusMode = false;
+		}
+	});
 
 	// When compose opens, scroll the target text so its bottom is visible above the compose bar
 	let prevCommentTo: number | null = null;
@@ -265,6 +277,9 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
+{#if focusMode && commentToText}
+	<ComposeFocusView {commentToText} onCollapse={() => focusMode = false} />
+{:else}
 <!-- Scrollable content -->
 <div
 	bind:this={scrollContainer}
@@ -305,7 +320,8 @@
 </div>
 
 <!-- Desktop bottom compose bar (within flex layout, pushes scroll area up) -->
-<ComposeBottomBar onScrollToText={scrollToText} />
+<ComposeBottomBar onScrollToText={scrollToText} onExpand={() => focusMode = true} />
+{/if}
 
 <!-- Floating action bar (hidden when compose panel is open) -->
 {#if hasTexts || nextAction.type !== 'all-done'}
