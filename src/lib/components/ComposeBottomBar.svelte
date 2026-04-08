@@ -40,7 +40,7 @@
 		class="hidden md:flex justify-center"
 		transition:slide={{ duration: 200, easing: cubicOut }}
 	>
-		<div class="w-full max-w-3xl border-t border-surface-3">
+		<div class="w-full max-w-3xl border-t border-surface-4">
 			<!-- "Replying to" context bar -->
 			{#if commentToText}
 				<div class="flex items-center gap-2 px-4 pt-2 pb-0">

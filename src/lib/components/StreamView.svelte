@@ -241,7 +241,7 @@
 				{@const text = getTextById(item.textId)}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
-						<div class="mx-8 border-t border-surface-3"></div>
+						<div class="mx-8 border-t border-surface-4"></div>
 					{/if}
 					<StreamMessage {text} active={item.textId === activeTextId} commentTarget={item.textId === commentToId} />
 				{/if}
