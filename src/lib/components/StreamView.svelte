@@ -4,7 +4,7 @@
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
 	import ComposeBottomBar from './ComposeBottomBar.svelte';
-	import ComposeFocusView from './ComposeFocusView.svelte';
+	import ComposeExpandedView from './ComposeExpandedView.svelte';
 	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
@@ -139,12 +139,12 @@
 	const commentToText = $derived(commentToId ? getTextById(commentToId) : null);
 
 	// Focus mode: replaces the stream with a split view (parent text + compose)
-	let focusMode = $state(false);
+	let expanded = $state(false);
 
 	// Reset focus mode when compose closes
 	$effect(() => {
 		if (!$readingState.commentTo) {
-			focusMode = false;
+			expanded = false;
 		}
 	});
 
@@ -238,8 +238,8 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-{#if focusMode && commentToText}
-	<ComposeFocusView {commentToText} onCollapse={() => focusMode = false} />
+{#if expanded && commentToText}
+	<ComposeExpandedView {commentToText} onCollapse={() => expanded = false} />
 {:else}
 <!-- Scrollable content -->
 <div
@@ -280,7 +280,7 @@
 </div>
 
 <!-- Desktop bottom compose bar (within flex layout, pushes scroll area up) -->
-<ComposeBottomBar onScrollToText={scrollToText} onExpand={() => focusMode = true} />
+<ComposeBottomBar onScrollToText={scrollToText} onExpand={() => expanded = true} />
 {/if}
 
 <!-- Floating action bar (hidden when compose panel is open) -->
