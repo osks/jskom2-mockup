@@ -69,42 +69,19 @@
 
 	<!-- Main nav -->
 	<div class="flex-1 overflow-y-auto px-2 py-1">
-		<a
-			href="{base}/read"
-			onclick={handleNav}
-			class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-			class:bg-surface-5={isActive('/read')}
-			class:text-txt={isActive('/read')}
-			class:hover:bg-surface-5={!isActive('/read')}
-			class:hover:text-txt={!isActive('/read')}
-		>
-			<BookOpen size={16} />
-			Läsa
-		</a>
-
-		<!-- Conference list -->
-		<div class="mt-4">
-			<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-txt-secondary">Möten</div>
-			<div class="mt-1 space-y-px">
-				{#each memberships as m}
-					{@const conf = getConferenceById(m.conferenceId)}
-					{#if conf}
-						<button
-							onclick={() => scrollToConference(conf.id)}
-							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-5 hover:text-txt"
-						>
-							<span class="truncate">{conf.name}</span>
-							{#if m.unread > 0}
-								<span class="ml-2 text-xs text-txt-secondary">{m.unread}</span>
-							{/if}
-						</button>
-					{/if}
-				{/each}
-			</div>
-		</div>
-
-		<!-- Other nav items -->
-		<div class="mt-4 space-y-px">
+		<div class="space-y-px">
+			<a
+				href="{base}/read"
+				onclick={handleNav}
+				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
+				class:bg-surface-5={isActive('/read')}
+				class:text-txt={isActive('/read')}
+				class:hover:bg-surface-5={!isActive('/read')}
+				class:hover:text-txt={!isActive('/read')}
+			>
+				<BookOpen size={16} />
+				Läsa
+			</a>
 			<a
 				href="{base}/who"
 				onclick={handleNav}
@@ -136,6 +113,27 @@
 				<Search size={16} />
 				Sök
 			</a>
+		</div>
+
+		<!-- Conference list -->
+		<div class="mt-4">
+			<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-txt-secondary">Möten</div>
+			<div class="mt-1 space-y-px">
+				{#each memberships as m}
+					{@const conf = getConferenceById(m.conferenceId)}
+					{#if conf}
+						<button
+							onclick={() => scrollToConference(conf.id)}
+							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-5 hover:text-txt"
+						>
+							<span class="truncate">{conf.name}</span>
+							{#if m.unread > 0}
+								<span class="ml-2 text-xs text-txt-secondary">{m.unread}</span>
+							{/if}
+						</button>
+					{/if}
+				{/each}
+			</div>
 		</div>
 	</div>
 
