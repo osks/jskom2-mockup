@@ -82,11 +82,18 @@
 		});
 	}
 
-	// Auto-scroll to bottom when new items are added, then update active
+	// Auto-scroll to bottom when new items are added, and set the new text as active
 	$effect(() => {
 		const len = $readingState.buffer.length;
 		if (len > prevBufferLen && scrollContainer) {
 			prevBufferLen = len;
+
+			// Immediately set the newest text as active
+			const lastItem = $readingState.buffer[len - 1];
+			if (lastItem?.kind === 'text' && lastItem.textId) {
+				setActiveText(lastItem.textId);
+			}
+
 			tick().then(() => {
 				if (scrollContainer) {
 					scrollContainer.scrollTo({
@@ -94,8 +101,6 @@
 						behavior: 'smooth'
 					});
 				}
-				// Update active after scroll settles
-				setTimeout(updateActiveText, 350);
 			});
 		}
 	});
