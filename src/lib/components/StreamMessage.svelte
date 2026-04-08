@@ -9,9 +9,10 @@
 		text: TextInfo;
 		compact?: boolean;
 		active?: boolean;
+		commentTarget?: boolean;
 	}
 
-	let { text, compact = false, active = false }: Props = $props();
+	let { text, compact = false, active = false, commentTarget = false }: Props = $props();
 
 	const author = $derived(getUserById(text.author));
 	const isoTimeStr = $derived(
@@ -82,9 +83,7 @@
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
-		class="px-4 py-3 ml-1.5 border-l-2 transition-all duration-300"
-		class:border-txt-muted={active}
-		class:border-transparent={!active}
+		class="px-4 py-3 ml-1.5 border-l-2 transition-all duration-300 {commentTarget ? 'border-primary md:bg-primary/5' : active ? 'border-txt-muted' : 'border-transparent'}"
 	>
 		<div class="min-w-0">
 			<!-- First line: #textno / datetime / author -->

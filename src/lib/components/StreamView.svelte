@@ -3,7 +3,7 @@
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
-	import ComposeInline from './ComposeInline.svelte';
+	import ComposeBottomBar from './ComposeBottomBar.svelte';
 	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
@@ -141,10 +141,7 @@
 	const activeAuthor = $derived(activeText ? getUserById(activeText.author) : null);
 	const hasTexts = $derived($readingState.buffer.some((b) => b.kind === 'text'));
 
-	// Desktop inline compose is active (comment mode, not expanded to overlay)
-	const inlineComposing = $derived(
-		!!$readingState.commentTo && !$readingState.composeExpanded
-	);
+	// The text currently being commented on (for highlighting in stream)
 	const commentToId = $derived($readingState.commentTo);
 
 	let moreMenuOpen = $state(false);
@@ -168,6 +165,12 @@
 		showReviewInput = false;
 		reviewInputValue = '';
 	}
+
+	function scrollToText(textId: number) {
+		if (!scrollContainer) return;
+		const el = scrollContainer.querySelector(`article[data-text-id="${textId}"]`);
+		el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	}
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -186,17 +189,11 @@
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
-				{@const isCommentTarget = item.textId === commentToId}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
 						<div class="mx-8 border-t border-surface-3"></div>
 					{/if}
-					<div class="transition-opacity duration-300 md:transition-opacity" class:md:opacity-25={inlineComposing && !isCommentTarget}>
-						<StreamMessage {text} active={item.textId === activeTextId} />
-					</div>
-					{#if isCommentTarget}
-						<ComposeInline />
-					{/if}
+					<StreamMessage {text} active={item.textId === activeTextId} commentTarget={item.textId === commentToId} />
 				{/if}
 			{/if}
 		{/each}
@@ -213,6 +210,9 @@
 		{/if}
 	</div>
 </div>
+
+<!-- Desktop bottom compose bar (within flex layout, pushes scroll area up) -->
+<ComposeBottomBar onScrollToText={scrollToText} />
 
 <!-- Floating action bar (hidden when compose panel is open) -->
 {#if hasTexts || nextAction.type !== 'all-done'}
