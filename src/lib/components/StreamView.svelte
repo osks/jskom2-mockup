@@ -279,11 +279,14 @@
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
+				{@const isTarget = item.textId === commentToId}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
-						<div class="mx-8 border-t border-surface-4"></div>
+						<div class="mx-8 border-t border-surface-4 transition-opacity duration-300" class:md:opacity-30={!!commentToId && !isTarget}></div>
 					{/if}
-					<StreamMessage {text} active={item.textId === activeTextId} commentTarget={item.textId === commentToId} />
+					<div class="transition-opacity duration-300" class:md:opacity-30={!!commentToId && !isTarget}>
+						<StreamMessage {text} active={item.textId === activeTextId} commentTarget={isTarget} />
+					</div>
 				{/if}
 			{/if}
 		{/each}
