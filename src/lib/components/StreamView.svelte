@@ -171,8 +171,7 @@
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
-	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header md:[mask-image:none] md:[-webkit-mask-image:none]"
-	style="mask-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem)); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem));"
+	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header max-md:[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))] max-md:[-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))]"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
