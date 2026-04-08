@@ -196,7 +196,7 @@
 		}
 		const nextId = textIds[nextIdx];
 		setActiveText(nextId);
-		scrollToText(nextId);
+		scrollToTextIfNeeded(nextId);
 	}
 
 	function toggleMoreMenu() {
@@ -219,6 +219,20 @@
 		if (!el) return;
 		suppressScrollTracking = true;
 		el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		setTimeout(() => { suppressScrollTracking = false; }, 600);
+	}
+
+	function scrollToTextIfNeeded(textId: number) {
+		if (!scrollContainer) return;
+		const el = scrollContainer.querySelector(`article[data-text-id="${textId}"]`);
+		if (!el) return;
+		const containerRect = scrollContainer.getBoundingClientRect();
+		const elRect = el.getBoundingClientRect();
+		// Check if element is fully visible within the scroll container
+		// Leave 80px margin for floating bar at bottom
+		if (elRect.top >= containerRect.top && elRect.bottom <= containerRect.bottom - 80) return;
+		suppressScrollTracking = true;
+		el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 		setTimeout(() => { suppressScrollTracking = false; }, 600);
 	}
 </script>
