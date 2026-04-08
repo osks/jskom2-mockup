@@ -234,8 +234,8 @@
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header max-md:[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))] max-md:[-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))]"
 >
 	<div class="mx-auto flex max-w-3xl min-h-full flex-col pt-2 md:pt-0">
-		<!-- Top spacer so first text can sit near bottom of viewport -->
-		<div class="min-h-[60vh] shrink-0"></div>
+		<!-- Top spacer: pushes content to the bottom of the viewport -->
+		<div class="flex-1"></div>
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
