@@ -183,7 +183,7 @@
 	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header max-md:[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))] max-md:[-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))]"
 >
-	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
+	<div class="mx-auto flex max-w-3xl min-h-full flex-col pt-2 md:pt-0">
 		<!-- Top spacer so first text can sit near bottom of viewport -->
 		<div class="min-h-[60vh] shrink-0"></div>
 		{#each $readingState.buffer as item, i}
@@ -220,7 +220,7 @@
 	<div class="pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-6 md:left-80 transition-opacity duration-200" style="padding-bottom: max(env(safe-area-inset-bottom, 0px) + 0.5rem, 2rem);"
 		class:opacity-0={composing}
 	>
-		<div class="flex w-full max-w-2xl items-center gap-2.5"
+		<div class="flex w-full max-w-3xl items-center gap-2.5"
 			class:pointer-events-auto={!composing}
 			class:pointer-events-none={composing}
 		>
