@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { readingState, advanceReading, setCommentTo, setActiveText, återseText } from '$lib/stores/reading';
+	import { readingState, advanceReading, setCommentTo, setActiveText, återseText, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
@@ -142,6 +142,15 @@
 			const composing = !!$readingState.commentTo || $readingState.composingNew;
 			if (!composing) {
 				handleComment();
+			}
+		}
+
+		// Escape to cancel composing (works even when textarea is not focused)
+		if (e.key === 'Escape' && !inInput) {
+			const composing = !!$readingState.commentTo || $readingState.composingNew;
+			if (composing) {
+				clearCommentTo();
+				cancelCompose();
 			}
 		}
 	}

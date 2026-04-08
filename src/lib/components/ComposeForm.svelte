@@ -2,7 +2,7 @@
 	import { tick } from 'svelte';
 	import { readingState, clearCommentTo, cancelCompose, setComposeBody } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById, getConferenceById } from '$lib/data';
-	import { ArrowUp, Check, X, Pencil, Maximize2, Minimize2 } from 'lucide-svelte';
+	import { ArrowUp, Check, X, Pencil, SplitSquareVertical, Minimize2 } from 'lucide-svelte';
 	import type { TextInfo } from '$lib/types';
 
 	interface Props {
@@ -25,6 +25,7 @@
 	}: Props = $props();
 
 	const isBottomBar = $derived(variant === 'bottombar');
+	const inFocusMode = $derived(!!onCollapse);
 
 	const commentToAuthor = $derived(
 		commentToText ? getUserById(commentToText.author) : null
@@ -135,7 +136,8 @@
 	function autoGrow(e: Event) {
 		const el = e.target as HTMLTextAreaElement;
 		el.style.height = 'auto';
-		el.style.height = Math.min(el.scrollHeight, isBottomBar ? 180 : 250) + 'px';
+		const maxH = inFocusMode ? 9999 : isBottomBar ? 180 : 250;
+		el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
 	}
 
 	function updateRecipient(index: number, value: number) {
@@ -167,7 +169,7 @@
 				class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
 				aria-label="Fokusläge"
 			>
-				<Maximize2 size={14} />
+				<SplitSquareVertical size={14} />
 			</button>
 		{/if}
 		<button
@@ -262,17 +264,17 @@
 {/if}
 
 <!-- Input widget (textarea + send) -->
-<div class="px-4 pb-5 pt-2 {isBottomBar ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
-	<div class="flex flex-col rounded-2xl bg-surface-1 ring-1 ring-surface-5 focus-within:ring-[1.5px] focus-within:ring-txt-muted {isBottomBar ? '' : 'md:bg-surface-1/80 md:ring-surface-5/80 md:focus-within:ring-txt-muted'}">
+<div class="px-4 pb-5 pt-2 {inFocusMode ? 'flex-1 flex flex-col min-h-0' : ''} {isBottomBar && !inFocusMode ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
+	<div class="flex flex-col rounded-2xl bg-surface-1 ring-1 ring-surface-5 focus-within:ring-[1.5px] focus-within:ring-txt-muted {inFocusMode ? 'flex-1 min-h-0' : ''} {isBottomBar && !inFocusMode ? '' : 'md:bg-surface-1/80 md:ring-surface-5/80 md:focus-within:ring-txt-muted'}">
 		<textarea
 			bind:this={textareaEl}
 			bind:value={body}
 			onkeydown={handleKeydown}
 			oninput={autoGrow}
-			rows={isBottomBar ? 2 : 3}
+			rows={inFocusMode ? 10 : isBottomBar ? 2 : 3}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'}"
-			style="max-height: {isBottomBar ? 180 : 250}px;"
+			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {inFocusMode ? 'flex-1' : ''}"
+			style={inFocusMode ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}
 		></textarea>
 		<div class="flex items-center justify-between px-2 pb-2">
 			<span class="text-xs text-txt-muted pl-1">
