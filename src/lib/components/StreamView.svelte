@@ -45,6 +45,8 @@
 
 	// Throttle flag for scroll-based active text tracking
 	let rafPending = false;
+	// Suppress scroll-based active tracking during programmatic scrolls
+	let suppressScrollTracking = false;
 
 	function updateActiveText() {
 		if (!scrollContainer) return;
@@ -74,11 +76,11 @@
 	}
 
 	function handleScroll() {
-		if (rafPending) return;
+		if (rafPending || suppressScrollTracking) return;
 		rafPending = true;
 		requestAnimationFrame(() => {
 			rafPending = false;
-			updateActiveText();
+			if (!suppressScrollTracking) updateActiveText();
 		});
 	}
 
@@ -94,6 +96,8 @@
 				setActiveText(lastItem.textId);
 			}
 
+			// Suppress scroll-based tracking during programmatic scroll
+			suppressScrollTracking = true;
 			tick().then(() => {
 				if (scrollContainer) {
 					scrollContainer.scrollTo({
@@ -101,6 +105,8 @@
 						behavior: 'smooth'
 					});
 				}
+				// Re-enable after scroll animation settles
+				setTimeout(() => { suppressScrollTracking = false; }, 600);
 			});
 		}
 	});
@@ -112,16 +118,30 @@
 	}
 
 	function handleKeydown(e: KeyboardEvent) {
-		if (e.key === ' ' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-			const target = e.target as HTMLElement;
-			if (target.tagName === 'TEXTAREA' || target.tagName === 'INPUT') return;
+		const target = e.target as HTMLElement;
+		const inInput = target.tagName === 'TEXTAREA' || target.tagName === 'INPUT';
 
+		if (e.key === ' ' && !e.ctrlKey && !e.metaKey && !e.altKey && !inInput) {
 			e.preventDefault();
 			if (!isAtBottom() && scrollContainer) {
 				scrollContainer.scrollBy({ top: scrollContainer.clientHeight - 60, behavior: 'smooth' });
 				return;
 			}
 			advanceReading();
+		}
+
+		// Arrow keys to move active text
+		if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && !inInput && !e.ctrlKey && !e.metaKey) {
+			e.preventDefault();
+			moveActive(e.key === 'ArrowUp' ? -1 : 1);
+		}
+
+		// "k" to start commenting on active text
+		if (e.key === 'k' && !inInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+			const composing = !!$readingState.commentTo || $readingState.composingNew;
+			if (!composing) {
+				handleComment();
+			}
 		}
 	}
 
@@ -151,10 +171,32 @@
 
 	let moreMenuOpen = $state(false);
 
+	// Ordered list of text IDs in the buffer
+	const textIds = $derived(
+		$readingState.buffer
+			.filter((b): b is typeof b & { textId: number } => b.kind === 'text' && !!b.textId)
+			.map((b) => b.textId)
+	);
+
 	function handleComment() {
 		if (activeTextId) {
 			setCommentTo(activeTextId);
 		}
+	}
+
+	function moveActive(direction: -1 | 1) {
+		if (textIds.length === 0) return;
+		const currentIdx = activeTextId ? textIds.indexOf(activeTextId) : -1;
+		let nextIdx: number;
+		if (currentIdx === -1) {
+			nextIdx = direction === 1 ? 0 : textIds.length - 1;
+		} else {
+			nextIdx = currentIdx + direction;
+			if (nextIdx < 0 || nextIdx >= textIds.length) return;
+		}
+		const nextId = textIds[nextIdx];
+		setActiveText(nextId);
+		scrollToText(nextId);
 	}
 
 	function toggleMoreMenu() {
@@ -174,7 +216,10 @@
 	function scrollToText(textId: number) {
 		if (!scrollContainer) return;
 		const el = scrollContainer.querySelector(`article[data-text-id="${textId}"]`);
-		el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		if (!el) return;
+		suppressScrollTracking = true;
+		el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		setTimeout(() => { suppressScrollTracking = false; }, 600);
 	}
 </script>
 
