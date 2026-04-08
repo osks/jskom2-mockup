@@ -32,7 +32,7 @@
 		<div class="fixed inset-0 z-40" onclick={close}></div>
 
 		<!-- Popover -->
-		<div class="absolute left-0 top-full z-50 mt-1 min-w-48 rounded-xl bg-surface-1 py-2 px-3 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-4/30">
+		<div class="absolute left-0 top-full z-50 mt-1 min-w-48 rounded-xl bg-white py-2 px-3 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-4/30">
 			{@render popup()}
 		</div>
 	{/if}
