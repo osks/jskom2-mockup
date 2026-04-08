@@ -73,9 +73,9 @@
 			href="{base}/read"
 			onclick={handleNav}
 			class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-			class:bg-surface-4={isActive('/read')}
+			class:bg-surface-5={isActive('/read')}
 			class:text-txt={isActive('/read')}
-			class:hover:bg-surface-4={!isActive('/read')}
+			class:hover:bg-surface-5={!isActive('/read')}
 			class:hover:text-txt={!isActive('/read')}
 		>
 			<BookOpen size={16} />
@@ -91,7 +91,7 @@
 					{#if conf}
 						<button
 							onclick={() => scrollToConference(conf.id)}
-							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-4 hover:text-txt"
+							class="flex w-full items-center justify-between rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-5 hover:text-txt"
 						>
 							<span class="truncate">{conf.name}</span>
 							{#if m.unread > 0}
@@ -109,9 +109,9 @@
 				href="{base}/who"
 				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-				class:bg-surface-4={isActive('/who')}
+				class:bg-surface-5={isActive('/who')}
 				class:text-txt={isActive('/who')}
-				class:hover:bg-surface-4={!isActive('/who')}
+				class:hover:bg-surface-5={!isActive('/who')}
 				class:hover:text-txt={!isActive('/who')}
 			>
 				<Users size={16} />
@@ -119,7 +119,7 @@
 			</a>
 			<button
 				onclick={handleCompose}
-				class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-4 hover:text-txt"
+				class="flex w-full items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors hover:bg-surface-5 hover:text-txt"
 			>
 				<PenSquare size={16} />
 				Skriv
@@ -128,9 +128,9 @@
 				href="{base}/search"
 				onclick={handleNav}
 				class="flex items-center gap-2 rounded px-3 py-1.5 text-sm transition-colors"
-				class:bg-surface-4={isActive('/search')}
+				class:bg-surface-5={isActive('/search')}
 				class:text-txt={isActive('/search')}
-				class:hover:bg-surface-4={!isActive('/search')}
+				class:hover:bg-surface-5={!isActive('/search')}
 				class:hover:text-txt={!isActive('/search')}
 			>
 				<Search size={16} />
@@ -144,7 +144,7 @@
 		<div class="relative">
 			<button
 				onclick={() => menuOpen = !menuOpen}
-				class="flex w-full items-center gap-2 border-t border-surface-4 px-4 py-3 text-left transition-colors hover:bg-surface-4"
+				class="flex w-full items-center gap-2 border-t border-surface-4 px-4 py-3 text-left transition-colors hover:bg-surface-5"
 			>
 				<div class="min-w-0 flex-1">
 					<div class="truncate text-sm font-medium text-txt">{$activeConnection.userName}</div>
