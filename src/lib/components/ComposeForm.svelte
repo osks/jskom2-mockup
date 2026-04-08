@@ -98,7 +98,18 @@
 		}, 1500);
 	}
 
+	let showDiscardWarning = $state(false);
+
 	function handleCancel() {
+		if (body.trim()) {
+			showDiscardWarning = true;
+			return;
+		}
+		doCancel();
+	}
+
+	function doCancel() {
+		showDiscardWarning = false;
 		body = '';
 		subject = '';
 		recipients = [1];
@@ -113,7 +124,11 @@
 			handleSend();
 		}
 		if (e.key === 'Escape') {
-			handleCancel();
+			if (showDiscardWarning) {
+				showDiscardWarning = false;
+			} else {
+				handleCancel();
+			}
 		}
 	}
 
@@ -229,6 +244,23 @@
 		</div>
 	{/if}
 </div>
+
+<!-- Discard warning -->
+{#if showDiscardWarning}
+	<div class="mx-4 mt-2 flex items-center justify-between rounded-xl bg-surface-2 px-3 py-2.5">
+		<span class="text-sm text-txt-secondary">Kasta utkastet?</span>
+		<div class="flex items-center gap-2">
+			<button
+				onclick={() => showDiscardWarning = false}
+				class="rounded-lg px-3 py-1.5 text-sm text-txt-secondary hover:bg-surface-3 transition-colors"
+			>Avbryt</button>
+			<button
+				onclick={doCancel}
+				class="rounded-lg bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-500/20 transition-colors"
+			>Kasta</button>
+		</div>
+	</div>
+{/if}
 
 <!-- Input widget (textarea + send) -->
 <div class="px-3 pb-3 pt-2 {isBottomBar ? '' : 'safe-bottom sticky bottom-0 pb-5 bg-surface-1 md:bg-transparent'}">
