@@ -164,7 +164,7 @@
 								{@const unread = totalUnread(conn.userId)}
 								<button
 									onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
-									class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
+									class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'bg-surface-2 text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
 								>
 									<div class="min-w-0 flex-1">
 										<div class="truncate">{conn.userName}</div>
