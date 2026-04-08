@@ -141,6 +141,12 @@
 	const activeAuthor = $derived(activeText ? getUserById(activeText.author) : null);
 	const hasTexts = $derived($readingState.buffer.some((b) => b.kind === 'text'));
 
+	// Desktop inline compose is active (comment mode, not expanded to overlay)
+	const inlineComposing = $derived(
+		!!$readingState.commentTo && !$readingState.composeExpanded
+	);
+	const commentToId = $derived($readingState.commentTo);
+
 	let moreMenuOpen = $state(false);
 
 	function handleComment() {
@@ -180,12 +186,15 @@
 		{#each $readingState.buffer as item, i}
 			{#if item.kind === 'text' && item.textId}
 				{@const text = getTextById(item.textId)}
+				{@const isCommentTarget = item.textId === commentToId}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
 						<div class="mx-8 border-t border-surface-3"></div>
 					{/if}
-					<StreamMessage {text} active={item.textId === activeTextId} />
-					{#if item.textId === $readingState.commentTo}
+					<div class="transition-opacity duration-300 md:transition-opacity" class:md:opacity-25={inlineComposing && !isCommentTarget}>
+						<StreamMessage {text} active={item.textId === activeTextId} />
+					</div>
+					{#if isCommentTarget}
 						<ComposeInline />
 					{/if}
 				{/if}
