@@ -204,7 +204,7 @@
 <!-- Floating action bar (hidden when compose panel is open) -->
 {#if hasTexts || nextAction.type !== 'all-done'}
 	{@const composing = !!$readingState.commentTo || $readingState.composingNew}
-	<div class="safe-bottom pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-6 pb-8 md:left-80 transition-opacity duration-200"
+	<div class="pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-6 md:left-80 transition-opacity duration-200" style="padding-bottom: max(env(safe-area-inset-bottom, 0px) + 0.5rem, 2rem);"
 		class:opacity-0={composing}
 	>
 		<div class="flex w-full max-w-2xl items-center gap-2.5"
