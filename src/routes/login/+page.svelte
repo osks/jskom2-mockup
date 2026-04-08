@@ -42,7 +42,7 @@
 
 		<form
 			onsubmit={(e) => { e.preventDefault(); handleLogin(); }}
-			class="rounded-2xl bg-surface-1 ring-1 ring-surface-3/60 p-6 space-y-4"
+			class="rounded-2xl bg-surface-1 border border-surface-4 p-6 space-y-4"
 		>
 			<div>
 				<label for="server" class="block text-sm font-medium text-txt-secondary">Server</label>

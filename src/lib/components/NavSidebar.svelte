@@ -139,25 +139,24 @@
 		</div>
 	</div>
 
-	<!-- Session pill -->
+	<!-- Session bar -->
 	{#if $activeConnection}
-		<div class="border-t border-surface-4 px-3 py-3">
-			<div class="relative">
-				<button
-					onclick={() => menuOpen = !menuOpen}
-					class="flex w-full items-center gap-2 rounded-full bg-surface-4/70 px-4 py-2 text-left transition-colors hover:bg-surface-4"
-				>
-					<div class="min-w-0 flex-1">
-						<div class="truncate text-sm font-medium text-txt">{$activeConnection.userName}</div>
-						<div class="truncate text-[11px] text-txt-muted font-mono">{$activeConnection.serverName}</div>
-					</div>
-				</button>
+		<div class="relative">
+			<button
+				onclick={() => menuOpen = !menuOpen}
+				class="flex w-full items-center gap-2 border-t border-surface-4 px-4 py-3 text-left transition-colors hover:bg-surface-4/50"
+			>
+				<div class="min-w-0 flex-1">
+					<div class="truncate text-sm font-medium text-txt">{$activeConnection.userName}</div>
+					<div class="truncate text-[11px] text-txt-muted font-mono">{$activeConnection.serverName}</div>
+				</div>
+			</button>
 
-				<!-- Popover menu -->
-				{#if menuOpen}
-					<!-- svelte-ignore a11y_no_static_element_interactions -->
-					<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
-					<div class="absolute bottom-full left-0 right-0 z-40 mb-2 rounded-2xl bg-surface-1 py-1.5 shadow-lg ring-1 ring-surface-3/60">
+			<!-- Popover menu -->
+			{#if menuOpen}
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
+				<div class="absolute bottom-full left-0 right-0 z-40 mb-2 rounded-2xl bg-surface-1 py-1.5 shadow-lg border border-surface-4">
 						<!-- Other connections -->
 						{#if $connections.length > 1}
 							{#each $connections as conn}
@@ -205,7 +204,6 @@
 						</button>
 					</div>
 				{/if}
-			</div>
 		</div>
 	{/if}
 </nav>
