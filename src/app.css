@@ -47,9 +47,11 @@
    Forest Design System — Layer 2: Role Mappings (Light Mode)
    ============================================= */
 :root {
-	--forest-bg-1: var(--forest-neutral-11);
-	--forest-bg-2: var(--forest-neutral-9);
-	--forest-bg-3: var(--forest-neutral-7);
+	--forest-bg-1: var(--forest-neutral-12);
+	--forest-bg-2: var(--forest-neutral-11);
+	--forest-bg-3: var(--forest-neutral-10);
+	--forest-bg-4: var(--forest-neutral-9);
+	--forest-bg-5: var(--forest-neutral-8);
 
 	--forest-text:           var(--forest-neutral-2);
 	--forest-text-secondary: var(--forest-neutral-4);
@@ -68,9 +70,9 @@
 	--forest-accent-hover:  var(--forest-orange-5);
 	--forest-accent-active: var(--forest-orange-2);
 
-	--forest-subtle:        var(--forest-neutral-11);
-	--forest-subtle-hover:  var(--forest-neutral-9);
-	--forest-subtle-active: var(--forest-neutral-7);
+	--forest-subtle:        var(--forest-neutral-12);
+	--forest-subtle-hover:  var(--forest-neutral-11);
+	--forest-subtle-active: var(--forest-neutral-10);
 }
 
 /* =============================================
@@ -84,6 +86,8 @@
 	--color-surface-1: var(--forest-bg-1);
 	--color-surface-2: var(--forest-bg-2);
 	--color-surface-3: var(--forest-bg-3);
+	--color-surface-4: var(--forest-bg-4);
+	--color-surface-5: var(--forest-bg-5);
 
 	/* Semantic text */
 	--color-txt:           var(--forest-text);
