@@ -37,7 +37,7 @@
 
 {#if isVisible}
 	<div
-		class="hidden md:flex justify-center"
+		class="hidden md:flex justify-center px-4"
 		transition:slide={{ duration: 200, easing: cubicOut }}
 	>
 		<div class="w-full max-w-3xl border-t border-surface-4">
