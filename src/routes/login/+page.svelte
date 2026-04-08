@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-surface-4 px-4">
+<div class="flex min-h-screen items-center justify-center bg-surface-2 px-4">
 	<div class="w-full max-w-sm">
 		<div class="mb-8 text-center">
 			<h1 class="text-3xl font-bold text-primary">jskom2</h1>
@@ -42,7 +42,7 @@
 
 		<form
 			onsubmit={(e) => { e.preventDefault(); handleLogin(); }}
-			class="rounded-2xl bg-surface-1 border border-surface-4 p-6 space-y-4"
+			class="rounded-2xl bg-white border-[0.5px] border-surface-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] p-6 space-y-4"
 		>
 			<div>
 				<label for="server" class="block text-sm font-medium text-txt-secondary">Server</label>
