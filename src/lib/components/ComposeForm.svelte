@@ -263,7 +263,7 @@
 {/if}
 
 <!-- Input widget (textarea + send) -->
-<div class="px-3 pb-3 pt-2 {isBottomBar ? '' : 'safe-bottom sticky bottom-0 pb-5 bg-surface-1 md:bg-transparent'}">
+<div class="px-4 pb-5 pt-2 {isBottomBar ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
 	<div class="flex flex-col rounded-2xl bg-surface-1 ring-1 ring-surface-5 focus-within:ring-1 focus-within:ring-primary {isBottomBar ? '' : 'md:bg-surface-1/80 md:ring-surface-5/80 md:focus-within:ring-primary'}">
 		<textarea
 			bind:this={textareaEl}
