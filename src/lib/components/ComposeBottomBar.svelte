@@ -56,7 +56,7 @@
 
 			<ComposeForm
 				{commentToText}
-				compact={true}
+				variant="bottombar"
 				onExpand={handleExpand}
 			/>
 		</div>

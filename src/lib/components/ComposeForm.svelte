@@ -2,24 +2,29 @@
 	import { tick } from 'svelte';
 	import { readingState, clearCommentTo, cancelCompose, setComposeBody } from '$lib/stores/reading';
 	import { conferences, getTextById, getUserById, getConferenceById } from '$lib/data';
-	import { ArrowUp, Check, X, Pencil, Maximize2 } from 'lucide-svelte';
+	import { ArrowUp, Check, X, Pencil, Maximize2, Minimize2 } from 'lucide-svelte';
 	import type { TextInfo } from '$lib/types';
 
 	interface Props {
 		commentToText: TextInfo | null;
-		compact?: boolean;
+		/** 'bottombar' = desktop bottom bar, 'overlay' = mobile sheet / desktop full-screen */
+		variant?: 'bottombar' | 'overlay';
 		onSend?: () => void;
 		onCancel?: () => void;
 		onExpand?: (() => void) | null;
+		onCollapse?: (() => void) | null;
 	}
 
 	let {
 		commentToText,
-		compact = false,
+		variant = 'overlay',
 		onSend,
 		onCancel,
-		onExpand = null
+		onExpand = null,
+		onCollapse = null
 	}: Props = $props();
+
+	const isBottomBar = $derived(variant === 'bottombar');
 
 	const commentToAuthor = $derived(
 		commentToText ? getUserById(commentToText.author) : null
@@ -53,10 +58,16 @@
 			subject = `Re: ${commentToText.subject.replace(/^Re: /, '')}`;
 			showMeta = false;
 			tick().then(() => {
-				setTimeout(() => {
-					textareaEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-					setTimeout(() => textareaEl?.focus(), 300);
-				}, compact ? 50 : 350);
+				if (isBottomBar) {
+					// Bottom bar is already visible — just focus
+					setTimeout(() => textareaEl?.focus(), 50);
+				} else {
+					// Overlay needs time for fly transition before scroll + focus
+					setTimeout(() => {
+						textareaEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						setTimeout(() => textareaEl?.focus(), 300);
+					}, 350);
+				}
 			});
 		}
 	});
@@ -109,7 +120,7 @@
 	function autoGrow(e: Event) {
 		const el = e.target as HTMLTextAreaElement;
 		el.style.height = 'auto';
-		el.style.height = Math.min(el.scrollHeight, compact ? 180 : 250) + 'px';
+		el.style.height = Math.min(el.scrollHeight, isBottomBar ? 180 : 250) + 'px';
 	}
 
 	function updateRecipient(index: number, value: number) {
@@ -127,6 +138,15 @@
 		{/if}
 	</h2>
 	<div class="flex items-center gap-1">
+		{#if onCollapse}
+			<button
+				onclick={onCollapse}
+				class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
+				aria-label="Minimera"
+			>
+				<Minimize2 size={14} />
+			</button>
+		{/if}
 		{#if onExpand}
 			<button
 				onclick={onExpand}
@@ -138,15 +158,15 @@
 		{/if}
 		<button
 			onclick={handleCancel}
-			class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {compact ? 'h-8 w-8' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
+			class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
 		>
 			<X size={18} />
 		</button>
 	</div>
 </div>
 
-<!-- Quoted original text (only in non-compact/overlay mode) -->
-{#if !compact && isComment && commentToText}
+<!-- Quoted original text (only in overlay mode, bottom bar has the parent text visible in stream) -->
+{#if !isBottomBar && isComment && commentToText}
 	<div class="mx-4 mt-3 border-l-2 border-surface-3 pl-3">
 		<div class="text-sm font-semibold text-txt-secondary">
 			{commentToAuthor?.name ?? 'Okänd'}
@@ -168,7 +188,7 @@
 					<select
 						value={recipientId}
 						onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
-						class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {compact ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
+						class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {isBottomBar ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
 					>
 						{#each conferences as conf}
 							<option value={conf.id}>{conf.name}</option>
@@ -182,7 +202,7 @@
 					type="text"
 					bind:value={subject}
 					placeholder="Ärende..."
-					class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {compact ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
+					class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {isBottomBar ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
 				/>
 			</div>
 		</div>
@@ -211,17 +231,17 @@
 </div>
 
 <!-- Input widget (textarea + send) -->
-<div class="px-3 pb-3 pt-2 {compact ? '' : 'safe-bottom sticky bottom-0 pb-5 bg-surface-1 md:bg-transparent'}">
-	<div class="flex flex-col rounded-2xl bg-surface-2 ring-1 ring-surface-3 focus-within:ring-1 focus-within:ring-primary {compact ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus-within:ring-primary'}">
+<div class="px-3 pb-3 pt-2 {isBottomBar ? '' : 'safe-bottom sticky bottom-0 pb-5 bg-surface-1 md:bg-transparent'}">
+	<div class="flex flex-col rounded-2xl bg-surface-2 ring-1 ring-surface-3 focus-within:ring-1 focus-within:ring-primary {isBottomBar ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus-within:ring-primary'}">
 		<textarea
 			bind:this={textareaEl}
 			bind:value={body}
 			onkeydown={handleKeydown}
 			oninput={autoGrow}
-			rows={compact ? 2 : 3}
+			rows={isBottomBar ? 2 : 3}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {compact ? 'text-sm' : 'text-base md:text-sm'}"
-			style="max-height: {compact ? 180 : 250}px;"
+			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'}"
+			style="max-height: {isBottomBar ? 180 : 250}px;"
 		></textarea>
 		<div class="flex items-center justify-between px-2 pb-2">
 			<span class="text-xs text-txt-muted pl-1">
