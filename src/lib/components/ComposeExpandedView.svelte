@@ -56,12 +56,14 @@
 	<!-- Draggable divider -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="flex-none flex items-center justify-center h-3 cursor-row-resize group border-y border-surface-3 transition-colors {dragging ? 'bg-surface-3' : 'hover:bg-surface-2'}"
+		class="flex-none flex justify-center h-3 cursor-row-resize group transition-colors {dragging ? 'bg-surface-3' : 'hover:bg-surface-2'}"
 		onpointerdown={handlePointerDown}
 		onpointermove={handlePointerMove}
 		onpointerup={handlePointerUp}
 	>
-		<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
+		<div class="w-full max-w-3xl flex items-center justify-center border-y border-surface-4 h-full">
+			<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
+		</div>
 	</div>
 
 	<!-- Bottom panel: compose form -->
