@@ -155,26 +155,24 @@
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
 				<div class="absolute bottom-full left-2 right-2 z-40 mb-2 rounded-2xl bg-white px-1.5 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5">
-						<!-- Other connections -->
-						{#if $connections.length > 1}
-							{#each $connections as conn}
-								{@const active = conn.id === $activeConnectionId}
-								{@const unread = totalUnread(conn.userId)}
-								<button
-									onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
-									class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'bg-surface-2 text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
-								>
-									<div class="min-w-0 flex-1">
-										<div class="truncate">{conn.userName}</div>
-										<div class="truncate text-[11px] text-txt-muted font-mono">{conn.serverName}</div>
-									</div>
-									{#if unread > 0}
-										<span class="text-xs text-txt-secondary">{unread}</span>
-									{/if}
-								</button>
-							{/each}
-							<div class="mx-3 my-1 border-t border-surface-2"></div>
-						{/if}
+						<!-- Connections -->
+						{#each $connections as conn}
+							{@const active = conn.id === $activeConnectionId}
+							{@const unread = totalUnread(conn.userId)}
+							<button
+								onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
+								class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'bg-surface-2 text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
+							>
+								<div class="min-w-0 flex-1">
+									<div class="truncate">{conn.userName}</div>
+									<div class="truncate text-[11px] text-txt-muted font-mono">{conn.serverName}</div>
+								</div>
+								{#if unread > 0}
+									<span class="text-xs text-txt-secondary">{unread}</span>
+								{/if}
+							</button>
+						{/each}
+						<div class="mx-3 my-1 border-t border-surface-2"></div>
 
 						<button
 							onclick={() => { handleAddConnection(); menuOpen = false; }}
