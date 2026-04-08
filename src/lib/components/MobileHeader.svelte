@@ -31,7 +31,7 @@
 				<!-- Back -->
 				<button
 					onclick={goBack}
-					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-3/50"
+					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-4/50"
 				>
 					<ArrowLeft size={20} />
 				</button>
@@ -39,7 +39,7 @@
 				<!-- Hamburger -->
 				<button
 					onclick={toggleSidebar}
-					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-3/50"
+					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-4/50"
 				>
 					<Menu size={20} />
 				</button>
@@ -62,7 +62,7 @@
 				<!-- Refresh -->
 				<button
 					onclick={refresh}
-					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-3/50"
+					class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-4/50"
 				>
 					<RotateCw size={16} />
 				</button>

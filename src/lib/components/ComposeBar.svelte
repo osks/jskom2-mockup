@@ -113,7 +113,7 @@
 				</h2>
 				<button
 					onclick={handleCancel}
-					class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-3/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-3/50 md:h-8 md:w-8"
+					class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] text-txt active:bg-surface-4/50 md:h-8 md:w-8"
 				>
 					<X size={18} />
 				</button>

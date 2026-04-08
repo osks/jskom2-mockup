@@ -144,7 +144,7 @@
 		<div class="relative">
 			<button
 				onclick={() => menuOpen = !menuOpen}
-				class="flex w-full items-center gap-2 border-t border-surface-4 px-4 py-3 text-left transition-colors hover:bg-surface-4/50"
+				class="flex w-full items-center gap-2 border-t border-surface-4 px-4 py-3 text-left transition-colors hover:bg-surface-4"
 			>
 				<div class="min-w-0 flex-1">
 					<div class="truncate text-sm font-medium text-txt">{$activeConnection.userName}</div>
