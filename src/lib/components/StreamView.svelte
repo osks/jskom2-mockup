@@ -171,7 +171,7 @@
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
 	onscroll={handleScroll}
-	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header"
+	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header md:[mask-image:none] md:[-webkit-mask-image:none]"
 	style="mask-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem)); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.4) calc(env(safe-area-inset-top, 0px) + 3.5rem), black calc(env(safe-area-inset-top, 0px) + 4.125rem));"
 >
 	<div class="mx-auto flex max-w-2xl min-h-full flex-col pt-2 md:pt-0">
