@@ -53,8 +53,8 @@
 	--forest-bg-4: var(--forest-neutral-9);
 	--forest-bg-5: var(--forest-neutral-8);
 
-	--forest-text:           var(--forest-neutral-2);
-	--forest-text-secondary: var(--forest-neutral-4);
+	--forest-text:           var(--forest-neutral-1);
+	--forest-text-secondary: var(--forest-neutral-3);
 	--forest-text-muted:     var(--forest-neutral-5);
 	--forest-text-inverse:   var(--forest-neutral-12);
 
