@@ -256,7 +256,7 @@
 			>Avbryt</button>
 			<button
 				onclick={doCancel}
-				class="rounded-lg bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-600 hover:bg-red-500/20 transition-colors"
+				class="rounded-lg bg-accent/15 px-3 py-1.5 text-sm font-medium text-accent hover:bg-accent/25 transition-colors"
 			>Kasta</button>
 		</div>
 	</div>
