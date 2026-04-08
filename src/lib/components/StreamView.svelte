@@ -3,6 +3,7 @@
 	import { getTextById, getConferenceById, getUserById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
+	import ComposeInline from './ComposeInline.svelte';
 	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
 
@@ -184,6 +185,9 @@
 						<div class="mx-8 border-t border-surface-3"></div>
 					{/if}
 					<StreamMessage {text} active={item.textId === activeTextId} />
+					{#if item.textId === $readingState.commentTo}
+						<ComposeInline />
+					{/if}
 				{/if}
 			{/if}
 		{/each}

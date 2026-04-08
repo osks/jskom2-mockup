@@ -43,6 +43,10 @@ interface ReadingState {
 	// For the compose bar
 	commentTo: number | null;
 	composingNew: boolean;
+	// Desktop: inline compose expanded to full-screen overlay
+	composeExpanded: boolean;
+	// Shared compose body text (persists across inline <-> expanded transitions)
+	composeBody: string;
 }
 
 export const readingState = writable<ReadingState>({
@@ -54,7 +58,9 @@ export const readingState = writable<ReadingState>({
 	nextAction: { type: 'all-done', label: 'Inga olästa texter' },
 	activeTextId: null,
 	commentTo: null,
-	composingNew: false
+	composingNew: false,
+	composeExpanded: false,
+	composeBody: ''
 });
 
 // Set of text IDs that have been read this session (to avoid re-reading)
@@ -84,7 +90,9 @@ export function initReading(userId: number) {
 		nextAction: computeNextAction([], todoList, null),
 		activeTextId: null,
 		commentTo: null,
-		composingNew: false
+		composingNew: false,
+		composeExpanded: false,
+		composeBody: ''
 	});
 }
 
@@ -274,7 +282,7 @@ export function setCommentTo(textId: number | null) {
 }
 
 export function clearCommentTo() {
-	readingState.update((s) => ({ ...s, commentTo: null }));
+	readingState.update((s) => ({ ...s, commentTo: null, composeExpanded: false, composeBody: '' }));
 }
 
 export function startCompose() {
@@ -282,7 +290,19 @@ export function startCompose() {
 }
 
 export function cancelCompose() {
-	readingState.update((s) => ({ ...s, composingNew: false }));
+	readingState.update((s) => ({ ...s, composingNew: false, composeExpanded: false, composeBody: '' }));
+}
+
+export function expandCompose() {
+	readingState.update((s) => ({ ...s, composeExpanded: true }));
+}
+
+export function collapseCompose() {
+	readingState.update((s) => ({ ...s, composeExpanded: false }));
+}
+
+export function setComposeBody(body: string) {
+	readingState.update((s) => ({ ...s, composeBody: body }));
 }
 
 export function setActiveText(textId: number | null) {

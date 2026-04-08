@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NavSidebar from './NavSidebar.svelte';
 	import MobileHeader from './MobileHeader.svelte';
-	import ComposeBar from './ComposeBar.svelte';
+	import ComposeOverlay from './ComposeOverlay.svelte';
 	import PersonalMessage from './PersonalMessage.svelte';
 	import { sidebarOpen, closeSidebar } from '$lib/stores/ui';
 	import { readingState } from '$lib/stores/reading';
@@ -54,8 +54,8 @@
 				{@render children()}
 			</main>
 
-			<!-- Global compose bar -->
-			<ComposeBar />
+			<!-- Global compose overlay (mobile bottom sheet + desktop full-screen editor) -->
+			<ComposeOverlay />
 		</div>
 
 		<!-- Tap-to-close overlay when sidebar is open -->
