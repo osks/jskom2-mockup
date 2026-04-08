@@ -156,7 +156,7 @@
 			{#if menuOpen}
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
-				<div class="absolute bottom-full left-2 right-2 z-40 mb-2 rounded-2xl bg-white py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5">
+				<div class="absolute bottom-full left-2 right-2 z-40 mb-2 rounded-2xl bg-white px-1.5 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5">
 						<!-- Other connections -->
 						{#if $connections.length > 1}
 							{#each $connections as conn}
@@ -164,7 +164,7 @@
 								{@const unread = totalUnread(conn.userId)}
 								<button
 									onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
-									class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
+									class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
 								>
 									<div class="min-w-0 flex-1">
 										<div class="truncate">{conn.userName}</div>
@@ -180,7 +180,7 @@
 
 						<button
 							onclick={() => { handleAddConnection(); menuOpen = false; }}
-							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<Plus size={14} class="text-txt-muted" />
 							Anslut till server
@@ -190,14 +190,14 @@
 
 						<button
 							onclick={() => menuOpen = false}
-							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<KeyRound size={14} class="text-txt-muted" />
 							Byt lösenord
 						</button>
 						<button
 							onclick={() => { menuOpen = false; logout(); window.location.href = `${base}/login`; }}
-							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<LogOut size={14} class="text-txt-muted" />
 							Logga ut
