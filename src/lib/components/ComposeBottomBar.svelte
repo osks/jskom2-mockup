@@ -37,26 +37,28 @@
 
 {#if isVisible}
 	<div
-		class="hidden md:block border-t border-surface-3"
+		class="hidden md:flex justify-center border-t border-surface-3"
 		transition:slide={{ duration: 200, easing: cubicOut }}
 	>
-		<!-- "Replying to" context bar -->
-		{#if commentToText}
-			<div class="flex items-center gap-2 px-4 pt-2 pb-0">
-				<button
-					onclick={handleScrollToParent}
-					class="flex items-center gap-1.5 text-xs text-txt-muted hover:text-txt-secondary transition-colors group"
-				>
-					<ScrollUpIcon size={12} class="opacity-50 group-hover:opacity-100 transition-opacity" />
-					<span>Svar till <span class="font-mono">#{commentToText.id}</span> av {commentToAuthor?.name ?? 'Okänd'}</span>
-				</button>
-			</div>
-		{/if}
+		<div class="w-full max-w-2xl">
+			<!-- "Replying to" context bar -->
+			{#if commentToText}
+				<div class="flex items-center gap-2 px-4 pt-2 pb-0">
+					<button
+						onclick={handleScrollToParent}
+						class="flex items-center gap-1.5 text-xs text-txt-muted hover:text-txt-secondary transition-colors group"
+					>
+						<ScrollUpIcon size={12} class="opacity-50 group-hover:opacity-100 transition-opacity" />
+						<span>Svar till <span class="font-mono">#{commentToText.id}</span> av {commentToAuthor?.name ?? 'Okänd'}</span>
+					</button>
+				</div>
+			{/if}
 
-		<ComposeForm
-			{commentToText}
-			compact={true}
-			onExpand={handleExpand}
-		/>
+			<ComposeForm
+				{commentToText}
+				compact={true}
+				onExpand={handleExpand}
+			/>
+		</div>
 	</div>
 {/if}
