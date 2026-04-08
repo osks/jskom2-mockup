@@ -164,7 +164,7 @@
 								{@const unread = totalUnread(conn.userId)}
 								<button
 									onclick={() => { handleSwitch(conn.id); menuOpen = false; }}
-									class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm transition-colors {active ? 'text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
+									class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-left text-sm transition-colors {active ? 'text-txt font-medium' : 'text-txt-secondary'} hover:bg-surface-2 active:bg-surface-3"
 								>
 									<div class="min-w-0 flex-1">
 										<div class="truncate">{conn.userName}</div>
@@ -180,7 +180,7 @@
 
 						<button
 							onclick={() => { handleAddConnection(); menuOpen = false; }}
-							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<Plus size={14} class="text-txt-muted" />
 							Anslut till server
@@ -190,14 +190,14 @@
 
 						<button
 							onclick={() => menuOpen = false}
-							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<KeyRound size={14} class="text-txt-muted" />
 							Byt lösenord
 						</button>
 						<button
 							onclick={() => { menuOpen = false; logout(); window.location.href = `${base}/login`; }}
-							class="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
+							class="mx-1.5 flex w-[calc(100%-0.75rem)] items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<LogOut size={14} class="text-txt-muted" />
 							Logga ut
