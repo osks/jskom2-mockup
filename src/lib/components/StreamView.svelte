@@ -169,6 +169,33 @@
 	// The text currently being commented on (for highlighting in stream)
 	const commentToId = $derived($readingState.commentTo);
 
+	// When compose opens, scroll the target text so its bottom is visible above the compose bar
+	$effect(() => {
+		const textId = $readingState.commentTo;
+		if (!textId || !scrollContainer || $readingState.composeExpanded) return;
+		// Wait for the compose bar to render and measure
+		tick().then(() => {
+			setTimeout(() => {
+				if (!scrollContainer) return;
+				const el = scrollContainer.querySelector(`article[data-text-id="${textId}"]`);
+				if (!el) return;
+				const elRect = el.getBoundingClientRect();
+				const containerRect = scrollContainer.getBoundingClientRect();
+				// We want the text's bottom edge to sit just above the compose bar.
+				// The compose bar takes space from the bottom of the flex column,
+				// so the scroll container's visible bottom is already above the bar.
+				// Just need to ensure the text's bottom is within the visible area.
+				const targetBottom = containerRect.bottom - 8; // small margin
+				const offset = elRect.bottom - targetBottom;
+				if (offset > 0) {
+					suppressScrollTracking = true;
+					scrollContainer.scrollBy({ top: offset, behavior: 'smooth' });
+					setTimeout(() => { suppressScrollTracking = false; }, 600);
+				}
+			}, 250); // wait for compose bar slide transition
+		});
+	});
+
 	let moreMenuOpen = $state(false);
 
 	// Ordered list of text IDs in the buffer
