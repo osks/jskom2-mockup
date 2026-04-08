@@ -34,8 +34,6 @@
 			<p class="mt-1 text-sm text-txt-secondary">
 				{#if hasConnections}
 					Anslut till en till server
-				{:else}
-					En modern webbklient för LysKOM
 				{/if}
 			</p>
 		</div>
