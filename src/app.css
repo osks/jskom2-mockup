@@ -10,11 +10,11 @@
 :root {
 	/* Green (primary family) */
 	--forest-green-1: oklch(0.3000 0.0800 154.5);
-	--forest-green-2: oklch(0.3800 0.0900 155.0);
-	--forest-green-3: oklch(0.4400 0.0950 155.5);
-	--forest-green-4: oklch(0.5092 0.1031 156.2);
-	--forest-green-5: oklch(0.6470 0.1200 157.2);
-	--forest-green-6: oklch(0.7500 0.1300 158.0);
+	--forest-green-2: oklch(0.3900 0.0900 155.0);
+	--forest-green-3: oklch(0.4750 0.1000 155.8);
+	--forest-green-4: oklch(0.5550 0.1100 156.5);
+	--forest-green-5: oklch(0.6300 0.1200 157.2);
+	--forest-green-6: oklch(0.7000 0.1250 157.6);
 
 	/* Brown (secondary family) */
 	--forest-brown-1: oklch(0.3800 0.0300 65.0);
