@@ -264,7 +264,7 @@
 {/if}
 
 <!-- Input widget (textarea + send) -->
-<div class="px-4 pb-5 pt-2 {isExpanded ? 'flex-1 flex flex-col min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
+<div class="px-4 pt-2 {isExpanded ? 'flex-1 flex flex-col min-h-0 pb-0' : 'pb-5'} {isBottomBar && !isExpanded ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
 	<div class="flex flex-col rounded-2xl bg-surface-1 ring-1 ring-surface-5 focus-within:ring-[1.5px] focus-within:ring-txt-muted {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-surface-5/80 md:focus-within:ring-txt-muted'}">
 		<textarea
 			bind:this={textareaEl}
@@ -276,21 +276,43 @@
 			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
 			style={isExpanded ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}
 		></textarea>
-		<div class="flex items-center justify-between px-2 pb-2">
+		{#if !isExpanded}
+			<div class="flex items-center justify-between px-2 pb-2">
+				<span class="text-xs text-txt-muted pl-1">
+					Ctrl+Enter för att skicka
+				</span>
+				<button
+					onclick={handleSend}
+					disabled={sent || !body.trim()}
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
+				>
+					{#if sent}
+						<Check size={18} />
+					{:else}
+						<ArrowUp size={18} />
+					{/if}
+				</button>
+			</div>
+		{/if}
+	</div>
+	{#if isExpanded}
+		<div class="flex items-center justify-between px-1 py-2">
 			<span class="text-xs text-txt-muted pl-1">
 				Ctrl+Enter för att skicka
 			</span>
 			<button
 				onclick={handleSend}
 				disabled={sent || !body.trim()}
-				class="flex h-9 w-9 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
+				class="flex h-9 items-center gap-2 rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors px-4 text-sm font-medium"
 			>
 				{#if sent}
-					<Check size={18} />
+					<Check size={16} />
+					Skickat
 				{:else}
-					<ArrowUp size={18} />
+					<ArrowUp size={16} />
+					Skicka
 				{/if}
 			</button>
 		</div>
-	</div>
+	{/if}
 </div>

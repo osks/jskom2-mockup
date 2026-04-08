@@ -45,10 +45,10 @@
 >
 	<!-- Top panel: parent text -->
 	<div
-		class="overflow-y-auto"
+		class="flex justify-center"
 		style="height: {splitPercent}%"
 	>
-		<div class="mx-auto max-w-3xl px-4">
+		<div class="w-full max-w-3xl overflow-y-auto px-4">
 			<StreamMessage text={commentToText} />
 		</div>
 	</div>
@@ -56,12 +56,12 @@
 	<!-- Draggable divider -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="flex-none flex items-center justify-center h-2 cursor-row-resize group transition-colors {dragging ? 'bg-surface-4' : 'hover:bg-surface-3'}"
+		class="flex-none flex items-center justify-center h-3 cursor-row-resize group border-y border-surface-3 transition-colors {dragging ? 'bg-surface-3' : 'hover:bg-surface-2'}"
 		onpointerdown={handlePointerDown}
 		onpointermove={handlePointerMove}
 		onpointerup={handlePointerUp}
 	>
-		<div class="w-8 h-0.5 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
+		<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
 	</div>
 
 	<!-- Bottom panel: compose form -->
