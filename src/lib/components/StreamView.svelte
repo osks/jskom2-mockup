@@ -44,46 +44,6 @@
 	let touchStartY = $state(0);
 	let touchStartTime = $state(0);
 
-	// Throttle flag for scroll-based active text tracking
-	let rafPending = false;
-	// Suppress scroll-based active tracking during programmatic scrolls
-	let suppressScrollTracking = false;
-
-	function updateActiveText() {
-		if (!scrollContainer) return;
-		const articles = scrollContainer.querySelectorAll('article[data-text-id]');
-		if (articles.length === 0) return;
-
-		const containerRect = scrollContainer.getBoundingClientRect();
-		const viewportCenter = containerRect.top + containerRect.height / 2;
-
-		let closest: Element | null = null;
-		let closestDist = Infinity;
-
-		for (const el of articles) {
-			const rect = el.getBoundingClientRect();
-			const elCenter = rect.top + rect.height / 2;
-			const dist = Math.abs(elCenter - viewportCenter);
-			if (dist < closestDist) {
-				closestDist = dist;
-				closest = el;
-			}
-		}
-
-		if (closest) {
-			const textId = Number((closest as HTMLElement).dataset.textId);
-			if (textId) setActiveText(textId);
-		}
-	}
-
-	function handleScroll() {
-		if (rafPending || suppressScrollTracking) return;
-		rafPending = true;
-		requestAnimationFrame(() => {
-			rafPending = false;
-			if (!suppressScrollTracking) updateActiveText();
-		});
-	}
 
 	// Auto-scroll to bottom when new items are added, and set the new text as active
 	$effect(() => {
@@ -98,7 +58,6 @@
 			}
 
 			// Suppress scroll-based tracking during programmatic scroll
-			suppressScrollTracking = true;
 			tick().then(() => {
 				if (scrollContainer) {
 					scrollContainer.scrollTo({
@@ -107,7 +66,6 @@
 					});
 				}
 				// Re-enable after scroll animation settles
-				setTimeout(() => { suppressScrollTracking = false; }, 600);
 			});
 		}
 	});
@@ -208,10 +166,8 @@
 				const targetBottom = containerRect.bottom - 8;
 				const offset = elRect.bottom - targetBottom;
 				if (offset > 0) {
-					suppressScrollTracking = true;
-					scrollContainer.scrollBy({ top: offset, behavior: 'smooth' });
-					setTimeout(() => { suppressScrollTracking = false; }, 600);
-				}
+							scrollContainer.scrollBy({ top: offset, behavior: 'smooth' });
+					}
 			}, 250);
 		});
 	});
@@ -264,9 +220,7 @@
 		if (!scrollContainer) return;
 		const el = scrollContainer.querySelector(`article[data-text-id="${textId}"]`);
 		if (!el) return;
-		suppressScrollTracking = true;
 		el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-		setTimeout(() => { suppressScrollTracking = false; }, 600);
 	}
 
 	function scrollToTextIfNeeded(textId: number) {
@@ -278,9 +232,7 @@
 		// Check if element is fully visible within the scroll container
 		// Leave 80px margin for floating bar at bottom
 		if (elRect.top >= containerRect.top && elRect.bottom <= containerRect.bottom - 80) return;
-		suppressScrollTracking = true;
 		el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-		setTimeout(() => { suppressScrollTracking = false; }, 600);
 	}
 </script>
 
@@ -294,7 +246,6 @@
 	bind:this={scrollContainer}
 	ontouchstart={handleTouchStart}
 	ontouchend={handleTouchEnd}
-	onscroll={handleScroll}
 	class="relative flex-1 overflow-y-auto overflow-x-hidden overscroll-none pt-below-header max-md:[mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))] max-md:[-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.05),rgba(0,0,0,0.4)_calc(env(safe-area-inset-top,0px)+3.5rem),black_calc(env(safe-area-inset-top,0px)+4.125rem))]"
 >
 	<div class="mx-auto flex max-w-3xl min-h-full flex-col pt-2 md:pt-0">
