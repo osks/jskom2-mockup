@@ -35,23 +35,25 @@
 	--forest-neutral-5:  oklch(0.5800 0.0130 95.0);
 	--forest-neutral-6:  oklch(0.7200 0.0120 95.0);
 	--forest-neutral-7:  oklch(0.9100 0.0120 95.0);
-	--forest-neutral-8:  oklch(0.9500 0.0110 95.0);
-	--forest-neutral-9:  oklch(0.9800 0.0050 95.0);
-	--forest-neutral-10: oklch(0.9900 0.0020 95.0);
+	--forest-neutral-8:  oklch(0.9300 0.0120 95.0);
+	--forest-neutral-9:  oklch(0.9500 0.0110 95.0);
+	--forest-neutral-10: oklch(0.9650 0.0080 95.0);
+	--forest-neutral-11: oklch(0.9800 0.0050 95.0);
+	--forest-neutral-12: oklch(0.9900 0.0040 95.0);
 }
 
 /* =============================================
    Forest Design System — Layer 2: Role Mappings (Light Mode)
    ============================================= */
 :root {
-	--forest-bg-1: var(--forest-neutral-9);
-	--forest-bg-2: var(--forest-neutral-8);
+	--forest-bg-1: var(--forest-neutral-11);
+	--forest-bg-2: var(--forest-neutral-9);
 	--forest-bg-3: var(--forest-neutral-7);
 
 	--forest-text:           var(--forest-neutral-2);
 	--forest-text-secondary: var(--forest-neutral-4);
 	--forest-text-muted:     var(--forest-neutral-5);
-	--forest-text-inverse:   var(--forest-neutral-10);
+	--forest-text-inverse:   var(--forest-neutral-12);
 
 	--forest-primary:        var(--forest-green-2);
 	--forest-primary-hover:  var(--forest-green-3);
@@ -65,8 +67,8 @@
 	--forest-accent-hover:  var(--forest-orange-4);
 	--forest-accent-active: var(--forest-orange-1);
 
-	--forest-subtle:        var(--forest-neutral-9);
-	--forest-subtle-hover:  var(--forest-neutral-8);
+	--forest-subtle:        var(--forest-neutral-11);
+	--forest-subtle-hover:  var(--forest-neutral-9);
 	--forest-subtle-active: var(--forest-neutral-7);
 }
 
