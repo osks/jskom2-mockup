@@ -267,12 +267,12 @@
 			oninput={autoGrow}
 			rows={isExpanded ? 4 : isBottomBar ? 2 : 3}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
+			class="w-full resize-none bg-transparent px-5 pt-4 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
 			style={isExpanded ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}
 		></textarea>
-		<div class="flex items-center justify-between px-2 pb-2">
+		<div class="flex items-center justify-between px-4 pb-4 pt-1">
 			<span class="text-xs text-txt-muted pl-1">
-				Ctrl+Enter för att skicka
+				Ctrl/⌘+Enter för att skicka
 			</span>
 			<button
 				onclick={handleSend}
