@@ -265,7 +265,7 @@
 			bind:value={body}
 			onkeydown={handleKeydown}
 			oninput={autoGrow}
-			rows={isExpanded ? 4 : isBottomBar ? 2 : 3}
+			rows={4}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 			class="w-full resize-none bg-transparent px-5 pt-4 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
 			style={isExpanded ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}

@@ -1,20 +1,22 @@
 <script lang="ts">
-	import { getTextById, getUserById } from '$lib/data';
 	import { readingState } from '$lib/stores/reading';
+	import { getTextById } from '$lib/data';
 	import StreamMessage from './StreamMessage.svelte';
 	import ComposeForm from './ComposeForm.svelte';
-	import type { TextInfo } from '$lib/types';
 
 	interface Props {
-		commentToText: TextInfo;
 		onCollapse: () => void;
 	}
 
-	let { commentToText, onCollapse }: Props = $props();
+	let { onCollapse }: Props = $props();
 
-	const INITIAL_SPLIT = 40;
+	const commentToText = $derived(
+		$readingState.commentTo ? getTextById($readingState.commentTo) : null
+	);
+
+	const INITIAL_SPLIT = 50;
 	const MIN_SPLIT = 20;
-	const MAX_SPLIT = 80;
+	const MAX_SPLIT = 70;
 
 	let splitPercent = $state(INITIAL_SPLIT);
 	let containerEl: HTMLDivElement | undefined = $state();
@@ -43,40 +45,53 @@
 	bind:this={containerEl}
 	class="hidden md:flex flex-1 flex-col min-h-0"
 >
-	<!-- Top panel: parent text -->
-	<div
-		class="flex justify-center"
-		style="height: {splitPercent}%"
-	>
-		<div class="w-full max-w-3xl overflow-y-auto px-4 pt-4">
-			<StreamMessage text={commentToText} />
+	{#if commentToText}
+		<!-- Top panel: parent text -->
+		<div
+			class="flex justify-center"
+			style="height: {splitPercent}%"
+		>
+			<div class="w-full max-w-3xl overflow-y-auto px-4 pt-4">
+				<StreamMessage text={commentToText} commentTarget={true} />
+			</div>
 		</div>
-	</div>
 
-	<!-- Draggable divider -->
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div
-		class="flex-none flex justify-center h-3 cursor-row-resize group"
-		onpointerdown={handlePointerDown}
-		onpointermove={handlePointerMove}
-		onpointerup={handlePointerUp}
-	>
-		<div class="w-full max-w-3xl flex items-center justify-center border-t border-edge h-full">
-			<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
+		<!-- Draggable divider -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div
+			class="flex-none flex justify-center h-3 cursor-row-resize group"
+			onpointerdown={handlePointerDown}
+			onpointermove={handlePointerMove}
+			onpointerup={handlePointerUp}
+		>
+			<div class="w-full max-w-3xl flex items-center justify-center border-t border-edge h-full">
+				<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
+			</div>
 		</div>
-	</div>
 
-	<!-- Bottom panel: compose form -->
-	<div
-		class="overflow-y-auto flex flex-col"
-		style="height: {100 - splitPercent}%"
-	>
-		<div class="mx-auto w-full max-w-3xl flex-1 flex flex-col">
-			<ComposeForm
-				{commentToText}
-				variant="bottombar"
-				onCollapse={onCollapse}
-			/>
+		<!-- Bottom panel: compose form -->
+		<div
+			class="overflow-y-auto flex flex-col"
+			style="height: {100 - splitPercent}%"
+		>
+			<div class="mx-auto w-full max-w-3xl flex-1 flex flex-col">
+				<ComposeForm
+					{commentToText}
+					variant="bottombar"
+					onCollapse={onCollapse}
+				/>
+			</div>
 		</div>
-	</div>
+	{:else}
+		<!-- New text: natural-height compose -->
+		<div class="flex-1 overflow-y-auto">
+			<div class="mx-auto w-full max-w-3xl pt-4">
+				<ComposeForm
+					commentToText={null}
+					variant="bottombar"
+					onCollapse={onCollapse}
+				/>
+			</div>
+		</div>
+	{/if}
 </div>

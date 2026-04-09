@@ -128,8 +128,15 @@
 
 	// Reset focus mode when compose closes
 	$effect(() => {
-		if (!$readingState.commentTo) {
+		if (!$readingState.commentTo && !$readingState.composingNew) {
 			expanded = false;
+		}
+	});
+
+	// New text always opens in expanded mode on desktop
+	$effect(() => {
+		if ($readingState.composingNew) {
+			expanded = true;
 		}
 	});
 
@@ -216,8 +223,8 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-{#if expanded && commentToText}
-	<ComposeExpandedView {commentToText} onCollapse={() => expanded = false} />
+{#if expanded && (commentToText || $readingState.composingNew)}
+	<ComposeExpandedView onCollapse={() => expanded = false} />
 {:else}
 <!-- Scrollable content -->
 <div
