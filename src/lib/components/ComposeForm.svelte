@@ -140,7 +140,7 @@
 	}
 
 	function autoGrow(e: Event) {
-		if (isBottomBar && !isExpanded) return;
+		if (!isExpanded) return;
 		const el = e.target as HTMLTextAreaElement;
 		el.style.height = 'auto';
 		el.style.height = el.scrollHeight + 'px';
@@ -268,8 +268,8 @@
 </div>
 
 <!-- Input widget (textarea + send) -->
-<div class="pt-2 {isBottomBar ? '' : 'px-4'} {isExpanded ? 'flex-1 flex flex-col min-h-0 pb-3' : 'pb-6'} {!isBottomBar && !isExpanded ? 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent' : ''}">
-	<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-edge-strong md:focus-within:ring-edge-focus'}">
+<div class="pt-2 {isBottomBar ? '' : 'px-4 flex-1 flex flex-col min-h-0'} {isExpanded ? 'pb-3' : isBottomBar ? 'pb-6' : ''}" style={!isBottomBar && !isExpanded ? `padding-bottom: max(env(safe-area-inset-bottom, 0px) + 1rem, 1.5rem)` : ''}>
+	<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus {isExpanded || !isBottomBar ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-edge-strong md:focus-within:ring-edge-focus'}">
 		<textarea
 			bind:this={textareaEl}
 			bind:value={body}
@@ -277,8 +277,7 @@
 			oninput={autoGrow}
 			rows={4}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
-			class="w-full resize-none bg-transparent px-5 pt-4 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
-			style={isExpanded || !isBottomBar ? '' : 'max-height: 180px;'}
+			class="w-full resize-none bg-transparent px-5 pt-4 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm flex-1'}"
 		></textarea>
 		<div class="flex items-center justify-between px-4 pb-4 pt-1">
 			<span class="text-xs text-txt-muted pl-1">
