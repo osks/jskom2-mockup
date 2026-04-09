@@ -55,7 +55,7 @@
 	<title>Sök — jskom2</title>
 </svelte:head>
 
-<div class="mx-auto max-w-3xl bg-surface-2 pt-below-header">
+<div class="mx-auto w-full max-w-3xl bg-surface-2 pt-below-header">
 	<!-- Sticky search header -->
 	<div class="sticky top-0 z-10 bg-surface-2/95 backdrop-blur-sm border-b border-surface-3">
 		<div class="px-4 pt-3 pb-2">

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TextInfo } from '$lib/types';
 	import { getUserById, getTextById, getConferenceById } from '$lib/data';
-	import { reviewText } from '$lib/stores/reading';
+	import { reviewText, setActiveText } from '$lib/stores/reading';
 	import { base } from '$app/paths';
 	import InfoPopover from './InfoPopover.svelte';
 
@@ -13,6 +13,10 @@
 	}
 
 	let { text, compact = false, active = false, commentTarget = false }: Props = $props();
+
+	function handleTap() {
+		setActiveText(text.id);
+	}
 
 	const author = $derived(getUserById(text.author));
 	const isoTimeStr = $derived(
@@ -80,9 +84,11 @@
 		{/if}
 	</a>
 {:else}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
+		onclick={handleTap}
 		class="px-4 py-3 ml-1.5 mr-1.5 border-l-2 border-r-2 border-r-transparent transition-all duration-300 {commentTarget ? 'border-l-primary' : active ? 'border-l-edge-strong' : 'border-l-transparent'}"
 	>
 		<div class="min-w-0">

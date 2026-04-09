@@ -43,6 +43,7 @@ interface ReadingState {
 	// For the compose bar
 	commentTo: number | null;
 	composingNew: boolean;
+	composeContext: 'page' | 'reader' | null;
 	// Shared compose body text (persists when remounting)
 	composeBody: string;
 }
@@ -57,6 +58,7 @@ export const readingState = writable<ReadingState>({
 	activeTextId: null,
 	commentTo: null,
 	composingNew: false,
+	composeContext: null,
 	composeBody: ''
 });
 
@@ -88,6 +90,7 @@ export function initReading(userId: number) {
 		activeTextId: null,
 		commentTo: null,
 		composingNew: false,
+		composeContext: null,
 		composeBody: ''
 	});
 }
@@ -281,12 +284,12 @@ export function clearCommentTo() {
 	readingState.update((s) => ({ ...s, commentTo: null, composeBody: '' }));
 }
 
-export function startCompose() {
-	readingState.update((s) => ({ ...s, composingNew: true, commentTo: null }));
+export function startCompose(context: 'page' | 'reader' = 'page') {
+	readingState.update((s) => ({ ...s, composingNew: true, commentTo: null, composeContext: context }));
 }
 
 export function cancelCompose() {
-	readingState.update((s) => ({ ...s, composingNew: false, composeBody: '' }));
+	readingState.update((s) => ({ ...s, composingNew: false, composeContext: null, composeBody: '' }));
 }
 
 export function setComposeBody(body: string) {

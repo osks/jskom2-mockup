@@ -9,6 +9,9 @@
 		commentToText: TextInfo | null;
 		/** 'bottombar' = desktop bottom bar, 'overlay' = mobile sheet / desktop full-screen */
 		variant?: 'bottombar' | 'overlay';
+		showCancel?: boolean;
+		/** Pre-fill recipient conference ID */
+		initialRecipient?: number | null;
 		onSend?: () => void;
 		onCancel?: () => void;
 		onExpand?: (() => void) | null;
@@ -18,6 +21,8 @@
 	let {
 		commentToText,
 		variant = 'overlay',
+		showCancel = true,
+		initialRecipient = null,
 		onSend,
 		onCancel,
 		onExpand = null,
@@ -33,11 +38,11 @@
 
 	const isComment = $derived(!!commentToText);
 
-	let recipients = $state<number[]>([1]);
+	let recipients = $state<number[]>(initialRecipient ? [initialRecipient] : [1]);
 	let subject = $state('');
 	let body = $state($readingState.composeBody || '');
 	let sent = $state(false);
-	let showMeta = $state(false);
+	let showMeta = $state(!isComment);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
 
 	// Sync body to shared state so it persists across inline <-> expanded transitions
@@ -73,12 +78,9 @@
 		}
 	});
 
-	// Focus when opening new compose
+	// Focus textarea on mount for new text
 	$effect(() => {
-		if ($readingState.composingNew && !commentToText) {
-			recipients = $readingState.currentConference ? [$readingState.currentConference] : [1];
-			subject = '';
-			showMeta = true;
+		if (!commentToText) {
 			tick().then(() => textareaEl?.focus());
 		}
 	});
@@ -134,9 +136,10 @@
 	}
 
 	function autoGrow(e: Event) {
+		if (isBottomBar && !isExpanded) return;
 		const el = e.target as HTMLTextAreaElement;
 		el.style.height = 'auto';
-		const maxH = isExpanded ? 9999 : isBottomBar ? 180 : 250;
+		const maxH = isExpanded ? 9999 : 250;
 		el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
 	}
 
@@ -182,12 +185,14 @@
 					<SplitSquareVertical size={14} />
 				</button>
 			{/if}
-			<button
-				onclick={handleCancel}
-				class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8 ring-1 ring-edge' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
-			>
-				<X size={18} />
-			</button>
+			{#if showCancel}
+				<button
+					onclick={handleCancel}
+					class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8 ring-1 ring-edge' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
+				>
+					<X size={18} />
+				</button>
+			{/if}
 		{/if}
 	</div>
 </div>

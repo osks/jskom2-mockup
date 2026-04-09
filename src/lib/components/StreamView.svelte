@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { readingState, advanceReading, setCommentTo, setActiveText, clearCommentTo, cancelCompose } from '$lib/stores/reading';
+	import { readingState, advanceReading, setCommentTo, setActiveText, clearCommentTo, cancelCompose, startCompose } from '$lib/stores/reading';
 	import { getTextById, getConferenceById } from '$lib/data';
 	import { pageTitle, pageSubtitle } from '$lib/stores/page';
 	import StreamMessage from './StreamMessage.svelte';
@@ -84,15 +84,19 @@
 
 		// "k" to start commenting on active text
 		if (e.key === 'k' && !inInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
-			const composing = !!$readingState.commentTo || $readingState.composingNew;
+			if (!composing) handleComment();
+		}
+
+		// "i" to start new text (inlägg) inline
+		if (e.key === 'i' && !inInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
 			if (!composing) {
-				handleComment();
+				e.preventDefault();
+				startCompose('reader');
 			}
 		}
 
 		// Escape to cancel composing (works even when textarea is not focused)
 		if (e.key === 'Escape' && !inInput) {
-			const composing = !!$readingState.commentTo || $readingState.composingNew;
 			if (composing) {
 				clearCommentTo();
 				cancelCompose();
@@ -122,22 +126,14 @@
 	// The text currently being commented on (for highlighting in stream)
 	const commentToId = $derived($readingState.commentTo);
 	const commentToText = $derived(commentToId ? getTextById(commentToId) : null);
+	const composing = $derived(!!commentToId || $readingState.composingNew);
 
 	// Focus mode: replaces the stream with a split view (parent text + compose)
 	let expanded = $state(false);
 
 	// Reset focus mode when compose closes
 	$effect(() => {
-		if (!$readingState.commentTo && !$readingState.composingNew) {
-			expanded = false;
-		}
-	});
-
-	// New text always opens in expanded mode on desktop
-	$effect(() => {
-		if ($readingState.composingNew) {
-			expanded = true;
-		}
+		if (!composing) expanded = false;
 	});
 
 	// When compose opens, scroll to keep the target text visible above the compose bar.
@@ -223,7 +219,7 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-{#if expanded && (commentToText || $readingState.composingNew)}
+{#if expanded && composing}
 	<ComposeExpandedView onCollapse={() => expanded = false} />
 {:else}
 <!-- Scrollable content -->

@@ -46,7 +46,7 @@
 	class="hidden md:flex flex-1 flex-col min-h-0"
 >
 	{#if commentToText}
-		<!-- Top panel: parent text -->
+		<!-- Comment: split view -->
 		<div
 			class="flex justify-center"
 			style="height: {splitPercent}%"
@@ -69,7 +69,6 @@
 			</div>
 		</div>
 
-		<!-- Bottom panel: compose form -->
 		<div
 			class="overflow-y-auto flex flex-col"
 			style="height: {100 - splitPercent}%"
@@ -83,13 +82,14 @@
 			</div>
 		</div>
 	{:else}
-		<!-- New text: natural-height compose -->
+		<!-- New text: full-height compose -->
 		<div class="flex-1 overflow-y-auto">
 			<div class="mx-auto w-full max-w-3xl pt-4">
 				<ComposeForm
 					commentToText={null}
 					variant="bottombar"
 					onCollapse={onCollapse}
+					initialRecipient={$readingState.currentConference}
 				/>
 			</div>
 		</div>

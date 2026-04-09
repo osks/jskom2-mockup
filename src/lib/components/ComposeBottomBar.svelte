@@ -21,7 +21,7 @@
 		commentToText ? getUserById(commentToText.author) : null
 	);
 
-	const isVisible = $derived(!!commentToText);
+	const isVisible = $derived(!!commentToText || $readingState.composingNew);
 
 	function handleScrollToParent() {
 		if ($readingState.commentTo) {
@@ -52,6 +52,7 @@
 				{commentToText}
 				variant="bottombar"
 				{onExpand}
+				initialRecipient={!commentToText && $readingState.currentConference ? $readingState.currentConference : null}
 			/>
 		</div>
 	</div>

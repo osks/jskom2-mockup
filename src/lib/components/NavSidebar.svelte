@@ -2,7 +2,7 @@
 	import { currentUser, connections, activeConnection, activeConnectionId, switchConnection, logout } from '$lib/stores/auth';
 	import { getMemberships, getConferenceById } from '$lib/data';
 	import { BookOpen, Users, PenSquare, Search, LogOut, Plus, KeyRound } from 'lucide-svelte';
-	import { startCompose } from '$lib/stores/reading';
+	import { cancelCompose, clearCommentTo } from '$lib/stores/reading';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { base } from '$app/paths';
@@ -42,12 +42,15 @@
 	}
 
 	function handleNav() {
+		cancelCompose();
+		clearCommentTo();
 		onNavigate?.();
 	}
 
 	function handleCompose() {
-		startCompose();
 		onNavigate?.();
+		const delay = onNavigate ? 300 : 0;
+		setTimeout(() => goto(`${base}/texts/new`), delay);
 	}
 
 	function handleSwitch(id: string) {
