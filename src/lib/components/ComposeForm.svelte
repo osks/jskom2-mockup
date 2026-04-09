@@ -162,13 +162,13 @@
 			>Kasta</button>
 			<button
 				onclick={() => showDiscardWarning = false}
-				class="flex h-8 items-center rounded-full px-3 text-sm text-txt-muted ring-1 ring-surface-5 hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
+				class="flex h-8 items-center rounded-full px-3 text-sm text-txt-muted ring-1 ring-edge hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
 			>Avbryt</button>
 		{:else}
 			{#if onCollapse}
 				<button
 					onclick={onCollapse}
-					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-surface-5' : ''}"
+					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-edge' : ''}"
 					aria-label="Minimera"
 				>
 					<Minimize2 size={14} />
@@ -176,7 +176,7 @@
 			{:else if onExpand}
 				<button
 					onclick={onExpand}
-					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-surface-5' : ''}"
+					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-edge' : ''}"
 					aria-label="Utökad"
 				>
 					<SplitSquareVertical size={14} />
@@ -184,7 +184,7 @@
 			{/if}
 			<button
 				onclick={handleCancel}
-				class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8 ring-1 ring-surface-5' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
+				class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8 ring-1 ring-edge' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
 			>
 				<X size={18} />
 			</button>
@@ -215,7 +215,7 @@
 					<select
 						value={recipientId}
 						onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
-						class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-[var(--forest-neutral-6)] hover:ring-[var(--forest-neutral-5)] focus:outline-none focus:ring-[1.5px] focus:ring-[var(--forest-neutral-5)]"
+						class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-edge-strong hover:ring-edge-focus focus:outline-none focus:ring-[1.5px] focus:ring-edge-focus"
 					>
 						{#each conferences as conf}
 							<option value={conf.id}>{conf.name}</option>
@@ -229,7 +229,7 @@
 					type="text"
 					bind:value={subject}
 					placeholder="Ärende..."
-					class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm ring-1 ring-[var(--forest-neutral-6)] hover:ring-[var(--forest-neutral-5)] focus:outline-none focus:ring-[1.5px] focus:ring-[var(--forest-neutral-5)]"
+					class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm ring-1 ring-edge-strong hover:ring-edge-focus focus:outline-none focus:ring-[1.5px] focus:ring-edge-focus"
 				/>
 			</div>
 		</div>
@@ -259,7 +259,7 @@
 
 <!-- Input widget (textarea + send) -->
 <div class="pt-2 {isBottomBar ? '' : 'px-4'} {isExpanded ? 'flex-1 flex flex-col min-h-0 pb-3' : 'pb-6'} {!isBottomBar && !isExpanded ? 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent' : ''}">
-	<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-[var(--forest-neutral-6)] focus-within:ring-1 focus-within:ring-[var(--forest-neutral-5)] {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-[var(--forest-neutral-6)] md:focus-within:ring-[var(--forest-neutral-5)]'}">
+	<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-edge-strong md:focus-within:ring-edge-focus'}">
 		<textarea
 			bind:this={textareaEl}
 			bind:value={body}

@@ -61,6 +61,10 @@
 	--forest-text-muted:     var(--forest-neutral-5);
 	--forest-text-inverse:   var(--forest-neutral-12);
 
+	--forest-edge:        var(--forest-neutral-8);
+	--forest-edge-strong: var(--forest-neutral-6);
+	--forest-edge-focus:  var(--forest-neutral-5);
+
 	--forest-primary:        var(--forest-green-2);
 	--forest-primary-hover:  var(--forest-green-3);
 	--forest-primary-active: var(--forest-green-1);
@@ -97,6 +101,11 @@
 	--color-txt-secondary: var(--forest-text-secondary);
 	--color-txt-muted:     var(--forest-text-muted);
 	--color-txt-inverse:   var(--forest-text-inverse);
+
+	/* Borders */
+	--color-edge:        var(--forest-border);
+	--color-edge-strong: var(--forest-edge-strong);
+	--color-edge-focus:  var(--forest-edge-focus);
 
 	/* Primary (green) */
 	--color-primary:        var(--forest-primary);

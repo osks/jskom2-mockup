@@ -34,7 +34,7 @@
 	<div
 		class="hidden md:flex justify-center px-4"
 	>
-		<div class="w-full max-w-3xl border-t border-surface-4">
+		<div class="w-full max-w-3xl border-t border-edge">
 			<!-- "Replying to" context bar -->
 			{#if commentToText}
 				<div class="flex items-center gap-2 pt-2 pb-0">

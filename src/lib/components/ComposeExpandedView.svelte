@@ -61,7 +61,7 @@
 		onpointermove={handlePointerMove}
 		onpointerup={handlePointerUp}
 	>
-		<div class="w-full max-w-3xl flex items-center justify-center border-t border-surface-4 h-full">
+		<div class="w-full max-w-3xl flex items-center justify-center border-t border-edge h-full">
 			<div class="w-12 h-1 rounded-full bg-surface-5 group-hover:bg-txt-muted transition-colors"></div>
 		</div>
 	</div>

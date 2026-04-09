@@ -60,6 +60,10 @@
   --txt-muted:     var(--neutral-5);
   --txt-inverse:   var(--neutral-12);
 
+  --edge:        var(--neutral-8);
+  --edge-strong: var(--neutral-6);
+  --edge-focus:  var(--neutral-5);
+
   --primary:        var(--green-2);
   --primary-hover:  var(--green-3);
   --primary-active: var(--green-1);
@@ -89,6 +93,10 @@
   --txt-secondary: var(--neutral-6);
   --txt-muted:     var(--neutral-5);
   --txt-inverse:   var(--neutral-1);
+
+  --edge:        var(--neutral-3);
+  --edge-strong: var(--neutral-4);
+  --edge-focus:  var(--neutral-5);
 
   --primary:        var(--green-6);
   --primary-hover:  var(--green-7);
@@ -370,6 +378,35 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="role-separator"></div>
 
   <div class="role-item">
+    <div class="role-name"><code>--border</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-8)"></span> neutral-8</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-3)"></span> neutral-3</div>
+    </div>
+    <div class="role-purpose">Subtle dividers, inactive input borders, section separators</div>
+  </div>
+
+  <div class="role-item">
+    <div class="role-name"><code>--edge-strong</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-6)"></span> neutral-6</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-4)"></span> neutral-4</div>
+    </div>
+    <div class="role-purpose">Input outlines, active markers, visible borders</div>
+  </div>
+
+  <div class="role-item">
+    <div class="role-name"><code>--edge-focus</code></div>
+    <div class="role-modes">
+      <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
+      <div class="role-mode mode-dark"><span class="role-mode-label">Dark</span> <span class="color-dot" style="background:var(--neutral-5)"></span> neutral-5</div>
+    </div>
+    <div class="role-purpose">Focused input borders, hover-strengthened borders</div>
+  </div>
+
+  <div class="role-separator"></div>
+
+  <div class="role-item">
     <div class="role-name"><code>--primary</code></div>
     <div class="role-modes">
       <div class="role-mode mode-light"><span class="role-mode-label">Light</span> <span class="color-dot" style="background:var(--green-2)"></span> green-2</div>
@@ -521,6 +558,26 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
     <button class="btn" style="background:transparent; color:var(--primary-hover); border:2px solid var(--primary-hover)">Hover</button>
   </div>
 
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Borders — edge / edge-strong / edge-focus</h3>
+  <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge — dividers, separators</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge-strong);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge-strong — input outlines, markers</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge-focus);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge-focus — focused inputs</span>
+    </div>
+    <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+      <input type="text" placeholder="Inactive input" style="flex: 1; padding: 0.5rem 0.75rem; border-radius: 9999px; border: 1px solid var(--edge-strong); background: transparent; font-size: 0.85rem; color: var(--txt); outline: none;">
+      <input type="text" placeholder="Focused input" style="flex: 1; padding: 0.5rem 0.75rem; border-radius: 9999px; border: 1px solid var(--edge-focus); background: transparent; font-size: 0.85rem; color: var(--txt); outline: none;">
+    </div>
+  </div>
+
   <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Cards</h3>
   <div class="card-row">
     <div class="card">
@@ -660,6 +717,26 @@ h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color
   <div class="btn-row">
     <button class="btn btn-outline">Outline</button>
     <button class="btn" style="background:transparent; color:var(--primary-hover); border:2px solid var(--primary-hover)">Hover</button>
+  </div>
+
+  <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Borders — edge / edge-strong / edge-focus</h3>
+  <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge — dividers, separators</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge-strong);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge-strong — input outlines, markers</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="flex: 1; height: 0; border-top: 1px solid var(--edge-focus);"></div>
+      <span style="font-size: 0.75rem; color: var(--txt-muted);">edge-focus — focused inputs</span>
+    </div>
+    <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+      <input type="text" placeholder="Inactive input" style="flex: 1; padding: 0.5rem 0.75rem; border-radius: 9999px; border: 1px solid var(--edge-strong); background: transparent; font-size: 0.85rem; color: var(--txt); outline: none;">
+      <input type="text" placeholder="Focused input" style="flex: 1; padding: 0.5rem 0.75rem; border-radius: 9999px; border: 1px solid var(--edge-focus); background: transparent; font-size: 0.85rem; color: var(--txt); outline: none;">
+    </div>
   </div>
 
   <h3 style="text-transform: none; letter-spacing: normal; font-size: 0.9rem; color: var(--txt); margin-top: 1.5rem;">Cards</h3>

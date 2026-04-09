@@ -235,7 +235,7 @@
 				{@const isTarget = item.textId === commentToId}
 				{#if text}
 					{#if $readingState.buffer.slice(0, i).some(b => b.kind === 'text')}
-						<div class="mx-8 border-t border-surface-4 transition-opacity duration-300" class:md:opacity-30={!!commentToId && !isTarget}></div>
+						<div class="mx-8 border-t border-edge transition-opacity duration-300" class:md:opacity-30={!!commentToId && !isTarget}></div>
 					{/if}
 					<div class="transition-opacity duration-300" class:md:opacity-30={!!commentToId && !isTarget}>
 						<StreamMessage {text} active={item.textId === activeTextId} commentTarget={isTarget} />
