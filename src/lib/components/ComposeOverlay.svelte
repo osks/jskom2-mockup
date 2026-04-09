@@ -19,7 +19,7 @@
 
 	const compose = createComposeState({
 		get commentToText() { return commentToText; },
-		initialRecipient: $readingState.currentConference,
+		get initialRecipient() { return $readingState.currentConference; },
 	});
 </script>
 
@@ -77,7 +77,7 @@
 			<!-- Form content: flex-fill textarea -->
 			<div class="flex-1 flex flex-col min-h-0 px-4" style="padding-bottom: max(env(safe-area-inset-bottom, 0px) + 1rem, 1.5rem)">
 				<div class="mt-2 flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus flex-1 min-h-0">
-					<ComposeFormContent compose={compose} textareaClass="text-base flex-1" metaClass="px-1" />
+					<ComposeFormContent compose={compose} textareaClass="text-base flex-1" metaClass="mt-2 px-4" />
 				</div>
 			</div>
 		</div>

@@ -101,7 +101,7 @@
 			<!-- Form content in fixed-height textarea container -->
 			<div class="pt-2 pb-6">
 				<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus">
-					<ComposeFormContent compose={compose} textareaClass="text-sm" />
+					<ComposeFormContent compose={compose} textareaClass="text-sm" metaClass="mt-2 px-4" />
 				</div>
 			</div>
 		</div>

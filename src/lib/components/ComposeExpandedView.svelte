@@ -18,7 +18,7 @@
 
 	const compose = createComposeState({
 		get commentToText() { return commentToText; },
-		initialRecipient: $readingState.currentConference,
+		get initialRecipient() { return $readingState.currentConference; },
 	});
 
 	function handleClose() {
@@ -128,7 +128,7 @@
 		>
 			<div class="mx-auto w-full max-w-3xl flex-1 flex flex-col pt-2 pb-3">
 				<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus flex-1 min-h-0">
-					<ComposeFormContent compose={compose} textareaClass="text-sm flex-1" />
+					<ComposeFormContent compose={compose} textareaClass="text-sm flex-1" metaClass="mt-2 px-4" />
 				</div>
 			</div>
 		</div>
@@ -169,7 +169,7 @@
 		<div class="flex-1 overflow-y-auto">
 			<div class="mx-auto w-full max-w-3xl pt-2 pb-3">
 				<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-edge-strong focus-within:ring-1 focus-within:ring-edge-focus">
-					<ComposeFormContent compose={compose} textareaClass="text-sm" />
+					<ComposeFormContent compose={compose} textareaClass="text-sm" metaClass="mt-2 px-4" />
 				</div>
 			</div>
 		</div>
