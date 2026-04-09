@@ -69,9 +69,9 @@
 	--forest-secondary-hover:  var(--forest-neutral-5);
 	--forest-secondary-active: var(--forest-neutral-3);
 
-	--forest-accent:        var(--forest-orange-3);
-	--forest-accent-hover:  var(--forest-orange-5);
-	--forest-accent-active: var(--forest-orange-2);
+	--forest-accent:        var(--forest-orange-2);
+	--forest-accent-hover:  var(--forest-orange-4);
+	--forest-accent-active: var(--forest-orange-1);
 
 	--forest-subtle:        var(--forest-neutral-12);
 	--forest-subtle-hover:  var(--forest-neutral-11);
