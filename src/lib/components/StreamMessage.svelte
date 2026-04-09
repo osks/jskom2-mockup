@@ -140,7 +140,7 @@
 							</div>
 						{/snippet}
 					</InfoPopover>
-					by
+					av
 					<InfoPopover>
 						{#snippet children()}
 							<span>{parent.authorName}</span>
@@ -241,7 +241,7 @@
 									</div>
 								{/snippet}
 							</InfoPopover>
-							by
+							av
 							<InfoPopover>
 								{#snippet children()}
 									<span>{child.authorName}</span>

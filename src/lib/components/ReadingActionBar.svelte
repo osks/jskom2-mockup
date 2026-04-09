@@ -77,8 +77,7 @@
 					<!-- More menu popover -->
 					{#if moreMenuOpen}
 						<!-- Backdrop -->
-						<!-- svelte-ignore a11y_no_static_element_interactions -->
-						<div class="fixed inset-0 z-30" onclick={closeMoreMenu}></div>
+						<div role="button" tabindex="-1" class="fixed inset-0 z-30" onclick={closeMoreMenu} onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMoreMenu(); }}></div>
 						<div class="absolute bottom-full left-0 z-40 mb-2 min-w-48 rounded-2xl bg-white px-1.5 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5">
 							<button onclick={() => { closeMoreMenu(); showReviewInput = true; tick().then(() => reviewInputEl?.focus()); }} class="flex w-full items-center rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3">
 								Återse text
@@ -120,10 +119,8 @@
 
 <!-- Återse text dialog -->
 {#if showReviewInput}
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/20" onclick={closeReviewInput}>
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="mx-6 w-full max-w-xs rounded-2xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5" onclick={(e) => e.stopPropagation()}>
+	<div role="button" tabindex="-1" class="fixed inset-0 z-50 flex items-center justify-center bg-black/20" onclick={closeReviewInput} onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeReviewInput(); }}>
+		<div role="presentation" class="mx-6 w-full max-w-xs rounded-2xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5" onclick={(e) => e.stopPropagation()}>
 			<div class="text-sm font-medium text-txt-secondary mb-3">Återse text</div>
 			<form onsubmit={(e) => { e.preventDefault(); handleReview(); }} class="flex items-center gap-2">
 				<input

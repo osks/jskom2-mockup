@@ -60,10 +60,12 @@
 
 		<!-- Tap-to-close overlay when sidebar is open -->
 		{#if $sidebarOpen}
-			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
+				role="button"
+				tabindex="-1"
 				class="fixed inset-0 z-30 md:hidden"
 				onclick={handleContentClick}
+				onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleContentClick(); }}
 			></div>
 		{/if}
 

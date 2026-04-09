@@ -1,4 +1,4 @@
-import { writable, derived } from 'svelte/store';
+import { writable, derived, get } from 'svelte/store';
 import type { Person, ServerConnection } from '$lib/types';
 import { getUserById } from '$lib/data';
 
@@ -35,13 +35,10 @@ export function switchConnection(id: string) {
 }
 
 export function disconnectConnection(id: string) {
-	let remaining: ServerConnection[];
-	connections.update((conns) => {
-		remaining = conns.filter((c) => c.id !== id);
-		return remaining;
-	});
+	const remaining = get(connections).filter((c) => c.id !== id);
+	connections.set(remaining);
 	activeConnectionId.update((current) =>
-		current === id ? (remaining![0]?.id ?? null) : current
+		current === id ? (remaining[0]?.id ?? null) : current
 	);
 }
 

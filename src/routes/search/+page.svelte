@@ -5,7 +5,9 @@
 	import StreamMessage from '$lib/components/StreamMessage.svelte';
 	import { Search, Globe, Lock, Eye, Users } from 'lucide-svelte';
 
-	pageTitle.set('Sök');
+	$effect(() => {
+		pageTitle.set('Sök');
+	});
 
 	let query = $state('');
 	let activeTab: 'texts' | 'conferences' | 'users' = $state('texts');

@@ -152,8 +152,7 @@
 
 			<!-- Popover menu -->
 			{#if menuOpen}
-				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div class="fixed inset-0 z-30" onclick={() => menuOpen = false}></div>
+				<div role="button" tabindex="-1" class="fixed inset-0 z-30" onclick={() => menuOpen = false} onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') menuOpen = false; }}></div>
 				<div class="absolute bottom-full left-2 right-2 z-40 mb-2 rounded-2xl bg-white px-1.5 py-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border-[0.5px] border-surface-5">
 						<!-- Connections -->
 						{#each $connections as conn}
@@ -192,7 +191,7 @@
 							Byt lösenord
 						</button>
 						<button
-							onclick={() => { menuOpen = false; logout(); window.location.href = `${base}/login`; }}
+							onclick={() => { menuOpen = false; logout(); goto(`${base}/login`); }}
 							class="flex w-full items-center gap-2 rounded-lg px-2.5 py-2.5 text-sm text-txt-secondary hover:bg-surface-2 active:bg-surface-3"
 						>
 							<LogOut size={14} class="text-txt-muted" />

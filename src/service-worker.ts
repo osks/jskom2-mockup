@@ -48,7 +48,7 @@ sw.addEventListener('fetch', (event) => {
 					caches.open(CACHE).then((cache) => cache.put(event.request, clone));
 					return response;
 				})
-				.catch(() => caches.match(event.request).then((cached) => cached!))
+				.catch(() => caches.match(event.request).then((cached) => cached ?? new Response('Offline', { status: 503 })))
 		);
 	} else {
 		// Assets: cache first (filenames are hashed per build)
