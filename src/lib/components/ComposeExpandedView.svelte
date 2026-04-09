@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { readingState } from '$lib/stores/reading';
+	import { readingState, clearCommentTo, cancelCompose } from '$lib/stores/reading';
 	import { getTextById } from '$lib/data';
+	import { Minimize2, X } from 'lucide-svelte';
 	import StreamMessage from './StreamMessage.svelte';
 	import ComposeForm from './ComposeForm.svelte';
 
@@ -13,6 +14,11 @@
 	const commentToText = $derived(
 		$readingState.commentTo ? getTextById($readingState.commentTo) : null
 	);
+
+	function handleClose() {
+		clearCommentTo();
+		cancelCompose();
+	}
 
 	const INITIAL_SPLIT = 50;
 	const MIN_SPLIT = 20;
@@ -46,12 +52,34 @@
 	class="hidden md:flex flex-1 flex-col min-h-0"
 >
 	{#if commentToText}
-		<!-- Comment: split view -->
+		<!-- Header -->
+		<div class="flex-none flex justify-center">
+			<div class="w-full max-w-3xl flex items-center justify-between pt-3 pb-1">
+				<h2 class="text-sm font-medium text-txt-secondary">Kommentera</h2>
+				<div class="flex items-center gap-1">
+					<button
+						onclick={onCollapse}
+						class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted ring-1 ring-edge hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
+						aria-label="Minimera"
+					>
+						<Minimize2 size={14} />
+					</button>
+					<button
+						onclick={handleClose}
+						class="flex h-8 w-8 items-center justify-center rounded-full text-txt ring-1 ring-edge active:bg-surface-4/50"
+					>
+						<X size={18} />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Top panel: parent text -->
 		<div
 			class="flex justify-center"
 			style="height: {splitPercent}%"
 		>
-			<div class="w-full max-w-3xl overflow-y-auto px-4 pt-4">
+			<div class="w-full max-w-3xl overflow-y-auto px-4 pt-2">
 				<StreamMessage text={commentToText} commentTarget={true} />
 			</div>
 		</div>
@@ -69,6 +97,7 @@
 			</div>
 		</div>
 
+		<!-- Bottom panel: compose form (no header, handled above) -->
 		<div
 			class="overflow-y-auto flex flex-col"
 			style="height: {100 - splitPercent}%"
@@ -77,7 +106,7 @@
 				<ComposeForm
 					{commentToText}
 					variant="bottombar"
-					onCollapse={onCollapse}
+					showHeader={false}
 				/>
 			</div>
 		</div>

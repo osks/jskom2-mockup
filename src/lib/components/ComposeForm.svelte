@@ -10,6 +10,7 @@
 		/** 'bottombar' = desktop bottom bar, 'overlay' = mobile sheet / desktop full-screen */
 		variant?: 'bottombar' | 'overlay';
 		showCancel?: boolean;
+		showHeader?: boolean;
 		/** Pre-fill recipient conference ID */
 		initialRecipient?: number | null;
 		onSend?: () => void;
@@ -22,6 +23,7 @@
 		commentToText,
 		variant = 'overlay',
 		showCancel = true,
+		showHeader = true,
 		initialRecipient = null,
 		onSend,
 		onCancel,
@@ -38,11 +40,13 @@
 
 	const isComment = $derived(!!commentToText);
 
-	let recipients = $state<number[]>(initialRecipient ? [initialRecipient] : [1]);
+	const initRecipient = initialRecipient;
+	const initIsComment = !!commentToText;
+	let recipients = $state<number[]>(initRecipient ? [initRecipient] : [1]);
 	let subject = $state('');
 	let body = $state($readingState.composeBody || '');
 	let sent = $state(false);
-	let showMeta = $state(!isComment);
+	let showMeta = $state(!initIsComment);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
 
 	// Sync body to shared state so it persists across inline <-> expanded transitions
@@ -139,8 +143,7 @@
 		if (isBottomBar && !isExpanded) return;
 		const el = e.target as HTMLTextAreaElement;
 		el.style.height = 'auto';
-		const maxH = isExpanded ? 9999 : 250;
-		el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
+		el.style.height = el.scrollHeight + 'px';
 	}
 
 	function updateRecipient(index: number, value: number) {
@@ -148,6 +151,7 @@
 	}
 </script>
 
+{#if showHeader}
 <!-- Header -->
 <div class="flex items-center justify-between pt-3 pb-1 {isBottomBar ? '' : 'px-4'}">
 	<h2 class="text-sm font-medium text-txt-secondary">
@@ -196,6 +200,7 @@
 		{/if}
 	</div>
 </div>
+{/if}
 
 <!-- Quoted original text (only in overlay mode, bottom bar has the parent text visible in stream) -->
 {#if !isBottomBar && isComment && commentToText}
@@ -273,7 +278,7 @@
 			rows={4}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 			class="w-full resize-none bg-transparent px-5 pt-4 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
-			style={isExpanded ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}
+			style={isExpanded || !isBottomBar ? '' : 'max-height: 180px;'}
 		></textarea>
 		<div class="flex items-center justify-between px-4 pb-4 pt-1">
 			<span class="text-xs text-txt-muted pl-1">

@@ -223,6 +223,7 @@
 	<ComposeExpandedView onCollapse={() => expanded = false} />
 {:else}
 <!-- Scrollable content -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	bind:this={scrollContainer}
 	ontouchstart={handleTouchStart}
