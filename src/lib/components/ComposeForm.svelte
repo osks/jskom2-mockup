@@ -40,13 +40,13 @@
 
 	const isComment = $derived(!!commentToText);
 
-	const initRecipient = initialRecipient;
-	const initIsComment = !!commentToText;
-	let recipients = $state<number[]>(initRecipient ? [initRecipient] : [1]);
+	// svelte-ignore state_referenced_locally
+	let recipients = $state<number[]>(initialRecipient ? [initialRecipient] : [1]);
 	let subject = $state('');
 	let body = $state($readingState.composeBody || '');
 	let sent = $state(false);
-	let showMeta = $state(!initIsComment);
+	// svelte-ignore state_referenced_locally
+	let showMeta = $state(!commentToText);
 	let textareaEl: HTMLTextAreaElement | undefined = $state();
 
 	// Sync body to shared state so it persists across inline <-> expanded transitions
