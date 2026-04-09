@@ -48,7 +48,7 @@
 		class="flex justify-center"
 		style="height: {splitPercent}%"
 	>
-		<div class="w-full max-w-3xl overflow-y-auto px-4">
+		<div class="w-full max-w-3xl overflow-y-auto px-4 pt-4">
 			<StreamMessage text={commentToText} />
 		</div>
 	</div>

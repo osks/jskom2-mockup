@@ -83,7 +83,7 @@
 	<article
 		id="text-{text.id}"
 		data-text-id={text.id}
-		class="px-4 py-3 ml-1.5 border-l-2 transition-all duration-300 {commentTarget ? 'border-primary' : active ? 'border-txt-muted' : 'border-transparent'}"
+		class="px-4 py-3 ml-1.5 mr-1.5 border-l-2 border-r-2 border-r-transparent transition-all duration-300 {commentTarget ? 'border-l-primary' : active ? 'border-l-txt-muted' : 'border-l-transparent'}"
 	>
 		<div class="min-w-0">
 			<!-- First line: #textno / datetime / author -->

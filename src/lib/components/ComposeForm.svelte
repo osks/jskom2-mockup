@@ -146,7 +146,7 @@
 </script>
 
 <!-- Header -->
-<div class="flex items-center justify-between px-4 pt-3 pb-1">
+<div class="flex items-center justify-between pt-3 pb-1 {isBottomBar ? '' : 'px-4'}">
 	<h2 class="text-sm font-medium text-txt-secondary">
 		{#if isComment}
 			Kommentera
@@ -155,29 +155,40 @@
 		{/if}
 	</h2>
 	<div class="flex items-center gap-1">
-		{#if onCollapse}
+		{#if showDiscardWarning}
 			<button
-				onclick={onCollapse}
-				class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
-				aria-label="Minimera"
-			>
-				<Minimize2 size={14} />
-			</button>
-		{:else if onExpand}
+				onclick={doCancel}
+				class="flex h-8 items-center rounded-full bg-accent px-3 text-sm font-medium text-txt-inverse hover:bg-accent-hover active:bg-accent-active transition-colors"
+			>Kasta</button>
 			<button
-				onclick={onExpand}
-				class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
-				aria-label="Utökad"
+				onclick={() => showDiscardWarning = false}
+				class="flex h-8 items-center rounded-full px-3 text-sm text-txt-muted ring-1 ring-surface-5 hover:bg-surface-3/50 hover:text-txt-secondary transition-colors"
+			>Avbryt</button>
+		{:else}
+			{#if onCollapse}
+				<button
+					onclick={onCollapse}
+					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-surface-5' : ''}"
+					aria-label="Minimera"
+				>
+					<Minimize2 size={14} />
+				</button>
+			{:else if onExpand}
+				<button
+					onclick={onExpand}
+					class="flex h-8 w-8 items-center justify-center rounded-full text-txt-muted hover:bg-surface-3/50 hover:text-txt-secondary transition-colors {isBottomBar ? 'ring-1 ring-surface-5' : ''}"
+					aria-label="Utökad"
+				>
+					<SplitSquareVertical size={14} />
+				</button>
+			{/if}
+			<button
+				onclick={handleCancel}
+				class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8 ring-1 ring-surface-5' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
 			>
-				<SplitSquareVertical size={14} />
+				<X size={18} />
 			</button>
 		{/if}
-		<button
-			onclick={handleCancel}
-			class="flex items-center justify-center rounded-full text-txt active:bg-surface-4/50 {isBottomBar ? 'h-8 w-8' : 'h-12 w-12 bg-surface-4/70 backdrop-blur-md ring-[1.5px] ring-surface-1/80 shadow-[0_0_0_0.5px_rgba(0,0,0,0.06),0_1px_4px_rgba(0,0,0,0.08)] md:h-8 md:w-8 md:bg-transparent md:ring-0 md:shadow-none'}"
-		>
-			<X size={18} />
-		</button>
 	</div>
 </div>
 
@@ -194,7 +205,7 @@
 {/if}
 
 <!-- Conference + subject -->
-<div class="mx-4 mt-2">
+<div class="mt-2 {isBottomBar ? '' : 'mx-4'}">
 	{#if showMeta}
 		<!-- Editable fields -->
 		<div class="space-y-2 py-0.5">
@@ -204,7 +215,7 @@
 					<select
 						value={recipientId}
 						onchange={(e) => updateRecipient(i, Number((e.target as HTMLSelectElement).value))}
-						class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {isBottomBar ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
+						class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm text-txt-secondary ring-1 ring-[var(--forest-neutral-6)] hover:ring-[var(--forest-neutral-5)] focus:outline-none focus:ring-[1.5px] focus:ring-[var(--forest-neutral-5)]"
 					>
 						{#each conferences as conf}
 							<option value={conf.id}>{conf.name}</option>
@@ -218,7 +229,7 @@
 					type="text"
 					bind:value={subject}
 					placeholder="Ärende..."
-					class="flex-1 rounded-full bg-surface-2 px-3 py-1.5 text-sm ring-1 ring-surface-3 focus:outline-none focus:ring-1 focus:ring-primary {isBottomBar ? '' : 'md:bg-surface-2/60 md:ring-surface-1/80 md:focus:bg-surface-2/80'}"
+					class="flex-1 rounded-full bg-transparent px-3 py-1.5 text-sm ring-1 ring-[var(--forest-neutral-6)] hover:ring-[var(--forest-neutral-5)] focus:outline-none focus:ring-[1.5px] focus:ring-[var(--forest-neutral-5)]"
 				/>
 			</div>
 		</div>
@@ -246,73 +257,34 @@
 	{/if}
 </div>
 
-<!-- Discard warning -->
-{#if showDiscardWarning}
-	<div class="mx-4 mt-2 flex items-center justify-between rounded-xl bg-surface-2 px-3 py-2.5">
-		<span class="text-sm text-txt-secondary">Kasta utkastet?</span>
-		<div class="flex items-center gap-2">
-			<button
-				onclick={() => showDiscardWarning = false}
-				class="rounded-lg px-3 py-1.5 text-sm text-txt-secondary hover:bg-surface-3 transition-colors"
-			>Avbryt</button>
-			<button
-				onclick={doCancel}
-				class="rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-txt-inverse hover:bg-accent-hover active:bg-accent-active transition-colors"
-			>Kasta</button>
-		</div>
-	</div>
-{/if}
-
 <!-- Input widget (textarea + send) -->
-<div class="px-4 pt-2 {isExpanded ? 'flex-1 flex flex-col min-h-0 pb-0' : 'pb-5'} {isBottomBar && !isExpanded ? '' : 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent'}">
-	<div class="flex flex-col rounded-2xl bg-surface-1 ring-1 ring-surface-5 focus-within:ring-[1.5px] focus-within:ring-txt-muted {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-surface-5/80 md:focus-within:ring-txt-muted'}">
+<div class="pt-2 {isBottomBar ? '' : 'px-4'} {isExpanded ? 'flex-1 flex flex-col min-h-0 pb-3' : 'pb-6'} {!isBottomBar && !isExpanded ? 'safe-bottom sticky bottom-0 bg-surface-1 md:bg-transparent' : ''}">
+	<div class="flex flex-col rounded-3xl bg-surface-1 ring-1 ring-[var(--forest-neutral-6)] focus-within:ring-1 focus-within:ring-[var(--forest-neutral-5)] {isExpanded ? 'flex-1 min-h-0' : ''} {isBottomBar && !isExpanded ? '' : 'md:bg-surface-1/80 md:ring-[var(--forest-neutral-6)] md:focus-within:ring-[var(--forest-neutral-5)]'}">
 		<textarea
 			bind:this={textareaEl}
 			bind:value={body}
 			onkeydown={handleKeydown}
 			oninput={autoGrow}
-			rows={isExpanded ? 10 : isBottomBar ? 2 : 3}
+			rows={isExpanded ? 4 : isBottomBar ? 2 : 3}
 			placeholder={isComment ? 'Skriv din kommentar...' : 'Skriv ditt inlägg...'}
 			class="w-full resize-none bg-transparent px-3 pt-3 pb-1 text-txt placeholder:text-txt-muted focus:outline-none {isBottomBar ? 'text-sm' : 'text-base md:text-sm'} {isExpanded ? 'flex-1' : ''}"
 			style={isExpanded ? '' : `max-height: ${isBottomBar ? 180 : 250}px;`}
 		></textarea>
-		{#if !isExpanded}
-			<div class="flex items-center justify-between px-2 pb-2">
-				<span class="text-xs text-txt-muted pl-1">
-					Ctrl+Enter för att skicka
-				</span>
-				<button
-					onclick={handleSend}
-					disabled={sent || !body.trim()}
-					class="flex h-9 w-9 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
-				>
-					{#if sent}
-						<Check size={18} />
-					{:else}
-						<ArrowUp size={18} />
-					{/if}
-				</button>
-			</div>
-		{/if}
-	</div>
-	{#if isExpanded}
-		<div class="flex items-center justify-between px-1 py-2">
+		<div class="flex items-center justify-between px-2 pb-2">
 			<span class="text-xs text-txt-muted pl-1">
 				Ctrl+Enter för att skicka
 			</span>
 			<button
 				onclick={handleSend}
 				disabled={sent || !body.trim()}
-				class="flex h-9 items-center gap-2 rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors px-4 text-sm font-medium"
+				class="flex h-9 w-9 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-txt-inverse active:bg-primary-active disabled:opacity-30 transition-colors"
 			>
 				{#if sent}
-					<Check size={16} />
-					Skickat
+					<Check size={18} />
 				{:else}
-					<ArrowUp size={16} />
-					Skicka
+					<ArrowUp size={18} />
 				{/if}
 			</button>
 		</div>
-	{/if}
+	</div>
 </div>

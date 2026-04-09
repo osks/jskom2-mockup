@@ -33,12 +33,11 @@
 {#if isVisible}
 	<div
 		class="hidden md:flex justify-center px-4"
-		transition:slide={{ duration: 200, easing: cubicOut }}
 	>
 		<div class="w-full max-w-3xl border-t border-surface-4">
 			<!-- "Replying to" context bar -->
 			{#if commentToText}
-				<div class="flex items-center gap-2 px-4 pt-2 pb-0">
+				<div class="flex items-center gap-2 pt-2 pb-0">
 					<button
 						onclick={handleScrollToParent}
 						class="flex items-center gap-1.5 text-xs text-txt-muted hover:text-txt-secondary transition-colors group"

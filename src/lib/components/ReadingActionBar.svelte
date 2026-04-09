@@ -46,12 +46,10 @@
 </script>
 
 {#if visible}
-	<div class="pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-4 md:left-80 transition-opacity duration-200" style="padding-bottom: max(env(safe-area-inset-bottom, 0px) + 0.5rem, 1.25rem);"
-		class:opacity-0={composing}
+	<div class="pointer-events-none fixed left-0 right-0 bottom-0 z-20 flex items-end justify-center px-4 md:left-80" style="padding-bottom: max(env(safe-area-inset-bottom, 0px) + 0.5rem, 1.25rem);"
+		class:hidden={composing}
 	>
-		<div class="flex w-full max-w-3xl items-center gap-2.5"
-			class:pointer-events-auto={!composing}
-			class:pointer-events-none={composing}
+		<div class="flex w-full max-w-3xl items-center gap-2.5 pointer-events-auto"
 		>
 			<!-- Secondary actions pill -->
 			{#if activeText}

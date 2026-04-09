@@ -133,14 +133,15 @@
 		}
 	});
 
-	// When compose opens, scroll the target text so its bottom is visible above the compose bar
+	// When compose opens, scroll to keep the target text visible above the compose bar.
+	// Only scroll if the top of the text would be above the visible area, or if
+	// more than half the text is hidden below the compose bar.
 	let prevCommentTo: number | null = null;
 	$effect(() => {
 		const textId = $readingState.commentTo;
 		if (textId === prevCommentTo) return;
 		prevCommentTo = textId;
 		if (!textId || !scrollContainer) return;
-		// Wait for the compose bar to render and measure
 		tick().then(() => {
 			setTimeout(() => {
 				if (!scrollContainer) return;
@@ -148,11 +149,19 @@
 				if (!el) return;
 				const elRect = el.getBoundingClientRect();
 				const containerRect = scrollContainer.getBoundingClientRect();
-				const targetBottom = containerRect.bottom - 8;
-				const offset = elRect.bottom - targetBottom;
-				if (offset > 0) {
-							scrollContainer.scrollBy({ top: offset, behavior: 'smooth' });
-					}
+				const visibleBottom = containerRect.bottom - 8;
+				const hiddenBelow = elRect.bottom - visibleBottom;
+				// Don't scroll if the text fits or only a small amount is hidden
+				if (hiddenBelow <= 80) return;
+				// Scroll just enough to show the top with some padding
+				const targetTop = containerRect.top + 16;
+				const scrollOffset = elRect.top - targetTop;
+				if (scrollOffset < 0) {
+					scrollContainer.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+				} else {
+					// Top is visible but bottom is mostly hidden — scroll bottom into view
+					scrollContainer.scrollBy({ top: hiddenBelow, behavior: 'smooth' });
+				}
 			}, 250);
 		});
 	});
