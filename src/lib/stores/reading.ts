@@ -297,8 +297,8 @@ export function setActiveText(textId: number | null) {
 	readingState.update((s) => ({ ...s, activeTextId: textId }));
 }
 
-// Återse: show a text in the reader (add to buffer as if it were next)
-export function återseText(textId: number) {
+// Review: show a text in the reader (add to buffer as if it were next)
+export function reviewText(textId: number) {
 	const text = getTextById(textId);
 	if (!text) return;
 

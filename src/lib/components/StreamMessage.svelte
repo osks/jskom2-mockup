@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { TextInfo } from '$lib/types';
 	import { getUserById, getTextById, getConferenceById } from '$lib/data';
-	import { återseText } from '$lib/stores/reading';
+	import { reviewText } from '$lib/stores/reading';
 	import { base } from '$app/paths';
 	import InfoPopover from './InfoPopover.svelte';
 
@@ -96,7 +96,7 @@
 						<div class="text-sm">
 							<div class="font-semibold text-txt mb-1">Text #{text.id}</div>
 							<button
-								onclick={() => återseText(text.id)}
+								onclick={() => reviewText(text.id)}
 								class="block w-full text-left px-1 py-1 text-primary hover:underline"
 							>Återse</button>
 						</div>
@@ -134,7 +134,7 @@
 							<div class="text-sm">
 								<div class="font-semibold text-txt mb-1">Text #{parent.id}</div>
 								<button
-									onclick={() => återseText(parent.id)}
+									onclick={() => reviewText(parent.id)}
 									class="block w-full text-left px-1 py-1 text-primary hover:underline"
 								>Återse</button>
 							</div>
@@ -235,7 +235,7 @@
 									<div class="text-sm">
 										<div class="font-semibold text-txt mb-1">Text #{child.id}</div>
 										<button
-											onclick={() => återseText(child.id)}
+											onclick={() => reviewText(child.id)}
 											class="block w-full text-left px-1 py-1 text-primary hover:underline"
 										>Återse</button>
 									</div>

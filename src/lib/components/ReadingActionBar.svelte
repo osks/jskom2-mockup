@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { readingState, advanceReading, setCommentTo, återseText } from '$lib/stores/reading';
+	import { readingState, advanceReading, setCommentTo, reviewText } from '$lib/stores/reading';
 	import { getTextById, getUserById } from '$lib/data';
 	import { Ellipsis, MessageSquare } from 'lucide-svelte';
 	import { tick } from 'svelte';
@@ -33,7 +33,7 @@
 	function handleReview() {
 		const id = parseInt(reviewInputValue.trim(), 10);
 		if (!isNaN(id) && id > 0) {
-			återseText(id);
+			reviewText(id);
 			closeReviewInput();
 		}
 	}
