@@ -103,7 +103,7 @@
 	--color-txt-inverse:   var(--forest-text-inverse);
 
 	/* Borders */
-	--color-edge:        var(--forest-border);
+	--color-edge:        var(--forest-edge);
 	--color-edge-strong: var(--forest-edge-strong);
 	--color-edge-focus:  var(--forest-edge-focus);
 
