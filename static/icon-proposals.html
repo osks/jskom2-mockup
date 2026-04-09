@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jskom — Icon Proposals</title>
+<style>
+:root {
+  --green-1: oklch(0.2400 0.0700 154.0);
+  --green-2: oklch(0.3000 0.0800 154.5);
+  --green-3: oklch(0.3900 0.0900 155.0);
+  --green-4: oklch(0.4750 0.1000 155.8);
+  --green-5: oklch(0.5500 0.1100 156.5);
+  --green-6: oklch(0.6100 0.1200 157.2);
+  --green-7: oklch(0.6650 0.1250 157.6);
+  --orange-2: oklch(0.3700 0.1100 49.0);
+  --orange-3: oklch(0.4650 0.1400 45.0);
+  --neutral-1: oklch(0.1300 0.0055 95.0);
+  --neutral-2: oklch(0.2100 0.0080 95.0);
+  --neutral-11: oklch(0.9800 0.0050 95.0);
+  --neutral-12: oklch(0.9900 0.0040 95.0);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; background: oklch(0.95 0.005 95); color: oklch(0.2 0.01 95); padding: 2rem; }
+h1 { margin-bottom: 0.5rem; }
+.subtitle { color: oklch(0.5 0.01 95); margin-bottom: 2rem; font-size: 0.9rem; }
+
+.proposal { background: #fff; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+.proposal h2 { font-size: 1rem; margin-bottom: 0.25rem; }
+.proposal .desc { color: oklch(0.5 0.01 95); font-size: 0.8rem; margin-bottom: 1.5rem; }
+
+.sizes { display: flex; align-items: end; gap: 2rem; flex-wrap: wrap; }
+.size-group { text-align: center; }
+.size-label { font-size: 0.65rem; color: oklch(0.5 0.01 95); margin-top: 0.4rem; }
+
+.dark-row { background: oklch(0.15 0.005 95); border-radius: 10px; padding: 1.5rem; margin-top: 1rem; }
+.dark-row .sizes { align-items: end; }
+</style>
+</head>
+<body>
+
+<h1>jskom — Icon Proposals</h1>
+<p class="subtitle">Each shown at 32px, 64px, 128px, and 256px. Light and dark backgrounds.</p>
+
+<!-- ============================================
+     PROPOSAL 1: Bold J lettermark
+     ============================================ -->
+<div class="proposal">
+  <h2>1 — Bold J</h2>
+  <p class="desc">Geometric J on green-2 background. Minimal, reads at any size.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="96" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROPOSAL 2: J with accent bar
+     ============================================ -->
+<div class="proposal">
+  <h2>2 — J with accent dot</h2>
+  <p class="desc">Same J lettermark but with an orange accent dot above — hints at notification/activity.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+        <circle cx="88" cy="28" r="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+        <circle cx="88" cy="28" r="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+        <circle cx="88" cy="28" r="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <text x="64" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="88" fill="oklch(0.9800 0.0050 95.0)">J</text>
+        <circle cx="88" cy="28" r="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROPOSAL 3: Thread branches
+     ============================================ -->
+<div class="proposal">
+  <h2>3 — Thread graph</h2>
+  <p class="desc">Abstract branching lines representing comment threads. The core LysKOM interaction.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <g stroke="oklch(0.5500 0.1100 156.5)" stroke-width="6" stroke-linecap="round" fill="none">
+          <line x1="36" y1="24" x2="36" y2="104"/>
+          <line x1="36" y1="44" x2="68" y2="44"/>
+          <line x1="68" y1="44" x2="68" y2="72"/>
+          <line x1="36" y1="72" x2="92" y2="72"/>
+          <line x1="92" y1="72" x2="92" y2="100"/>
+          <line x1="68" y1="72" x2="68" y2="100"/>
+        </g>
+        <circle cx="36" cy="24" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="68" cy="44" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="72" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="72" r="7" fill="oklch(0.4650 0.1400 45.0)"/>
+        <circle cx="68" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="104" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <g stroke="oklch(0.5500 0.1100 156.5)" stroke-width="6" stroke-linecap="round" fill="none">
+          <line x1="36" y1="24" x2="36" y2="104"/>
+          <line x1="36" y1="44" x2="68" y2="44"/>
+          <line x1="68" y1="44" x2="68" y2="72"/>
+          <line x1="36" y1="72" x2="92" y2="72"/>
+          <line x1="92" y1="72" x2="92" y2="100"/>
+          <line x1="68" y1="72" x2="68" y2="100"/>
+        </g>
+        <circle cx="36" cy="24" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="68" cy="44" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="72" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="72" r="7" fill="oklch(0.4650 0.1400 45.0)"/>
+        <circle cx="68" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="104" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <g stroke="oklch(0.5500 0.1100 156.5)" stroke-width="6" stroke-linecap="round" fill="none">
+          <line x1="36" y1="24" x2="36" y2="104"/>
+          <line x1="36" y1="44" x2="68" y2="44"/>
+          <line x1="68" y1="44" x2="68" y2="72"/>
+          <line x1="36" y1="72" x2="92" y2="72"/>
+          <line x1="92" y1="72" x2="92" y2="100"/>
+          <line x1="68" y1="72" x2="68" y2="100"/>
+        </g>
+        <circle cx="36" cy="24" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="68" cy="44" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="72" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="72" r="7" fill="oklch(0.4650 0.1400 45.0)"/>
+        <circle cx="68" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="104" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <g stroke="oklch(0.5500 0.1100 156.5)" stroke-width="6" stroke-linecap="round" fill="none">
+          <line x1="36" y1="24" x2="36" y2="104"/>
+          <line x1="36" y1="44" x2="68" y2="44"/>
+          <line x1="68" y1="44" x2="68" y2="72"/>
+          <line x1="36" y1="72" x2="92" y2="72"/>
+          <line x1="92" y1="72" x2="92" y2="100"/>
+          <line x1="68" y1="72" x2="68" y2="100"/>
+        </g>
+        <circle cx="36" cy="24" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="68" cy="44" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="72" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="72" r="7" fill="oklch(0.4650 0.1400 45.0)"/>
+        <circle cx="68" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="92" cy="100" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+        <circle cx="36" cy="104" r="7" fill="oklch(0.6100 0.1200 157.2)"/>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROPOSAL 4: Stacked reading cards
+     ============================================ -->
+<div class="proposal">
+  <h2>4 — Sequential reading</h2>
+  <p class="desc">Stacked horizontal bars suggesting messages in the reading queue. LysKOM's signature flow.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <rect x="24" y="28" width="80" height="14" rx="4" fill="oklch(0.6100 0.1200 157.2)"/>
+        <rect x="24" y="50" width="80" height="14" rx="4" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="24" y="72" width="56" height="14" rx="4" fill="oklch(0.4750 0.1000 155.8)" opacity="0.7"/>
+        <rect x="24" y="94" width="40" height="14" rx="4" fill="oklch(0.3900 0.0900 155.0)" opacity="0.5"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <rect x="24" y="28" width="80" height="14" rx="4" fill="oklch(0.6100 0.1200 157.2)"/>
+        <rect x="24" y="50" width="80" height="14" rx="4" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="24" y="72" width="56" height="14" rx="4" fill="oklch(0.4750 0.1000 155.8)" opacity="0.7"/>
+        <rect x="24" y="94" width="40" height="14" rx="4" fill="oklch(0.3900 0.0900 155.0)" opacity="0.5"/>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <rect x="24" y="28" width="80" height="14" rx="4" fill="oklch(0.6100 0.1200 157.2)"/>
+        <rect x="24" y="50" width="80" height="14" rx="4" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="24" y="72" width="56" height="14" rx="4" fill="oklch(0.4750 0.1000 155.8)" opacity="0.7"/>
+        <rect x="24" y="94" width="40" height="14" rx="4" fill="oklch(0.3900 0.0900 155.0)" opacity="0.5"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <rect x="24" y="28" width="80" height="14" rx="4" fill="oklch(0.6100 0.1200 157.2)"/>
+        <rect x="24" y="50" width="80" height="14" rx="4" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="24" y="72" width="56" height="14" rx="4" fill="oklch(0.4750 0.1000 155.8)" opacity="0.7"/>
+        <rect x="24" y="94" width="40" height="14" rx="4" fill="oklch(0.3900 0.0900 155.0)" opacity="0.5"/>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROPOSAL 5: Overlapping message cards
+     ============================================ -->
+<div class="proposal">
+  <h2>5 — Layered messages</h2>
+  <p class="desc">Overlapping rounded rectangles — messages stacking in a conference. Uses surface layering concept.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <rect x="18" y="38" width="60" height="44" rx="10" fill="oklch(0.3900 0.0900 155.0)"/>
+        <rect x="50" y="52" width="60" height="44" rx="10" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="34" y="68" width="60" height="44" rx="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <rect x="18" y="38" width="60" height="44" rx="10" fill="oklch(0.3900 0.0900 155.0)"/>
+        <rect x="50" y="52" width="60" height="44" rx="10" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="34" y="68" width="60" height="44" rx="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <rect x="18" y="38" width="60" height="44" rx="10" fill="oklch(0.3900 0.0900 155.0)"/>
+        <rect x="50" y="52" width="60" height="44" rx="10" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="34" y="68" width="60" height="44" rx="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.1300 0.0055 95.0)"/>
+        <rect x="18" y="38" width="60" height="44" rx="10" fill="oklch(0.3900 0.0900 155.0)"/>
+        <rect x="50" y="52" width="60" height="44" rx="10" fill="oklch(0.5500 0.1100 156.5)"/>
+        <rect x="34" y="68" width="60" height="44" rx="10" fill="oklch(0.4650 0.1400 45.0)"/>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROPOSAL 6: Comment bracket / quote mark
+     ============================================ -->
+<div class="proposal">
+  <h2>6 — Comment bracket</h2>
+  <p class="desc">A stylized ">" or angular bracket — the universal "reply/comment" symbol. Bold and geometric.</p>
+  <div class="sizes">
+    <div class="size-group">
+      <svg width="32" height="32" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <polyline points="40,30 88,64 40,98" fill="none" stroke="oklch(0.9800 0.0050 95.0)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="size-label">32px</div>
+    </div>
+    <div class="size-group">
+      <svg width="64" height="64" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <polyline points="40,30 88,64 40,98" fill="none" stroke="oklch(0.9800 0.0050 95.0)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="size-label">64px</div>
+    </div>
+    <div class="size-group">
+      <svg width="128" height="128" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <polyline points="40,30 88,64 40,98" fill="none" stroke="oklch(0.9800 0.0050 95.0)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="size-label">128px</div>
+    </div>
+    <div class="size-group">
+      <svg width="256" height="256" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="28" fill="oklch(0.3000 0.0800 154.5)"/>
+        <polyline points="40,30 88,64 40,98" fill="none" stroke="oklch(0.9800 0.0050 95.0)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="size-label">256px</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
